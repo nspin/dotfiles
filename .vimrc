@@ -17,7 +17,7 @@ set nolist " for linebreak
 set linebreak
 set textwidth=0
 set wrapmargin=0
-set spell spelllang=en_us
+set spelllang=en_us
 
 syntax on
 
@@ -29,7 +29,7 @@ inoremap jf <esc>
 nnoremap <leader>v '[v']
 nnoremap <leader>w :w<return>
 nnoremap <leader>z ZZ
-nnoremap <leader>qq :q!<return>
+nnoremap <leader>q :q!<return>
 nnoremap <leader>h :set hlsearch!<return>
 nnoremap <leader>s :setlocal spell!<return>
 nnoremap <leader>r :set wrap<return>:nnoremap j gj<return>:nnoremap k gk<return>
