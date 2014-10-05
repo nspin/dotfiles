@@ -23,8 +23,8 @@ syntax on
 
 let mapleader = " "
 
-inoremap fj <esc>
-inoremap jf <esc>
+inoremap jk <esc>
+inoremap kj <esc>
 
 nnoremap <leader>v '[v']
 nnoremap <leader>w :w<return>
