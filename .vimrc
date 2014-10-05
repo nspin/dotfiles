@@ -36,7 +36,7 @@ nnoremap <leader>r :set wrap<return>:nnoremap j gj<return>:nnoremap k gk<return>
 nnoremap <leader>nr :set nowrap<return>:unmap j<return>:unmap k<return>
 nnoremap <leader>g :GundoToggle<return> " gundo
 
-iab het the
+iab teh the
 iab NIck Nick
 iab NIcholas Nicholas
 iab SPinale Spinale
