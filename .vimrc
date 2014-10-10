@@ -25,6 +25,7 @@ let mapleader = " "
 
 inoremap jk <esc>
 inoremap kj <esc>
+inoremap <C-s> <esc>:w<return>i
 
 nnoremap <leader>j Lzz
 nnoremap <leader>k Hzz
