@@ -36,7 +36,7 @@ nnoremap <leader>q :q!<return>
 nnoremap <leader>h :set hlsearch!<return>
 nnoremap <leader>s :setlocal spell!<return>
 nnoremap <leader>r :set wrap<return>:nnoremap j gj<return>:nnoremap k gk<return>
-nnoremap <leader>nr :set nowrap<return>:unmap j<return>:unmap k<return>
+nnoremap <leader>R :set nowrap<return>:unmap j<return>:unmap k<return>
 nnoremap <leader>g :GundoToggle<return> " gundo
 
 iab teh the
