@@ -32,7 +32,8 @@ nnoremap <leader>k Hzz
 nnoremap <leader>v '[v']
 nnoremap <leader>w :w<return>
 nnoremap <leader>z ZZ
-nnoremap <leader>q :q!<return>
+nnoremap <leader>! :q!<return>
+nnoremap <leader>:%s/
 nnoremap <leader>h :set hlsearch!<return>
 nnoremap <leader>s :setlocal spell!<return>
 nnoremap <leader>r :set wrap<return>:nnoremap j gj<return>:nnoremap k gk<return>
