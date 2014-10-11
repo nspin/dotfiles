@@ -33,11 +33,11 @@ nnoremap <leader>v '[v']
 nnoremap <leader>w :w<return>
 nnoremap <leader>z ZZ
 nnoremap <leader>! :q!<return>
-nnoremap <leader>:%s/
+nnoremap <leader>r :%s/
 nnoremap <leader>h :set hlsearch!<return>
 nnoremap <leader>s :setlocal spell!<return>
-nnoremap <leader>r :set wrap<return>:nnoremap j gj<return>:nnoremap k gk<return>
-nnoremap <leader>R :set nowrap<return>:unmap j<return>:unmap k<return>
+nnoremap <leader>t :set wrap<return>:nnoremap j gj<return>:nnoremap k gk<return>
+nnoremap <leader>T :set nowrap<return>:unmap j<return>:unmap k<return>
 nnoremap <leader>g :GundoToggle<return> " gundo
 
 iab teh the
