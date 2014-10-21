@@ -25,14 +25,16 @@ let mapleader = " "
 
 inoremap jk <esc>
 inoremap kj <esc>
-inoremap <C-s> <esc>:w<return>i
 
 nnoremap <leader>j Lzz
 nnoremap <leader>k Hzz
+nnoremap <leader>h 16h
+nnoremap <leader>l 16l
 nnoremap <leader>v '[v']
 nnoremap <leader>w :w<return>
-nnoremap <leader>! :q!<return>
+nnoremap <leader>1 :q!<return>
 nnoremap <leader>r :%s/
+nnoremap <leader>b :sh<return>
 nnoremap <leader>h :set hlsearch!<return>
 nnoremap <leader>s :setlocal spell!<return>
 nnoremap <leader>t :set wrap<return>:nnoremap j gj<return>:nnoremap k gk<return>
