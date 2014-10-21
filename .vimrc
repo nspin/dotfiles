@@ -26,8 +26,8 @@ let mapleader = " "
 inoremap jk <esc>
 inoremap kj <esc>
 
-nnoremap <leader>j 16j " Lzz
-nnoremap <leader>k 16k " Hzz
+nnoremap <leader>j 8j " Lzz
+nnoremap <leader>k 8k " Hzz
 nnoremap <leader>h 16h
 nnoremap <leader>l 16l
 nnoremap <leader>v '[v']
@@ -41,9 +41,9 @@ nnoremap <leader>T :set nowrap<return>:unmap j<return>:unmap k<return>
 nnoremap <leader>w :w<return>
 nnoremap <leader>1 :q!<return>
 nnoremap <leader>b :sh<return>
-nnoremap <leader>e :e
-nnoremap <leader>v :vnew
-nnoremap <leader>n :new
+nnoremap <leader>e :e 
+nnoremap <leader>v :vnew 
+nnoremap <leader>n :new 
 
 nnoremap <leader>g :GundoToggle<return> " gundo
 
