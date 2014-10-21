@@ -52,6 +52,7 @@ nnoremap <leader>b :sh<return>
 nnoremap <leader>e :e 
 nnoremap <leader>n :new 
 nnoremap <leader>v :vnew 
+nnoremap <leader>s :split
 nnoremap <leader>t :tabnew 
 nnoremap <leader>c :tabn<return> 
 nnoremap <leader>x :tabp<return> 
