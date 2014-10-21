@@ -23,6 +23,8 @@ syntax on
 
 let mapleader = " "
 
+let g:EasyMotion_leader_key = '\' " easymotion
+
 inoremap jk <esc>
 inoremap kj <esc>
 
@@ -34,7 +36,8 @@ nnoremap <leader>h 16h
 nnoremap <leader>l 16l
 nnoremap <leader><leader>h 32j
 nnoremap <leader><leader>l 32k
-nnoremap <leader>v '[v']
+
+nnoremap <leader>V '[v']
 nnoremap <leader>r :%s/
 
 nnoremap <leader>H :set hlsearch!<return>
@@ -42,6 +45,7 @@ nnoremap <leader>9 :setlocal spell!<return>
 nnoremap <leader>0 :set wrap<return>:nnoremap j gj<return>:nnoremap k gk<return>
 nnoremap <leader>) :set nowrap<return>:unmap j<return>:unmap k<return>
 
+nnoremap <leader>z ZZ
 nnoremap <leader>w :w<return>
 nnoremap <leader>1 :q!<return>
 nnoremap <leader>b :sh<return>
@@ -54,10 +58,10 @@ nnoremap <leader>x :tabp<return>
 
 nnoremap <leader>g :GundoToggle<return> " gundo
 
-iab #d #define
-iab #i #include
-iab #m import
-iab #e extends
+iab `d #define
+iab `i #include
+iab `m import
+iab `e extends
 iab teh the
 iab NIck Nick
 iab NIcholas Nicholas
