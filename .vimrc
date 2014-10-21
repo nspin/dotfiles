@@ -26,24 +26,31 @@ let mapleader = " "
 inoremap jk <esc>
 inoremap kj <esc>
 
-nnoremap <leader>j 8j " Lzz
-nnoremap <leader>k 8k " Hzz
+nnoremap <leader>j 8j
+nnoremap <leader>k 8k
+nnoremap <leader><leader>j 16j
+nnoremap <leader><leader>k 16k
 nnoremap <leader>h 16h
 nnoremap <leader>l 16l
+nnoremap <leader><leader>h 32j
+nnoremap <leader><leader>l 32k
 nnoremap <leader>v '[v']
 nnoremap <leader>r :%s/
 
 nnoremap <leader>H :set hlsearch!<return>
-nnoremap <leader>s :setlocal spell!<return>
-nnoremap <leader>t :set wrap<return>:nnoremap j gj<return>:nnoremap k gk<return>
-nnoremap <leader>T :set nowrap<return>:unmap j<return>:unmap k<return>
+nnoremap <leader>9 :setlocal spell!<return>
+nnoremap <leader>0 :set wrap<return>:nnoremap j gj<return>:nnoremap k gk<return>
+nnoremap <leader>) :set nowrap<return>:unmap j<return>:unmap k<return>
 
 nnoremap <leader>w :w<return>
 nnoremap <leader>1 :q!<return>
 nnoremap <leader>b :sh<return>
 nnoremap <leader>e :e 
-nnoremap <leader>v :vnew 
 nnoremap <leader>n :new 
+nnoremap <leader>v :vnew 
+nnoremap <leader>t :tabnew 
+nnoremap <leader>c :tabn<return> 
+nnoremap <leader>x :tabp<return> 
 
 nnoremap <leader>g :GundoToggle<return> " gundo
 
