@@ -33,7 +33,7 @@ nnoremap <leader>l 16l
 nnoremap <leader>v '[v']
 nnoremap <leader>r :%s/
 
-nnoremap <leader>h :set hlsearch!<return>
+nnoremap <leader>H :set hlsearch!<return>
 nnoremap <leader>s :setlocal spell!<return>
 nnoremap <leader>t :set wrap<return>:nnoremap j gj<return>:nnoremap k gk<return>
 nnoremap <leader>T :set nowrap<return>:unmap j<return>:unmap k<return>
