@@ -39,7 +39,7 @@ nnoremap <leader>u :GundoToggle<CR>  " gundo
 
 nnoremap <leader>r :%s/
 nnoremap <leader>s :sh<CR>
-nnoremap <leader>i '[v']  " highlight last insert
+nnoremap <leader>i `[v`]  " highlight last insert
 
 " highlight block delimiters' content (soon-to-be scripts)
 
