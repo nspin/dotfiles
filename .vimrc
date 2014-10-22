@@ -60,7 +60,7 @@ nnoremap <leader>l 16l
 
 " file stuff
 
-nnoremap <leader>| :q!<CR>
+nnoremap <leader><bar> :q!<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>e :e<space>
 
