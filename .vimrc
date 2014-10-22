@@ -26,7 +26,7 @@ set wildmenu " nifty autocomplete in command mode
 
 syntax on
 
-let mapleader = "<space>"
+let mapleader = " "
 
 let g:EasyMotion_leader_key = '\'  " easymotion
 
