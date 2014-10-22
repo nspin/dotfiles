@@ -49,7 +49,7 @@ nnoremap <leader>" T"vt"
 nnoremap <leader>` T`vt`
 nnoremap <leader>> T<vt>
 nnoremap <leader>] T[vt]
-nnoremap <leader>] T[vt}
+nnoremap <leader>} T{vt}
 
 " lazy movement
 
