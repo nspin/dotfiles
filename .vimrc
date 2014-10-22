@@ -68,7 +68,7 @@ nnoremap <leader>e :e<space>
 
 nnoremap <leader>v :sview
 nnoremap <leader>n :split<space>
-nnoremap <leader>m :vplit<space>
+nnoremap <leader>m :vsplit<space>
 nnoremap <leader>c :tabnew<space>
 nnoremap <leader>x :tabn<CR>
 nnoremap <leader>z :tabp<CR>
