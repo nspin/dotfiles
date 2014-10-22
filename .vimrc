@@ -53,10 +53,12 @@ nnoremap <leader>} T{vt}
 
 " lazy movement
 
-nnoremap <leader>j 8j
-nnoremap <leader>k 8k
 nnoremap <leader>h 16h
 nnoremap <leader>l 16l
+nnoremap <leader>j 8j
+nnoremap <leader>k 8k
+nnoremap <leader><leader>j Hz.
+nnoremap <leader><leader>k Lz.
 
 " file stuff
 
