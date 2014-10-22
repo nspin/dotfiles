@@ -50,7 +50,7 @@ nnoremap <leader>z :tabp<CR>
 nnoremap <leader>8 :set hlsearch!<CR>
 nnoremap <leader>9 :set spell!<CR>
 nnoremap <leader>0 :set wrap<CR>:nnoremap j gj<CR>:nnoremap k gk<CR>
-nnoremap <leader>) :set nowrap<CR>:unmap j<CR>:unmap k<CR>
+nnoremap <leader>00 :set nowrap<CR>:unmap j<CR>:unmap k<CR>
 
 nnoremap <leader>g :GundoToggle<CR> " gundo
 
