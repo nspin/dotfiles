@@ -66,12 +66,13 @@ nnoremap <leader>e :e<space>
 
 " window management
 
-nnoremap <leader>v :sview
 nnoremap <leader>n :split<space>
 nnoremap <leader>m :vsplit<space>
-nnoremap <leader>c :tabnew<space>
+nnoremap <leader>b :sview
+nnoremap <leader>v <C-w>
+nnoremap <leader>z :tabnew<space>
 nnoremap <leader>x :tabn<CR>
-nnoremap <leader>z :tabp<CR>
+nnoremap <leader>c :tabp<CR>
 
 " toggles
 
