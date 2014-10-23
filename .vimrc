@@ -12,14 +12,15 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-set number
-set ruler
+set number " show line numbers
+set ruler " always show cursor position
 set colorcolumn=80
-set showmatch " of block delimiter
+set laststatus=2 " status line always there
+
 set nowrap
-
+set showmatch " of block delimiter
+set backspace=indent,eol,start " allow more deletion in insert mode
 set spelllang=en_us
-
 set wildmenu " nifty autocomplete in command mode
 
 " ===== MISC =====
@@ -28,18 +29,18 @@ syntax on
 
 let mapleader = " "
 
-let g:EasyMotion_leader_key = '\'  " easymotion
+let g:EasyMotion_leader_key = '\' " easymotion
 
 " ===== MAPPTINGS =====
 
 inoremap jk <esc>
 inoremap kj <esc>
 
-nnoremap <leader>u :GundoToggle<CR>  " gundo
+nnoremap <leader>u :GundoToggle<CR> " gundo
 
 nnoremap <leader>r :%s/
 nnoremap <leader>s :sh<CR>
-nnoremap <leader>i `[v`]  " highlight last insert
+nnoremap <leader>i `[v`] " highlight last insert
 
 " highlight block delimiters' content (soon-to-be scripts)
 
@@ -57,44 +58,56 @@ nnoremap <leader>h 16h
 nnoremap <leader>l 16l
 nnoremap <leader>j 8j
 nnoremap <leader>k 8k
-nnoremap <leader><leader>j Hz.
-nnoremap <leader><leader>k Lz.
+nnoremap <leader>J LzzLzz
+nnoremap <leader>K HzzHzz
 
 " file stuff
 
-nnoremap <leader><bar> :q!<CR>
+nnoremap <leader>\ :q!<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>e :e<space>
 
 " window management
 
+nnoremap <leader>f <C-w>
 nnoremap <leader>n :split<space>
-nnoremap <leader>m :vsplit<space>
+nnoremap <leader>v :vsplit<space>
 nnoremap <leader>b :sview
-nnoremap <leader>v <C-w>
-nnoremap <leader>z :tabnew<space>
-nnoremap <leader>x :tabn<CR>
-nnoremap <leader>c :tabp<CR>
+nnoremap <leader>t :tabnew<space>
+nnoremap <leader>c :tabn<CR>
+nnoremap <leader>m :tabp<CR>
 
 " toggles
 
 nnoremap <leader>8 :set hlsearch!<CR>
 nnoremap <leader>9 :set spell!<CR>
 nnoremap <leader>0 :set wrap<CR>:nnoremap j gj<CR>:nnoremap k gk<CR>
-nnoremap <leader>00 :set nowrap<CR>:unmap j<CR>:unmap k<CR>
+nnoremap <leader><leader>0 :set nowrap<CR>:unmap j<CR>:unmap k<CR>
+
+" ===== AESTHETICS =====
+
+" I like feeling like I'm in a metal box when I code
+
+highlight TablineFill ctermbg=DarkGrey ctermfg=Black
+highlight TabLine ctermbg=DarkGrey ctermfg=Black
+highlight TablineSel ctermbg=DarkGrey ctermfg=Grey
+highlight StatusLine ctermbg=DarkGrey ctermfg=Black
+highlight StatusLineNC ctermbg=DarkGrey ctermfg=Black
+highlight VertSplit ctermbg=DarkGrey ctermfg=DarkGrey
+highlight LineNr ctermbg=DarkGrey ctermfg=Black
 
 " ===== ABBREVIATIONS =====
 
 " convenience
 
-iab ww where<space>
-iab tt type<space>
-iab mm import<space>
-iab nn instance<space>
-iab ee extends<space>
-iab pp implements<space>
-iab #d #define<space><
-iab #i #include<space><
+iab ww where
+iab tt type
+iab mm import
+iab nn instance
+iab ee extends
+iab pp implements
+iab #d #define
+iab #i #include
 
 " errors
 
