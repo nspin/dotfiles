@@ -58,8 +58,8 @@ nnoremap <leader>h 16h
 nnoremap <leader>l 16l
 nnoremap <leader>j 8j
 nnoremap <leader>k 8k
-nnoremap <leader>J LzzLzz
-nnoremap <leader>K HzzHzz
+nnoremap <leader>f LzzLzz
+nnoremap <leader>d HzzHzz
 
 " file stuff
 
@@ -69,7 +69,7 @@ nnoremap <leader>e :e<space>
 
 " window management
 
-nnoremap <leader>f <C-w>
+nnoremap <leader>g <C-w>
 nnoremap <leader>n :split<space>
 nnoremap <leader>v :vsplit<space>
 nnoremap <leader>b :sview
@@ -79,10 +79,10 @@ nnoremap <leader>m :tabp<CR>
 
 " toggles
 
-nnoremap <leader>8 :set hlsearch!<CR>
-nnoremap <leader>9 :set spell!<CR>
-nnoremap <leader>0 :set wrap<CR>:nnoremap j gj<CR>:nnoremap k gk<CR>
-nnoremap <leader><leader>0 :set nowrap<CR>:unmap j<CR>:unmap k<CR>
+nnoremap <leader>1 :set hlsearch!<CR>
+nnoremap <leader>2 :set spell!<CR>
+nnoremap <leader>3 :set wrap<CR>:nnoremap j gj<CR>:nnoremap k gk<CR>
+nnoremap <leader>4 :set nowrap<CR>:unmap j<CR>:unmap k<CR>
 
 " ===== AESTHETICS =====
 
