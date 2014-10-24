@@ -21,9 +21,9 @@ highlight clear
 
 set nocompatible
 
-set verbose=2
+set verbose=1
 
-set virtualedit=block " makes visual block mode more convenient
+set virtualedit=block   " makes visual block mode more convenient
 set backspace=indent,eol,start " allow more deletion in insert mode
 
 set tabstop=4
@@ -32,19 +32,23 @@ set expandtab
 
 set spelllang=en_us
 
-set nowrap
+set splitbelow          " where will new windows appear
+set splitright
+set statusline=%t%m | %c - %l | %L | %r%h%w%Y%q
+set tabline=%t
 
-set number " show line numbers
-set ruler " always show cursor position
+set nowrap
+set number              " show line numbers
+set ruler               " always show cursor position
 set colorcolumn=80
-set laststatus=2 " status line always there
-set showtabline=2 " tab line always there
-set showmatch " of block delimiter
-set wildmenu " nifty autocomplete in command mode
+set laststatus=2        " status line always there
+set showtabline=2       " tab line always there
+set showmatch           " of block delimiter
+set wildmenu            " nifty autocomplete in command mode
 
 " ===== MISC =====
 
-filetype on " necessary?
+filetype on             " necessary?
 
 let mapleader = " "
 
@@ -78,16 +82,7 @@ nnoremap <leader>b :shell<cr>
 nnoremap <leader>o o<esc>
 nnoremap <leader>O O<esc>
 
-" highlight stuff (soon-to-be scripts?)
-
 nnoremap <leader>i `[v`] " last insert
-nnoremap <leader>p T(vt)
-nnoremap <leader>' T'vt'
-nnoremap <leader>" T"vt"
-nnoremap <leader>` T`vt`
-nnoremap <leader>> T<vt>
-nnoremap <leader>] T[vt]
-nnoremap <leader>} T{vt}
 
 " lazy movement
 
@@ -100,7 +95,7 @@ noremap <leader>d HzbM
 
 " file stuff
 
-nnoremap <leader>! :quit!<cr>
+nnoremap <leader>Q :quit!<cr>
 nnoremap <leader>q :quit<cr>
 nnoremap <leader>w :write<cr>
 nnoremap <leader>e :edit<space>
@@ -169,11 +164,11 @@ nnoremap <leader>u :GundoToggle<cr>
 
 " ===== AESTHETICS =====
 
-set background=dark " to get correct defaults
+set background=dark         " to get correct defaults
 
-syntax enable " later stuff can correct colorschemes' infringements
+syntax enable               " later stuff can correct colorschemes' infringements
 
-set background=dark " in case some other file changed it
+set background=dark         " in case some other file changed it
 
 highlight Normal        cterm=NONE  ctermbg=black       ctermfg=white
 
