@@ -9,34 +9,43 @@
 "       avoid loading plugings or ANYTHING by default
 "           (to make my vim thing super super portable)
 "       all settings: :set all without vimrc
+"       does mapping to <c- commands make them safe?
+"       
 
 " ===== CLEAN SLATE =====
 
 set all&
+syntax clear
+highlight clear
 
 " ===== SETTINGS =====
 
 set nocompatible
 
+set verbose=2
+
+set virtualedit=block " makes visual block mode more convenient
+set backspace=indent,eol,start " allow more deletion in insert mode
+
 set tabstop=4
 set shiftwidth=4
 set expandtab
 
-set verbose=15 " tell me EVERYTHING
+set spelllang=en_us
+
+set nowrap
 
 set number " show line numbers
 set ruler " always show cursor position
 set colorcolumn=80
 set laststatus=2 " status line always there
 set showtabline=2 " tab line always there
-
-set nowrap
 set showmatch " of block delimiter
-set backspace=indent,eol,start " allow more deletion in insert mode
-set spelllang=en_us
 set wildmenu " nifty autocomplete in command mode
 
 " ===== MISC =====
+
+filetype on " necessary?
 
 let mapleader = " "
 
@@ -49,26 +58,30 @@ inoremap kj <esc>
 
 " serious stuff
 
+noremap \ :
+
 inoremap 9 (
 inoremap ( 9
 inoremap 0 )
 inoremap ) 0
 
-nnoremap ; :
-nnoremap : ;
+nnoremap <space>v <c-v> " ctrl-q?
 
 " misc
 
-inoremap HH <esc>pa
+vnoremap <leader>z y/<c-r>"<cr>
+vnoremap <leader>s y:%s/
+vnoremap <leader>a :norm 
+
+nnoremap <leader>s :%s/
+nnoremap <leader>b :shell<cr>
 
 nnoremap <leader>o o<esc>
 nnoremap <leader>O O<esc>
-nnoremap <leader>i `[v`] " highlight last insert
-nnoremap <leader>r :%s/
-nnoremap <leader>b :shell<CR>
 
-" highlight block delimiters' content (soon-to-be scripts?)
+" highlight stuff (soon-to-be scripts?)
 
+nnoremap <leader>i `[v`] " last insert
 nnoremap <leader>p T(vt)
 nnoremap <leader>' T'vt'
 nnoremap <leader>" T"vt"
@@ -83,34 +96,51 @@ noremap <leader>h 16h
 noremap <leader>l 16l
 noremap <leader>j 8j
 noremap <leader>k 8k
-noremap <leader>f Lztzz
-noremap <leader>d Hzbzz
+noremap <leader>f LztM
+noremap <leader>d HzbM
 
 " file stuff
 
-nnoremap <leader>q :quit<CR>
-nnoremap <leader>\ :quit!<CR>
-nnoremap <leader>w :write<CR>
+nnoremap <leader>! :quit!<cr>
+nnoremap <leader>q :quit<cr>
+nnoremap <leader>w :write<cr>
 nnoremap <leader>e :edit<space>
+nnoremap <leader>r :view<space>
 
 " window management
 
-nnoremap <leader>g <C-w>
 nnoremap <leader>n :split<space>
 nnoremap <leader>m :vsplit<space>
 nnoremap <leader>N :sview<space>
 nnoremap <leader>M :vertical sview<space>
 nnoremap <leader>t :tabnew<space>
 
+" commenting chunks of code.
+
+autocmd FileType haskell            let b:comment_captain = '-- '
+autocmd FileType c,cpp,java,scala   let b:comment_captain = '// '
+autocmd FileType sh,ruby,python     let b:comment_captain = '# '
+autocmd FileType conf,fstab         let b:comment_captain = '# '
+autocmd FileType tex                let b:comment_captain = '% '
+autocmd FileType mail               let b:comment_captain = '> '
+autocmd FileType vim                let b:comment_captain = '" '
+
+noremap <leader>cc :s/^/<c-r>=escape(b:comment_captain,'\/')<cr>/<cr>
+noremap <leader>cu :s/^<c-r>=escape(b:comment_captain,'\/')<cr>//e<cr>
+
 " toggles
 
-nnoremap <leader>1 :set hlsearch!<CR>
-nnoremap <leader>2 :setlocal spell!<CR>
-nnoremap <leader>3 :setlocal wrap!<CR>
-nnoremap <leader>4 :setlocal readonly!
-nnoremap <leader>5 :set digraph
-nnoremap <leader>8 :noremap j gj<CR>:noremap k gk<CR>
-nnoremap <leader>9 :unmap j<CR>:unmap k<CR>
+nnoremap ,h :set hlsearch!<cr>
+nnoremap ,s :setlocal spell!<cr>
+nnoremap ,w :setlocal wrap!<cr>
+nnoremap ,r :setlocal readonly!<cr>
+nnoremap ,d :set digraph<cr>
+nnoremap ,l :set wrap:set nolist:set linebreak<cr>
+nnoremap ,L :set nowrap:set list:set nolinebreak<cr>
+nnoremap ,g :noremap j gj<cr>:noremap k gk<cr>
+nnoremap ,G :unmap j<cr>:unmap k<cr>
+nnoremap ,v :set virtualedit=all<cr>
+nnoremap ,V :set virtualedit=block<cr>
 
 " ===== ABBREVIATIONS =====
 
@@ -136,33 +166,33 @@ iab SPinale Spinale
 
 let g:EasyMotion_leader_key = '\'
 
-nnoremap <leader>u :GundoToggle<CR>
+nnoremap <leader>u :GundoToggle<cr>
 
 " ===== AESTHETICS =====
 
-" hardcoded color scheme in progress. I code in a grey box
-
-syntax clear
-syntax enable " here, so that later stuff can correct the colorschemes' infringements
-
-highlight clear " let me take care of this
-
 set background=dark " to get correct defaults
 
-highlight Normal        cterm=NONE      ctermbg=black       ctermfg=white
+syntax enable " later stuff can correct colorschemes' infringements
 
-" window stuff
+" code in a grey box
 
-highlight StatusLine    cterm=NONE      ctermbg=darkgrey    ctermfg=black
-highlight StatusLineNC  cterm=NONE      ctermbg=darkgrey    ctermfg=grey
-highlight LineNr        cterm=NONE      ctermbg=black       ctermfg=grey
+set background=dark " just incase some other file changed it
 
-highlight link VertSplit TabLine TablineFill Title StatusLine
-highlight link TablineSel StatusLineNC
+highlight Normal        cterm=NONE  ctermbg=black       ctermfg=white
 
-" only syntax stuff so far
+highlight NonText       cterm=NONE  ctermbg=NONE        ctermfg=darkgrey
 
-highlight Comment term=italic cterm=NONE ctermfg=grey ctermbg=NONE gui=NONE guifg=#80a0ff guibg=NONE
+highlight LineNr        cterm=NONE  ctermbg=NONE        ctermfg=Magenta
+
+highlight StatusLineNC  cterm=NONE  ctermbg=darkgrey    ctermfg=grey
+highlight Tablinefill   cterm=NONE  ctermbg=darkgrey    ctermfg=grey
+
+highlight StatusLine    cterm=NONE  ctermbg=darkgrey    ctermfg=black
+highlight TablineSel    cterm=NONE  ctermbg=darkgrey    ctermfg=black
+highlight VertSplit     cterm=NONE  ctermbg=darkgrey    ctermfg=black
+highlight TabLine       cterm=NONE  ctermbg=darkgrey    ctermfg=black
+highlight TablineFill   cterm=NONE  ctermbg=darkgrey    ctermfg=black
+highlight Title         cterm=NONE  ctermbg=darkgrey    ctermfg=black
 
 
 "=============================================================================
@@ -171,6 +201,10 @@ highlight Comment term=italic cterm=NONE ctermfg=grey ctermbg=NONE gui=NONE guif
 "         TRANSPORTED IN SMALL NUMBER OF FILES, AND OPERATE WITHOUT ANY
 "         RUNTIME FILES
 "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+" this is the only syntax stuff so far
+
+" highlight Comment term=italic cterm=NONE ctermfg=cyan ctermbg=NONE gui=NONE guifg=#80a0ff guibg=NONE
 
 " for defaults of the highlight option
 
