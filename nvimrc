@@ -8,7 +8,8 @@
 "       rulerformat and statusline
 "       avoid loading plugings or ANYTHING by default
 "       does mapping to <c- commands make them safe?
-"       
+"       new :q! binding
+"       change where windows appear after <l>n-M
 
 " ===== CLEAN SLATE =====
 
