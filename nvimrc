@@ -7,8 +7,6 @@
 " todo: find maps worthy of enter, delete, and \
 "       rulerformat and statusline
 "       avoid loading plugings or ANYTHING by default
-"           (to make my vim thing super super portable)
-"       all settings: :set all without vimrc
 "       does mapping to <c- commands make them safe?
 "       
 
@@ -174,24 +172,24 @@ set background=dark " to get correct defaults
 
 syntax enable " later stuff can correct colorschemes' infringements
 
-" code in a grey box
-
-set background=dark " just incase some other file changed it
+set background=dark " in case some other file changed it
 
 highlight Normal        cterm=NONE  ctermbg=black       ctermfg=white
 
 highlight NonText       cterm=NONE  ctermbg=NONE        ctermfg=darkgrey
 
-highlight LineNr        cterm=NONE  ctermbg=NONE        ctermfg=Magenta
+highlight LineNr        cterm=NONE  ctermbg=NONE        ctermfg=red
+
+highlight ColorColumn   cterm=NONE  ctermbg=darkred         ctermfg=NONE
 
 highlight StatusLineNC  cterm=NONE  ctermbg=darkgrey    ctermfg=grey
-highlight Tablinefill   cterm=NONE  ctermbg=darkgrey    ctermfg=grey
+highlight TabLineSel    cterm=NONE  ctermbg=darkgrey    ctermfg=grey
 
 highlight StatusLine    cterm=NONE  ctermbg=darkgrey    ctermfg=black
-highlight TablineSel    cterm=NONE  ctermbg=darkgrey    ctermfg=black
+highlight TabLineSel    cterm=NONE  ctermbg=darkgrey    ctermfg=black
 highlight VertSplit     cterm=NONE  ctermbg=darkgrey    ctermfg=black
 highlight TabLine       cterm=NONE  ctermbg=darkgrey    ctermfg=black
-highlight TablineFill   cterm=NONE  ctermbg=darkgrey    ctermfg=black
+highlight TabLineFill   cterm=NONE  ctermbg=darkgrey    ctermfg=black
 highlight Title         cterm=NONE  ctermbg=darkgrey    ctermfg=black
 
 
@@ -201,10 +199,6 @@ highlight Title         cterm=NONE  ctermbg=darkgrey    ctermfg=black
 "         TRANSPORTED IN SMALL NUMBER OF FILES, AND OPERATE WITHOUT ANY
 "         RUNTIME FILES
 "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-" this is the only syntax stuff so far
-
-" highlight Comment term=italic cterm=NONE ctermfg=cyan ctermbg=NONE gui=NONE guifg=#80a0ff guibg=NONE
 
 " for defaults of the highlight option
 
