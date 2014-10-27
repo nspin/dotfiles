@@ -10,36 +10,38 @@
 "   clear autocmds before any here? (au!)?
 "   deal with ftplugins messing with my options (namely fo)
 "   syntax on or enable
+"   ultisnips?
 
 " ===== VUNDLE STUFF =====
 
 set nocompatible
 set runtimepath+=~/.vim/bundle/Vundle.vim
 
-filetype off
-call vundle#begin()
+filetype off    " required by vundle
+call vundle#begin() " required by vundle
 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'  " vundle has to manage vundle
 
-Plugin 'scrooloose/nerdtree'
+" plugins. some disabled (commented out) for speed or because of conflicts
+
+Plugin 'godlygeek/tabular'
+Plugin 'SirVer/ultisnips' " an unreal plugin
+"Plugin 'msanders/snipmate.vim'
 Plugin 'sjl/gundo.vim'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'msanders/snipmate.vim'
 Plugin 'tpope/vim-commentary'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Lokaltog/vim-easymotion'
 Plugin 'gerw/vim-latex-suite'
 Plugin 'gerw/vim-tex-syntax'
+"Plugin 'flazz/vim-colorschemes'
+"Plugin 'xolox/vim-colorscheme-switcher'
+"Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'twilight'
 
-" temporarily disabled plugins
-
-"Plugin 'bling/vim-airline'
-"Plugin 'flazz/vim-colorschemes'
-"Plugin 'xolox/vim-colorscheme-switcher'
-
-call vundle#end()
-filetype plugin on
+call vundle#end()   " required by vundle
+filetype plugin on  " required by vundle
 
 " ===== OPTIONS =====
 
@@ -72,9 +74,11 @@ set statusline+=\ [\ %{v:register}\ ]                     " current register
 
 " ===== MISC =====
 
-syntax enable
+syntax on
 
 set background=dark
+let g:solarized_contrast = "high"
+let g:solarized_visibility = "high"
 let g:solarized_termcolors = 256
 colorscheme solarized
 
@@ -94,6 +98,8 @@ autocmd FileType vim                let b:ncomment = '" '
 
 
 " midline indenting. yay haskell
+" this function is now useless becasue of tabular, which offers slightly more
+" functionality. still here because I like it
 "   opt_reg: regex that marks spot to indent: 0 - '@@', 1 - ncomment, 2 - prompt
 "   opt_pos: position of addes spaces relative to regex: 0 - replace, 1 - before, 2 - after
 "   opt_col: column to indent to: 0 - furthest of selection (linewise visual), 1 - prompt
@@ -113,6 +119,19 @@ fun! Mindent(opt_reg, opt_pos, opt_col)
     endif
     let @z = printf("0%s/%s%sD%s|p", a:opt_pos == 0 ? 'd' : '', xeger, a:opt_pos == 2 ? "\r" : "/e\rl", nmuloc)
     execute "normal ".@z
+endfunction
+
+" for tabular. by tim pope, not me
+
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
 endfunction
 
 " ===== MAPPTINGS =====
@@ -191,6 +210,14 @@ nnoremap <leader>n :belowright split<space>
 nnoremap <leader>m :belowright vsplit<space>
 nnoremap <leader>t :tabnew <space>
 
+" --- for plugins ---
+
+nnoremap <leader>u :GundoToggle<cr>
+
+" formats tables as bars are typed. mostly to convince non-vimmers to use vim
+
+inoremap <bar> <bar><esc>:call <sid>align()<cr>a
+
 " --- toggles ---
 
 nnoremap ,h :set hlsearch!<cr>
@@ -204,10 +231,6 @@ nnoremap ,g :noremap j gj<cr>:noremap k gk<cr>
 nnoremap ,G :unmap j<cr>:unmap k<cr>
 nnoremap ,v :set virtualedit=block<cr>
 nnoremap ,V :set virtualedit=all<cr>
-
-" --- for plugins ---
-
-nnoremap <leader>u :GundoToggle<cr>
 
 " ===== ABBREVIATIONS =====
 
