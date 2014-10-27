@@ -23,20 +23,20 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'sjl/gundo.vim'
-
+Plugin 'Lokaltog/vim-easymotion'
 Plugin 'msanders/snipmate.vim'
 Plugin 'tpope/vim-commentary'
-
 Plugin 'gerw/vim-latex-suite'
 Plugin 'gerw/vim-tex-syntax'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'twilight'
 
 " temporarily disabled plugins
 
 "Plugin 'bling/vim-airline'
 "Plugin 'flazz/vim-colorschemes'
 "Plugin 'xolox/vim-colorscheme-switcher'
-"Plugin 'altercation/vim-colors-solarized'
-"Plugin 'nanotech/jellybeans.vim'
 
 call vundle#end()
 filetype plugin on
@@ -72,9 +72,13 @@ set statusline+=\ [\ %{v:register}\ ]                     " current register
 
 " ===== PRE-OTHERSTUFF VIMSCRIPT =====
 
-colorscheme nicebox
-
 syntax enable
+
+set background=dark
+" let g:solarized_termcolors = 256
+" let g:solarized_visibility = "high"
+" let g:solarized_contrast = "high"
+colorscheme jellybeans
 
 let mapleader = " "
 
@@ -89,37 +93,77 @@ autocmd FileType mail               let b:ncomment = '> '
 autocmd FileType vim                let b:ncomment = '" '
 
 
-" TODO make this work
+" TODO make this not dumb
 "
 " midline indenting. yay haskell
-"   nregex: regex that marks spot to indent
-"   nposition: position of addes spaces relative to nregex
-"   ncolumn: column to indent to
+"   opt_reg: regex that marks spot to indent
+"       0 - '@@'
+"       1 - ncomment
+"       2 - prompt
+"   opt_pos: position of addes spaces relative to regex
+"       0 - replace
+"       1 - before
+"       2 - after
+"   opt_col: column to indent to
+"       0 - furthest of selection (only makes sense in linewise visual)
+"       1 - prompt
 
-"function MidlineInd(nregex, nposition, ncolumn)
-" this function moves all text [from the first letter on | after the last letter]
-"   to after the column provided
-
-" function! NickFunc(arg)
-"     let @z = printf("0/%s%sD%s|p", input("regex: "), a:arg ? "\r" : "/e\rl", input("column: "))
-"     execute "normal ".@z
-"     endfunction
-
-"function! Midindent(default_regex, replace_regex, indent_regex)
-    
-"    let @z = printf("0/%s%sD%s|p", input("regex: "), a:arg ? "\r" : "/e\rl", input("column: "))
-"    execute "normal 0/
-"    endfunction
+fun! Mindent(opt_reg, opt_pos, opt_col)
+    if a:opt_reg == 0
+        let xeger = '@@'
+    elseif a:opt_reg == 1
+        let xeger = b:ncomment
+    elseif a:opt_reg == 2
+        let xeger = input('regex: ')
+    endif
+    if a:opt_col == 0
+        let nmuloc = 80 " TODO this
+    elseif a:opt_col == 1
+        let nmuloc = input('column: ')
+    endif
+    let @z = printf("0%s/%s%sD%s|p\r", a:opt_pos == 0 ? 'd' : '', xeger, a:opt_pos == 2 ? "\r" : "/e\rl", nmuloc)
+    execute "normal ".@z
+endfunction
 
 " ===== MAPPTINGS =====
 
-" some ambitious stuff
+" some aggressive stuff
 
 noremap \ :
 
 inoremap j <esc>
 inoremap \\ \
 inoremap \j j
+
+" lame movement
+
+noremap <leader>j 8j
+noremap <leader>k 8k
+noremap <leader>h 16h
+noremap <leader>l 16l
+
+" formatting stuff
+
+"   comments
+
+noremap <leader>fm :s/^/<c-r>=escape(b:ncomment,'\/')<cr>/<cr>
+noremap <leader>ffm :s/^<c-r>=escape(b:ncomment,'\/')<cr>//e<cr>
+
+"   using mindent
+
+noremap <leader>fs :call Mindent(0, 0, 0)<cr>
+noremap <leader>fc :call Mindent(1, 1, 0)<cr>
+
+noremap <leader>fr :call Mindent(2, 0, 0)<cr>
+noremap <leader>fb :call Mindent(2, 1, 0)<cr>
+noremap <leader>fa :call Mindent(2, 2, 0)<cr>
+
+noremap <leader>ffs :call Mindent(0, 0, 1)<cr>
+noremap <leader>ffc :call Mindent(1, 1, 1)<cr>
+
+noremap <leader>ffr :call Mindent(2, 0, 1)<cr>
+noremap <leader>ffb :call Mindent(2, 1, 1)<cr>
+noremap <leader>ffa :call Mindent(2, 2, 1)<cr>
 
 " misc
 
@@ -135,11 +179,6 @@ nnoremap <leader>b :sh<cr>
 nnoremap <leader>o :let<space>
 
 nnoremap <leader>I `[v`] " hl last insert
-
-" commenting chunks of code.
-
-noremap <leader>cc :s/^/<c-r>=escape(b:ncomment,'\/')<cr>/<cr>
-noremap <leader>cu :s/^<c-r>=escape(b:ncomment,'\/')<cr>//e<cr>
 
 " file stuff
 
