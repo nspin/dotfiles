@@ -1,20 +1,42 @@
-"<>=======================o >
+"<>=======================<>
 "|| NICK SPINALE'S .vimrc ||
 "<>=======================<>
 
-" plugins: easymotion, gundo (,nerdtree)
+"TODO
+"   fix my indenting functions
+"   learn vim-latex
+"   make colorscheme
+"   more plugins (tpope, command-t)
+"   pathogen dependancy?
+"   clear autocmds before any here? (au!)?
 
-" ===== PRELIMINARY STUFF
+" ===== VUNDLE STUFF =====
 
 set nocompatible
+set runtimepath+=~/.vim/bundle/Vundle.vim
 
-" only source stuff that I want you to source.
-" using my dotfiles repo, the only stuff I can't approve is the system vimrc
-" (probably $VIM/vimrc). Hopefully its maintainers don't suck
+filetype off
+call vundle#begin()
 
-"set runtimepath=""
-"set runtimepath+=~/.vim
-"call pathogen#infect()
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'scrooloose/nerdtree'
+Plugin 'sjl/gundo.vim'
+"Plugin 'bling/vim-airline'
+
+Plugin 'msanders/snipmate.vim'
+Plugin 'tpope/vim-commentary'
+
+Plugin 'gerw/vim-latex-suite'
+Plugin 'gerw/vim-tex-syntax'
+
+"Plugin 'flazz/vim-colorschemes'
+"Plugin 'xolox/vim-colorscheme-switcher'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'nanotech/jellybeans.vim'
+
+call vundle#end()
+filetype plugin on
 
 " ===== OPTIONS =====
 
@@ -46,7 +68,15 @@ set statusline+=\ [\ %{v:register}\ ]                     " current register
 
 " ===== PRE-OTHERSTUFF VIMSCRIPT =====
 
+set background=dark
+
+colorscheme jellybeans
+
+syntax enable
+
 let mapleader = " "
+
+autocmd FileType tex,mail           setlocal spell
 
 autocmd FileType haskell            let b:ncomment = '-- '
 autocmd FileType c,cpp,java,scala   let b:ncomment = '// '
@@ -164,26 +194,26 @@ iabbrev SPinale Spinale
 
 " ===== COLORING ===== TODO make seperate colorscheme (include comment toggle mapping in this?)
 
-set background=dark         " to get correct defaults
-
-syntax enable               " hopefully the sourced files are not invasive
-
-highlight Normal        cterm=NONE  ctermbg=black       ctermfg=white
-highlight NonText       cterm=NONE  ctermbg=NONE        ctermfg=darkgrey
-highlight LineNr        cterm=NONE  ctermbg=NONE        ctermfg=red
-highlight ColorColumn   cterm=NONE  ctermbg=darkred     ctermfg=NONE
-
-highlight StatusLineNC  cterm=NONE  ctermbg=darkgrey    ctermfg=grey
-highlight TabLine       cterm=NONE  ctermbg=darkgrey    ctermfg=grey
-
-highlight Pmenu         cterm=NONE  ctermbg=darkgrey    ctermfg=red
-highlight PmenuSel      cterm=NONE  ctermbg=darkgrey    ctermfg=black
-
-highlight StatusLine    cterm=NONE  ctermbg=darkgrey    ctermfg=black
-highlight TabLineSel    cterm=NONE  ctermbg=darkgrey    ctermfg=black
-highlight VertSplit     cterm=NONE  ctermbg=darkgrey    ctermfg=black
-highlight TabLine       cterm=NONE  ctermbg=darkgrey    ctermfg=black
-highlight TabLineFill   cterm=NONE  ctermbg=darkgrey    ctermfg=black
-highlight Title         cterm=NONE  ctermbg=darkgrey    ctermfg=black
-
-highlight Comment       cterm=NONE  ctermbg=NONE        ctermfg=darkgrey
+"set background=dark         " to get correct defaults
+"
+"syntax enable               " hopefully the sourced files are not invasive
+"
+"highlight Normal        cterm=NONE  ctermbg=black       ctermfg=white
+"highlight NonText       cterm=NONE  ctermbg=NONE        ctermfg=darkgrey
+"highlight LineNr        cterm=NONE  ctermbg=NONE        ctermfg=red
+"highlight ColorColumn   cterm=NONE  ctermbg=darkred     ctermfg=NONE
+"
+"highlight StatusLineNC  cterm=NONE  ctermbg=darkgrey    ctermfg=grey
+"highlight TabLine       cterm=NONE  ctermbg=darkgrey    ctermfg=grey
+"
+"highlight Pmenu         cterm=NONE  ctermbg=darkgrey    ctermfg=red
+"highlight PmenuSel      cterm=NONE  ctermbg=darkgrey    ctermfg=black
+"
+"highlight StatusLine    cterm=NONE  ctermbg=darkgrey    ctermfg=black
+"highlight TabLineSel    cterm=NONE  ctermbg=darkgrey    ctermfg=black
+"highlight VertSplit     cterm=NONE  ctermbg=darkgrey    ctermfg=black
+"highlight TabLine       cterm=NONE  ctermbg=darkgrey    ctermfg=black
+"highlight TabLineFill   cterm=NONE  ctermbg=darkgrey    ctermfg=black
+"highlight Title         cterm=NONE  ctermbg=darkgrey    ctermfg=black
+"
+"highlight Comment       cterm=NONE  ctermbg=NONE        ctermfg=darkgrey
