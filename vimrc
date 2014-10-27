@@ -70,18 +70,18 @@ set statusline+=\ %F\ [%v\ %l\ %L]                        " file and position
 set statusline+=\ %{strftime(\"%m/%d\ %H:%M\")}           " date+time
 set statusline+=\ [\ %{v:register}\ ]                     " current register
 
-" ===== PRE-OTHERSTUFF VIMSCRIPT =====
+" ===== MISC =====
 
 syntax enable
 
 set background=dark
-" let g:solarized_termcolors = 256
-" let g:solarized_visibility = "high"
-" let g:solarized_contrast = "high"
-colorscheme jellybeans
+let g:solarized_termcolors = 256
+colorscheme solarized
 
 let mapleader = " "
 
+" ===== PRE-OTHERSTUFF VIMSCRIPT =====
+"
 autocmd FileType tex,mail           setlocal spell
 
 autocmd FileType haskell            let b:ncomment = '-- '
@@ -93,20 +93,10 @@ autocmd FileType mail               let b:ncomment = '> '
 autocmd FileType vim                let b:ncomment = '" '
 
 
-" TODO make this not dumb
-"
 " midline indenting. yay haskell
-"   opt_reg: regex that marks spot to indent
-"       0 - '@@'
-"       1 - ncomment
-"       2 - prompt
-"   opt_pos: position of addes spaces relative to regex
-"       0 - replace
-"       1 - before
-"       2 - after
-"   opt_col: column to indent to
-"       0 - furthest of selection (only makes sense in linewise visual)
-"       1 - prompt
+"   opt_reg: regex that marks spot to indent: 0 - '@@', 1 - ncomment, 2 - prompt
+"   opt_pos: position of addes spaces relative to regex: 0 - replace, 1 - before, 2 - after
+"   opt_col: column to indent to: 0 - furthest of selection (linewise visual), 1 - prompt
 
 fun! Mindent(opt_reg, opt_pos, opt_col)
     if a:opt_reg == 0
@@ -121,13 +111,13 @@ fun! Mindent(opt_reg, opt_pos, opt_col)
     elseif a:opt_col == 1
         let nmuloc = input('column: ')
     endif
-    let @z = printf("0%s/%s%sD%s|p\r", a:opt_pos == 0 ? 'd' : '', xeger, a:opt_pos == 2 ? "\r" : "/e\rl", nmuloc)
+    let @z = printf("0%s/%s%sD%s|p", a:opt_pos == 0 ? 'd' : '', xeger, a:opt_pos == 2 ? "\r" : "/e\rl", nmuloc)
     execute "normal ".@z
 endfunction
 
 " ===== MAPPTINGS =====
 
-" some aggressive stuff
+" --- some aggressive stuff ---
 
 noremap \ :
 
@@ -135,21 +125,21 @@ inoremap j <esc>
 inoremap \\ \
 inoremap \j j
 
-" lame movement
+" --- lame movement ---
 
 noremap <leader>j 8j
 noremap <leader>k 8k
 noremap <leader>h 16h
 noremap <leader>l 16l
 
-" formatting stuff
+" --- formatting stuff ---
 
-"   comments
+" comments
 
 noremap <leader>fm :s/^/<c-r>=escape(b:ncomment,'\/')<cr>/<cr>
 noremap <leader>ffm :s/^<c-r>=escape(b:ncomment,'\/')<cr>//e<cr>
 
-"   using mindent
+" using mindent
 
 noremap <leader>fs :call Mindent(0, 0, 0)<cr>
 noremap <leader>fc :call Mindent(1, 1, 0)<cr>
@@ -165,53 +155,57 @@ noremap <leader>ffr :call Mindent(2, 0, 1)<cr>
 noremap <leader>ffb :call Mindent(2, 1, 1)<cr>
 noremap <leader>ffa :call Mindent(2, 2, 1)<cr>
 
-" misc
+" --- misc ---
+
+nnoremap <leader>s :%s/
+
+nnoremap <leader>1t :%s/\t/    /g
+nnoremap <leader>2t :%s/\t/        /g
+
+" remove trailing whitespace
+
+nnoremap <leader>x :%s/\s\+$//e
+
+" highlight last insert
+
+nnoremap <leader>I `[v`]
+
+" visual mode
 
 vnoremap <leader>z y/<c-r>"<cr>
 vnoremap <leader>s y:%s/
 vnoremap <leader>a :norm<space> 
 
-nnoremap <leader>1t :%s/\t/<tab>/g
-nnoremap <leader>2t :%s/\t/<tab><tab>/g
-nnoremap <leader>x :%s/\s\+$//e
-nnoremap <leader>s :%s/
-nnoremap <leader>b :sh<cr>
-nnoremap <leader>o :let<space>
+" --- file stuff ---
 
-nnoremap <leader>I `[v`] " hl last insert
+nnoremap <leader>Q :quit!<cr>
+nnoremap <leader>q :quit<cr>
+nnoremap <leader>w :write<cr>
+nnoremap <leader>e :edit<space>
+nnoremap <leader>r :edit -R<space>
+nnoremap <leader>b :shell<cr>
 
-" file stuff
-
-nnoremap <leader>Q :q!<cr>
-nnoremap <leader>q :q<cr>
-nnoremap <leader>w :w<cr>
-nnoremap <leader>e :e<space>
-nnoremap <leader>r :e -R<space>
-
-" window management
+" --- window management ---
 
 nnoremap <leader>n :belowright split<space>
 nnoremap <leader>m :belowright vsplit<space>
-nnoremap <leader>t :tabe <space>
+nnoremap <leader>t :tabnew <space>
 
-" toggles
+" --- toggles ---
 
-nnoremap ,h :se hlsearch!<cr>
-nnoremap ,s :setl spell!<cr>
-nnoremap ,w :setl wrap!<cr>
-nnoremap ,r :setl readonly!<cr>
-nnoremap ,d :se digraph<cr>
-nnoremap ,l :se wrap:set nolist:set linebreak<cr>
-nnoremap ,L :se nowrap:set list:set nolinebreak<cr>
-nnoremap ,g :no j gj<cr>:noremap k gk<cr>
-nnoremap ,G :unm j<cr>:unmap k<cr>
-nnoremap ,v :se virtualedit=block<cr>
-nnoremap ,V :se virtualedit=all<cr>
+nnoremap ,h :set hlsearch!<cr>
+nnoremap ,s :setlocal spell!<cr>
+nnoremap ,w :setlocal wrap!<cr>
+nnoremap ,r :setlocal readonly!<cr>
+nnoremap ,d :set digraph<cr>
+nnoremap ,l :set wrap<cr>:set nolist<cr>:set linebreak<cr>
+nnoremap ,L :set nowrap<cr>:set list<cr>:set nolinebreak<cr>
+nnoremap ,g :noremap j gj<cr>:noremap k gk<cr>
+nnoremap ,G :unmap j<cr>:unmap k<cr>
+nnoremap ,v :set virtualedit=block<cr>
+nnoremap ,V :set virtualedit=all<cr>
 
-nnoremap ,c :highlight Comment ctermfg=cyan
-nnoremap ,C :highlight Comment ctermfg=darkgrey
-
-" for plugins
+" --- for plugins ---
 
 nnoremap <leader>u :GundoToggle<cr>
 
