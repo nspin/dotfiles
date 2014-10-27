@@ -4,25 +4,28 @@
 
 " plugins: easymotion, gundo (,nerdtree)
 
-" ===== SETTINGS =====
+" ===== PRELIMINARY STUFF
 
 set nocompatible
 
-set verbose=1        " talk to me, vim
+" only source stuff that I want you to source.
+" using my dotfiles repo, the only stuff I can't approve is the system vimrc
+" (probably $VIM/vimrc). Hopefully its maintainers don't suck
+
+"set runtimepath=""
+"set runtimepath+=~/.vim
+"call pathogen#infect()
+
+" ===== OPTIONS =====
+
+set verbose=1        " tell me stuff
 
 set tabstop=4
 set shiftwidth=4
 set expandtab
 
-set virtualedit=all                  " necessary for my indenting scripts further down
-set backspace=indent,eol,start       " allow more deletion in insert mode
-
-set tabline=%t
-set statusline=""                    
-set statusline+=%m%r%h%w%q                                " flags
-set statusline+=\ %F\ [%v\ %l\ %L]                        " file and position
-set statusline+=\ %{strftime(\"%m/%d\ %H:%M\")}           " date+time
-set statusline+=\ [\ %{v:register}\ ]                     " current register
+set virtualedit=all              " necessary for my indenting scripts further down
+set backspace=indent,eol,start   " allow more deletion in insert mode
 
 set nowrap              " say no to line wrapping
 set number              " show line numbers
@@ -34,17 +37,55 @@ set wildmenu            " nifty autocomplete in command mode
 
 set spelllang=en_us
 
-" ===== MISC =====
+set tabline=%t
+set statusline=""                    
+set statusline+=%m%r%h%w%q                                " flags
+set statusline+=\ %F\ [%v\ %l\ %L]                        " file and position
+set statusline+=\ %{strftime(\"%m/%d\ %H:%M\")}           " date+time
+set statusline+=\ [\ %{v:register}\ ]                     " current register
+
+" ===== PRE-OTHERSTUFF VIMSCRIPT =====
 
 let mapleader = " "
 
+autocmd FileType haskell            let b:ncomment = '-- '
+autocmd FileType c,cpp,java,scala   let b:ncomment = '// '
+autocmd FileType sh,ruby,python     let b:ncomment = '# '
+autocmd FileType conf,fstab         let b:ncomment = '# '
+autocmd FileType tex                let b:ncomment = '% '
+autocmd FileType mail               let b:ncomment = '> '
+autocmd FileType vim                let b:ncomment = '" '
+
+
+" midline indenting. yay haskell
+"   nregex: regex that marks spot to indent
+"   nposition: position of addes spaces relative to nregex
+"   ncolumn: column to indent to
+
+"function MidlineInd(nregex, nposition, ncolumn)
+" this function moves all text [from the first letter on | after the last letter]
+"   to after the column provided
+
+" function! NickFunc(arg)
+"     let @z = printf("0/%s%sD%s|p", input("regex: "), a:arg ? "\r" : "/e\rl", input("column: "))
+"     execute "normal ".@z
+"     endfunction
+
+"function! Midindent(default_regex, replace_regex, indent_regex)
+    
+"    let @z = printf("0/%s%sD%s|p", input("regex: "), a:arg ? "\r" : "/e\rl", input("column: "))
+"    execute "normal 0/
+"    endfunction
+
 " ===== MAPPTINGS =====
 
-" to start...
+" some ambitious stuff
 
-inoremap jk <esc>
-inoremap kj <esc>
 noremap \ :
+
+inoremap j <esc>
+inoremap \\ \
+inoremap \j j
 
 " misc
 
@@ -61,14 +102,10 @@ nnoremap <leader>o :let<space>
 
 nnoremap <leader>I `[v`] " hl last insert
 
-" lazy movement (may drop)
+" commenting chunks of code.
 
-noremap <leader>h 16h
-noremap <leader>l 16l
-noremap <leader>j 8j
-noremap <leader>k 8k
-noremap <leader>f LztM
-noremap <leader>d HzbM
+noremap <leader>cc :s/^/<c-r>=escape(b:ncomment,'\/')<cr>/<cr>
+noremap <leader>cu :s/^<c-r>=escape(b:ncomment,'\/')<cr>//e<cr>
 
 " file stuff
 
@@ -84,36 +121,6 @@ nnoremap <leader>n :belowright split<space>
 nnoremap <leader>m :belowright vsplit<space>
 nnoremap <leader>t :tabe <space>
 
-" this function moves all text [from the first letter on | after the last letter]
-"   to after the column provided
-
-function! NickFunc(arg)
-    let @z = printf("0/%s%sD%s|p", input("regex: "), a:arg ? "\r" : "/e\rl", input("column: "))
-    execute "normal ".@z
-    endfunction
-
-"function! Midindent(default_regex, replace_regex, indent_regex)
-    
-"    let @z = printf("0/%s%sD%s|p", input("regex: "), a:arg ? "\r" : "/e\rl", input("column: "))
-"    execute "normal 0/
-"    endfunction
-
-noremap <leader># :call NickFunc(1)<cr>
-noremap <leader>ff execute "normal ".
-
-" commenting chunks of code.
-
-autocmd FileType haskell            let b:comment_captain = '-- '
-autocmd FileType c,cpp,java,scala   let b:comment_captain = '// '
-autocmd FileType sh,ruby,python     let b:comment_captain = '# '
-autocmd FileType conf,fstab         let b:comment_captain = '# '
-autocmd FileType tex                let b:comment_captain = '% '
-autocmd FileType mail               let b:comment_captain = '> '
-autocmd FileType vim                let b:comment_captain = '" '
-
-noremap <leader>cc :s/^/<c-r>=escape(b:comment_captain,'\/')<cr>/<cr>
-noremap <leader>cu :s/^<c-r>=escape(b:comment_captain,'\/')<cr>//e<cr>
-
 " toggles
 
 nnoremap ,h :se hlsearch!<cr>
@@ -127,6 +134,13 @@ nnoremap ,g :no j gj<cr>:noremap k gk<cr>
 nnoremap ,G :unm j<cr>:unmap k<cr>
 nnoremap ,v :se virtualedit=block<cr>
 nnoremap ,V :se virtualedit=all<cr>
+
+nnoremap ,c :highlight Comment ctermfg=cyan
+nnoremap ,C :highlight Comment ctermfg=darkgrey
+
+" for plugins
+
+nnoremap <leader>u :GundoToggle<cr>
 
 " ===== ABBREVIATIONS =====
 
@@ -148,15 +162,11 @@ iabbrev NIck Nick
 iabbrev NIcholas Nicholas
 iabbrev SPinale Spinale
 
-" ===== PLUGIN STUFF =====
-
-nnoremap <leader>u :GundoToggle<cr>
-
-" ===== COLORING =====
+" ===== COLORING ===== TODO make seperate colorscheme (include comment toggle mapping in this?)
 
 set background=dark         " to get correct defaults
 
-syntax enable               " later stuff can correct colorschemes' infringements
+syntax enable               " hopefully the sourced files are not invasive
 
 highlight Normal        cterm=NONE  ctermbg=black       ctermfg=white
 highlight NonText       cterm=NONE  ctermbg=NONE        ctermfg=darkgrey
@@ -175,3 +185,5 @@ highlight VertSplit     cterm=NONE  ctermbg=darkgrey    ctermfg=black
 highlight TabLine       cterm=NONE  ctermbg=darkgrey    ctermfg=black
 highlight TabLineFill   cterm=NONE  ctermbg=darkgrey    ctermfg=black
 highlight Title         cterm=NONE  ctermbg=darkgrey    ctermfg=black
+
+highlight Comment       cterm=NONE  ctermbg=NONE        ctermfg=darkgrey
