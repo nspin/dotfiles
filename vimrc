@@ -5,10 +5,11 @@
 "TODO
 "   fix my indenting functions
 "   learn vim-latex
-"   make colorscheme
 "   more plugins (tpope, command-t)
 "   pathogen dependancy?
 "   clear autocmds before any here? (au!)?
+"   deal with ftplugins messing with my options (namely fo)
+"   syntax on or enable
 
 " ===== VUNDLE STUFF =====
 
@@ -22,7 +23,6 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'sjl/gundo.vim'
-"Plugin 'bling/vim-airline'
 
 Plugin 'msanders/snipmate.vim'
 Plugin 'tpope/vim-commentary'
@@ -30,10 +30,13 @@ Plugin 'tpope/vim-commentary'
 Plugin 'gerw/vim-latex-suite'
 Plugin 'gerw/vim-tex-syntax'
 
+" temporarily disabled plugins
+
+"Plugin 'bling/vim-airline'
 "Plugin 'flazz/vim-colorschemes'
 "Plugin 'xolox/vim-colorscheme-switcher'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'nanotech/jellybeans.vim'
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'nanotech/jellybeans.vim'
 
 call vundle#end()
 filetype plugin on
@@ -48,6 +51,7 @@ set expandtab
 
 set virtualedit=all              " necessary for my indenting scripts further down
 set backspace=indent,eol,start   " allow more deletion in insert mode
+set formatoptions=               " not familiar with all formatting behavior, so disable it all
 
 set nowrap              " say no to line wrapping
 set number              " show line numbers
@@ -68,9 +72,7 @@ set statusline+=\ [\ %{v:register}\ ]                     " current register
 
 " ===== PRE-OTHERSTUFF VIMSCRIPT =====
 
-set background=dark
-
-colorscheme jellybeans
+colorscheme nicebox
 
 syntax enable
 
@@ -87,6 +89,8 @@ autocmd FileType mail               let b:ncomment = '> '
 autocmd FileType vim                let b:ncomment = '" '
 
 
+" TODO make this work
+"
 " midline indenting. yay haskell
 "   nregex: regex that marks spot to indent
 "   nposition: position of addes spaces relative to nregex
@@ -191,29 +195,3 @@ iabbrev teh the
 iabbrev NIck Nick
 iabbrev NIcholas Nicholas
 iabbrev SPinale Spinale
-
-" ===== COLORING ===== TODO make seperate colorscheme (include comment toggle mapping in this?)
-
-"set background=dark         " to get correct defaults
-"
-"syntax enable               " hopefully the sourced files are not invasive
-"
-"highlight Normal        cterm=NONE  ctermbg=black       ctermfg=white
-"highlight NonText       cterm=NONE  ctermbg=NONE        ctermfg=darkgrey
-"highlight LineNr        cterm=NONE  ctermbg=NONE        ctermfg=red
-"highlight ColorColumn   cterm=NONE  ctermbg=darkred     ctermfg=NONE
-"
-"highlight StatusLineNC  cterm=NONE  ctermbg=darkgrey    ctermfg=grey
-"highlight TabLine       cterm=NONE  ctermbg=darkgrey    ctermfg=grey
-"
-"highlight Pmenu         cterm=NONE  ctermbg=darkgrey    ctermfg=red
-"highlight PmenuSel      cterm=NONE  ctermbg=darkgrey    ctermfg=black
-"
-"highlight StatusLine    cterm=NONE  ctermbg=darkgrey    ctermfg=black
-"highlight TabLineSel    cterm=NONE  ctermbg=darkgrey    ctermfg=black
-"highlight VertSplit     cterm=NONE  ctermbg=darkgrey    ctermfg=black
-"highlight TabLine       cterm=NONE  ctermbg=darkgrey    ctermfg=black
-"highlight TabLineFill   cterm=NONE  ctermbg=darkgrey    ctermfg=black
-"highlight Title         cterm=NONE  ctermbg=darkgrey    ctermfg=black
-"
-"highlight Comment       cterm=NONE  ctermbg=NONE        ctermfg=darkgrey
