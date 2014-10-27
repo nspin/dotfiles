@@ -17,76 +17,80 @@
 set nocompatible
 set runtimepath+=~/.vim/bundle/Vundle.vim
 
-filetype off    " required by vundle
-call vundle#begin() " required by vundle
+filetype off                              " required by vundle
+call vundle#begin()                       " required by vundle
 
-Plugin 'gmarik/Vundle.vim'  " vundle has to manage vundle
+Plugin 'gmarik/Vundle.vim'                " vundle has to manage vundle
 
 " plugins. some disabled (commented out) for speed or because of conflicts
 
 Plugin 'godlygeek/tabular'
-Plugin 'SirVer/ultisnips' " an unreal plugin
-"Plugin 'msanders/snipmate.vim'
+Plugin 'SirVer/ultisnips'
+" Plugin 'msanders/snipmate.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'gerw/vim-latex-suite'
 Plugin 'gerw/vim-tex-syntax'
-"Plugin 'flazz/vim-colorschemes'
-"Plugin 'xolox/vim-colorscheme-switcher'
-"Plugin 'bling/vim-airline'
+" Plugin 'flazz/vim-colorschemes'
+" Plugin 'xolox/vim-colorscheme-switcher'
+" Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'twilight'
 
-call vundle#end()   " required by vundle
-filetype plugin on  " required by vundle
+call vundle#end()                         " required by vundle
+filetype plugin on                        " required by vundle
 
 " ===== OPTIONS =====
 
-set verbose=1        " tell me stuff
+set verbose=1                                    " tell me stuff
 
 set tabstop=4
 set shiftwidth=4
 set expandtab
 
-set virtualedit=all              " necessary for my indenting scripts further down
-set backspace=indent,eol,start   " allow more deletion in insert mode
-set formatoptions=               " not familiar with all formatting behavior, so disable it all
+set virtualedit=all                              " necessary for my indenting scripts further down
+set backspace=indent,eol,start                   " allow more deletion in insert mode
+set formatoptions=                               " not familiar with all formatting behavior, so disable it all
 
-set nowrap              " say no to line wrapping
-set number              " show line numbers
-set colorcolumn=80      " marker at 80 columns
-set laststatus=2        " status line always there
-set showtabline=2       " tab line always there
-set showmatch           " of block delimiter
-set wildmenu            " nifty autocomplete in command mode
+set nowrap                                       " say no to line wrapping
+set number                                       " show line numbers
+set colorcolumn=80                               " marker at 80 columns
+set laststatus=2                                 " status line always there
+set showtabline=2                                " tab line always there
+set showmatch                                    " of block delimiter
+set wildmenu                                     " nifty autocomplete in command mode
 
 set spelllang=en_us
 
 set tabline=%t
-set statusline=""                    
-set statusline+=%m%r%h%w%q                                " flags
-set statusline+=\ %F\ [%v\ %l\ %L]                        " file and position
-set statusline+=\ %{strftime(\"%m/%d\ %H:%M\")}           " date+time
-set statusline+=\ [\ %{v:register}\ ]                     " current register
+set statusline=""
+set statusline+=%m%r%h%w%q                       " flags
+set statusline+=\ %F\ [%v\ %l\ %L]               " file and position
+set statusline+=\ %{strftime(\"%m/%d\ %H:%M\")}  " date+time
+set statusline+=\ [\ %{v:register}\ ]            " current register
 
-" ===== MISC =====
+" ===== AESTHETICS  =====
 
 syntax on
 
 set background=dark
+
 let g:solarized_contrast = "high"
 let g:solarized_visibility = "high"
 let g:solarized_termcolors = 256
+
 colorscheme solarized
+
+" ===== MISC =====
 
 let mapleader = " "
 
-" ===== PRE-OTHERSTUFF VIMSCRIPT =====
-"
-autocmd FileType tex,mail           setlocal spell
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 autocmd FileType haskell            let b:ncomment = '-- '
 autocmd FileType c,cpp,java,scala   let b:ncomment = '// '
@@ -96,10 +100,10 @@ autocmd FileType tex                let b:ncomment = '% '
 autocmd FileType mail               let b:ncomment = '> '
 autocmd FileType vim                let b:ncomment = '" '
 
+" ===== FUNCTIONS =====
 
 " midline indenting. yay haskell
-" this function is now useless becasue of tabular, which offers slightly more
-" functionality. still here because I like it
+" I use tablularize when it is availible, though
 "   opt_reg: regex that marks spot to indent: 0 - '@@', 1 - ncomment, 2 - prompt
 "   opt_pos: position of addes spaces relative to regex: 0 - replace, 1 - before, 2 - after
 "   opt_col: column to indent to: 0 - furthest of selection (linewise visual), 1 - prompt
