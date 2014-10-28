@@ -1,15 +1,14 @@
-"<><><><><><><><><><><><><>===<>
-"|| NICK SPINALE'S .vimrc ||
-"<><><><><><><><><><><><><>===<>
+" +-----------------------+
+" | NICK SPINALE'S .vimrc |
+" +-----------------------+
 
-"TODO
+" TODO
 "   pathogen dependancy?
 "   clear autocmds before any here? (au!)?
 "   deal with ftplugins messing with my options (namely fo)
-"   syntax on or enable
-"   <space><cr>",""S""\"
+"   syntax on or enable?
 
-" ============ VUNDLE STUFF ============
+" ############{VUNDLE STUFF}############
 
 set nocompatible
 
@@ -32,8 +31,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'gerw/vim-latex-suite'
 Plugin 'gerw/vim-tex-syntax'
 
-" --- Disabled Plugins ---
-
 " Plugin 'msanders/snipmate.vim'
 " Plugin 'flazz/vim-colorschemes'
 " Plugin 'xolox/vim-colorscheme-switcher'
@@ -44,9 +41,9 @@ Plugin 'gerw/vim-tex-syntax'
 call vundle#end()                                " required by vundle
 filetype plugin on                               " required by vundle
 
-" ============  MISC ============
+" ############{MISC}############
 
-" <><><> AESTHETICS <><><>
+" ====== AESTHETICS ======
 
 syntax enable
 
@@ -56,7 +53,7 @@ set background=dark
 
 colorscheme solarized
 
-" <><><> OPTIONS <><><>
+" ====== OPTIONS ======
 
 set verbose=1                                    " tell me stuff
 
@@ -85,13 +82,13 @@ set statusline+=\ %F\ \ [%v\ %l\ %L]                " file and position
 set statusline+=\ [\ %{v:register}\ ]               " current register
 set statusline+=\ \ %{strftime(\"%m/%d\ %H:%M\")}   " date+time
 
-" <><><> MISC <><><>
+" ====== MISC ======
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-" <><><> FUNCTIONS <><><>
+" ====== FUNCTIONS ======
 
 " aligns <bar> tables AS YOU TYPE in insert mode using tabular
 " formats tables as bars are typed. mostly to convince non-vimmers to use vim
@@ -108,7 +105,7 @@ function! s:align()
   endif
 endfunction
 
-" ============ MAPPINGS ============
+" ############{MAPPINGS}############
 
 " --- Nop's ---
 
@@ -117,19 +114,20 @@ noremap <cr> <nop>
 noremap , <nop>
 noremap S <nop>
 
-" --- The essentials ---
-
-noremap <cr> :
+" --- The Essentials ---
 
 inoremap j <esc>
 inoremap \\ \
 inoremap \j j
 
+noremap <cr> :
+noremap S <c-w>
+
 " --- Cetera ---
 
 inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
-" <><><> FAKE LEADER <><><>
+" ====== FAKE LEADER ======
 
 " left leader as <bslash> for plugins
 
@@ -143,45 +141,35 @@ noremap <space>l 16l
 nnoremap <space>f <c-f>
 nnoremap <space>d <c-b>
 
-" --- File Stuff ---
+" --- Buffer Management ---
 
 nnoremap <space>Q :quit!<cr>
 nnoremap <space>q :quit<cr>
 nnoremap <space>w :write<cr>
 nnoremap <space>e :edit<space>
 nnoremap <space>E :edit -R<space>
-nnoremap <space>b :shell<cr>
+nnoremap <space>t :tabedit <space>
 
-" --- Window Management ---
-
-nnoremap <space>n :belowright split<space>
-nnoremap <space>m :belowright vsplit<space>
-nnoremap <space>t :tabnew <space>
-"
 " --- Cetera ---
 
 nnoremap <space>s :%s/
-
-" expand pre-existing tabs
-
-nnoremap <space>t4 :%s/\t/    /g<cr>
-nnoremap <space>t8 :%s/\t/        /g<cr>
-
-" remove trailing whitespace
-
-nnoremap <space>x :%s/\s\+$//e<cr>
-
-" highlight last insert
-
-nnoremap <space>I `[v`]
-
-" visual mode
+nnoremap <space>b :shell<cr>
 
 vnoremap <space>z y/<c-r>"<cr>
 vnoremap <space>s y:%s/
 vnoremap <space>a :norm<space>
 
-" <><><> TOGGLES <><><>
+" expand pre-existing tabs
+nnoremap <space>t4 :%s/\t/    /g<cr>
+nnoremap <space>t8 :%s/\t/        /g<cr>
+
+" remove trailing whitespace
+nnoremap <space>x :%s/\s\+$//e<cr>
+
+" highlight last insert
+nnoremap <space>I `[v`]
+
+" ====== TOGGLES ======
 
 nnoremap ,u :GundoToggle<cr>
 
@@ -194,13 +182,13 @@ nnoremap ,r :setlocal readonly!<cr>
 nnoremap ,d :set digraph<cr>
 
 nnoremap ,l :set nolist<cr>:set linebreak<cr>
-nnoremap ,L ::set list<cr>:set nolinebreak<cr>
-nnoremap ,g :noremap j gj<cr>:noremap k gk<cr>
-nnoremap ,G :unmap j<cr>:unmap k<cr>
+nnoremap ,L :set list<cr>:set nolinebreak<cr>
 nnoremap ,v :set virtualedit=all<cr>
 nnoremap ,V :set virtualedit=block<cr>
+nnoremap ,g :noremap j gj<cr>:noremap k gk<cr>
+nnoremap ,G :unmap j<cr>:unmap k<cr>
 
-" ============ ABBREVIATIONS ============
+" ############{ABBREVIATIONS}############
 
 " laziness
 
