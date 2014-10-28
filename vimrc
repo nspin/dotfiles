@@ -1,24 +1,19 @@
-"<>=======================<>
+"<><><><><><><><><><><><><>===<>
 "|| NICK SPINALE'S .vimrc ||
-"<>=======================<>
+"<><><><><><><><><><><><><>===<>
 
 "TODO
-"   fix my indenting functions
 "   pathogen dependancy?
 "   clear autocmds before any here? (au!)?
 "   deal with ftplugins messing with my options (namely fo)
 "   syntax on or enable
+"   <space><cr>",""S""\"
 
-" ===== VUNDLE STUFF =====
+" ============ VUNDLE STUFF ============
 
 set nocompatible
 
-if has('win32') || has('win16')                             " os specific settings
-    set runtimepath+=$HOME/dotfiles/vim/bundle/Vundle.vim
-    set runtimepath+=$HOME/dotfiles/vim
-else
-    set runtimepath+=$HOME/.vim/bundle/Vundle.vim
-endif
+set runtimepath+=$HOME/.vim/bundle/Vundle.vim
 
 filetype off                                     " required by vundle
 call vundle#begin()                              " required by vundle
@@ -37,7 +32,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'gerw/vim-latex-suite'
 Plugin 'gerw/vim-tex-syntax'
 
-" --- disabled plugins ---
+" --- Disabled Plugins ---
 
 " Plugin 'msanders/snipmate.vim'
 " Plugin 'flazz/vim-colorschemes'
@@ -49,7 +44,19 @@ Plugin 'gerw/vim-tex-syntax'
 call vundle#end()                                " required by vundle
 filetype plugin on                               " required by vundle
 
-" ===== OPTIONS =====
+" ============  MISC ============
+
+" <><><> AESTHETICS <><><>
+
+syntax enable
+
+let g:solarized_termcolors = 256
+
+set background=dark
+
+colorscheme solarized
+
+" <><><> OPTIONS <><><>
 
 set verbose=1                                    " tell me stuff
 
@@ -73,31 +80,21 @@ set spelllang=en_us
 
 set tabline=%t
 set statusline=""
-set statusline+=%m%r%h%w%q                       " flags
-set statusline+=\ %F\ \ [%v\ %l\ %L]               " file and position
-set statusline+=\ [\ %{v:register}\ ]            " current register
-set statusline+=\ \ %{strftime(\"%m/%d\ %H:%M\")}  " date+time
+set statusline+=%m%r%h%w%q                          " flags
+set statusline+=\ %F\ \ [%v\ %l\ %L]                " file and position
+set statusline+=\ [\ %{v:register}\ ]               " current register
+set statusline+=\ \ %{strftime(\"%m/%d\ %H:%M\")}   " date+time
 
-" ===== AESTHETICS  =====
-
-set background=dark
-
-if has('win32') || has('win16')          " os specific colorscheme options
-    colorscheme nicebox
-else
-    let g:solarized_termcolors = 256
-    colorscheme solarized
-endif
-
-syntax on
-
-" ===== MISC =====
+" <><><> MISC <><><>
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-" aligns <bar> tables in insert mode using tabular
+" <><><> FUNCTIONS <><><>
+
+" aligns <bar> tables AS YOU TYPE in insert mode using tabular
+" formats tables as bars are typed. mostly to convince non-vimmers to use vim
 " by tim pope, not me
 
 function! s:align()
@@ -111,87 +108,99 @@ function! s:align()
   endif
 endfunction
 
-" ===== MAPPTINGS =====
+" ============ MAPPINGS ============
 
-let mapleader = " "
+" --- Nop's ---
 
-" --- some aggressive stuff ---
+noremap <space> <nop>
+noremap <cr> <nop>
+noremap , <nop>
+noremap S <nop>
 
-noremap \ :
+" --- The essentials ---
+
+noremap <cr> :
 
 inoremap j <esc>
 inoremap \\ \
 inoremap \j j
 
-" --- lame movement ---
-
-noremap <leader>j 8j
-noremap <leader>k 8k
-noremap <leader>h 16h
-noremap <leader>l 16l
-
-" --- misc ---
-
-nnoremap <leader>s :%s/
-
-" replace expand pre-existing tabs
-
-nnoremap <leader>f4 :%s/\t/    /g<cr>
-nnoremap <leader>f8 :%s/\t/        /g<cr>
-
-" remove trailing whitespace
-
-nnoremap <leader>x :%s/\s\+$//e<cr>
-
-" highlight last insert
-
-nnoremap <leader>I `[v`]
-
-" visual mode
-
-vnoremap <leader>z y/<c-r>"<cr>
-vnoremap <leader>s y:%s/
-vnoremap <leader>a :norm<space>
-
-" --- file stuff ---
-
-nnoremap <leader>Q :quit!<cr>
-nnoremap <leader>q :quit<cr>
-nnoremap <leader>w :write<cr>
-nnoremap <leader>e :edit<space>
-nnoremap <leader>r :edit -R<space>
-nnoremap <leader>b :shell<cr>
-
-" --- window management ---
-
-nnoremap <leader>n :belowright split<space>
-nnoremap <leader>m :belowright vsplit<space>
-nnoremap <leader>t :tabnew <space>
-
-" --- for plugins ---
-
-nnoremap <leader>u :GundoToggle<cr>
-
-" formats tables as bars are typed. mostly to convince non-vimmers to use vim
+" --- Cetera ---
 
 inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
-" --- toggles ---
+" <><><> FAKE LEADER <><><>
+
+" left leader as <bslash> for plugins
+
+" --- Movement ---
+
+noremap <space>j 8j
+noremap <space>k 8k
+noremap <space>h 16h
+noremap <space>l 16l
+
+nnoremap <space>f <c-f>
+nnoremap <space>d <c-b>
+
+" --- File Stuff ---
+
+nnoremap <space>Q :quit!<cr>
+nnoremap <space>q :quit<cr>
+nnoremap <space>w :write<cr>
+nnoremap <space>e :edit<space>
+nnoremap <space>E :edit -R<space>
+nnoremap <space>b :shell<cr>
+
+" --- Window Management ---
+
+nnoremap <space>n :belowright split<space>
+nnoremap <space>m :belowright vsplit<space>
+nnoremap <space>t :tabnew <space>
+"
+" --- Cetera ---
+
+nnoremap <space>s :%s/
+
+" expand pre-existing tabs
+
+nnoremap <space>t4 :%s/\t/    /g<cr>
+nnoremap <space>t8 :%s/\t/        /g<cr>
+
+" remove trailing whitespace
+
+nnoremap <space>x :%s/\s\+$//e<cr>
+
+" highlight last insert
+
+nnoremap <space>I `[v`]
+
+" visual mode
+
+vnoremap <space>z y/<c-r>"<cr>
+vnoremap <space>s y:%s/
+vnoremap <space>a :norm<space>
+
+" <><><> TOGGLES <><><>
+
+nnoremap ,u :GundoToggle<cr>
 
 nnoremap ,h :set hlsearch!<cr>
+nnoremap ,c :set colorcolumn!<cr>
 nnoremap ,s :setlocal spell!<cr>
 nnoremap ,w :setlocal wrap!<cr>
 nnoremap ,r :setlocal readonly!<cr>
+
 nnoremap ,d :set digraph<cr>
-nnoremap ,l :set wrap<cr>:set nolist<cr>:set linebreak<cr>
-nnoremap ,L :set nowrap<cr>:set list<cr>:set nolinebreak<cr>
+
+nnoremap ,l :set nolist<cr>:set linebreak<cr>
+nnoremap ,L ::set list<cr>:set nolinebreak<cr>
 nnoremap ,g :noremap j gj<cr>:noremap k gk<cr>
 nnoremap ,G :unmap j<cr>:unmap k<cr>
-nnoremap ,v :set virtualedit=block<cr>
-nnoremap ,V :set virtualedit=all<cr>
-nnoremap ,c :set colorcolumn!<cr>
+nnoremap ,v :set virtualedit=all<cr>
+nnoremap ,V :set virtualedit=block<cr>
 
-" ===== ABBREVIATIONS =====
+" ============ ABBREVIATIONS ============
 
 " laziness
 
