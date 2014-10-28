@@ -8,8 +8,6 @@ endif
 let g:colors_name = "nicebox"
 
 highlight Normal        cterm=NONE  ctermbg=black       ctermfg=white
-highlight NonText       cterm=NONE  ctermbg=NONE        ctermfg=darkgrey
-highlight LineNr        cterm=NONE  ctermbg=NONE        ctermfg=red
 highlight ColorColumn   cterm=NONE  ctermbg=darkred     ctermfg=NONE
 
 highlight StatusLineNC  cterm=NONE  ctermbg=darkgrey    ctermfg=grey
@@ -18,11 +16,13 @@ highlight TabLine       cterm=NONE  ctermbg=darkgrey    ctermfg=grey
 highlight Pmenu         cterm=NONE  ctermbg=darkgrey    ctermfg=red
 highlight PmenuSel      cterm=NONE  ctermbg=darkgrey    ctermfg=black
 
+highlight Comment       cterm=NONE  ctermbg=NONE        ctermfg=darkgrey
+highlight NonText       cterm=NONE  ctermbg=NONE        ctermfg=darkgrey
+highlight LineNr        cterm=NONE  ctermbg=NONE        ctermfg=darkgrey
+
 highlight StatusLine    cterm=NONE  ctermbg=darkgrey    ctermfg=black
 highlight TabLineSel    cterm=NONE  ctermbg=darkgrey    ctermfg=black
 highlight VertSplit     cterm=NONE  ctermbg=darkgrey    ctermfg=black
 highlight TabLine       cterm=NONE  ctermbg=darkgrey    ctermfg=black
 highlight TabLineFill   cterm=NONE  ctermbg=darkgrey    ctermfg=black
 highlight Title         cterm=NONE  ctermbg=darkgrey    ctermfg=black
-
-highlight Comment       cterm=NONE  ctermbg=NONE        ctermfg=darkgrey

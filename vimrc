@@ -12,7 +12,13 @@
 " ===== VUNDLE STUFF =====
 
 set nocompatible
-set runtimepath+=~/.vim/bundle/Vundle.vim
+
+if has('win32') || has('win16')                             " os specific settings
+    set runtimepath+=$HOME/dotfiles/vim/bundle/Vundle.vim
+    set runtimepath+=$HOME/dotfiles/vim
+else
+    set runtimepath+=$HOME/.vim/bundle/Vundle.vim
+endif
 
 filetype off                                     " required by vundle
 call vundle#begin()                              " required by vundle
@@ -74,15 +80,16 @@ set statusline+=\ \ %{strftime(\"%m/%d\ %H:%M\")}  " date+time
 
 " ===== AESTHETICS  =====
 
-syntax on
-
 set background=dark
 
-let g:solarized_contrast = "high"
-let g:solarized_visibility = "high"
-let g:solarized_termcolors = 256
+if has('win32') || has('win16')          " os specific colorscheme options
+    colorscheme nicebox
+else
+    let g:solarized_termcolors = 256
+    colorscheme solarized
+endif
 
-colorscheme solarized
+syntax on
 
 " ===== MISC =====
 
@@ -182,6 +189,7 @@ nnoremap ,g :noremap j gj<cr>:noremap k gk<cr>
 nnoremap ,G :unmap j<cr>:unmap k<cr>
 nnoremap ,v :set virtualedit=block<cr>
 nnoremap ,V :set virtualedit=all<cr>
+nnoremap ,c :set colorcolumn!<cr>
 
 " ===== ABBREVIATIONS =====
 
