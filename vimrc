@@ -1,8 +1,12 @@
+" this is a | tes |
+" the | test contingus |
+" | || | \ 
 " +-----------------------+
 " | NICK SPINALE'S .vimrc |
 " +-----------------------+
 
 " TODO
+"   <SNR> for | align function?
 "   pathogen dependancy?
 "   clear autocmds before any here? (au!)?
 "   deal with ftplugins messing with my options (namely fo)
@@ -12,12 +16,7 @@
 
 set nocompatible
 
-if has('win32')
-    set runtimepath+=C:/Users/nick/dotfiles/vim
-    set runtimepath+=C:/Users/nick/dotfiles/vim/bundle/Vundle.vim
-else
-    set runtimepath+=$HOME/.vim/bundle/Vundle.vim
-endif
+set runtimepath+=$HOME/.vim/bundle/Vundle.vim
 
 filetype off                                     " required by vundle
 call vundle#begin()                              " required by vundle
@@ -29,6 +28,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'godlygeek/tabular'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'scrooloose/nerdtree'
@@ -89,7 +89,6 @@ set statusline+=\ \ %{strftime(\"%m/%d\ %H:%M\")}   " date+time
 
 " ====== MISC ======
 
-let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
@@ -98,6 +97,30 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " aligns <bar> tables AS YOU TYPE in insert mode using tabular
 " formats tables as bars are typed. mostly to convince non-vimmers to use vim
 " by tim pope, not me
+
+" ############{MAPPINGS}############
+
+" --- Nop's ---
+
+"noremap <space> <nop>
+" noremap <cr> <nop>
+" noremap , <nop>
+" noremap S <nop>
+
+" --- Special ---
+
+noremap <cr> :
+noremap S <c-w>
+
+inoremap j <esc>
+inoremap \\ \
+inoremap \j j
+
+inoremap q <c-n>
+inoremap \\ \
+inoremap \q q
+
+inoremap <silent> <Bar> <Bar><Esc>:call <SID>align()<CR>a
 
 function! s:align()
   let p = '^\s*|\s.*\s|\s*$'
@@ -109,28 +132,6 @@ function! s:align()
     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
   endif
 endfunction
-
-" ############{MAPPINGS}############
-
-" --- Nop's ---
-
-noremap <space> <nop>
-noremap <cr> <nop>
-noremap , <nop>
-noremap S <nop>
-
-" --- The Essentials ---
-
-inoremap j <esc>
-inoremap \\ \
-inoremap \j j
-
-noremap <cr> :
-noremap S <c-w>
-
-" --- Cetera ---
-
-inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
 " ====== FAKE LEADER ======
 
@@ -148,28 +149,34 @@ nnoremap <space>d <c-b>
 
 " --- Buffer Management ---
 
-nnoremap <space>Q :quit!<cr>
-nnoremap <space>q :quit<cr>
 nnoremap <space>w :write<cr>
+nnoremap <space>q :quit<cr>
+nnoremap <space>Q :quit!<cr>
 nnoremap <space>e :edit<space>
-nnoremap <space>E :edit -R<space>
-nnoremap <space>t :tabedit <space>
+nnoremap <space>E :tabedit<space>
+nnoremap <space>r :view<space>
 
-" --- Cetera ---
+nnoremap <space>p :CtrlP
 
-nnoremap <space>s :%s/
-nnoremap <space>b :shell<cr>
+" --- Formatting ---
 
-vnoremap <space>z y/<c-r>"<cr>
-vnoremap <space>s y:%s/
-vnoremap <space>a :norm<space>
+noremap <space>t :Tab<space>
 
-" expand pre-existing tabs
-nnoremap <space>t4 :%s/\t/    /g<cr>
-nnoremap <space>t8 :%s/\t/        /g<cr>
+nnoremap <space>T4 :%s/\t/    /g<cr>
+nnoremap <space>T8 :%s/\t/        /g<cr>
 
 " remove trailing whitespace
 nnoremap <space>x :%s/\s\+$//e<cr>
+
+" --- Cetera ---
+
+nnoremap <space>U <c-r>
+nnoremap <space>s :%s/
+nnoremap <space>b :shell<cr>
+
+vnoremap <space>s y:%s/
+vnoremap <space>z y/<c-r>"<cr>
+vnoremap <space>a :norm<space>
 
 " highlight last insert
 nnoremap <space>I `[v`]
