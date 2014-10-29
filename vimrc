@@ -52,9 +52,14 @@ filetype plugin on                               " required by vundle
 
 syntax enable
 
-let g:solarized_termcolors = 256
 set background=dark
-colorscheme solarized
+
+if has('win32')
+    colorscheme nicebox
+else
+    let g:solarized_termcolors = 256
+    colorscheme solarized
+endif
 
 " ====== OPTIONS ======
 
