@@ -4,7 +4,6 @@
 
 " TODO
 "   inchighlight
-"   pathogen dependancy?
 "   clear autocmds before any here? (au!)?
 "   deal with ftplugins messing with my options (namely fo)
 "   syntax on or enable?
