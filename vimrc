@@ -3,6 +3,7 @@
 " +-----------------------+
 
 " TODO
+"   inchighlight
 "   pathogen dependancy?
 "   clear autocmds before any here? (au!)?
 "   deal with ftplugins messing with my options (namely fo)
@@ -11,11 +12,9 @@
 " ############{VUNDLE STUFF}############
 
 set nocompatible
-
 set runtimepath+=$HOME/.vim/bundle/Vundle.vim
 
 filetype off                                     " required by vundle
-
 call vundle#begin()                              " required by vundle
 
 Plugin 'gmarik/Vundle.vim'                       " vundle has to manage vundle
@@ -41,7 +40,6 @@ Plugin 'gerw/vim-tex-syntax'
 " Plugin 'twilight'
 
 call vundle#end()                                " required by vundle
-
 filetype plugin on                               " required by vundle
 
 " ############{MISC}############
@@ -51,9 +49,7 @@ filetype plugin on                               " required by vundle
 syntax enable
 
 let g:solarized_termcolors = 256
-
 set background=dark
-
 colorscheme solarized
 
 " ====== OPTIONS ======
@@ -72,7 +68,6 @@ set nowrap                                       " say no to line wrapping
 set number                                       " show line numbers
 set colorcolumn=80                               " marker at 80 columns
 set showmatch                                    " of block delimiter
-set wildmenu                                     " nifty autocomplete in command mode
 
 set laststatus=2                                 " status line always there
 set showtabline=2                                " tab line always there
@@ -85,6 +80,7 @@ set statusline+=\ [\ %{v:register}\ ]               " current register
 set statusline+=\ \ %{strftime(\"%m/%d\ %H:%M\")}   " date+time
 
 set spelllang=en_us
+set wildmenu                                     " nifty autocomplete in command mode
 
 " ====== MISC ======
 
@@ -189,7 +185,7 @@ nnoremap <space>a4 :%s/\t/    /g<cr>
 nnoremap <space>a8 :%s/\t/        /g<cr>
 
 " remove trailing whitespace
-nnoremap <space>x :%s/\s\+$//e<cr>
+nnoremap <space>at :%s/\s\+$//e<cr>
 
 " --- Cetera ---
 
