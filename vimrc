@@ -1,12 +1,8 @@
-" this is a | tes |
-" the | test contingus |
-" | || | \ 
 " +-----------------------+
 " | NICK SPINALE'S .vimrc |
 " +-----------------------+
 
 " TODO
-"   <SNR> for | align function?
 "   pathogen dependancy?
 "   clear autocmds before any here? (au!)?
 "   deal with ftplugins messing with my options (namely fo)
@@ -19,6 +15,7 @@ set nocompatible
 set runtimepath+=$HOME/.vim/bundle/Vundle.vim
 
 filetype off                                     " required by vundle
+
 call vundle#begin()                              " required by vundle
 
 Plugin 'gmarik/Vundle.vim'                       " vundle has to manage vundle
@@ -44,6 +41,7 @@ Plugin 'gerw/vim-tex-syntax'
 " Plugin 'twilight'
 
 call vundle#end()                                " required by vundle
+
 filetype plugin on                               " required by vundle
 
 " ############{MISC}############
@@ -68,17 +66,16 @@ set expandtab
 
 set virtualedit=block                            " sometimes convenient
 set backspace=indent,eol,start                   " allow more deletion in insert mode
-set formatoptions=                               " not familiar with all formatting behavior, so disable it all
+set formatoptions=""                             " not familiar with all formatting behavior, so disable it all
 
 set nowrap                                       " say no to line wrapping
 set number                                       " show line numbers
 set colorcolumn=80                               " marker at 80 columns
-set laststatus=2                                 " status line always there
-set showtabline=2                                " tab line always there
 set showmatch                                    " of block delimiter
 set wildmenu                                     " nifty autocomplete in command mode
 
-set spelllang=en_us
+set laststatus=2                                 " status line always there
+set showtabline=2                                " tab line always there
 
 set tabline=%t
 set statusline=""
@@ -87,25 +84,53 @@ set statusline+=\ %F\ \ [%v\ %l\ %L]                " file and position
 set statusline+=\ [\ %{v:register}\ ]               " current register
 set statusline+=\ \ %{strftime(\"%m/%d\ %H:%M\")}   " date+time
 
+set spelllang=en_us
+
 " ====== MISC ======
 
+autocmd FileType * set formatoptions=""
+
+let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-" ====== FUNCTIONS ======
+" for commenting with tabular
+
+let b:ncomment = '# '
+
+autocmd FileType haskell let b:ncomment = '-- '
+autocmd FileType c,cpp,va,scala let b:ncomment = '// '
+autocmd FileType tex let b:ncomment = '% '
+autocmd FileType mail let b:ncomment = '> '
+autocmd FileType vim let b:ncomment = '" '
+
+function! s:tabcomms()
+    if exists(':Tabularize')
+        execute "Tab /".b:ncomment
+    endif
 
 " aligns <bar> tables AS YOU TYPE in insert mode using tabular
-" formats tables as bars are typed. mostly to convince non-vimmers to use vim
-" by tim pope, not me
+" by Tim Pope, not me
+
+function! s:align()
+    let p = '^\s*|\s.*\s|\s*$'
+    if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+        let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+        let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+        Tabularize/|/l1
+        normal! 0
+        call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+    endif
+endfunction
 
 " ############{MAPPINGS}############
 
 " --- Nop's ---
 
-"noremap <space> <nop>
-" noremap <cr> <nop>
-" noremap , <nop>
-" noremap S <nop>
+noremap <space> <nop>
+noremap <cr> <nop>
+noremap , <nop>
+noremap S <nop>
 
 " --- Special ---
 
@@ -120,18 +145,12 @@ inoremap q <c-n>
 inoremap \\ \
 inoremap \q q
 
-inoremap <silent> <Bar> <Bar><Esc>:call <SID>align()<CR>a
+inoremap Y y$
 
-function! s:align()
-  let p = '^\s*|\s.*\s|\s*$'
-  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-    Tabularize/|/l1
-    normal! 0
-    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-  endif
-endfunction
+nnoremap S <c-w>
+nnoremap SS :vnew<cr>
+
+inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
 " ====== FAKE LEADER ======
 
@@ -160,10 +179,14 @@ nnoremap <space>p :CtrlP
 
 " --- Formatting ---
 
-noremap <space>t :Tab<space>
+noremap <space>aa :Tab<space>/
+noremap <space>a= :Tab<space>/=<cr>
+noremap <space>as :Tab<space>/\s\s<cr>
+noremap <space>ac :call <sid>tabcomms()<cr>
 
-nnoremap <space>T4 :%s/\t/    /g<cr>
-nnoremap <space>T8 :%s/\t/        /g<cr>
+"expand tabs
+nnoremap <space>a4 :%s/\t/    /g<cr>
+nnoremap <space>a8 :%s/\t/        /g<cr>
 
 " remove trailing whitespace
 nnoremap <space>x :%s/\s\+$//e<cr>
