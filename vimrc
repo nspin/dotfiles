@@ -93,7 +93,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " for commenting with tabular
 
 let b:ncomment = '# '
-
 autocmd FileType haskell let b:ncomment = '-- '
 autocmd FileType c,cpp,va,scala let b:ncomment = '// '
 autocmd FileType tex let b:ncomment = '% '
@@ -131,26 +130,32 @@ noremap S <nop>
 " --- Special ---
 
 noremap <cr> :
-noremap S <c-w>
 
 inoremap j <esc>
-inoremap \\ \
 inoremap \j j
 
 inoremap q <c-n>
-inoremap \\ \
 inoremap \q q
-
-inoremap Y y$
 
 nnoremap S <c-w>
 nnoremap SS :vnew<cr>
+
+inoremap Y y$
 
 inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
 " ====== FAKE LEADER ======
 
-" left leader as <bslash> for plugins
+nnoremap <space>U <c-r>
+nnoremap <space>s :%s/
+nnoremap <space>b :shell<cr>
+
+vnoremap <space>s y:%s/
+vnoremap <space>z y/<c-r>"<cr>
+vnoremap <space>a :norm<space>
+
+" highlight last insert
+nnoremap <space>v `[v`]
 
 " --- Movement ---
 
@@ -187,19 +192,6 @@ nnoremap <space>a8 :%s/\t/        /g<cr>
 " remove trailing whitespace
 nnoremap <space>at :%s/\s\+$//e<cr>
 
-" --- Cetera ---
-
-nnoremap <space>U <c-r>
-nnoremap <space>s :%s/
-nnoremap <space>b :shell<cr>
-
-vnoremap <space>s y:%s/
-vnoremap <space>z y/<c-r>"<cr>
-vnoremap <space>a :norm<space>
-
-" highlight last insert
-nnoremap <space>I `[v`]
-
 " ====== TOGGLES ======
 
 nnoremap ,u :GundoToggle<cr>
@@ -223,14 +215,14 @@ nnoremap ,G :unmap j<cr>:unmap k<cr>
 
 " laziness
 
-iabbrev #w where
-iabbrev #t type
-iabbrev #m import
-iabbrev #n instance
-iabbrev #e extends
-iabbrev #p implements
-iabbrev #d #define
-iabbrev #i #include
+iabbrev `w where
+iabbrev `t type
+iabbrev `m import
+iabbrev `n instance
+iabbrev `e extends
+iabbrev `p implements
+iabbrev `d #define
+iabbrev `i #include
 
 " mistakes
 
