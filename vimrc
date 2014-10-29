@@ -14,10 +14,10 @@
 set nocompatible
 
 if has('win32')
-    set runtimepath+=$HOME/vimfiles/bundle/Vundle.vim
-else
     set runtimepath+=$HOME/.vim/bundle/Vundle.vim
 endif
+
+set runtimepath+=$HOME/.vim/bundle/Vundle.vim
 
 filetype off                                     " required by vundle
 call vundle#begin()                              " required by vundle
