@@ -13,7 +13,7 @@
 set nocompatible
 
 if has('win32')
-    set runtimepath+=$HOME/.vim/bundle/Vundle.vim
+    set runtimepath+=$HOME/.vim
 endif
 
 set runtimepath+=$HOME/.vim/bundle/Vundle.vim
