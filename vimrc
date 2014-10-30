@@ -112,6 +112,7 @@ function! s:tabcomms()
     if exists(':Tabularize')
         execute "Tab /".b:ncomment
     endif
+endfunction
 
 " aligns <bar> tables AS YOU TYPE in insert mode using tabular
 " by Tim Pope, not me
