@@ -6,22 +6,24 @@
 "   inchighlight
 "   clear autocmds before any here? (au!)?
 "   deal with ftplugins messing with my options (namely fo)
-"   syntax on or enable?
+"   tabular comment function
+"       will improve regex to only match last comment phrase in line
+"       and not match full-line comments
 
 " ############{VUNDLE STUFF}############
 
 set nocompatible
 
 if has('win32')
-    set runtimepath+=$HOME/.vim
-endif
+    set runtimepath+=$HOME/.vim               " foting other stuff to '~/vimfiles'
+endif                                         " this too
 
 set runtimepath+=$HOME/.vim/bundle/Vundle.vim
 
-filetype off                                     " required by vundle
-call vundle#begin()                              " required by vundle
+filetype off                                  " required by vundle
+call vundle#begin()                           " required by vundle
 
-Plugin 'gmarik/Vundle.vim'                       " vundle has to manage vundle
+Plugin 'gmarik/Vundle.vim'                    " vundle has to manage vundle
 
 Plugin 'sjl/gundo.vim'
 Plugin 'SirVer/ultisnips'
@@ -50,50 +52,53 @@ filetype plugin on                               " required by vundle
 
 " ====== AESTHETICS ======
 
-syntax enable
+syntax enable                        " don't override my colors
 
-set background=dark
+set background=dark                  " for correct defaults
 
 if has('win32')
-    colorscheme nicebox
+    colorscheme nicebox              " still haven't gotten any windows terminal's colors to work
 else
-    let g:solarized_termcolors = 256
-    colorscheme solarized
+    let g:solarized_termcolors = 256 " just to be safe
+    colorscheme solarized            " what else?
 endif
 
 " ====== OPTIONS ======
 
-set verbose=1                                    " tell me stuff
+set verbose=1                                       " tell me stuff
 
-set tabstop=4
-set shiftwidth=4
-set expandtab
+set tabstop=4                                       " may add autocmd to adapt this to filetype
+set shiftwidth=4                                    " consistent with tabstop
+set expandtab                                       " may add autocmd to adapt this to filetype
 
-set virtualedit=block                            " sometimes convenient
-set backspace=indent,eol,start                   " allow more deletion in insert mode
-set formatoptions=""                             " not familiar with all formatting behavior, so disable it all
+set virtualedit=block                               " sometimes convenient
+set backspace=indent,eol,start                      " allow more deletion in insert mode
+set formatoptions=""                                " not familiar with all formatting behavior, so disable it all
+    
+set nowrap                                          " say no to line wrapping
+set number                                          " show line numbers
+set colorcolumn=80                                  " marker at 80 columns
+set showmatch                                       " of block delimiter
+set hlsearch                                        " sometimes nice
 
-set nowrap                                       " say no to line wrapping
-set number                                       " show line numbers
-set colorcolumn=80                               " marker at 80 columns
-set showmatch                                    " of block delimiter
+set laststatus=2                                    " status line always there
+set showtabline=2                                   " tab line always there
 
-set laststatus=2                                 " status line always there
-set showtabline=2                                " tab line always there
-
-set tabline=%t
-set statusline=""
+set tabline=%t                                      " just title
+set statusline=""                                   " clear it
 set statusline+=%m%r%h%w%q                          " flags
 set statusline+=\ %F\ \ [%v\ %l\ %L]                " file and position
 set statusline+=\ [\ %{v:register}\ ]               " current register
 set statusline+=\ \ %{strftime(\"%m/%d\ %H:%M\")}   " date+time
 
-set spelllang=en_us
-set wildmenu                                     " nifty autocomplete in command mode
+set spelllang=en_us" if only vim spellchecked haskell...
+set wildmenu                                        " nifty autocomplete in command mode
 
 " ====== MISC ======
 
-autocmd FileType * set formatoptions=""
+autocmd FileType * set formatoptions=""   " ftplugins mess up this option often
+
+" UltiSnips mappings
 
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -101,16 +106,18 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " for commenting with tabular
 
-let b:ncomment = '# '
-autocmd FileType haskell let b:ncomment = '-- '
-autocmd FileType c,cpp,va,scala let b:ncomment = '// '
-autocmd FileType tex let b:ncomment = '% '
-autocmd FileType mail let b:ncomment = '> '
-autocmd FileType vim let b:ncomment = '" '
+let b:ncomment = '#'
+autocmd FileType haskell let b:ncomment = '--'
+autocmd FileType c,cpp,va,scala let b:ncomment = '//'
+autocmd FileType tex let b:ncomment = '%'
+autocmd FileType mail let b:ncomment = '>'
+autocmd FileType vim let b:ncomment = '"'
+
+" formats filetype-specific comments with tablular
 
 function! s:tabcomms()
     if exists(':Tabularize')
-        execute "Tab /".b:ncomment
+        execute "'<,'>Tabularize /".b:ncomment
     endif
 endfunction
 
@@ -160,7 +167,7 @@ nnoremap <space>U <c-r>
 nnoremap <space>s :%s/
 nnoremap <space>b :shell<cr>
 
-vnoremap <space>s y:%s/
+vnoremap <space>s y:%s/<c-r>"<cr>
 vnoremap <space>z y/<c-r>"<cr>
 vnoremap <space>a :norm<space>
 
@@ -190,12 +197,12 @@ nnoremap <space>p :CtrlP
 
 " --- Formatting ---
 
-noremap <space>aa :Tab<space>/
-noremap <space>a= :Tab<space>/=<cr>
-noremap <space>as :Tab<space>/\s\s<cr>
+noremap <space>ap :Tabularize<cr>
+noremap <space>aa :Tabularize<space>/
+noremap <space>a= :Tabularize<space>/=<cr>
+noremap <space>as :Tabularize<space>/\s\s<cr>
 noremap <space>ac :call <sid>tabcomms()<cr>
 
-"expand tabs
 nnoremap <space>a4 :%s/\t/    /g<cr>
 nnoremap <space>a8 :%s/\t/        /g<cr>
 
@@ -206,7 +213,6 @@ nnoremap <space>at :%s/\s\+$//e<cr>
 
 nnoremap ,u :GundoToggle<cr>
 
-nnoremap ,h :set hlsearch!<cr>
 nnoremap ,c :set colorcolumn!<cr>
 nnoremap ,s :setlocal spell!<cr>
 nnoremap ,w :setlocal wrap!<cr>
