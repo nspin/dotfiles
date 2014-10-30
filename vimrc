@@ -71,6 +71,7 @@ set tabstop=4                                       " may add autocmd to adapt t
 set shiftwidth=4                                    " consistent with tabstop
 set expandtab                                       " may add autocmd to adapt this to filetype
 
+set mouse=""                                        " not even once
 set virtualedit=block                               " sometimes convenient
 set backspace=indent,eol,start                      " allow more deletion in insert mode
 set formatoptions=""                                " not familiar with all formatting behavior, so disable it all
