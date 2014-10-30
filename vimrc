@@ -151,10 +151,10 @@ noremap Y <nop>
 noremap <cr> :
 
 inoremap j <esc>
-inoremap \j j
+inoremap JJ j
 
 inoremap q <c-n>
-inoremap \q q
+inoremap QQ q
 
 nnoremap S <c-w>
 nnoremap SS :vnew<cr>
