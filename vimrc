@@ -136,6 +136,7 @@ noremap <space> <nop>
 noremap <cr> <nop>
 noremap , <nop>
 noremap S <nop>
+noremap Y <nop>
 
 " --- Special ---
 
@@ -149,8 +150,7 @@ inoremap \q q
 
 nnoremap S <c-w>
 nnoremap SS :vnew<cr>
-
-inoremap Y y$
+nnoremap Y y$
 
 inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
