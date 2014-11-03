@@ -7,7 +7,6 @@
 "   find mappings worthy of ; and <del>
 "   clear autocmds before any here? (au!)?
 "   deal with ftplugins messing with my options (namely fo)
-"   omnicomplete
 "   tabular comment function
 "       will improve regex to only match last comment phrase in line
 "       and not match full-line comments
