@@ -82,7 +82,7 @@ set nowrap                                          " say no to line wrapping
 set number                                          " show line numbers
 set colorcolumn=80                                  " marker at 80 columns
 set showmatch                                       " of block delimiter
-set hlsearch                                        " sometimes nice
+set incsearch                                       " sometimes nice
 
 set laststatus=2                                    " status line always there
 set showtabline=2                                   " tab line always there
