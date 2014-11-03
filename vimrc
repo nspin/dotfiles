@@ -6,6 +6,7 @@
 "   inchighlight
 "   find mappings worthy of ; and <del>
 "   clear autocmds before any here? (au!)?
+"   omnicomplete?
 "   deal with ftplugins messing with my options (namely fo)
 "   tabular comment function
 "       will improve regex to only match last comment phrase in line
@@ -169,6 +170,8 @@ inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 " movement
 nnoremap <space>f <c-f>M
 nnoremap <space>d <c-b>M
+nnoremap <space>s <c-d>M
+nnoremap <space>a <c-u>M
 
 " buffer management
 nnoremap <space>q :quit<cr>
@@ -180,21 +183,21 @@ nnoremap <space>t :tabedit<space>
 
 nnoremap <space>p :CtrlP
 
-noremap <space>l :Tabularize<space>/
+noremap <space>z :Tabularize<space>/
 noremap <space>c :call <sid>tabcomms()<cr>
 
 " remove trailing whitespace
 nnoremap <space>x :%s/\s\+$//e<cr>
 
-nnoremap <space>s :%s/
+nnoremap <space>m :%s/
 nnoremap <space>b :shell<cr>
 
 " highlight last insert
 nnoremap <space>v `[v`]
 
-vnoremap <space>s y:%s/<c-r>"<cr>/
-vnoremap <space>a y/<c-r>"<cr>
-vnoremap <space>n :norm<space>
+vnoremap <space>m y:%s/<c-r>"<cr>/
+vnoremap <space>n y/<c-r>"<cr>
+vnoremap <space>g :norm<space>
 
 " ====== TOGGLES ======
 
