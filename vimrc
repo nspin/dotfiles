@@ -4,6 +4,7 @@
 
 " TODO
 "   inchighlight
+"   find mappings worthy of ; and <del>
 "   clear autocmds before any here? (au!)?
 "   deal with ftplugins messing with my options (namely fo)
 "   tabular comment function
@@ -140,15 +141,13 @@ endfunction
 
 " --- Nop's ---
 
-noremap <space> <nop>
 noremap <cr> <nop>
-noremap , <nop>
 noremap S <nop>
 noremap Y <nop>
+noremap <space> <nop>
+noremap , <nop>
 
 " --- Special ---
-
-noremap <cr> :
 
 inoremap j <esc>
 inoremap JJ j
@@ -156,73 +155,60 @@ inoremap JJ j
 inoremap q <c-n>
 inoremap QQ q
 
+noremap <cr> :
+
 nnoremap S <c-w>
 nnoremap SS :vnew<cr>
+
 nnoremap Y y$
 
 inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
 " ====== FAKE LEADER ======
 
-nnoremap <space>U <c-r>
+" movement
+nnoremap <space>f <c-f>M
+nnoremap <space>d <c-b>M
+
+" buffer management
+nnoremap <space>q :quit<cr>
+nnoremap <space>Q :quit!<cr>
+nnoremap <space>w :write<cr>
+nnoremap <space>e :edit<space>
+nnoremap <space>r :view<space>
+nnoremap <space>t :tabedit<space>
+
+nnoremap <space>p :CtrlP
+
+noremap <space>l :Tabularize<space>/
+noremap <space>c :call <sid>tabcomms()<cr>
+
+" remove trailing whitespace
+nnoremap <space>x :%s/\s\+$//e<cr>
+
 nnoremap <space>s :%s/
 nnoremap <space>b :shell<cr>
-
-vnoremap <space>s y:%s/<c-r>"<cr>
-vnoremap <space>z y/<c-r>"<cr>
-vnoremap <space>a :norm<space>
 
 " highlight last insert
 nnoremap <space>v `[v`]
 
-" --- Movement ---
-
-noremap <space>j 8j
-noremap <space>k 8k
-noremap <space>h 16h
-noremap <space>l 16l
-
-nnoremap <space>f <c-f>
-nnoremap <space>d <c-b>
-
-" --- Buffer Management ---
-
-nnoremap <space>w :write<cr>
-nnoremap <space>q :quit<cr>
-nnoremap <space>Q :quit!<cr>
-nnoremap <space>e :edit<space>
-nnoremap <space>E :tabedit<space>
-nnoremap <space>r :view<space>
-
-nnoremap <space>p :CtrlP
-
-" --- Formatting ---
-
-noremap <space>ap :Tabularize<cr>
-noremap <space>aa :Tabularize<space>/
-noremap <space>a= :Tabularize<space>/=<cr>
-noremap <space>as :Tabularize<space>/\s\s<cr>
-noremap <space>ac :call <sid>tabcomms()<cr>
-
-nnoremap <space>a4 :%s/\t/    /g<cr>
-nnoremap <space>a8 :%s/\t/        /g<cr>
-
-" remove trailing whitespace
-nnoremap <space>at :%s/\s\+$//e<cr>
+vnoremap <space>s y:%s/<c-r>"<cr>/
+vnoremap <space>a y/<c-r>"<cr>
+vnoremap <space>n :norm<space>
 
 " ====== TOGGLES ======
 
 nnoremap ,u :GundoToggle<cr>
 
-nnoremap ,c :set colorcolumn!<cr>
+nnoremap ,c :setlocal colorcolumn!<cr>
 nnoremap ,s :setlocal spell!<cr>
 nnoremap ,w :setlocal wrap!<cr>
 nnoremap ,r :setlocal readonly!<cr>
 
 nnoremap ,d :set digraph<cr>
 
-nnoremap ,l :set nolist<cr>:set linebreak<cr>
-nnoremap ,L :set list<cr>:set nolinebreak<cr>
+nnoremap ,l :setlocal nolist<cr>:setlocal linebreak<cr>
+nnoremap ,L :setlocal list<cr>:setlocal nolinebreak<cr>
 nnoremap ,v :set virtualedit=all<cr>
 nnoremap ,V :set virtualedit=block<cr>
 nnoremap ,g :noremap j gj<cr>:noremap k gk<cr>
