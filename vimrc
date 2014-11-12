@@ -3,10 +3,8 @@
 " +-----------------------+
 
 " TODO
-"   inchighlight
-"   find mappings worthy of ; and <del>
+"   find mappings worthy of <del>
 "   clear autocmds before any here? (au!)?
-"   omnicomplete?
 "   deal with ftplugins messing with my options (namely fo)
 "   tabular comment function
 "       will improve regex to only match last comment phrase in line
@@ -94,12 +92,12 @@ set statusline+=\ %F\ \ [%v\ %l\ %L]                " file and position
 set statusline+=\ [\ %{v:register}\ ]               " current register
 set statusline+=\ \ %{strftime(\"%m/%d\ %H:%M\")}   " date+time
 
-set spelllang=en_us" if only vim spellchecked haskell...
+set spelllang=en_us
 set wildmenu                                        " nifty autocomplete in command mode
 
 " ====== MISC ======
 
-autocmd FileType * set formatoptions=""   " ftplugins mess up this option often
+autocmd FileType * set formatoptions=""             " ftplugins mess up this option often
 
 " UltiSnips mappings
 
