@@ -15,7 +15,7 @@
 set nocompatible
 
 if has('win32')
-    set runtimepath+=$HOME/.vim               " foting other stuff to '~/vimfiles'
+    set runtimepath+=$HOME/.vim               " not messing with ~/vimfiles
 endif                                         " this too
 
 set runtimepath+=$HOME/.vim/bundle/Vundle.vim
