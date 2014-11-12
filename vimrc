@@ -217,8 +217,8 @@ nnoremap ,V :set virtualedit=block<cr>
 nnoremap ,g :noremap j gj<cr>:noremap k gk<cr>
 nnoremap ,G :unmap j<cr>:unmap k<cr>
 
-nnoremap ,t ,w,l,b,d,C,g
-nnoremap ,T ,w,l,b,d,c,G
+nmap ,t ,w,l,b,d,C,g
+nmap ,T ,w,l,b,d,c,G
 
 " ############{ABBREVIATIONS}############
 
