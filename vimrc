@@ -152,16 +152,15 @@ noremap , <nop>
 
 inoremap j <esc>
 inoremap JJ j
-
 inoremap q <c-n>
 inoremap QQ q
 
+nnoremap S :%s/
+nnoremap Y y$
+
 noremap <cr> :
 
-nnoremap S <c-w>
-nnoremap SS :vnew<cr>
-
-nnoremap Y y$
+cnoremap <c-r><c-r> <c-r>"
 
 inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
@@ -180,6 +179,8 @@ nnoremap <space>w :write<cr>
 nnoremap <space>e :edit<space>
 nnoremap <space>r :view<space>
 nnoremap <space>t :tabedit<space>
+nnoremap <space>T :tabnew<cr>
+nnoremap <space>| :vnew<cr>
 
 nnoremap <space>p :CtrlP
 
@@ -189,29 +190,30 @@ noremap <space>c :call <sid>tabcomms()<cr>
 " remove trailing whitespace
 nnoremap <space>x :%s/\s\+$//e<cr>
 
-nnoremap <space>m :%s/
 nnoremap <space>b :shell<cr>
 
 " highlight last insert
 nnoremap <space>v `[v`]
 
-vnoremap <space>m y:%s/<c-r>"<cr>/
-vnoremap <space>n y/<c-r>"<cr>
-vnoremap <space>g :norm<space>
+vnoremap <space>y y:%s/<c-r>"<cr>/
+vnoremap <space>Y y/<c-r>"<cr>
+
+vnoremap <space>n :norm<space>
 
 " ====== TOGGLES ======
 
 nnoremap ,u :GundoToggle<cr>
 
-nnoremap ,c :setlocal colorcolumn!<cr>
 nnoremap ,s :setlocal spell!<cr>
 nnoremap ,w :setlocal wrap!<cr>
-nnoremap ,r :setlocal readonly!<cr>
+nnoremap ,l :setlocal list!<cr>
+nnoremap ,b :setlocal linebreak!<cr>
 
+nnoremap ,r :setlocal readonly!<cr>
 nnoremap ,d :set digraph<cr>
 
-nnoremap ,l :setlocal nolist<cr>:setlocal linebreak<cr>
-nnoremap ,L :setlocal list<cr>:setlocal nolinebreak<cr>
+nnoremap ,c :setlocal colorcolumn=80
+nnoremap ,C :setlocal colorcolumn=0
 nnoremap ,v :set virtualedit=all<cr>
 nnoremap ,V :set virtualedit=block<cr>
 nnoremap ,g :noremap j gj<cr>:noremap k gk<cr>
