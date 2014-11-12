@@ -229,6 +229,7 @@ iabbrev `e extends
 iabbrev `p implements
 iabbrev `d #define
 iabbrev `i #include
+iabbrev `- ----------------------------------------
 
 " mistakes
 
