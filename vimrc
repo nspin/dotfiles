@@ -210,15 +210,15 @@ nnoremap ,b :setlocal linebreak!<cr>
 nnoremap ,r :setlocal readonly!<cr>
 nnoremap ,d :set digraph<cr>
 
-nnoremap ,c :setlocal colorcolumn=80
-nnoremap ,C :setlocal colorcolumn=0
+nnoremap ,c :setlocal colorcolumn=80<cr>
+nnoremap ,C :setlocal colorcolumn=0<cr>
 nnoremap ,v :set virtualedit=all<cr>
 nnoremap ,V :set virtualedit=block<cr>
 nnoremap ,g :noremap j gj<cr>:noremap k gk<cr>
 nnoremap ,G :unmap j<cr>:unmap k<cr>
 
-nmap ,t ,w,l,b,d,C,g
-nmap ,T ,w,l,b,d,c,G
+nmap ,t ,w,b,d,C,g
+nmap ,T ,w,b,d,c,G
 
 " ############{ABBREVIATIONS}############
 
