@@ -178,7 +178,7 @@ nnoremap <space>e :edit<space>
 nnoremap <space>r :view<space>
 nnoremap <space>t :tabedit<space>
 nnoremap <space>T :tabnew<cr>
-nnoremap <space>| :vnew<cr>
+nnoremap <space><bar> :vnew<cr>
 
 nnoremap <space>p :CtrlP
 
