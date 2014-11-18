@@ -78,7 +78,6 @@ set formatoptions=""                                " not familiar with all form
     
 set nowrap                                          " say no to line wrapping
 set number                                          " show line numbers
-set colorcolumn=80                                  " marker at 80 columns
 set showmatch                                       " of block delimiter
 set incsearch                                       " sometimes nice
 
@@ -148,8 +147,8 @@ noremap , <nop>
 
 " --- Special ---
 
-inoremap j <esc>
-inoremap JJ j
+inoremap fd <esc>
+inoremap df <esc>
 inoremap q <c-n>
 inoremap QQ q
 
@@ -165,10 +164,10 @@ inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 " ====== FAKE LEADER ======
 
 " movement
-nnoremap <space>f <c-f>M
-nnoremap <space>d <c-b>M
-nnoremap <space>s <c-d>M
-nnoremap <space>a <c-u>M
+nnoremap <space>f <c-f>M0
+nnoremap <space>d <c-b>M0
+nnoremap <space>s <c-d>M0
+nnoremap <space>a <c-u>M0
 
 " buffer management
 nnoremap <space>q :quit<cr>
