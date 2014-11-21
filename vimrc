@@ -147,8 +147,8 @@ noremap , <nop>
 
 " --- Special ---
 
-inoremap fd <esc>
-inoremap df <esc>
+inoremap j <esc>
+inoremap JJ j
 inoremap q <c-n>
 inoremap QQ q
 
