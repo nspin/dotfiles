@@ -178,6 +178,7 @@ nnoremap <space>T :tabnew<cr>
 nnoremap <space><bar> :vnew<cr>
 
 nnoremap <space>p :CtrlP
+nnoremap <space>u :GundoToggle<cr>
 
 noremap <space>z :Tabularize<space>/
 noremap <space>c :call <sid>tabcomms()<cr>
@@ -190,14 +191,11 @@ nnoremap <space>b :shell<cr>
 " highlight last insert
 nnoremap <space>v `[v`]
 
-vnoremap <space>y y:%s/<c-r>"<cr>/
-vnoremap <space>Y y/<c-r>"<cr>
-
+vnoremap <space>y y/<c-r>"<cr>
+vnoremap <space>Y y:%s/<c-r>"<cr>/
 vnoremap <space>n :norm<space>
 
 " ====== TOGGLES ======
-
-nnoremap ,u :GundoToggle<cr>
 
 nnoremap ,s :setlocal spell!<cr>
 nnoremap ,w :setlocal wrap!<cr>
@@ -213,6 +211,8 @@ nnoremap ,v :set virtualedit=all<cr>
 nnoremap ,V :set virtualedit=block<cr>
 nnoremap ,g :noremap j gj<cr>:noremap k gk<cr>
 nnoremap ,G :unmap j<cr>:unmap k<cr>
+nnoremap ,m :set mouse="nvi"
+nnoremap ,M :set mouse=""
 
 nmap ,t ,w,b,d,C,g
 nmap ,T ,w,b,d,c,G
