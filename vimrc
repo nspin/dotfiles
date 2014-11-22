@@ -84,11 +84,9 @@ set incsearch                                       " sometimes nice
 set laststatus=2                                    " status line always there
 set showtabline=2                                   " tab line always there
 
-set tabline=%t                                      " just title
 set statusline=""                                   " clear it
 set statusline+=%m%r%h%w%q                          " flags
 set statusline+=\ %F\ \ [%v\ %l\ %L]                " file and position
-set statusline+=\ [\ %{v:register}\ ]               " current register
 set statusline+=\ \ %{strftime(\"%m/%d\ %H:%M\")}   " date+time
 
 set spelllang=en_us
