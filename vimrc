@@ -81,6 +81,8 @@ set number                                          " show line numbers
 set showmatch                                       " of block delimiter
 set incsearch                                       " sometimes nice
 
+set splitbelow                                      " new splits below
+set splitright                                      " new splits to righ
 set laststatus=2                                    " status line always there
 set showtabline=2                                   " tab line always there
 
