@@ -159,6 +159,7 @@ noremap <cr> :
 
 cnoremap <c-r><c-r> <c-r>"
 
+inoremap <space><bs> <bs><bs><bs><bs>
 inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
 " ====== FAKE LEADER ======
