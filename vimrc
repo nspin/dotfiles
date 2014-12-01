@@ -56,12 +56,11 @@ syntax enable                        " don't override my colors
 
 set background=dark                  " for correct defaults
 
-if has('win32')
-    colorscheme nicebox              " still haven't gotten any windows terminal's colors to work
-else
-    let g:solarized_termcolors = 256
-    colorscheme solarized
-endif
+" comment out one of these (depending on 256 support)
+
+colorscheme nicebox
+" let g:solarized_termcolors = 256
+" colorscheme solarized
 
 " ====== OPTIONS ======
 
