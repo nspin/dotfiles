@@ -14,9 +14,9 @@
 
 set nocompatible
 
-if has('win32')
-    set runtimepath+=$HOME/.vim               " not messing with ~/vimfiles
-endif                                         " this too
+" if has('win32')
+"     set runtimepath+=$HOME/.vim               " not messing with ~/vimfiles
+" endif                                         " this too
 
 set runtimepath+=$HOME/.vim/bundle/Vundle.vim
 
@@ -61,7 +61,7 @@ if has('win32')
 else
     let g:solarized_termcolors = 256
     colorscheme solarized
-endif
+" endif
 
 " ====== OPTIONS ======
 
