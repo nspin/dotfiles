@@ -140,9 +140,9 @@ endfunction
 
 noremap <space> <nop>
 noremap <cr> <nop>
+noremap , <nop>
 noremap S <nop>
 noremap Y <nop>
-noremap , <nop>
 
 " --- Special ---
 
@@ -193,10 +193,12 @@ noremap <space>j "r
 
 " --- misc ---
 
+nnoremap <space>x 4x
 nnoremap <space>b :shell<cr>
+nnoremap <space>d 80i-<esc>
 
 " remove trailing whitespace
-nnoremap <space>x :%s/\s\+$//e<cr>
+nnoremap <space>l :%s/\s\+$//e<cr>
 
 " highlight last insert
 nnoremap <space>v `[v`]
@@ -237,7 +239,7 @@ iabbrev `e extends
 iabbrev `p implements
 iabbrev `d #define
 iabbrev `i #include
-iabbrev `- ----------------------------------------
+iabbrev `- -----
 
 " mistakes
 
