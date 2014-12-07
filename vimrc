@@ -112,7 +112,7 @@ autocmd FileType tex let b:ncomment = '%'
 autocmd FileType mail let b:ncomment = '>'
 autocmd FileType vim let b:ncomment = '"'
 
-" formats filetype-specific comments with tablular
+" formats visual area with filetype-specific comments with tablular
 
 function! s:tabcomms()
     if exists(':Tabularize')
@@ -138,10 +138,10 @@ endfunction
 
 " --- Nop's ---
 
+noremap <space> <nop>
 noremap <cr> <nop>
 noremap S <nop>
 noremap Y <nop>
-noremap <space> <nop>
 noremap , <nop>
 
 " --- Special ---
@@ -156,19 +156,15 @@ nnoremap Y y$
 
 noremap <cr> :
 
-cnoremap <c-r><c-r> <c-r>"
+cnoremap <c-s> <c-r>"<cr>
 
-inoremap <c-x> <bs><bs><bs><bs>
+inoremap <c-d> <bs><bs><bs><bs>
+inoremap <c-w> <esc>cb
+inoremap <c-c> <esc>cc
 
 inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
 " ====== FAKE LEADER ======
-
-" movement
-nnoremap <space>f <c-f>M0
-nnoremap <space>d <c-b>M0
-nnoremap <space>s <c-d>M0
-nnoremap <space>a <c-u>M0
 
 " buffer management
 nnoremap <space>q :quit<cr>
@@ -180,23 +176,30 @@ nnoremap <space>r :view<space>
 nnoremap <space>t :tabedit<space>
 nnoremap <space>T :tabnew<cr>
 
+" plugins
 nnoremap <space>p :CtrlP
 nnoremap <space>g :GundoToggle<cr>
+nnoremap <space>i :PluginInstall<cr>
 
+" v mode stuff
+vnoremap <space>s y:%s/<c-r>"<cr>/
+vnoremap <space>n :norm<space>
+
+" n + v + s mode stuff
 noremap <space>z :Tabularize<space>/
 noremap <space>c :call <sid>tabcomms()<cr>
+noremap <space>k "_
+noremap <space>j "r
+
+" --- misc ---
+
+nnoremap <space>b :shell<cr>
 
 " remove trailing whitespace
 nnoremap <space>x :%s/\s\+$//e<cr>
 
-nnoremap <space>b :shell<cr>
-
 " highlight last insert
 nnoremap <space>v `[v`]
-
-vnoremap <space>y y/<c-r>"<cr>
-vnoremap <space>Y y:%s/<c-r>"<cr>/
-vnoremap <space>n :norm<space>
 
 " ====== TOGGLES ======
 
@@ -208,6 +211,7 @@ nnoremap ,b :setlocal linebreak!<cr>
 nnoremap ,r :setlocal readonly!<cr>
 nnoremap ,d :set digraph<cr>
 
+" one-way toggles
 nnoremap ,c :setlocal colorcolumn=80<cr>
 nnoremap ,C :setlocal colorcolumn=0<cr>
 nnoremap ,v :set virtualedit=all<cr>
@@ -217,6 +221,7 @@ nnoremap ,G :unmap j<cr>:unmap k<cr>
 nnoremap ,m :set mouse=nvi
 nnoremap ,M :set mouse=
 
+" composite toggles
 nmap ,t ,w,b,d,C,g
 nmap ,T ,w,b,d,c,G
 
@@ -225,9 +230,9 @@ nmap ,T ,w,b,d,c,G
 " laziness
 
 iabbrev `w where
-iabbrev `t type
+iabbrev `n newtype
 iabbrev `m import
-iabbrev `n instance
+iabbrev `s instance
 iabbrev `e extends
 iabbrev `p implements
 iabbrev `d #define
