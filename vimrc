@@ -67,6 +67,7 @@ colorscheme nicebox
 set tabstop=4                                       " may add autocmd to adapt this to filetype
 set shiftwidth=4                                    " consistent with tabstop
 set expandtab                                       " may add autocmd to adapt this to filetype
+set autoindent
 
 set mouse=                                          " not even once
 set virtualedit=block                               " sometimes convenient
@@ -169,10 +170,10 @@ nnoremap <space>q :quit<cr>
 nnoremap <space>Q :quit!<cr>
 nnoremap <space>w :write<cr>
 nnoremap <space>e :edit<space>
-nnoremap <space>E :vnew<cr>
 nnoremap <space>r :view<space>
 nnoremap <space>t :tabedit<space>
 nnoremap <space>T :tabnew<cr>
+nnoremap <space>y :vnew<cr>
 
 " plugins
 nnoremap <space>p :CtrlP
