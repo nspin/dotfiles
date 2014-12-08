@@ -26,19 +26,18 @@ call vundle#begin()                           " required by vundle
 Plugin 'gmarik/Vundle.vim'                    " vundle has to manage vundle
 
 Plugin 'sjl/gundo.vim'
-Plugin 'SirVer/ultisnips'
+" Plugin 'msanders/snipmate.vim'
+" Plugin 'SirVer/ultisnips'
 Plugin 'godlygeek/tabular'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'gerw/vim-latex-suite'
-Plugin 'gerw/vim-tex-syntax'
-
-" Plugin 'msanders/snipmate.vim'
+Plugin 'kien/ctrlp.vim'
+" Plugin 'scrooloose/syntastic'
+" Plugin 'gerw/vim-latex-suite'
+" Plugin 'gerw/vim-tex-syntax'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'altercation/vim-colors-solarized'
 " Plugin 'flazz/vim-colorschemes'
 " Plugin 'xolox/vim-colorscheme-switcher'
 " Plugin 'bling/vim-airline'
@@ -167,18 +166,15 @@ inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
 " buffer management
 nnoremap <space>q :quit<cr>
-nnoremap <space>Q :quit!<cr>
 nnoremap <space>w :write<cr>
-nnoremap <space>e :edit<space>
-nnoremap <space>r :view<space>
+nnoremap <space>e :quit!<cr>
 nnoremap <space>t :tabedit<space>
-nnoremap <space>T :tabnew<cr>
-nnoremap <space>y :vnew<cr>
 
 " plugins
-nnoremap <space>p :CtrlP
+nnoremap <space>p :CtrlP<cr>
 nnoremap <space>g :GundoToggle<cr>
 nnoremap <space>i :PluginInstall<cr>
+nnoremap <space>I :PluginUpdate<cr>
 
 " v mode stuff
 vnoremap <space>s y:%s/<c-r>"<cr>/
@@ -187,14 +183,13 @@ vnoremap <space>n :norm<space>
 " n + v + s mode stuff
 noremap <space>z :Tabularize<space>/
 noremap <space>c :call <sid>tabcomms()<cr>
-noremap <space>k "_
 noremap <space>j "r
 
 " --- misc ---
 
 nnoremap <space>x 4x
 nnoremap <space>b :shell<cr>
-nnoremap <space>d 80i-<esc>
+nnoremap <space>d 78i-<esc>
 
 " remove trailing whitespace
 nnoremap <space>l :%s/\s\+$//e<cr>
@@ -219,18 +214,17 @@ nnoremap ,v :set virtualedit=all<cr>
 nnoremap ,V :set virtualedit=block<cr>
 nnoremap ,g :noremap j gj<cr>:noremap k gk<cr>
 nnoremap ,G :unmap j<cr>:unmap k<cr>
-nnoremap ,m :set mouse=nvi
-nnoremap ,M :set mouse=
+nnoremap ,m :set mouse=nvi<cr>
+nnoremap ,M :set mouse=<cr>
 
 " composite toggles
-nmap ,t ,w,b,d,C,g
-nmap ,T ,w,b,d,c,G
+nmap ,t ,w,b,c,g
+nmap ,T ,w,b,C,G
 
 " ############{ABBREVIATIONS}############
 
 " laziness
 
-iabbrev `w where
 iabbrev `n newtype
 iabbrev `m import
 iabbrev `s instance
