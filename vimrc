@@ -2,7 +2,6 @@
 " | NICK SPINALE'S .vimrc |
 " +-----------------------+
 
-" TODO
 "   find mappings worthy of <del>
 "   clear autocmds before any here? (au!)?
 "   deal with ftplugins messing with my options (namely fo)
@@ -72,7 +71,7 @@ set mouse=                                          " not even once
 set virtualedit=block                               " sometimes convenient
 set backspace=indent,eol,start                      " allow more deletion in insert mode
 set formatoptions=""                                " not familiar with all formatting behavior, so disable it all
-    
+
 set nowrap                                          " say no to line wrapping
 set number                                          " show line numbers
 set showmatch                                       " of block delimiter
@@ -104,8 +103,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " for commenting with tabular
 
 let b:ncomment = '#'
-autocmd FileType haskell let b:ncomment = '--'
 autocmd FileType c,cpp,va,scala let b:ncomment = '//'
+autocmd FileType haskell let b:ncomment = '--'
 autocmd FileType tex let b:ncomment = '%'
 autocmd FileType mail let b:ncomment = '>'
 autocmd FileType vim let b:ncomment = '"'
@@ -154,10 +153,7 @@ nnoremap Y y$
 
 noremap <cr> :
 
-cnoremap <c-s> <c-r>"<cr>
-
 inoremap <c-d> <bs><bs><bs><bs>
-inoremap <c-w> <esc>cb
 inoremap <c-c> <esc>cc
 
 inoremap <bar> <bar><esc>:call <sid>align()<cr>a
@@ -165,9 +161,8 @@ inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 " ====== FAKE LEADER ======
 
 " buffer management
-nnoremap <space>q :quit<cr>
+nnoremap <space>q :quit!<cr>
 nnoremap <space>w :write<cr>
-nnoremap <space>e :quit!<cr>
 nnoremap <space>t :tabedit<space>
 
 " plugins
