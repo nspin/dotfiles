@@ -154,7 +154,7 @@ nnoremap Y y$
 noremap <cr> :
 
 inoremap <c-d> <bs><bs><bs><bs>
-inoremap <c-c> <esc>cc
+inoremap <c-c> <esc>c0
 
 inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
