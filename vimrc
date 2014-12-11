@@ -172,13 +172,15 @@ nnoremap <space>i :PluginInstall<cr>
 nnoremap <space>I :PluginUpdate<cr>
 
 " v mode stuff
-vnoremap <space>s y:%s/<c-r>"<cr>/
+vnoremap <space>r y:%s/<c-r>"<cr>/
 vnoremap <space>n :norm<space>
 
 " n + v + s mode stuff
 noremap <space>z :Tabularize<space>/
 noremap <space>c :call <sid>tabcomms()<cr>
-noremap <space>j "r
+noremap <space>f @q
+noremap <space>d "r
+noremap <space>s "_
 
 " --- misc ---
 
