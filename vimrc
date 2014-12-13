@@ -24,18 +24,18 @@ call vundle#begin()                           " required by vundle
 
 Plugin 'gmarik/Vundle.vim'                    " vundle has to manage vundle
 
-Plugin 'sjl/gundo.vim'
+" Plugin 'sjl/gundo.vim'
 " Plugin 'msanders/snipmate.vim'
 " Plugin 'SirVer/ultisnips'
 Plugin 'godlygeek/tabular'
-Plugin 'tpope/vim-surround'
+" Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
-Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 " Plugin 'scrooloose/syntastic'
 " Plugin 'gerw/vim-latex-suite'
 " Plugin 'gerw/vim-tex-syntax'
-Plugin 'Lokaltog/vim-easymotion'
+" Plugin 'Lokaltog/vim-easymotion'
 Plugin 'altercation/vim-colors-solarized'
 " Plugin 'flazz/vim-colorschemes'
 " Plugin 'xolox/vim-colorscheme-switcher'
@@ -78,11 +78,11 @@ set showmatch                                       " of block delimiter
 set incsearch                                       " sometimes nice
 
 set splitbelow                                      " new splits below
-set splitright                                      " new splits to righ
+set splitright                                      " new splits to right
 set laststatus=2                                    " status line always there
 set showtabline=2                                   " tab line always there
 
-set statusline=""                                   " clear it
+set statusline=                                     " clear it
 set statusline+=%m%r%h%w%q                          " flags
 set statusline+=\ %F\ \ [%v\ %l\ %L]                " file and position
 set statusline+=\ \ %{strftime(\"%m/%d\ %H:%M\")}   " date+time
@@ -145,8 +145,6 @@ noremap Y <nop>
 
 inoremap j <esc>
 inoremap JJ j
-inoremap q <c-n>
-inoremap QQ q
 
 nnoremap S :%s/
 nnoremap Y y$
@@ -161,8 +159,6 @@ inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 " ====== FAKE LEADER ======
 
 " buffer management
-nnoremap <space>q :quit<cr>
-nnoremap <space>Q :quit!<cr>
 nnoremap <space>w :write<cr>
 nnoremap <space>t :tabedit<space>
 
@@ -173,15 +169,15 @@ nnoremap <space>i :PluginInstall<cr>
 nnoremap <space>I :PluginUpdate<cr>
 
 " v mode stuff
-vnoremap <space>r y:%s/<c-r>"<cr>/
 vnoremap <space>n :norm<space>
+vnoremap <space>s y:%s/<c-r>"<cr>/
+vnoremap <space>c :call <sid>tabcomms()<cr>
 
 " n + v + s mode stuff
 noremap <space>z :Tabularize<space>/
-noremap <space>c :call <sid>tabcomms()<cr>
-noremap <space>f @q
-noremap <space>d "r
-noremap <space>s "_
+noremap <space>m @q
+noremap <space>r "r
+noremap <space>h "_
 
 " --- misc ---
 

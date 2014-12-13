@@ -20,9 +20,10 @@ highlight Comment       cterm=NONE  ctermbg=NONE        ctermfg=darkgrey
 highlight NonText       cterm=NONE  ctermbg=NONE        ctermfg=darkgrey
 highlight LineNr        cterm=NONE  ctermbg=NONE        ctermfg=darkgrey
 
+highlight TabLineSel    cterm=NONE  ctermbg=grey        ctermfg=black
+
 highlight StatusLine    cterm=NONE  ctermbg=darkgrey    ctermfg=black
-highlight TabLineSel    cterm=NONE  ctermbg=darkgrey    ctermfg=black
-highlight VertSplit     cterm=NONE  ctermbg=darkgrey    ctermfg=black
 highlight TabLine       cterm=NONE  ctermbg=darkgrey    ctermfg=black
 highlight TabLineFill   cterm=NONE  ctermbg=darkgrey    ctermfg=black
+highlight VertSplit     cterm=NONE  ctermbg=darkgrey    ctermfg=black
 highlight Title         cterm=NONE  ctermbg=darkgrey    ctermfg=black
