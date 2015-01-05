@@ -2,7 +2,8 @@
 " | NICK SPINALE'S .vimrc |
 " +-----------------------+
 
-"   find mappings worthy of <del>
+" TODO
+"   find mapping worthy of <del>
 "   clear autocmds before any here? (au!)?
 "   deal with ftplugins messing with my options (namely fo)
 "   tabular comment function
@@ -15,7 +16,7 @@ set nocompatible
 
 if has('win32')
     set runtimepath+=$HOME/.vim               " not messing with ~/vimfiles
-endif                                         " this too
+endif
 
 set runtimepath+=$HOME/.vim/bundle/Vundle.vim
 
@@ -54,11 +55,15 @@ syntax enable                        " don't override my colors
 
 set background=dark                  " for correct defaults
 
-" comment out one of these (depending on 256 support)
+" don't want to go to the trouble of getting more sophisticated
+" colorschemes to work on non-256 terminal emulators.
 
-colorscheme nicebox
-" let g:solarized_termcolors = 256
-" colorscheme solarized
+if has('win32')
+    colorscheme nicebox
+else
+    let g:solarized_termcolors = 256
+    colorscheme solarized
+endif
 
 " ====== OPTIONS ======
 
@@ -166,7 +171,7 @@ nnoremap <space>t :tabedit<space>
 nnoremap <space>p :CtrlP<cr>
 nnoremap <space>g :GundoToggle<cr>
 nnoremap <space>i :PluginInstall<cr>
-nnoremap <space>I :PluginUpdate<cr>
+nnoremap <space>u :PluginUpdate<cr>
 
 " v mode stuff
 vnoremap <space>n :norm<space>
@@ -231,6 +236,6 @@ iabbrev `- -----
 " mistakes
 
 iabbrev teh the
+iabbrev THe The
 iabbrev NIck Nick
-iabbrev NIcholas Nicholas
 iabbrev SPinale Spinale
