@@ -102,8 +102,8 @@ autocmd FileType * set formatoptions=""             " ftplugins mess up this opt
 " UltiSnips mappings
 
 let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " for commenting with tabular
 
