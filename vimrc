@@ -159,6 +159,7 @@ inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 " ====== FAKE LEADER ======
 
 " buffer management
+nnoremap <space>q :quit<cr>
 nnoremap <space>w :write<cr>
 nnoremap <space>t :tabedit<space>
 
