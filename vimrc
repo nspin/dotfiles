@@ -26,10 +26,9 @@ call vundle#begin()                           " required by vundle
 Plugin 'gmarik/Vundle.vim'                    " vundle has to manage vundle
 
 " Plugin 'sjl/gundo.vim'
-" Plugin 'msanders/snipmate.vim'
-" Plugin 'SirVer/ultisnips'
+Plugin 'SirVer/ultisnips'
 Plugin 'godlygeek/tabular'
-" Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 " Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
@@ -38,11 +37,6 @@ Plugin 'kien/ctrlp.vim'
 " Plugin 'gerw/vim-tex-syntax'
 " Plugin 'Lokaltog/vim-easymotion'
 Plugin 'altercation/vim-colors-solarized'
-" Plugin 'flazz/vim-colorschemes'
-" Plugin 'xolox/vim-colorscheme-switcher'
-" Plugin 'bling/vim-airline'
-" Plugin 'nanotech/jellybeans.vim'
-" Plugin 'twilight'
 
 call vundle#end()                                " required by vundle
 filetype plugin on                               " required by vundle
