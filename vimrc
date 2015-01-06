@@ -25,18 +25,26 @@ call vundle#begin()                           " required by vundle
 
 Plugin 'gmarik/Vundle.vim'                    " vundle has to manage vundle
 
-" Plugin 'sjl/gundo.vim'
-Plugin 'SirVer/ultisnips'
+Plugin 'sjl/gundo.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
-" Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
+Plugin 'altercation/vim-colors-solarized'
+
+" snipmate (not ultisnips, because I often work on machines without +python)
+
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+
+" not in use
+
+" Plugin 'scrooloose/nerdtree'
 " Plugin 'scrooloose/syntastic'
 " Plugin 'gerw/vim-latex-suite'
 " Plugin 'gerw/vim-tex-syntax'
 " Plugin 'Lokaltog/vim-easymotion'
-Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()                                " required by vundle
 filetype plugin on                               " required by vundle
@@ -92,13 +100,6 @@ set wildmenu                                        " nifty autocomplete in comm
 " ====== MISC ======
 
 autocmd FileType * set formatoptions=""             " ftplugins mess up this option often
-
-" UltiSnips mappings
-
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:UltiSnipsEditSplit="vertical"
 
 " for commenting with tabular
 

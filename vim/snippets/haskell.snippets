@@ -1,0 +1,42 @@
+﻿snippet lang
+	{-# LANGUAGE ${0:OverloadedStrings} #-}
+snippet haddock
+	{-# OPTIONS_HADDOCK ${0:hide} #-}
+snippet inline
+	{-# INLINE ${0:name} #-}
+snippet info
+	-- |
+	-- Module      :  ${1:Module.Namespace}
+	-- Copyright   :  ${2:Author} ${3:2011-2012}
+	-- License     :  ${4:BSD3}
+	--
+	-- Maintainer  :  ${5:email@something.com}
+	-- Stability   :  ${6:experimental}
+	-- Portability :  ${7:unknown}
+	--
+	-- ${0:Description}
+	--
+snippet inst
+	instance ${1:Monoid} ${2:Type} where
+	    ${0}
+snippet class
+	class ${1:Class} a where
+	    ${0}
+snippet module
+	module `substitute(substitute(expand('%:r'), '[/\\]','.','g'),'^\%(\l*\.\)\?','','')` (
+	)	where
+	`expand('%') =~ 'Main' ? "\n\nmain = do\n  print \"hello world\"" : ""`
+snippet \
+	\\${1:x} -> ${0:expression}
+snippet (\
+	(\\${1:x} -> ${0:expression})
+snippet tup
+	(${1:a}, ${0:b})
+snippet tup2
+	(${1:a}, ${2:b}, ${0:c})
+snippet tup3
+	(${1:a}, ${2:b}, ${3:c}, ${0:d})
+snippet case
+	case ${1:something} of
+	    ${2} -> ${3}
+	    ${4} -> ${0}
