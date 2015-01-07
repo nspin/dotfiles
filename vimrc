@@ -63,6 +63,7 @@ set background=dark                  " for correct defaults
 if has('win32')
     colorscheme nicebox
 else
+    " set term=screen-256color
     let g:solarized_termcolors = 256
     colorscheme solarized
 endif
@@ -101,8 +102,7 @@ set wildmenu                                        " nifty autocomplete in comm
 
 autocmd FileType * set formatoptions=""             " ftplugins mess up this option often
 
-" for commenting with tabular
-
+" for commenting with tabular 
 let b:ncomment = '#'
 autocmd FileType c,cpp,va,scala let b:ncomment = '//'
 autocmd FileType haskell let b:ncomment = '--'

@@ -7,7 +7,7 @@
 
 dir=~/dotfiles                  # dotfiles dir
 olddir=~/dotfiles_old           # old dotfiles backup dir
-files="vimrc vim screenrc"        # files/dirs to symlink in ~
+files="vimrc vim bashrc screenrc"        # files/dirs to symlink in ~
 
 echo -n "Creating $olddir ..."
 mkdir -p $olddir
