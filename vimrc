@@ -162,6 +162,7 @@ inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 " buffer management
 nnoremap <space>q :quit<cr>
 nnoremap <space>w :write<cr>
+nnoremap <space>e :edit<space>
 nnoremap <space>t :tabedit<space>
 
 " plugins
