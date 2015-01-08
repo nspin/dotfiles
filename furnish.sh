@@ -1,13 +1,12 @@
 #!/bin/bash
 ############################
-# .make.sh
 # makes all necessary symlinks to files/dirs in ~/dotfiles,
 # and moves old ones to ~/dotfiles_old
 ############################
 
 dir=~/dotfiles                  # dotfiles dir
 olddir=~/dotfiles_old           # old dotfiles backup dir
-files="vimrc vim bashrc screenrc gitconfig gitignore_global xinitrc Xresources" # files/dirs to symlink in ~
+files="vimrc vim bashrc screenrc gitconfig gitignore_global xinitrc Xresources"
 
 echo -n "Creating $olddir ..."
 mkdir -p $olddir

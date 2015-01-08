@@ -170,7 +170,9 @@ inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 nnoremap <space>q :quit<cr>
 nnoremap <space>w :write<cr>
 nnoremap <space>e :edit<space>
+nnoremap <space>r :wq<cr>
 nnoremap <space>t :tabedit<space>
+nnoremap <space>y :q!<cr>
 
 " plugins
 nnoremap <space>p :CtrlP<cr>
