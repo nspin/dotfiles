@@ -60,15 +60,19 @@ set background=dark                  " for correct defaults
 " haven't gotten more sophisticated colorschemes
 " to work on anything but xterm and mac terminal 
 
-if has('win32')
-    colorscheme nicebox
-elseif has('unix')
-    let s:uname = system("uname")
-    if s:uname == "Darwin\n"
-        let g:solarized_termcolors = 256
-    endif
-    colorscheme solarized
-endif
+colorscheme nicebox
+" if has('win32')
+"     colorscheme nicebox
+" elseif has('unix')
+"     set t_Co=256
+"     " set t_AB=^[[48;5;%dm
+"     " set t_AF=^[[38;5;%dm
+"     " let s:uname = system("uname")
+"     " if s:uname == "Darwin\n"
+"     let g:solarized_termcolors = 256
+"     " endif
+"     colorscheme solarized
+" endif
 
 " ====== OPTIONS ======
 
