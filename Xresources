@@ -1,4 +1,4 @@
-*faceName: DejaVu Sans Mono:size=14:antialias=false
+*faceName: DejaVu Sans Mono:size=14:antialias=true
 
 ! Common
 #define S_yellow #b58900
