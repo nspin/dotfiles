@@ -31,6 +31,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'kien/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'nanotech/jellybeans.vim'
 
 " snipmate (not ultisnips, because I often work on machines without +python)
 
@@ -69,7 +70,8 @@ elseif has('unix')
         colorscheme solarized
     elseif &term == "linux"
         set t_ve+=[?81;0;112c
-        colorscheme solarized
+        let g:jellybeans_use_lowcolor_black = 0
+        colorscheme jellybeans
     endif
 endif
 
