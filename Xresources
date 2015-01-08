@@ -1,4 +1,4 @@
-xterm*faceName: DejaVu Sans Mono:size=16:antialias=false
+*faceName: DejaVu Sans Mono:size=14:antialias=false
 
 ! Common
 #define S_yellow #b58900
