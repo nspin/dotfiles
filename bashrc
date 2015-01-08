@@ -21,6 +21,23 @@ set_colors()
     local cyan="2aa198"
     local green="859900"
 
+    # echo -en "\e]P4${base02}" #black
+    # echo -en "\e]P4${base03}" #brblack
+    # echo -en "\e]P1${red}" #red
+    # echo -en "\e]P3${orange}" #brred
+    # echo -en "\e]P2${green}" #green
+    # echo -en "\e]P7${base01}" #brgreen
+    # echo -en "\e]P3${yellow}" #yellow
+    # echo -en "\e]P7${base00}" #bryellow
+    # echo -en "\e]P4${blue}" #blue
+    # echo -en "\e]P6${base0}" #brblue
+    # echo -en "\e]P5${magenta}" #magenta
+    # echo -en "\e]P5${violet}" #brmagenta
+    # echo -en "\e]P6${cyan}" #cyan
+    # echo -en "\e]P4${base1}" #brcyan
+    # echo -en "\e]P7${base2}" #white
+    # echo -en "\e]P7${base3}" #brwhite
+
     echo -en "\e]P0${base02}" #black
     echo -en "\e]P8${base03}" #brblack
     echo -en "\e]P1${red}" #red

@@ -57,24 +57,20 @@ syntax enable                        " don't override my colors
 
 set background=dark                  " for correct defaults
 
-" haven't gotten more sophisticated colorschemes
-" to work on anything but xterm and mac terminal 
+" terminal-dependant aesthetic stuff
 
 if has('win32')
     colorscheme nicebox
 elseif has('unix')
-    let s:uname = system("uname")
-    if s:uname == "Darwin\n"
+    if &term == "xterm-256color" || &term == "screen-256color"
         let g:solarized_termcolors = 256
+        colorscheme solarized
+    elseif &term == "xterm"
+        colorscheme solarized
     elseif &term == "linux"
         set t_ve+=[?81;0;112c
-    elseif &term == "xterm"
-        let &t_ti.="\e[1 q"
-        let &t_SI.="\e[5 q"
-        let &t_EI.="\e[1 q"
-        let &t_te.="\e[0 q"
+        colorscheme solarized
     endif
-    colorscheme solarized
 endif
 
 " ====== OPTIONS ======
