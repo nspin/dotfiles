@@ -66,6 +66,13 @@ elseif has('unix')
     let s:uname = system("uname")
     if s:uname == "Darwin\n"
         let g:solarized_termcolors = 256
+    elseif &term == "linux"
+        set t_ve+=[?81;0;112c
+    elseif &term == "xterm"
+        let &t_ti.="\e[1 q"
+        let &t_SI.="\e[5 q"
+        let &t_EI.="\e[1 q"
+        let &t_te.="\e[0 q"
     endif
     colorscheme solarized
 endif
