@@ -1,0 +1,18 @@
+[user]
+name = Nick Spinale
+email = spinalen@carleton.edu
+
+[core]
+editor = vim
+excludesfile = ~/.gitignore_global
+
+[github]
+user = pkumar
+
+[alias]
+a = add .
+c = commit -m
+pl = pull
+ps = push
+r = reset
+s = status
