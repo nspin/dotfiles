@@ -70,8 +70,8 @@ elseif has('unix')
         colorscheme solarized
     elseif &term == "linux"
         set t_ve+=[?81;0;112c
-        let g:jellybeans_use_lowcolor_black = 0
-        colorscheme jellybeans
+        " let g:jellybeans_use_lowcolor_black = 0
+        " colorscheme jellybeans
     endif
 endif
 
