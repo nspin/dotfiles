@@ -10,4 +10,4 @@ fi
 xrdb -merge ~/.Xresources
 
 twm &
-exec xterm -name login
+exec xterm -geometry 80x37+0+0 -name login
