@@ -7,12 +7,14 @@ editor = vim
 excludesfile = ~/.gitignore_global
 
 [github]
-user = pkumar
+user = nickspinale
 
 [alias]
 a = add .
 c = commit -m
+ch = checkout
 pl = pull
 ps = push
 r = reset
 s = status
+sh = stash

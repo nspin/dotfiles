@@ -57,14 +57,16 @@ syntax enable                        " don't override my colors
 
 set background=dark                  " for correct defaults
 
-" don't want to go to the trouble of getting more sophisticated
-" colorschemes to work on non-256 terminal emulators.
+" haven't gotten more sophisticated colorschemes
+" to work on anything but xterm and mac terminal 
 
 if has('win32')
     colorscheme nicebox
-else
-    " set term=screen-256color
-    let g:solarized_termcolors = 256
+elseif has('unix')
+    let s:uname = system("uname")
+    if s:uname == "Darwin\n"
+        let g:solarized_termcolors = 256
+    endif
     colorscheme solarized
 endif
 
