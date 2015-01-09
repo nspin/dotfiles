@@ -9,5 +9,5 @@ fi
 
 xrdb -merge ~/.Xresources
 
-exec twm
-exec xterm
+twm &
+exec xterm -name login
