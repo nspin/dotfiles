@@ -21,6 +21,16 @@ alias c='git commit'
 alias ph='git push'
 alias pl='git pull'
 
+#--------------------
+# PROMPT
+#--------------------
+
+PS1="\u@\h \w <> "
+
+#--------------------
+# MISC
+#--------------------
+
 function clone
     {
     URL="https://github.com/$1/$2.git"
@@ -33,18 +43,7 @@ function enolc
     git clone $URL
     }
 
-#--------------------
-# PROMPT
-#--------------------
-
-PS1="\u@\h \w <> "
-
-#--------------------
-# MISC
-#--------------------
-
-# Handy Extract Program
-# (from Emmanuel Rouat's famous bashrc)
+# From Emmanuel Rouat's famous bashrc
 function extract()
 {
     if [ -f $1 ] ; then

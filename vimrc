@@ -109,7 +109,7 @@ set wildmenu                                        " nifty autocomplete in comm
 
 autocmd FileType * set formatoptions=""             " ftplugins mess up this option often
 
-" for commenting with tabular 
+" for commenting with tabular
 let b:ncomment = '#'
 autocmd FileType c,cpp,va,scala let b:ncomment = '//'
 autocmd FileType haskell let b:ncomment = '--'
@@ -172,7 +172,7 @@ nnoremap <space>w :write<cr>
 nnoremap <space>e :edit<space>
 nnoremap <space>r :wq<cr>
 nnoremap <space>t :tabedit<space>
-nnoremap <space>y :q!<cr>
+nnoremap <space>y :quit!<cr>
 
 " plugins
 nnoremap <space>p :CtrlP<cr>
@@ -188,7 +188,7 @@ vnoremap <space>c :call <sid>tabcomms()<cr>
 " n + v + s mode stuff
 noremap <space>z :Tabularize<space>/
 noremap <space>m @q
-noremap <space>r "r
+noremap <space>' "r
 noremap <space>h "_
 
 " --- misc ---
