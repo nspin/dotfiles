@@ -1,6 +1,6 @@
 ghc
 haskell-platform
-virtualbox guest package
+virtualbox guest package?
 
 PATH=$HOME/.cabal/bin:$PATH
 
