@@ -16,6 +16,7 @@ TODO:
 
 xmonad.hs
 
+feh + .fehbg?
 clipboard? (parcellite)
 c-c/c-v?
 xmobar?

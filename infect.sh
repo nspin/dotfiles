@@ -6,7 +6,7 @@
 
 dir=~/dotfiles                  # dotfiles dir
 olddir=~/dotfiles_old           # old dotfiles backup dir
-files="vimrc vim bashrc screenrc gitconfig gitignore_global xinitrc Xresources"
+files="vimrc vim bash_profile screenrc gitconfig gitignore_global xinitrc Xresources"
 
 echo -n "Creating $olddir ..."
 mkdir -p $olddir

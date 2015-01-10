@@ -1,10 +1,13 @@
 ###############################
 # NICK SPINALE
-# $HOME/.bashrc
+# $HOME/.bash_profile
 ###############################
 
 # Check if interactive
 [ -z "$PS1" ] && reset
+
+# ADD HASKELL BINARIES TO PATH
+export PATH=$HOME/.cabal/bin:$PATH
 
 #--------------------
 # ALIASES
@@ -28,7 +31,7 @@ alias pl='git pull'
 PS1="\u@\h \w <> "
 
 #--------------------
-# MISC
+# FUNCTIONS
 #--------------------
 
 function clone

@@ -9,5 +9,4 @@ fi
 
 xrdb -merge ~/.Xresources
 
-sh ~/.fehbg &
 xmonad
