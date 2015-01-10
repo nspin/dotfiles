@@ -5,13 +5,21 @@
 
 # HACKY WAY TO MAKE COLORS IN SCREEN OK IN X11/OSX
 # TODO - make this not suck
-export TERM="xterm-256color"
+# (note: also try $DISPLAY)
+
+if [ -n "$WINDOWID" ]; then
+    export TERM="xterm-256color"
+fi
+
+if [ "$(uname)" == "Darwin" ]; then
+    export TERM="xterm-256color"
+fi
 
 #--------------------
 # PROMPT
 #--------------------
 
-PS1="\u@\h \w <> "
+PS1="\u@\h \w >> "
 
 #--------------------
 # ALIASES
@@ -28,12 +36,6 @@ alias gs='git status'
 alias gc='git commit'
 alias gp='git push'
 alias gl='git pull'
-
-#--------------------
-# PROMPT
-#--------------------
-
-PS1="\u@\h \w >> "
 
 #--------------------
 # FUNCTIONS

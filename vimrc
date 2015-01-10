@@ -63,7 +63,10 @@ set background=dark                  " for correct defaults
 if has('win32')
     colorscheme nicebox
 elseif has('unix')
-    if &term != "linux"
+    let s:uname = system("uname -s")
+    if s:uname == "Darwin"
+        colorscheme solarized
+    elseif exists('$WINDOWID')
         colorscheme solarized
     endif
 endif
@@ -144,8 +147,8 @@ noremap Y <nop>
 
 " --- Special ---
 
-inoremap g <esc>
-inoremap GG g
+inoremap j <esc>
+inoremap JJ j
 
 nnoremap S :%s/
 nnoremap Y y$
