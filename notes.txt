@@ -1,16 +1,21 @@
 addu
 
+visudo
+
 slackbuilds:
 ghc
 haskell-platform
 
-PATH=$HOME/.cabal/bin:$PATH
-
 cabal update
 
 cabal:
-cabal-install
+cabal-install (+) PATH=$HOME/.cabal/bin:$PATH
 xmonad
 
+TODO:
+
+xmonad.hs
+
+yi?
 virtualbox guest package?
 darcs?
