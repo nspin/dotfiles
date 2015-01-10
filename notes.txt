@@ -6,6 +6,8 @@ haskell-platform
 
 PATH=$HOME/.cabal/bin:$PATH
 
+cabal update
+
 cabal:
 cabal-install
 xmonad

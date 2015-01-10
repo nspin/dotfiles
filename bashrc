@@ -1,9 +1,20 @@
-#- ALIASES
+###############################
+# NICK SPINALE
+# $HOME/.bashrc
+###############################
+
+# Check if interactive
+[ -z "$PS1" ] && reset
+
+#--------------------
+# ALIASES
+#--------------------
 
 alias b='cd ..'
 alias h='cd ~'
+alias r='cd /'
 
-alias t='tar -xzf'
+alias t='tar -xzvf'
 
 alias a='git add -A'
 alias c='git commit'
@@ -22,83 +33,36 @@ function enolc
     git clone $URL
     }
 
-#- PROMPT
+#--------------------
+# PROMPT
+#--------------------
 
 PS1="\u@\h \w <> "
 
-#- CURSOR
+#--------------------
+# MISC
+#--------------------
 
-if [ "$TERM" = "linux" ]; then
-    echo -e "\e[?6c"
-fi
-
-#- COLORS (currently all messed up)
-
-# set_jellybeans_colors_8()
-
-#     {
-
-#     echo -en "\e]P0000000" #black
-#     echo -en "\e]P1cf6a4c" #red
-#     echo -en "\e]P299ad6a" #green
-#     echo -en "\e]P3d8ad4c" #yellow
-#     echo -en "\e]P4597bc5" #blue
-#     echo -en "\e]P5a037b0" #magenta
-#     echo -en "\e]P671b9f8" #cyan
-#     echo -en "\e]P7adadad" #white
-
-#     clear #for background artifacting
-
-#     }
-
-# set_solarized_colors_16()
-
-#     {
-
-#     local base03="002b36"
-#     local base02="073642"
-#     local base01="586e75"
-#     local base00="657b83"
-#     local base0="839496"
-#     local base1="93a1a1"
-#     local base2="eee8d5"
-#     local base3="fdf6e3"
-#     local yellow="b58900"
-#     local orange="cb4b16"
-#     local red="dc322f"
-#     local magenta="d33682"
-#     local violet="6c71c4"
-#     local blue="268bd2"
-#     local cyan="2aa198"
-#     local green="859900"
-
-#     echo -en "\e]P0${base02}" # black
-#     echo -en "\e]P8${base03}" # brblack
-#     echo -en "\e]P1${red}" # red
-#     echo -en "\e]P9${orange}" # brred
-#     echo -en "\e]P2${green}" # green
-#     echo -en "\e]PA${base01}" # brgreen
-#     echo -en "\e]P3${yellow}" # yellow
-#     echo -en "\e]PB${base00}" # bryellow
-#     echo -en "\e]P4${blue}" # blue
-#     echo -en "\e]PC${base0}" # brblue
-#     echo -en "\e]P5${magenta}" # magenta
-#     echo -en "\e]PD${violet}" # brmagenta
-#     echo -en "\e]P6${cyan}" # cyan
-#     echo -en "\e]PE${base1}" # brcyan
-#     echo -en "\e]P7${base2}" # white
-#     echo -en "\e]PF${base3}" # brwhite
-
-#     clear #for background artifacting
-
-#     }
-
-# MESSES WITH COLORS OF A LOT OF STUFF,
-# ALL NICE LOOKING STUFF STAYS IN X11
-# (SEE .Xresouces)
-
-# if [ "$TERM" = "linux" ]; then
-#     set_jellybeans_colors_8
-# elif [ "$TERM" = "xterm" ]; then
-#     set_solarized_colors_16
-# fi
+# Handy Extract Program
+# (from Emmanuel Rouat's famous bashrc)
+function extract()
+{
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xvjf $1     ;;
+            *.tar.gz)    tar xvzf $1     ;;
+            *.bz2)       bunzip2 $1      ;;
+            *.rar)       unrar x $1      ;;
+            *.gz)        gunzip $1       ;;
+            *.tar)       tar xvf $1      ;;
+            *.tbz2)      tar xvjf $1     ;;
+            *.tgz)       tar xvzf $1     ;;
+            *.zip)       unzip $1        ;;
+            *.Z)         uncompress $1   ;;
+            *.7z)        7z x $1         ;;
+            *)           echo "'$1' cannot be extracted via >extract<" ;;
+        esac
+    else
+        echo "'$1' is not a valid file!"
+    fi
+}
