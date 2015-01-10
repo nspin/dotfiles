@@ -9,5 +9,6 @@ fi
 
 xrdb -merge ~/.Xresources
 
+# xmonad
 twm &
 exec xterm -geometry 80x37+0+0 -name login
