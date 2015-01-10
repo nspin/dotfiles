@@ -1,12 +1,13 @@
 #!/bin/bash
 ############################
-# makes all necessary symlinks to files/dirs in ~/dotfiles,
+# Makes all necessary symlinks to files/dirs in ~/dotfiles,
 # and moves old ones to ~/dotfiles_old
 ############################
 
 dir=~/dotfiles                  # dotfiles dir
 olddir=~/dotfiles_old           # old dotfiles backup dir
-files="vimrc vim bash_profile screenrc gitconfig gitignore_global xinitrc Xresources"
+xmodir=~/.xmonad
+files="vimrc vim bashrc bash_profile gitconfig gitignore_global screenrc xinitrc Xresources xmonad/xmonad.hs"
 
 echo -n "Creating $olddir ..."
 mkdir -p $olddir
@@ -14,6 +15,10 @@ echo "done"
 
 echo -n "Changing to $dir ..."
 cd $dir
+echo "done"
+
+echo -n "Creating $xmodir"
+mkdir $xmodir
 echo "done"
 
 for file in $files; do

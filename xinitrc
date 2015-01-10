@@ -9,4 +9,9 @@ fi
 
 xrdb -merge ~/.Xresources
 
+xset r rate 200 50 &
+xsetroot -cursor_name left_ptr &
+
+xterm &
+
 xmonad
