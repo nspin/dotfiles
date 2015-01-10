@@ -21,32 +21,31 @@ alias b='cd ..'
 alias h='cd ~'
 alias r='cd /'
 
-alias t='tar -xzvf'
-alias s='screen -dRR'
+alias sc='screen -dRR'
 
-alias gs='git status'
 alias ga='git add -A'
+alias gs='git status'
 alias gc='git commit'
-alias ph='git push'
-alias pl='git pull'
+alias gph='git push'
+alias gpl='git pull'
 
 #--------------------
 # PROMPT
 #--------------------
 
-PS1="\u@\h \w <> "
+PS1="\u@\h \w >> "
 
 #--------------------
 # FUNCTIONS
 #--------------------
 
-function clone
+function clone()
     {
     URL="https://github.com/$1/$2.git"
     git clone $URL
     }
 
-function enolc
+function enolc()
     {
     URL="https://github.com/nickspinale/$1.git"
     git clone $URL

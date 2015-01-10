@@ -9,7 +9,7 @@ fi
 
 xrdb -merge ~/.Xresources
 
-xset r rate 200 50 &
+xset r rate 300 50 &
 xsetroot -cursor_name left_ptr &
 
 xterm &

@@ -63,9 +63,9 @@ set background=dark                  " for correct defaults
 if has('win32')
     colorscheme nicebox
 elseif has('unix')
-    " if &term == "xterm" || &term == "screen-bce"
-    colorscheme solarized
-    " endif
+    if &term != "linux"
+        colorscheme solarized
+    endif
 endif
 
 " ====== OPTIONS ======
@@ -144,8 +144,8 @@ noremap Y <nop>
 
 " --- Special ---
 
-inoremap j <esc>
-inoremap JJ j
+inoremap g <esc>
+inoremap GG g
 
 nnoremap S :%s/
 nnoremap Y y$
