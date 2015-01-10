@@ -4,8 +4,11 @@ slackbuilds:
 ghc
 haskell-platform
 
-
 PATH=$HOME/.cabal/bin:$PATH
 
+cabal:
+cabal-install
 xmonad
+
+virtualbox guest package?
 darcs?
