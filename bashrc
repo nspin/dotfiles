@@ -26,8 +26,8 @@ alias sc='screen -dRR'
 alias ga='git add -A'
 alias gs='git status'
 alias gc='git commit'
-alias gph='git push'
-alias gpl='git pull'
+alias gp='git push'
+alias gl='git pull'
 
 #--------------------
 # PROMPT
