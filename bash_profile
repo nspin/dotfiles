@@ -7,13 +7,13 @@
 [ -z "$PS1" ] && reset
 
 # FOR SCHOOL COMPUTERS
-IDKWHAT="/usr/local/bin"
-if [ -d $IDKWHAT ] ; then
-    export PATH=$IDKWHAT:$PATH
-fi
+# IDKWHAT="/usr/local/bin"
+# if [ -d $IDKWHAT ] ; then
+#     export PATH=$IDKWHAT:$PATH
+# fi
 
 # ADD HASKELL BINARIES TO PATH
-HSBIN=$HOME/.cabal/bin
+HSBIN="$HOME/.cabal/bin"
 if [ -d $HSBIN ] ; then
     export PATH=$HSBIN:$PATH
 fi

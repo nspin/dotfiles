@@ -3,6 +3,8 @@
 # $HOME/.bashrc
 ###############################
 
+# HACKY WAY TO MAKE COLORS IN SCREEN OK IN X11/OSX
+# TODO - make this not suck
 export TERM="xterm-256color"
 
 #--------------------
