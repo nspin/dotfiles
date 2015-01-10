@@ -8,7 +8,7 @@ dir=~/dotfiles                  # dotfiles dir
 olddir=~/dotfiles_old           # old dotfiles backup dir
 xmodir=~/.xmonad
 min="vimrc vim bashrc bash_profile gitconfig gitignore_global screenrc"
-rest="tmux xinitrc Xresources xmonad/xmonad.hs"
+rest="tmux.conf xinitrc Xresources xmonad/xmonad.hs"
 
 files=$basics
 
