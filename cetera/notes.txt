@@ -8,14 +8,13 @@ haskell-platform
 
 cabal update
 
-cabal:
-cabal-install (+) PATH=$HOME/.cabal/bin:$PATH
+cabal install:
+cabal-install
 xmonad
 
 TODO:
 
-xmonad.hs
-
+xmonad-conf, spiral, myLayout?
 feh + .fehbg?
 clipboard? (parcellite)
 xmobar?
