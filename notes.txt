@@ -16,7 +16,11 @@ TODO:
 
 xmonad.hs
 
+clipboard?
 c-c/c-v?
+xmobar?
+pointer?
+xfc xdefaults stuff?
 yi?
 virtualbox guest package?
 darcs?
