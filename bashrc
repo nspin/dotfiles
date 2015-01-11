@@ -19,7 +19,9 @@ alias r='cd /'
 
 alias t='tar -xzvf'
 
-alias a='git add -A'
+alias gs='git status'
+alias ga='git add -A'
+alias gc='git commit'
 alias ph='git push'
 alias pl='git pull'
 
@@ -32,11 +34,6 @@ PS1="\u@\h \w <> "
 #--------------------
 # FUNCTIONS
 #--------------------
-
-function cm
-    {
-    git commit -m$1
-    }
 
 function clone
     {
