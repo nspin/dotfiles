@@ -16,7 +16,7 @@ TODO:
 
 xmonad.hs
 
-clipboard?
+clipboard? (parcellite)
 c-c/c-v?
 xmobar?
 pointer?
