@@ -16,6 +16,7 @@ TODO:
 
 xmonad.hs
 
+c-c/c-v?
 yi?
 virtualbox guest package?
 darcs?
