@@ -3,6 +3,8 @@
 # $HOME/.bashrc
 ###############################
 
+export TERM="xterm-256color"
+
 #--------------------
 # PROMPT
 #--------------------
@@ -18,6 +20,7 @@ alias h='cd ~'
 alias r='cd /'
 
 alias t='tar -xzvf'
+alias s='screen -dRR'
 
 alias gs='git status'
 alias ga='git add -A'

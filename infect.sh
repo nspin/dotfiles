@@ -7,7 +7,18 @@
 dir=~/dotfiles                  # dotfiles dir
 olddir=~/dotfiles_old           # old dotfiles backup dir
 xmodir=~/.xmonad
-files="vimrc vim bashrc bash_profile gitconfig gitignore_global screenrc xinitrc Xresources xmonad/xmonad.hs"
+basics="vimrc vim bashrc bash_profile gitconfig gitignore_global screenrc"
+xstuff="xinitrc Xresources xmonad/xmonad.hs"
+
+files=$basics
+
+read -p "All (y/n)? " all
+
+if [ $all == "y" ] ; then
+    files=$files$xstuff
+fi
+
+echo $files
 
 echo -n "Creating $olddir ..."
 mkdir -p $olddir

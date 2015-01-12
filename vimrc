@@ -42,7 +42,6 @@ Bundle "garbas/vim-snipmate"
 " not in use
 
 " Plugin 'scrooloose/nerdtree'
-" Plugin 'scrooloose/syntastic'
 " Plugin 'gerw/vim-latex-suite'
 " Plugin 'gerw/vim-tex-syntax'
 " Plugin 'Lokaltog/vim-easymotion'
@@ -64,13 +63,15 @@ set background=dark                  " for correct defaults
 if has('win32')
     colorscheme nicebox
 elseif has('unix')
+    colorscheme solarized
+    " if &term == "xterm"
+    "     colorscheme solarized
     " detect if on mac
-    let s:uname = system("uname -s")
-    if s:uname == "Darwin"
-        let g:solarized_termcolors = 256
-        colorscheme solarized
-    elseif &term == "xterm"
-        colorscheme solarized
+    " let s:uname = system("uname -s")
+    " if s:uname == "Darwin"
+    " elseif &term == "xterm-256color" || &term == "screen-256color"
+    "     let g:solarized_termcolors = 256
+    "     colorscheme solarized
     " elseif &term == "xterm-256color" || &term == "screen-256color"
     "     let g:solarized_termcolors = 256
     "     colorscheme solarized
@@ -78,7 +79,7 @@ elseif has('unix')
     "     set t_ve+=[?81;0;112c
     "     let g:jellybeans_use_lowcolor_black = 0
     "     colorscheme jellybeans
-    endif
+    " endif
 endif
 
 " ====== OPTIONS ======
