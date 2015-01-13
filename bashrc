@@ -25,7 +25,7 @@ PS1="\u@\h \w >> "
 # ALIASES
 #--------------------
 
-alias b='cd ..'
+alias p='cd ..'
 alias h='cd ~'
 alias r='cd /'
 
