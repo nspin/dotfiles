@@ -6,16 +6,19 @@
 
 dir=~/dotfiles                  # dotfiles dir
 olddir=~/dotfiles_old           # old dotfiles backup dir
-xmodir=~/.xmonad
 min="vimrc vim bashrc bash_profile gitconfig gitignore_global screenrc"
 rest="tmux.conf xinitrc Xresources xmonad/xmonad.hs"
 
-files=$basics
+files=$min
 
 read -p "All (y/n)? " all
 
 if [ $all == "y" ] ; then
-    files=$files$xstuff
+    files=$files$rest
+    xmodir=~/.xmonad
+    echo -n "Creating $xmodir"
+    mkdir $xmodir
+    echo "done"
 fi
 
 echo $files
@@ -26,10 +29,6 @@ echo "done"
 
 echo -n "Changing to $dir ..."
 cd $dir
-echo "done"
-
-echo -n "Creating $xmodir"
-mkdir $xmodir
 echo "done"
 
 for file in $files; do

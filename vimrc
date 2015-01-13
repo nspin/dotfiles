@@ -63,12 +63,13 @@ set background=dark                  " for correct defaults
 if has('win32')
     colorscheme nicebox
 elseif has('unix')
-    let s:uname = system("uname -s")
-    if s:uname == "Darwin"
-        colorscheme solarized
-    elseif exists('$WINDOWID')
-        colorscheme solarized
-    endif
+    colorscheme solarized
+    " let s:uname = system("uname -s")
+    " if s:uname == "Darwin"
+        " colorscheme solarized
+    " elseif exists('$WINDOWID')
+        " colorscheme solarized
+    " endif
 endif
 
 " ====== OPTIONS ======
