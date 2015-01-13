@@ -2,11 +2,12 @@
 ############################
 # Makes all necessary symlinks to files/dirs in ~/dotfiles,
 # and moves old ones to ~/dotfiles_old
+# (note space at end of min)
 ############################
 
 dir=~/dotfiles                  # dotfiles dir
 olddir=~/dotfiles_old           # old dotfiles backup dir
-min="vimrc vim bashrc bash_profile gitconfig gitignore_global screenrc"
+min="vimrc vim bashrc bash_profile gitconfig gitignore_global screenrc "
 rest="tmux.conf xinitrc Xresources xmonad/xmonad.hs"
 
 files=$min

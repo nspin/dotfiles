@@ -63,13 +63,12 @@ set background=dark                  " for correct defaults
 if has('win32')
     colorscheme nicebox
 elseif has('unix')
-    colorscheme solarized
-    " let s:uname = system("uname -s")
-    " if s:uname == "Darwin"
-        " colorscheme solarized
-    " elseif exists('$WINDOWID')
-        " colorscheme solarized
-    " endif
+    let s:uname = system("uname -s")
+    if s:uname == "Darwin\n"
+        colorscheme solarized
+    elseif exists('$WINDOWID')
+        colorscheme solarized
+    endif
 endif
 
 " ====== OPTIONS ======
@@ -156,8 +155,9 @@ nnoremap Y y$
 
 noremap <cr> :
 
+inoremap <c-i> <esc>:wq<cr>
 inoremap <c-d> <bs><bs><bs><bs>
-inoremap <c-c> <esc>c0
+inoremap <c-c> <esc>cc
 
 inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
