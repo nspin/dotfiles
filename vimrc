@@ -155,7 +155,7 @@ nnoremap Y y$
 
 noremap <cr> :
 
-inoremap <c-i> <esc>:wq<cr>
+inoremap <c-x> <esc>:wq<cr>
 inoremap <c-d> <bs><bs><bs><bs>
 inoremap <c-c> <esc>cc
 
