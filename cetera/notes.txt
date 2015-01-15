@@ -27,12 +27,10 @@ darcs?
 
 guest additions:
 
-virtualbox-kernel-addon
 make /etc/X11/xorg.conf (like -vesta, coment all modes)
-restart
+virtualbox-kernel-addon (pkg install)
 mount+install
 virtualbox-addon
-restart
 
 # mount /dev/sr0 /mnt/dvd
 # cd /mnt/dvd
