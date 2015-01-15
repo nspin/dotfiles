@@ -27,6 +27,7 @@ darcs?
 
 guest additions:
 
+dkms
 make /etc/X11/xorg.conf (like -vesta, coment all modes)
 virtualbox-kernel-addon (pkg install)
 mount+install
