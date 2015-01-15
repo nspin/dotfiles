@@ -2,5 +2,6 @@ import XMonad
 
 main = xmonad $ defaultConfig
     { normalBorderColor  = "#031518"
-    , focusedBorderColor = "#b58900"
+    , focusedBorderColor = "#031518" --"#b58900"
+    , focusFollowsMouse  = False
     }
