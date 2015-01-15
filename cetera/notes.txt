@@ -25,14 +25,30 @@ virtualbox guest package?
 darcs?
 
 
-guest additions:
+resolution:
 
-dkms
-make /etc/X11/xorg.conf (like -vesta, coment all modes)
-virtualbox-kernel-addon (pkg install)
-mount+install
-virtualbox-addon
+insert guest addition iso
 
-# mount /dev/sr0 /mnt/dvd
-# cd /mnt/dvd
-# sh ./VBoxLinuxAdditions.run
+mount /dev/sr0 /mnt/dvd
+cd /mnt/dvd
+sh ./VBoxLinuxAdditions.run
+
+cp /etc/X11/xorg.conf-vesta /etc/X11/xorg.conf
+vim xorg.conf:
+
+Section "Device"
+   Identifier   _
+   Driver    "vboxvideo"
+EndSection
+
+Section "Screen"
+   Identifier    _
+   Device    "VirtualBox graphics card"
+   Monitor    _
+   DefaultDepth    24
+   SubSection "Display"
+     Depth    24
+     Modes      "(whatever monitor can handle)"
+   EndSubSection
+EndSection
+
