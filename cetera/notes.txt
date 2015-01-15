@@ -23,3 +23,17 @@ xfc xdefaults stuff?
 yi?
 virtualbox guest package?
 darcs?
+
+
+guest additions:
+
+virtualbox-kernel-addon
+restart
+virtualbox-addon
+restart
+make /etc/X11/xorg.conf (like -vesta, coment all modes)
+restart
+
+# mount /dev/sr0 /mnt/dvd
+# cd /mnt/dvd
+# sh ./VBoxLinuxAdditions.run
