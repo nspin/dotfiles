@@ -21,8 +21,6 @@ xmobar?
 pointer?
 xfc xdefaults stuff?
 yi?
-virtualbox guest package?
-darcs?
 
 
 resolution:
