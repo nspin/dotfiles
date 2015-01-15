@@ -4,7 +4,7 @@ email = spinalen@carleton.edu
 
 [core]
 editor = vim
-excludesfile = ~/.gitignore_global
+excludesfile = ~/dotfiles/cetera/gitignore_global
 
 [github]
 user = nickspinale

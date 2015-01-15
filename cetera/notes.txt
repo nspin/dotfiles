@@ -3,14 +3,15 @@ addu
 visudo
 
 slackbuilds:
-ghc
 haskell-platform
+feh
 
 cabal update
 
 cabal install:
 cabal-install
 xmonad
+yi
 
 TODO:
 
@@ -20,8 +21,6 @@ clipboard? (parcellite)
 xmobar?
 pointer?
 xfc xdefaults stuff?
-yi?
-
 
 resolution:
 
