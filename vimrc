@@ -147,8 +147,8 @@ noremap Y <nop>
 
 " --- Special ---
 
-inoremap j <esc>
-inoremap JJ j
+inoremap q <esc>
+inoremap QQ q
 
 nnoremap S :%s/
 nnoremap Y y$
