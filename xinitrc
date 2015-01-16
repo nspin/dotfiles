@@ -9,13 +9,8 @@ fi
 
 xrdb -merge ~/.Xresources
 
+# keyboard stuff
 xset r rate 300 50 &
-# xsetroot -cursor_name left_ptr &
-
-# background
-# if hash feh 2>/dev/null; then
-    # feh --bg-scale $HOME/dotfiles/cetera/glacier.jpg &
-# fi
 
 xterm &
 
