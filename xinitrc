@@ -10,7 +10,7 @@ fi
 xrdb -merge ~/.Xresources
 
 xset r rate 300 50 &
-xsetroot -cursor_name left_ptr &
+# xsetroot -cursor_name left_ptr &
 
 # background
 # if hash feh 2>/dev/null; then
