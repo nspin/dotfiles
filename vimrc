@@ -31,7 +31,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'kien/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'nanotech/jellybeans.vim'
 
 " snipmate (not ultisnips, because I often work on machines without +python)
 
