@@ -31,7 +31,7 @@ alias r='cd /'
 
 alias sc='screen -dRR'
 
-alias ga='git add -A'
+alias ga='git add -A :/'
 alias gs='git status'
 alias gc='git commit'
 alias gp='git push'
