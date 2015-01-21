@@ -29,6 +29,7 @@ Plugin 'sjl/gundo.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-repeat'
 Plugin 'kien/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
 
@@ -141,7 +142,6 @@ endfunction
 noremap <space> <nop>
 noremap <cr> <nop>
 noremap , <nop>
-noremap S <nop>
 noremap Y <nop>
 
 " --- Special ---
@@ -149,7 +149,6 @@ noremap Y <nop>
 inoremap j <esc>
 inoremap JJ j
 
-nnoremap S :%s/
 nnoremap Y y$
 
 noremap <cr> :
@@ -178,7 +177,6 @@ nnoremap <space>u :PluginUpdate<cr>
 
 " v mode stuff
 vnoremap <space>n :norm<space>
-vnoremap <space>s y:%s/<c-r>"<cr>/
 vnoremap <space>c :call <sid>tabcomms()<cr>
 
 " n + v + s mode stuff
@@ -189,6 +187,7 @@ noremap <space>h "_
 
 " --- misc ---
 
+nnoremap <space>s :%s/
 nnoremap <space>x 4x
 nnoremap <space>b :shell<cr>
 nnoremap <space>d 78i-<esc>
