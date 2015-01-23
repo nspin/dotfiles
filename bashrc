@@ -40,6 +40,8 @@ alias gm='git submodule update --init'
 
 alias xres='sudo vim /etc/X11/xorg.conf'
 
+alias fucking='sudo'
+
 #--------------------
 # FUNCTIONS
 #--------------------
