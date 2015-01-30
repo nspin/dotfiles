@@ -1,6 +1,6 @@
-addu
-
+adduser
 visudo
+dhcpcd eth0
 
 slackbuilds:
 haskell-platform
@@ -17,7 +17,7 @@ xmonad-conf, spiral, myLayout? xmobar?
 clipboard? (parcellite)
 xfc xdefaults stuff?
 
-resolution:
+slackware resolution on vm (semi-) fix:
 
 insert guest addition iso
 
