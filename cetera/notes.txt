@@ -2,6 +2,8 @@ adduser
 visudo
 dhcpcd eth0
 
+lilo.conf += append="resume=/dev/sdaX"; lilo (for pm-hibernate)
+
 slackbuilds:
 haskell-platform
 
