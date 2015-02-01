@@ -68,6 +68,8 @@ elseif has('unix')
         colorscheme solarized
     elseif exists('$WINDOWID')
         colorscheme solarized
+    elseif $SSH_CONNECTION
+        colorscheme solarized
     endif
 endif
 
