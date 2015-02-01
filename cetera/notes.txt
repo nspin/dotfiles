@@ -1,8 +1,22 @@
 adduser
 visudo
+
+---
+
+su:
+
 dhcpcd eth0
 
+ifconfig wlan0 up
+iwlist wlan0 scan (find nw)
+iwconfig wlan0 {option value}
+dhclient wlan0
+
+---
+
 lilo.conf += append="resume=/dev/sdaX"; lilo (for pm-hibernate)
+
+---
 
 slackbuilds:
 haskell-platform
@@ -13,6 +27,7 @@ cabal install:
 cabal-install
 xmonad
 
+---
 TODO:
 
 xmonad-conf, spiral, myLayout? xmobar?
