@@ -7,7 +7,7 @@
 [ -z "$PS1" ] && reset
 
 # FOR SUDO
-RSTUFF="/usr/sbin"
+RSTUFF="/sbin"
 if [ -d $RSTUFF ] ; then
     export PATH=$PATH:$RSTUFF
 fi
