@@ -6,11 +6,11 @@
 # Check if interactive
 [ -z "$PS1" ] && reset
 
-# FOR SCHOOL COMPUTERS
-# IDKWHAT="/usr/local/bin"
-# if [ -d $IDKWHAT ] ; then
-#     export PATH=$IDKWHAT:$PATH
-# fi
+# FOR SUDO
+RSTUFF="/usr/sbin"
+if [ -d $RSTUFF ] ; then
+    export PATH=$PATH:$RSTUFF
+fi
 
 # ADD HASKELL BINARIES TO PATH
 HSBIN="$HOME/.cabal/bin"
