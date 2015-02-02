@@ -6,11 +6,8 @@
 # Check if interactive
 [ -z "$PS1" ] && reset
 
-# FOR SUDO
-RSTUFF="/sbin"
-if [ -d $RSTUFF ] ; then
-    export PATH=$PATH:$RSTUFF
-fi
+SUSTUFF="/sbin:/usr/sbin"
+export PATH=$PATH:$SUSTUFF
 
 # ADD HASKELL BINARIES TO PATH
 HSBIN="$HOME/.cabal/bin"
