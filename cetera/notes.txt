@@ -19,6 +19,8 @@ iwlist wlan0 scan (find nw)
 iwconfig wlan0 {option value}
 dhclient wlan0
 
+(or wicd-curses from /extra/)
+
 ---
 
 lilo.conf += append="resume=/dev/sdaX"; lilo (for pm-hibernate)
