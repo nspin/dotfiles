@@ -16,6 +16,13 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 #--------------------
+# COMMAND HISTORY
+#--------------------
+
+HISTSIZE=100000
+HISTFILESIZE=100000
+
+#--------------------
 # PROMPT
 #--------------------
 
