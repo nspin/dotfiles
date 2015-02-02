@@ -32,11 +32,19 @@ PS1="\u@\h \w >> "
 # ALIASES
 #--------------------
 
+alias f='cd'
 alias p='cd ..'
 alias h='cd ~'
 alias r='cd /'
 
+alias s='sudo'
+
 alias sc='screen -dRR'
+
+alias tm='tmux'
+alias tl='tmux ls'
+alias ta='tmux attach'
+alias tt='tmux attach -t'
 
 alias ga='git add -A :/'
 alias gs='git status'
@@ -44,10 +52,6 @@ alias gc='git commit'
 alias gp='git push'
 alias gl='git pull'
 alias gm='git submodule update --init'
-
-alias xres='sudo vim /etc/X11/xorg.conf'
-
-alias fucking='sudo'
 
 #--------------------
 # FUNCTIONS
