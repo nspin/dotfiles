@@ -1,3 +1,10 @@
+unetbootin slackware iso:
+from partition
+/dev/sdb1
+slackware (NO LEADING SLASH)
+
+---
+
 adduser
 visudo
 
