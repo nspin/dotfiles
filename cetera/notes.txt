@@ -39,6 +39,7 @@ xmonad
 ---
 TODO:
 
+keymap (x and system, loadkeys emacs?)
 xmonad-conf, spiral, myLayout? xmobar?
 clipboard? (parcellite)
 xfc xdefaults stuff?
