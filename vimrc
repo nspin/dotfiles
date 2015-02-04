@@ -58,6 +58,7 @@ syntax enable                        " don't override my colors
 set background=dark                  " for correct defaults
 
 " terminal-dependant aesthetic stuff
+" setting t_Co is necessary in tmux over ssh, and I have no idea why.
 " (still ironing this out)
 
 if has('win32')
@@ -69,6 +70,7 @@ elseif has('unix')
     elseif exists('$WINDOWID')
         colorscheme solarized
     elseif $SSH_CONNECTION
+        set t_Co=16
         colorscheme solarized
     endif
 endif
