@@ -46,6 +46,11 @@ alias tl='tmux ls'
 alias ta='tmux attach'
 alias tt='tmux attach -t'
 
+# For vim colors inside of putty
+alias ptm='TERM=screen-256color-bce tmux -u'
+alias pta='TERM=screen-256color-bce tmux attach -u'
+alias ptt='TERM=screen-256color-bce tmux attach -u -t'
+
 alias ga='git add -A :/'
 alias gs='git status'
 alias gc='git commit'

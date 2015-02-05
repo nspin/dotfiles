@@ -195,6 +195,8 @@ nnoremap <space>s :%s/
 nnoremap <space>x 4x
 nnoremap <space>b :shell<cr>
 nnoremap <space>d 78i-<esc>
+" for clearing hlsearch. there's gotta be a better way...
+nnoremap <space>/ /thisisnotarealsearch<cr>
 
 " remove trailing whitespace
 nnoremap <space>l :%s/\s\+$//e<cr>
