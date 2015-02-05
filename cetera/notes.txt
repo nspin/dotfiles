@@ -35,6 +35,7 @@ cabal update
 cabal install:
 cabal-install
 xmonad
+xmonad-contrib
 
 ---
 TODO:
