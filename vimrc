@@ -104,6 +104,7 @@ set statusline+=\ \ %{strftime(\"%m/%d\ %H:%M\")}   " date+time
 
 set spelllang=en_us
 set wildmenu                                        " nifty autocomplete in command mode
+set nobackup
 
 " ====== MISC ======
 
