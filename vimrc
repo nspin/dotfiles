@@ -84,6 +84,7 @@ set expandtab                                       " may add autocmd to adapt t
 set autoindent
 
 set mouse=                                          " not even once
+set noesckeys
 set virtualedit=block                               " sometimes convenient
 set backspace=indent,eol,start                      " allow more deletion in insert mode
 set formatoptions=""                                " not familiar with all formatting behavior, so disable it all
