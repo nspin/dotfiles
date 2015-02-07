@@ -26,18 +26,19 @@ call vundle#begin()                           " required by vundle
 Plugin 'gmarik/Vundle.vim'                    " vundle has to manage vundle
 
 Plugin 'sjl/gundo.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-repeat'
 Plugin 'kien/ctrlp.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 Plugin 'altercation/vim-colors-solarized'
 
 " snipmate (not ultisnips, because I often work on machines without +python)
+" and its dependencies
 
+Bundle "garbas/vim-snipmate"
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
 
 " not in use
 
@@ -174,8 +175,10 @@ nnoremap <space>r :wq<cr>
 nnoremap <space>t :tabedit<space>
 nnoremap <space>y :quit!<cr>
 
+nnoremap <space>2 gT
+nnoremap <space>3 gt
+
 " plugins
-nnoremap <space>p :CtrlP<cr>
 nnoremap <space>g :GundoToggle<cr>
 nnoremap <space>i :PluginInstall<cr>
 nnoremap <space>u :PluginUpdate<cr>
@@ -186,24 +189,24 @@ vnoremap <space>c :call <sid>tabcomms()<cr>
 
 " n + v + s mode stuff
 noremap <space>z :Tabularize<space>/
-noremap <space>m @q
 noremap <space>' "r
 noremap <space>h "_
+noremap <space>d qq
+noremap <space>f @q
 
 " --- misc ---
 
 nnoremap <space>s :%s/
 nnoremap <space>x 4x
+nnoremap <space>- 78i-<esc>
 nnoremap <space>b :shell<cr>
-nnoremap <space>d 78i-<esc>
+nnoremap <space>v :tabedit $MYVIMRC<cr>
+
 " for clearing hlsearch. there's gotta be a better way...
 nnoremap <space>/ /thisisnotarealsearch<cr>
 
 " remove trailing whitespace
 nnoremap <space>l :%s/\s\+$//e<cr>
-
-" highlight last insert
-nnoremap <space>v `[v`]
 
 " ====== TOGGLES ======
 
