@@ -27,6 +27,7 @@ Plugin 'gmarik/Vundle.vim'                    " vundle has to manage vundle
 
 Plugin 'sjl/gundo.vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
@@ -42,7 +43,6 @@ Bundle "tomtom/tlib_vim"
 
 " not in use
 
-" Plugin 'scrooloose/nerdtree'
 " Plugin 'gerw/vim-latex-suite'
 " Plugin 'gerw/vim-tex-syntax'
 " Plugin 'Lokaltog/vim-easymotion'
@@ -180,6 +180,7 @@ nnoremap <space>2 gT
 nnoremap <space>3 gt
 
 " plugins
+nnoremap <space>d :NERDTreeToggle<cr>
 nnoremap <space>g :GundoToggle<cr>
 nnoremap <space>i :PluginInstall<cr>
 nnoremap <space>u :PluginUpdate<cr>
