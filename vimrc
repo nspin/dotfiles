@@ -193,7 +193,6 @@ vnoremap <space>c :call <sid>tabcomms()<cr>
 noremap <space>z :Tabularize<space>/
 noremap <space>' "r
 noremap <space>h "_
-noremap <space>d qq
 noremap <space>f @q
 
 " --- misc ---
