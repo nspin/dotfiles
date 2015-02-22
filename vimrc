@@ -201,7 +201,7 @@ noremap <space>f @q
 
 nnoremap <space>s :%s/
 nnoremap <space>x 4x
-nnoremap <space>- 78i-<esc>
+nnoremap <space>- 40i-<esc>
 nnoremap <space>b :shell<cr>
 nnoremap <space>v :tabedit $MYVIMRC<cr>
 
