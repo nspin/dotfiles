@@ -193,6 +193,7 @@ vnoremap <space>c :call <sid>tabcomms()<cr>
 
 " n + v + s mode stuff
 noremap <space>z :Tabularize<space>/
+noremap <space>: :Tabularize<space>::<cr>
 noremap <space>' "r
 noremap <space>h "_
 noremap <space>f @q
