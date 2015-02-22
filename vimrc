@@ -112,6 +112,8 @@ set nobackup
 
 autocmd FileType * set formatoptions=""             " ftplugins mess up this option often
 
+let g:NERDTreeDirArrows=0                           " incase vim wasnt compiled with unicode support
+
 " for commenting with tabular
 let b:ncomment = '#'
 autocmd FileType c,cpp,va,scala let b:ncomment = '//'
