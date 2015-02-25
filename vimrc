@@ -93,6 +93,7 @@ set nowrap                                          " say no to line wrapping
 set number                                          " show line numbers
 set showmatch                                       " of block delimiter
 set incsearch                                       " sometimes nice
+set nohlsearch
 
 set splitbelow                                      " new splits below
 set splitright                                      " new splits to right
@@ -205,9 +206,6 @@ nnoremap <space>x 4x
 nnoremap <space>- 40i-<esc>
 nnoremap <space>b :shell<cr>
 nnoremap <space>v :tabedit $MYVIMRC<cr>
-
-" for clearing hlsearch. there's gotta be a better way...
-nnoremap <space>/ /thisisnotarealsearch<cr>
 
 " remove trailing whitespace
 nnoremap <space>l :%s/\s\+$//e<cr>
