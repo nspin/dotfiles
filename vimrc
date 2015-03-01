@@ -3,7 +3,8 @@
 " +-----------------------+
 
 " TODO
-"   find mapping worthy of <del>
+"   tabs vs buffers?
+"   find mapping worthy of <backspace>
 "   clear autocmds before any here? (au!)?
 "   deal with ftplugins messing with my options (namely fo)
 "   tabular comment function
@@ -179,8 +180,8 @@ nnoremap <space>r :wq<cr>
 nnoremap <space>t :tabedit<space>
 nnoremap <space>y :quit!<cr>
 
-nnoremap <space>2 gT
-nnoremap <space>3 gt
+nnoremap <space>` gT
+nnoremap <space><backspace> gt
 
 " plugins
 nnoremap <space>d :NERDTreeToggle<cr>
