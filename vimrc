@@ -170,6 +170,13 @@ inoremap <c-c> <esc>cc
 
 inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
+nnoremap = gT
+nnoremap <backspace> gt
+
+let g:lasttab = 1
+nnoremap <tab> :exe "tabn ".g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
+
 " ====== FAKE LEADER ======
 
 " buffer management
@@ -179,9 +186,6 @@ nnoremap <space>e :edit<space>
 nnoremap <space>r :wq<cr>
 nnoremap <space>t :tabedit<space>
 nnoremap <space>y :quit!<cr>
-
-nnoremap <space>` gT
-nnoremap <space><backspace> gt
 
 " plugins
 nnoremap <space>d :NERDTreeToggle<cr>
