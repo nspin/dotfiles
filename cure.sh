@@ -17,20 +17,19 @@ else
     DIRS=""
 fi
 
-echo -n "# CREATING $OLD ... "
-mkdir -p $OLD
-echo "DONE"
-
 for DIR in $DIRS ; do
-    echo -n "# ADDING FILES IN $DIR ... "
+    echo -n "# REMOVING FILES IN $DIR ... "
     cd ./$DIR
     for FILE in ./* ./.??* ; do
-	echo "$FILE"
-        mv ~/$FILE $OLD
-        ln -s $FILE ~
+	echo -n "$FILE"
+        rm ~/$FILE
     done
     cd ..
     echo "DONE"
 done
+
+echo -n "# RESTORING FILES FROM $OLD ... "
+cp $OLD/* $OLD/.??* ~
+echo "DONE"
 
 echo -n "# COMPLETE"
