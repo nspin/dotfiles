@@ -20,7 +20,8 @@ fi
 for DIR in $DIRS ; do
     echo -n "# REMOVING FILES IN $DIR ... "
     cd ./$DIR
-    for FILE in ./* ./.??* ; do
+    pwd
+    for FILE in ./.??* ; do
 	echo -n "$FILE"
         rm ~/$FILE
     done

@@ -7,6 +7,7 @@
 OLD=~/dotfiles_old           # old dotfiles backup dir
 
 read -p "# INPUT 'c' FOR CORE OR 'a' FOR All: " CHOICE
+ echo "$CHOICE"
 
 if [ $CHOICE == c ] ; then
     DIRS="core"
@@ -16,22 +17,19 @@ else
     DIRS=""
 fi
 
-echo -n "# CREATING $OLD ... "
-mkdir -p $OLD
-echo "DONE"
-
 for DIR in $DIRS ; do
-    echo -n "# ADDING FILES IN "
-    cd $DIR
-    pwd
-    for FILE in * ; do
-	echo "    $FILE"
-        mv ~/.$FILE $OLD
-        ln -s -T $FILE ~/.$FILE
+    echo -n "# REMOVING FILES IN $DIR ... "
+    cd ./$DIR
+    for FILE in ./* ./.??* ; do
+	echo -n "$FILE"
+        rm ~/$FILE
     done
     cd ..
-    echo "  ... DONE"
+    echo "DONE"
 done
 
+echo -n "# RESTORING FILES FROM $OLD ... "
+cp $OLD/* $OLD/.??* ~
+echo "DONE"
+
 echo -n "# COMPLETE"
-echo -n ""

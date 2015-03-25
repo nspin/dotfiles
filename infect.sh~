@@ -27,7 +27,7 @@ for DIR in $DIRS ; do
     for FILE in * ; do
 	echo "    $FILE"
         mv ~/.$FILE $OLD
-        ln -s -T $FILE ~/.$FILE
+        ln -s -T ./$FILE ~/.$FILE
     done
     cd ..
     echo "  ... DONE"
