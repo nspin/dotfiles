@@ -1,3 +1,0 @@
-[submodule "vundle"]
-	path = vim/bundle/Vundle.vim
-	url = http://github.com/gmarik/Vundle.vim
