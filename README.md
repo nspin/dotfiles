@@ -12,9 +12,9 @@ Various configuration files
 #### Usage ####
 
 setup.sh acts on files from a specified dotfile directory (currently core and extras) to either:  
-    * Create symlinks to them as follows: ~/.*file*  
-    * Remove these symlinks  
-    * Backup the files that making symlinks would overwrite  
-    * Restore these backed-up files  
+*   Create symlinks to them as follows: ~/.*file*  
+*   Remove these symlinks  
+*   Backup the files that making symlinks would overwrite  
+*   Restore these backed-up files  
 
 > Note: Most snippets come from [honza/vim-snippets](https://www.github.com/honza/vim-snippets)
