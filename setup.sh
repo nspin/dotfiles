@@ -7,12 +7,12 @@
 echo ""
 
 read -p "-- INFECT, CURE, BACKUP, OR RESTORE? (i/c/b/r) " CHOICE
-read -p "-- ENTER CONFIG DIRECTORIES: (relative) " DIRS
+read -p "-- ENTER CONFIG DIRECTORIES: (relative to .) " DIRS
 
 if [ $CHOICE == b ] || [ $CHOICE == r ] ; then
-    read -p "-- ENTER BACKUP DIRECTORY: (absolute) " BKP
-    if [ $CHOICE == r ] ; then
-        mkdir -d $BKP
+    read -p "-- ENTER BACKUP DIRECTORY: (relative to ~) " BKP
+    if [ $CHOICE == b ] ; then
+        mkdir -p ~/$BKP
     fi
 fi
 
@@ -22,14 +22,16 @@ for DIR in $DIRS ; do
     for FILE in $(ls $CURR) ; do
         echo "--     $FILE"
         if [ $CHOICE == i ] ; then
-            rm ~/.$FILE
+            if [ -e ~/.$FILE ] ; then
+                rm ~/.$FILE
+            fi
             ln -s -T $CURR/$FILE ~/.$FILE
-        elif [ $CHOICE == c ] ; then
+        elif [ $CHOICE == c ] && [ -e ~/.$FILE ]; then
             rm ~/.$FILE
-        elif [ $CHOICE == b ] ; then
-            mv ~/.$FILE $BKP
-        elif [ $CHOICE == r ] ; then
-            mv $BKP ~/.$FILE
+        elif [ $CHOICE == b ] && [ -e ~/.$FILE ] ; then
+            mv ~/.$FILE ~/$BKP/$FILE
+        elif [ $CHOICE == r ] && [ -e ~/$BKP/$FILE ] ; then
+            mv ~/$BKP/$FILE ~/.$FILE
         fi
     done
     echo "-- ... DONE"

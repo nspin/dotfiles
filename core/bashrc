@@ -32,9 +32,7 @@ PS1="\u@\h \w >> "
 # ALIASES
 #--------------------
 
-alias f='cd'
 alias p='cd ..'
-alias h='cd ~'
 alias r='cd /'
 
 alias s='sudo'
