@@ -19,6 +19,7 @@
 *.zip
 
 *.log
+*.errors
 *.sql
 *.sqlite
 
