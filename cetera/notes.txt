@@ -1,14 +1,33 @@
+TODO:
+
+keymap (x and system, loadkeys emacs?)
+xmobar?
+clipboard? (parcellite)
+xfc xdefaults stuff?
+
+--------
+
 unetbootin slackware iso:
 from partition
 /dev/sdb1
 slackware (NO LEADING SLASH)
 
----
+--------
 
 adduser
 visudo
 
----
+slackbuilds:
+haskell-platform
+
+cabal update
+
+cabal install:
+cabal-install
+xmonad
+xmonad-contrib
+
+--------
 
 su:
 
@@ -21,29 +40,11 @@ dhclient wlan0
 
 (or wicd-curses from /extra/)
 
----
+--------
 
 lilo.conf += append="resume=/dev/sdaX"; lilo (for pm-hibernate)
 
----
-
-slackbuilds:
-haskell-platform
-
-cabal update
-
-cabal install:
-cabal-install
-xmonad
-xmonad-contrib
-
----
-TODO:
-
-keymap (x and system, loadkeys emacs?)
-xmonad-conf, spiral, myLayout? xmobar?
-clipboard? (parcellite)
-xfc xdefaults stuff?
+--------
 
 slackware resolution on vm (semi-) fix:
 
@@ -56,20 +57,10 @@ sh ./VBoxLinuxAdditions.run
 cp /etc/X11/xorg.conf-vesta /etc/X11/xorg.conf
 vim xorg.conf:
 
-Section "Device"
+(Section "Device")
+   #Driver    "(...)"
    Driver    "vboxvideo"
-EndSection
 
-Section "Screen"
-   Device    "VirtualBox graphics card"
-   DefaultDepth    16/24
-   SubSection "Display"
-     Depth      16
-     Modes      "1920x1080"
-   EndSubSection
-   SubSection "Display"
-     Depth      24
-     Modes      "1366x768"
-   EndSubSection
-EndSection
+(Section "Screen", at DefaultDepth display)
+     Modes = "1366x768":Modes
 
