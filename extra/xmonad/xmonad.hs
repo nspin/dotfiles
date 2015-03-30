@@ -3,10 +3,13 @@ import XMonad.Layout
 --import XMonad.Layout.Spiral
 
 main = xmonad $ defaultConfig
-    { normalBorderColor  = "#031518"
-    , focusedBorderColor = "#b58900"
+    { normalBorderColor  = darkish
+    , focusedBorderColor = darkish
 --    , layoutHook = netbook
     }
+
+darkish = "#031518"
+orangish = "#b58900"
 
 -- Layouts
 
