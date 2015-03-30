@@ -22,10 +22,7 @@ for DIR in $DIRS ; do
     for FILE in $(ls $CURR) ; do
         echo "--     $FILE"
         if [ $CHOICE == i ] ; then
-            if [ -e ~/.$FILE ] ; then
-                rm ~/.$FILE
-            fi
-            ln -s -T $CURR/$FILE ~/.$FILE
+            ln -s -f $CURR/$FILE ~/.$FILE
         elif [ $CHOICE == c ] && [ -e ~/.$FILE ]; then
             rm ~/.$FILE
         elif [ $CHOICE == b ] && [ -e ~/.$FILE ] ; then
