@@ -3,15 +3,15 @@ dotfiles
 
 Various configuration files
 
-#### Contents ####
+#### Contents
 
-**core**: Config files (~/.*file*) for use on my school's macs (vim, git, bash screen)  
-**extra**: Additional config files (~/.*file*) for use on my personal machine (X11, tmux)  
-**cetera**: Miscellaneous files that are not of the form ~/.*file*  
+*   **core**: Config files (~/.*file*) for use on my school's macs (vim, git, bash screen)  
+*   **extra**: Additional config files (~/.*file*) for use on my personal machine (X11, tmux)  
+*   **cetera**: Miscellaneous files that are not of the form ~/.*file*  
 
-#### Usage ####
+#### Usage
 
-setup.sh acts on files from a specified dotfile directory (currently core and extras) to either:  
+setup.sh acts on files from a specified dotfile directories (currently core and extras) to either:  
 *   Create symlinks to them as follows: ~/.*file*  
 *   Remove these symlinks  
 *   Backup the files that making symlinks would overwrite  
