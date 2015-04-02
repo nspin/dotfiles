@@ -59,6 +59,7 @@ alias gc='git commit'
 alias gp='git push'
 alias gl='git pull'
 alias gm='git submodule update --init'
+alias gu='git submodule foreach git pull origin master'
 
 # misc
 alias cr='cabal repl'
