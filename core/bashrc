@@ -67,6 +67,19 @@ alias wc='wicd-curses'
 # FUNCTIONS
 #--------------------
 
+function beach()
+    {
+    NEW=$HOME/.beach/boxes/$1
+    BBIN=$HOME/.beach/bin/
+    mkdir -p $NEW
+    mkdir -p $BBIN
+    cd $NEW && {
+        cabal sandbox init
+        cabal install $1
+        ln -sf $NEW/.cabal-sandbox/bin/$1 $BBIN
+        }
+    }
+
 function clone()
     {
     URL="https://github.com/$1/$2.git"
@@ -79,7 +92,7 @@ function enolc()
     git clone $URL
     }
 
-# From Emmanuel Rouat's famous bashrc
+# From Emmanuel Rouat's bashrc
 function extract()
     {
     if [ -f $1 ] ; then
