@@ -9,17 +9,28 @@
 SUSTUFF="/sbin:/usr/sbin"
 export PATH=$PATH:$SUSTUFF
 
-# ADD HASKELL BINARIES TO PATH
+# Add haskell binaries to path
 HSBIN="$HOME/.cabal/bin"
 if [ -d $HSBIN ] ; then
     export PATH=$HSBIN:$PATH
 fi
 
-# ADD MISC BINARIES TO PATH
-MBIN="$HOME/mbin"
+# Add misc binaries to path
+MBIN="$HOME/.mbin"
 if [ -d $MBIN ] ; then
     export PATH=$MBIN:$PATH
 fi
 
-# EVERYTHING ELSE
+# Add sandbox binaries to path
+SAND="$HOME/.sand"
+BIN=".cabal-sandbox/bin"
+if [ -d $SAND ] ; then
+    for BOX in $SAND/*/ ; do
+        for GRAIN in $BOX$BIN/*/ ; do
+            export PATH=$GRAIN:$PATH
+        done
+    done
+fi
+
+# Everything else
 source $HOME/.bashrc
