@@ -15,5 +15,11 @@ if [ -d $HSBIN ] ; then
     export PATH=$HSBIN:$PATH
 fi
 
+# ADD MISC BINARIES TO PATH
+MBIN="$HOME/mbin"
+if [ -d $MBIN ] ; then
+    export PATH=$MBIN:$PATH
+fi
+
 # EVERYTHING ELSE
 source $HOME/.bashrc

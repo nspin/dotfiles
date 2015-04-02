@@ -17,15 +17,10 @@ slackware (NO LEADING SLASH)
 adduser
 visudo
 
-slackbuilds:
-haskell-platform
-
-cabal update
-
-cabal install:
-cabal-install
-xmonad
-xmonad-contrib
+ghc slackbuild
+build new ghc
+install cabal binary
+use sandboxes
 
 --------
 
