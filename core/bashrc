@@ -61,6 +61,7 @@ alias gl='git pull'
 alias gm='git submodule update --init'
 
 # misc
+alias cr='cabal repl'
 alias wc='wicd-curses'
 
 #--------------------
