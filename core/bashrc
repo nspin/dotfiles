@@ -62,6 +62,8 @@ alias gm='git submodule update --init'
 
 # misc
 alias cr='cabal repl'
+alias ci='cabal sandbox init'
+alias co='cabal install --dependencies-only'
 alias wc='wicd-curses'
 
 #--------------------
