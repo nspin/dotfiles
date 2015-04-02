@@ -20,7 +20,7 @@ Various configuration files
 **Cabal-Hell**: My way of dealing with it is as follows:
 *   Install GHC *only* (not the entire platform). For slackware, install 7.6 slackbuild, then build 7.10 from source.
 *   Get cabal binary from haskell.org.
-*   `cabal install cabal cabal-install`. This will be the *only* thing in .cabal/bin/
+*   `cabal install cabal cabal-install alex happy`. These will be the *only* thing in .cabal/bin/
 *   Discard old cabal binary.
 *   *Only* work in sandboxes for specific projects.
 *   Whenever you need Haskell stuff for your system (e.g. hlint) use the `beach` function from core/bashrcs. Binaries will have symlinks in ~/.beach/bin, which core/bash _ profile adds to `$PATH`.
