@@ -1,11 +1,6 @@
-TODO:
-
-keymap (x and system, loadkeys emacs?)
-xmobar?
-clipboard? (parcellite)
-xfc xdefaults stuff?
-
---------
+#######################
+# MISC NOTES FOR MYSELF
+#######################
 
 unetbootin slackware iso:
 from partition
@@ -16,11 +11,6 @@ slackware (NO LEADING SLASH)
 
 adduser
 visudo
-
-ghc slackbuild
-build new ghc
-install cabal binary
-use sandboxes
 
 --------
 
@@ -44,6 +34,8 @@ lilo.conf += append="resume=/dev/sdaX"; lilo (for pm-hibernate)
 slackware resolution on vm (semi-) fix:
 
 insert guest addition iso
+
+su:
 
 mount /dev/sr0 /mnt/dvd
 cd /mnt/dvd

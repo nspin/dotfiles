@@ -26,4 +26,10 @@ Various configuration files
 *   Whenever you need Haskell stuff for your system (e.g. hlint) use the `beach` function from core/bashrcs. Binaries will have symlinks in ~/.beach/bin, which core/bash _ profile adds to `$PATH`.
 *   Annoying exceptions: xmonad, yi, etc - programs that compile their own config files (which have expexted locations, which are not in sandboxes). If future releases of such programs cause dependancy hell among themselves, then this approach may have to be revised.
 
+#### TODO
+
+*   Keymap (both x and system, loadkeys emacs on slackware?)
+*   Add xmobar to xmonad config
+*   Use some sort of clipboard (parcellite)
+
 > Note: Most snippets come from [honza/vim-snippets](https://www.github.com/honza/vim-snippets)
