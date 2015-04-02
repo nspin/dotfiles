@@ -25,5 +25,6 @@
 .DS_Store*
 ._*
 
-.cabal-sandbox/*
+build
 cabal.sandbox.config
+.cabal-sandbox/*
