@@ -151,7 +151,10 @@ endfunction
 " --- Nop's ---
 
 noremap <space> <nop>
+noremap <del> <nop>
+noremap <bs> <nop>
 noremap <cr> <nop>
+noremap S <nop>
 noremap , <nop>
 noremap Y <nop>
 
@@ -171,7 +174,8 @@ inoremap <c-c> <esc>cc
 inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
 nnoremap = gT
-nnoremap <backspace> gt
+" figure out <bs> issues
+nnoremap <del> gt
 
 let g:lasttab = 1
 nnoremap <tab> :exe "tabn ".g:lasttab<CR>
