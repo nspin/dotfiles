@@ -1,39 +1,36 @@
 #!/bin/bash
-############################
-# Create, remove, backup, or restore symlinks
-# in ~/ from specified subdirectories of ./
-############################
+#####################################
+# Create, remove, backup, or restore
+# symlinks from $HOME to ./home
+#####################################
 
 echo ""
 
-read -p "-- INFECT, CURE, BACKUP, OR RESTORE? (i/c/b/r) " CHOICE
-read -p "-- ENTER CONFIG DIRECTORIES: (relative to ~/dotfiles/core) " DIRS
+read -p "-- Infect, cure, backup, or restore? (i/c/b/r) " choice
 
-if [ $CHOICE == b ] || [ $CHOICE == r ] ; then
-    read -p "-- ENTER BACKUP DIRECTORY: (relative to ~) " BKP
-    if [ $CHOICE == b ] ; then
-        mkdir -p ~/$BKP
+if [[ $choice == b ]] || [[ $choice == r ]] ; then
+    read -p "-- Enter backup directory: (relative to ~) " rel
+    $bkp=$HOME/$rel
+    if [[ $choice == b ]] ; then
+        mkdir -p $bkp
     fi
 fi
 
-for DIR in $DIRS ; do
-    CURR=$HOME/dotfiles/core/$DIR
-    echo "-- $CURR"
-    for FILE in $(ls $CURR) ; do
-        echo "--     $FILE"
-        if [ $CHOICE == i ] ; then
-            ln -s -f $CURR/$FILE ~/.$FILE
-        elif [ $CHOICE == c ] && [ -e ~/.$FILE ]; then
-            rm ~/.$FILE
-        elif [ $CHOICE == b ] && [ -e ~/.$FILE ] ; then
-            mv ~/.$FILE ~/$BKP/$FILE
-        elif [ $CHOICE == r ] && [ -e ~/$BKP/$FILE ] ; then
-            mv ~/$BKP/$FILE ~/.$FILE
-        fi
-    done
-    echo "-- ... DONE"
+dir="$HOME/dotfiles/home"
+
+for file in $(ls $dir) ; do
+    echo "--     $file"
+    if [ $choice == i ] ; then
+        ln -s $dir/$file $HOME/.$file
+    elif [ $choice == c ] && [ -h $HOME/.$file ] ; then
+        rm $HOME/.$file
+    elif [ $choice == b ] && [ -e $HOME/.$file ] ; then
+        mv $HOME/.$file $bkp/$file
+    elif [ $choice == r ] && [ -e $bkp/$file ] ; then
+        mv $bkp/$file $HOME/.$file
+    fi
 done
 
-echo "-- COMPLETE"
+echo "-- Complete"
 
 echo ""
