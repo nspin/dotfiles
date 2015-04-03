@@ -173,9 +173,9 @@ inoremap <c-c> <esc>cc
 
 inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
-nnoremap = gT
+nnoremap <del> gT
 " figure out <bs> issues
-nnoremap <del> gt
+nnoremap = gt
 
 let g:lasttab = 1
 nnoremap <tab> :exe "tabn ".g:lasttab<CR>
