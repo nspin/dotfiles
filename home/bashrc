@@ -99,6 +99,18 @@ function enolc()
     git clone $URL
     }
 
+function module()
+    {
+    URL="https://github.com/$1/$2.git"
+    git submodule add $URL $3
+    }
+
+function eludom()
+    {
+    URL="https://github.com/nickspinale/$1.git"
+    git submodule add $URL $3
+    }
+
 # From Emmanuel Rouat's bashrc
 function extract()
     {
