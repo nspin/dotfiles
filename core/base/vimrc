@@ -112,6 +112,9 @@ set nobackup
 
 " ====== MISC ======
 
+" fizzbuzz
+let @z = "S1qwyypq98@wkqqSFizz 3kq32@q4jqq$ciwBuzzq19@q"
+
 autocmd FileType * set formatoptions=""             " ftplugins mess up this option often
 
 let g:NERDTreeDirArrows=0                           " incase vim wasnt compiled with unicode support
@@ -154,7 +157,6 @@ noremap <space> <nop>
 noremap <del> <nop>
 noremap <bs> <nop>
 noremap <cr> <nop>
-noremap S <nop>
 noremap , <nop>
 noremap Y <nop>
 

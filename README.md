@@ -5,13 +5,16 @@ Various configuration files
 
 #### Contents
 
-*   **core**: Config files (~/.*file*) for use on my school's macs (vim, git, bash screen)  
-*   **extra**: Additional config files (~/.*file*) for use on my personal machine (X11, tmux)  
-*   **cetera**: Miscellaneous files that are not of the form ~/.*file*  
+*   **core**: Files to be linked to in ~  
+	*   **base**: Config files (~/.*file*) for use on my school's macs (vim, git, bash screen)  
+	*   **extra**: Additional config files (~/.*file*) for use on my personal machine (X11, tmux)  
+*   **aux**: Files that files in 'core' refer to  
+*   **rest**: Files that need to be installed manually  
+*   **nosrc**: Non-source files  
 
 #### Usage
 
-**setup.sh**: Acts on files from a specified dotfile directories (currently core and extras) to either:  
+**setup.sh**: Acts on files from a specified subdirectories of 'core' according to one of four choices:  
 *   Create symlinks to them (e.g. ~/.*file*)
 *   Remove these symlinks  
 *   Backup the files that making symlinks would overwrite  

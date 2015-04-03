@@ -7,7 +7,7 @@
 echo ""
 
 read -p "-- INFECT, CURE, BACKUP, OR RESTORE? (i/c/b/r) " CHOICE
-read -p "-- ENTER CONFIG DIRECTORIES: (relative to .) " DIRS
+read -p "-- ENTER CONFIG DIRECTORIES: (relative to ~/dotfiles/core) " DIRS
 
 if [ $CHOICE == b ] || [ $CHOICE == r ] ; then
     read -p "-- ENTER BACKUP DIRECTORY: (relative to ~) " BKP
@@ -17,7 +17,7 @@ if [ $CHOICE == b ] || [ $CHOICE == r ] ; then
 fi
 
 for DIR in $DIRS ; do
-    CURR=$(pwd)/$DIR # complete path so that 'ln' behaves correctly
+    CURR=$HOME/dotfiles/core/$DIR
     echo "-- $CURR"
     for FILE in $(ls $CURR) ; do
         echo "--     $FILE"
