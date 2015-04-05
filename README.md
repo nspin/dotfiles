@@ -5,20 +5,16 @@ Various configuration files
 
 #### Contents
 
-*   **core**: Files to be linked to in ~  
-	*   **base**: Config files (~/.*file*) for use on my school's macs (vim, git, bash screen)  
-	*   **extra**: Additional config files (~/.*file*) for use on my personal machine (X11, tmux)  
+*   **home**: Files to be linked to in ~  
 *   **aux**: Files that files in 'core' refer to  
 *   **rest**: Files that need to be installed manually  
-*   **nosrc**: Non-source files  
+*   **txt**: Non-source files  
 
-#### Usage
+#### Usage (assumes that this repo is in ~)
 
-**setup.sh**: Acts on files from a specified subdirectories of 'core' according to one of four choices:  
-*   Create symlinks to them (e.g. ~/.*file*)
-*   Remove these symlinks  
-*   Backup the files that making symlinks would overwrite  
-*   Restore these backed-up files  
+**Installation**:  
+*   setup.sh creates symlinks from files in ~/dotfiles/home to ~, backing up old files in a directory called 'seliftod/(seconds since 1970)', unless the script is called with an argument  
+*   pustes.sh removes symlinks in ~ with the same names as (*not* necessarily linking to) files in ~/dotfiles/home  
 
 **Cabal-Hell**: My way of dealing with it is as follows:
 *   Install GHC *only* (not the entire platform). For slackware, install 7.6 slackbuild, then build 7.10 from source.
