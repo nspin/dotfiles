@@ -87,6 +87,22 @@ function beach()
         }
     }
 
+# Status of git repos in current directory
+function repos()
+    {
+    currdir=$(pwd)
+    for subdir in ./*/ ; do
+        cd $subdir
+        if [ -e .git ] ; then
+            echo ""
+            echo "$subdir"
+            git status
+        fi
+        cd $currdir
+    done
+    echo ""
+    }
+
 function clone()
     {
     URL="https://github.com/$1/$2.git"
