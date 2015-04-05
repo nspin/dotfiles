@@ -31,4 +31,6 @@ Various configuration files
 *   Add xmobar to xmonad config
 *   Use some sort of clipboard (parcellite)
 
-> Note: Most snippets come from [honza/vim-snippets](https://www.github.com/honza/vim-snippets)
+> Notes:  
+> *   Most snippets come from [honza/vim-snippets](https://www.github.com/honza/vim-snippets)
+> *   I did not create the fonts in aux/fonts, [adobe](https://github.com/adobe-fonts/source-code-pro)
