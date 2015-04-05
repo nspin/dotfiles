@@ -33,4 +33,4 @@ Various configuration files
 
 > Notes:  
 > *   Most snippets come from [honza/vim-snippets](https://www.github.com/honza/vim-snippets)
-> *   I did not create the fonts in aux/fonts, [adobe](https://github.com/adobe-fonts/source-code-pro)
+> *   Fonts in aux/fonts were created by [adobe](https://github.com/adobe-fonts/source-code-pro)
