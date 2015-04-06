@@ -88,7 +88,7 @@ function beach()
     }
 
 # Status of git repos in current directory
-function repos()
+function statuses()
     {
     currdir=$(pwd)
     for subdir in ./*/ ; do
@@ -97,6 +97,22 @@ function repos()
             echo ""
             echo "$subdir"
             git status
+        fi
+        cd $currdir
+    done
+    echo ""
+    }
+
+# Status of git repos in current directory
+function pulls()
+    {
+    currdir=$(pwd)
+    for subdir in ./*/ ; do
+        cd $subdir
+        if [ -e .git ] ; then
+            echo ""
+            echo "$subdir"
+            git pull
         fi
         cd $currdir
     done
