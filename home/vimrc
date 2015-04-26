@@ -112,9 +112,6 @@ set nobackup
 
 " ====== MISC ======
 
-" fizzbuzz
-let @z = "S1qwyypq98@wkqqSFizz 3kq32@q4jqq$ciwBuzzq19@q"
-
 autocmd FileType * set formatoptions=""             " ftplugins mess up this option often
 
 let g:NERDTreeDirArrows=0                           " incase vim wasnt compiled with unicode support
@@ -158,6 +155,7 @@ noremap <del> <nop>
 noremap <bs> <nop>
 noremap <cr> <nop>
 noremap , <nop>
+noremap ; <nop>
 noremap Y <nop>
 
 " --- Special ---
@@ -168,6 +166,7 @@ inoremap JJ j
 nnoremap Y y$
 
 noremap <cr> :
+noremap <tab> <c-w><c-w>
 
 inoremap <c-x> <esc>:wq<cr>
 inoremap <c-d> <bs><bs><bs><bs>
@@ -180,7 +179,7 @@ nnoremap <del> gT
 nnoremap = gt
 
 let g:lasttab = 1
-nnoremap <tab> :exe "tabn ".g:lasttab<CR>
+nnoremap ; :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 " ====== FAKE LEADER ======
