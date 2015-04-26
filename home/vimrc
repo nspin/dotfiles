@@ -166,7 +166,7 @@ inoremap JJ j
 nnoremap Y y$
 
 noremap <cr> :
-noremap <tab> <c-w><c-w>
+noremap ; <c-w><c-w>
 
 inoremap <c-x> <esc>:wq<cr>
 inoremap <c-d> <bs><bs><bs><bs>
@@ -179,7 +179,7 @@ nnoremap <del> gT
 nnoremap = gt
 
 let g:lasttab = 1
-nnoremap ; :exe "tabn ".g:lasttab<CR>
+nnoremap <tab> :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 " ====== FAKE LEADER ======
