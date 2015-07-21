@@ -15,8 +15,8 @@ xrdb -merge $HOME/.Xresources
 # keyboard stuff
 xset r rate 300 50 &
 
-xterm &
+#xterm &
 
-xmonad
+#xmonad
 
 xset fp default

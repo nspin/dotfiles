@@ -1,4 +1,4 @@
-#!/bin/bash
+##!/bin/bash
 #################################################
 # Creates symlinks from files in ./home to $HOME,
 # backing up old files in a directory called
