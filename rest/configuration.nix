@@ -30,12 +30,18 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
+    more
     git
     tmux
-    xlaunch
+    screen
     vim
-    haskellPackages.xmonad
-    haskellPackages.xmonadContrib
+    wget
+    firefox
+    links
+    haskellPackages.Elm
+    haskellPackages.elmReactor
+    haskellPackages.elmGet
+    haskellPackages.elmRepl
   ];
 
   # List services that you want to enable:
@@ -47,10 +53,11 @@
   # services.printing.enable = true;
 
   # Enable the X11 windowing system.
-  services.xserver.autorun = false;
+  services.xserver.autorun = true;
   services.xserver.enable = true;
   services.xserver.layout = "us";
   services.xserver.windowManager.xmonad.enable = true;
+  services.xserver.windowManager.xmonad.enableContribAndExtras = true;
   services.xserver.windowManager.default = "xmonad";
   # services.xserver.xkbOptions = "eurosign:e";
 
@@ -63,5 +70,9 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
   };
+
+  # security.setuidPrograms = [
+  #   "xlaunch"
+  # ];
 
 }
