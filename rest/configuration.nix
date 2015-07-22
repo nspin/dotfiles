@@ -44,13 +44,16 @@
     haskellPackages.elmGet
     haskellPackages.elmRepl
     haskellPackages.elmServer
+
+    haskellPackages.xmonad
+    haskellPackages.xmonadContrib
   ];
 
   services.openssh.enable = true;
 
   # services.printing.enable = true;
 
-  services.xserver.autorun = false;
+  services.xserver.autorun = true;
   services.xserver.enable = true;
   services.xserver.layout = "us";
 
@@ -62,14 +65,13 @@
             ${pkgs.haskellPackages.xmonad}/bin/xmonad &
         '';
       }
+      { manage = "desktop";
+        name = "xterm";
+        start = ''
+            ${pkgs.xterm}/bin/xterm -ls &
+        '';
+      }
     ];
-
-#      { manage = "desktop";
-#        name = "xterm";
-#        start = ''
-#            ${pkgs.xterm}/bin/xterm -ls &
-#        '';
-#      }
 
   services.xserver.displayManager.slim.enable = true;
   # services.xserver.displayManager.slim.theme = pkgs.slimThemes.nixosSlim;
