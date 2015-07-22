@@ -30,7 +30,6 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    more
     git
     tmux
     screen
@@ -38,10 +37,14 @@
     wget
     firefox
     links
+    # haskellPackages.xmonad
+    # haskellPackages.xmonadContrib
     haskellPackages.Elm
     haskellPackages.elmReactor
     haskellPackages.elmGet
     haskellPackages.elmRepl
+    # xlibs.xinit
+    # xlibs.xauth
   ];
 
   # List services that you want to enable:
@@ -53,9 +56,12 @@
   # services.printing.enable = true;
 
   # Enable the X11 windowing system.
-  services.xserver.autorun = true;
+  # services.xserver.autorun = false;
   services.xserver.enable = true;
-  services.xserver.layout = "us";
+  # services.xserver.layout = "us";
+  # services.xserver.displayManager.slim.enable = true;
+  # services.xserver.displayManager.sessionCommands = "sh /home/nick/.xinitrc";
+  services.xserver.displayManager.sessionCommands = "xset r rate 300 50";
   services.xserver.windowManager.xmonad.enable = true;
   services.xserver.windowManager.xmonad.enableContribAndExtras = true;
   services.xserver.windowManager.default = "xmonad";
@@ -68,7 +74,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.nick = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" ];
   };
 
   # security.setuidPrograms = [

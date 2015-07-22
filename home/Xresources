@@ -18,7 +18,7 @@
 #define S_base2 #eee8d5
 #define S_base3 #fdf6e3
 
-!xterm*faceName: Source Code Pro:antialias=True:pixelsize=18
+xterm*faceName: Source Code Pro:antialias=True:pixelsize=18
 xterm*faceName: antialias=True:pixelsize=18
 
 xterm*background: S_base03
