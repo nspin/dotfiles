@@ -21,11 +21,11 @@
   # networking.wireless.enable = true;  # Enables wireless.
 
   # Select internationalisation properties.
-  # i18n = {
-  #   consoleFont = "lat9w-16";
-  #   consoleKeyMap = "us";
-  #   defaultLocale = "en_US.UTF-8";
-  # };
+  i18n = {
+    consoleFont = "lat9w-16";
+    consoleKeyMap = "us";
+    defaultLocale = "en_US.UTF-8";
+  };
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -37,48 +37,37 @@
     wget
     firefox
     links
-    # haskellPackages.xmonad
-    # haskellPackages.xmonadContrib
     haskellPackages.Elm
     haskellPackages.elmReactor
     haskellPackages.elmGet
     haskellPackages.elmRepl
-    # xlibs.xinit
     # xlibs.xauth
+    # xlibs.xinit
   ];
 
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
   # Enable the X11 windowing system.
-  # services.xserver.autorun = false;
+  services.xserver.autorun = false;
   services.xserver.enable = true;
-  # services.xserver.layout = "us";
+  services.xserver.layout = "us";
   # services.xserver.displayManager.slim.enable = true;
   # services.xserver.displayManager.sessionCommands = "sh /home/nick/.xinitrc";
   services.xserver.displayManager.sessionCommands = "xset r rate 300 50";
   services.xserver.windowManager.xmonad.enable = true;
   services.xserver.windowManager.xmonad.enableContribAndExtras = true;
   services.xserver.windowManager.default = "xmonad";
-  # services.xserver.xkbOptions = "eurosign:e";
-
-  # Enable the KDE Desktop Environment.
-  # services.xserver.displayManager.kdm.enable = true;
-  # services.xserver.desktopManager.kde4.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.nick = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
   };
-
-  # security.setuidPrograms = [
-  #   "xlaunch"
-  # ];
 
 }
