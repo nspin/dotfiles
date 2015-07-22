@@ -42,6 +42,7 @@
     haskellPackages.elmGet
     haskellPackages.elmRepl
     slimThemes.nixosSlim
+    xclip
     # xlibs.xauth
     # xlibs.xinit
   ];
