@@ -41,6 +41,7 @@
     haskellPackages.elmReactor
     haskellPackages.elmGet
     haskellPackages.elmRepl
+    slimThemes.nixosSlim
     # xlibs.xauth
     # xlibs.xinit
   ];
@@ -56,13 +57,30 @@
   # Enable the X11 windowing system.
   services.xserver.autorun = false;
   services.xserver.enable = true;
-  services.xserver.layout = "us";
-  # services.xserver.displayManager.slim.enable = true;
-  # services.xserver.displayManager.sessionCommands = "sh /home/nick/.xinitrc";
-  services.xserver.displayManager.sessionCommands = "xset r rate 300 50";
-  services.xserver.windowManager.xmonad.enable = true;
-  services.xserver.windowManager.xmonad.enableContribAndExtras = true;
-  services.xserver.windowManager.default = "xmonad";
+  # services.xserver.layout = "us";
+
+  services.xserver.displayManager.session =
+    [ { manage = "window";
+        name = "xmonad";
+        start = ''
+            xset r rate 300 50
+            ${pkgs.haskellPackages.xmonad}/bin/xmonad &
+        '';
+      }
+      { manage = "desktop";
+        name = "xterm";
+        start = ''
+            ${pkgs.xterm}/bin/xterm -ls &
+        '';
+      }
+    ];
+  services.xserver.displayManager.slim.enable = true;
+  # services.xserver.displayManager.slim.theme = pkgs.slimThemes.nixosSlim;
+
+  # services.xserver.displayManager.sessionCommands = "xset r rate 300 50";
+  # services.xserver.windowManager.xmonad.enable = true;
+  # services.xserver.windowManager.xmonad.enableContribAndExtras = true;
+  # services.xserver.windowManager.default = "xmonad";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.nick = {
