@@ -26,7 +26,6 @@
 
     manpages
 
-    xterm
     tmux
     screen
     vimHugeX
@@ -45,9 +44,6 @@
     haskellPackages.elmGet
     haskellPackages.elmRepl
     haskellPackages.elmServer
-
-    haskellPackages.xmonad
-    haskellPackages.xmonadContrib
   ];
 
   services.openssh.enable = true;
