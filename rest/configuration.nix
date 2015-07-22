@@ -1,66 +1,58 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
-  # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
-  # Define on which hard drive you want to install Grub.
+
+  # ___
   boot.loader.grub.device = "/dev/sda";
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos";
   networking.hostId = "c890f48c";
-  # networking.wireless.enable = true;  # Enables wireless.
+  # networking.wireless.enable = true;
 
-  # Select internationalisation properties.
   i18n = {
     consoleFont = "lat9w-16";
     consoleKeyMap = "us";
     defaultLocale = "en_US.UTF-8";
   };
 
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
+  # It appears that elmRepl doesn't include a dependency on nodejs. TODO add it
   environment.systemPackages = with pkgs; [
-    git
+
+    manpages
+
     tmux
     screen
     vimHugeX
-    gcc
-    manpages
+    git
+    xclip
+
     wget
-    firefox
     links
+    firefox
+
+    gcc
+    nodejs
+
     haskellPackages.Elm
     haskellPackages.elmReactor
     haskellPackages.elmGet
     haskellPackages.elmRepl
-    slimThemes.nixosSlim
-    xclip
-    # xlibs.xauth
-    # xlibs.xinit
+    haskellPackages.elmServer
   ];
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # Enable the X11 windowing system.
   services.xserver.autorun = false;
   services.xserver.enable = true;
-  # services.xserver.layout = "us";
+  services.xserver.layout = "us";
 
   services.xserver.displayManager.session =
     [ { manage = "window";
@@ -70,26 +62,22 @@
             ${pkgs.haskellPackages.xmonad}/bin/xmonad &
         '';
       }
-      { manage = "desktop";
-        name = "xterm";
-        start = ''
-            ${pkgs.xterm}/bin/xterm -ls &
-        '';
-      }
     ];
+
+#      { manage = "desktop";
+#        name = "xterm";
+#        start = ''
+#            ${pkgs.xterm}/bin/xterm -ls &
+#        '';
+#      }
+
   services.xserver.displayManager.slim.enable = true;
+  # services.xserver.displayManager.slim.theme = pkgs.slimThemes.nixosSlim;
   services.xserver.displayManager.slim.theme = pkgs.fetchurl {
       url = "https://github.com/jagajaga/nixos-slim-theme/archive/Final.tar.gz";
       sha256 = "4cab5987a7f1ad3cc463780d9f1ee3fbf43603105e6a6e538e4c2147bde3ee6b";
     };
-  # services.xserver.displayManager.slim.theme = pkgs.slimThemes.nixosSlim;
 
-  # services.xserver.displayManager.sessionCommands = "xset r rate 300 50";
-  # services.xserver.windowManager.xmonad.enable = true;
-  # services.xserver.windowManager.xmonad.enableContribAndExtras = true;
-  # services.xserver.windowManager.default = "xmonad";
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.nick = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
