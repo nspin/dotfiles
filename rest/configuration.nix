@@ -39,11 +39,11 @@
     gcc
     nodejs
 
-    haskellPackages.Elm
-    haskellPackages.elmReactor
-    haskellPackages.elmGet
-    haskellPackages.elmRepl
-    haskellPackages.elmServer
+    haskellPackages.elm-make
+    haskellPackages.elm-package
+    haskellPackages.elm-reactor
+    haskellPackages.elm-repl
+    haskellPackages.elm-server
   ];
 
   services.openssh.enable = true;
@@ -73,9 +73,7 @@
 #     }
 #   ];
 
-  services.xserver.displayManager.sessionCommands = ''
-      xset r rate 300 50
-  '';
+  services.xserver.displayManager.sessionCommands ="xset r rate 300 50";
 
   services.xserver.displayManager.slim.enable = true;
   services.xserver.displayManager.slim.defaultUser = "nick";
