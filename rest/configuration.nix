@@ -79,7 +79,7 @@
 
   services.xserver.displayManager.sessionCommands = ''
       xset r rate 300 50
-  ''
+  '';
 
   services.xserver.displayManager.slim.enable = true;
   services.xserver.displayManager.slim.defaultUser = "nick";
