@@ -33,7 +33,9 @@
     git
     tmux
     screen
-    vim
+    vimHugeX
+    gcc
+    manpages
     wget
     firefox
     links
