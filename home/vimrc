@@ -26,24 +26,27 @@ call vundle#begin()                           " required by vundle
 
 Plugin 'gmarik/Vundle.vim'                    " vundle has to manage vundle
 
-Plugin 'sjl/gundo.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'godlygeek/tabular'
+" language support
+Plugin 'lambdatoast/elm.vim'
+" Plugin 'MarcWeber/vim-addon-nix'
+
+" general
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'godlygeek/tabular'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'sjl/gundo.vim'
 Plugin 'altercation/vim-colors-solarized'
 
 " snipmate (not ultisnips, because I often work on machines without +python)
 " and its dependencies
-
 Bundle "garbas/vim-snipmate"
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 
 " not in use
-
 " Plugin 'gerw/vim-latex-suite'
 " Plugin 'gerw/vim-tex-syntax'
 " Plugin 'Lokaltog/vim-easymotion'
