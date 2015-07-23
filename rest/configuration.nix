@@ -39,11 +39,16 @@
     gcc
     nodejs
 
-    haskellPackages.elm-make
-    haskellPackages.elm-package
-    haskellPackages.elm-reactor
-    haskellPackages.elm-repl
-    haskellPackages.elm-server
+    haskellngPackages.wreq
+    haskellngPackages.aeson
+    haskellngPackages.lens
+    haskellngPackages.attoparsec
+
+    haskellngPackages.elm-make
+    haskellngPackages.elm-package
+    haskellngPackages.elm-reactor
+    haskellngPackages.elm-repl
+    haskellngPackages.elm-server
   ];
 
   services.openssh.enable = true;
@@ -56,22 +61,6 @@
 
   services.xserver.windowManager.xmonad.enable = true;
   services.xserver.windowManager.xmonad.enableContribAndExtras = true;
-
-# services.xserver.displayManager.session =
-#   [ { manage = "window";
-#       name = "xmonad";
-#       start = ''
-#           xset r rate 300 50
-#           ${pkgs.haskellPackages.xmonad}/bin/xmonad &
-#       '';
-#     }
-#     { manage = "desktop";
-#       name = "xterm";
-#       start = ''
-#           ${pkgs.xterm}/bin/xterm -ls &
-#       '';
-#     }
-#   ];
 
   services.xserver.displayManager.sessionCommands ="xset r rate 300 50";
 
