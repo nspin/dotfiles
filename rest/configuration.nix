@@ -21,34 +21,32 @@
     defaultLocale = "en_US.UTF-8";
   };
 
-  # It appears that elmRepl doesn't include a dependency on nodejs. TODO add it
+  # TODO what about runtime dependencies (e.g. elm-repl and nodejs)?
   environment.systemPackages = with pkgs; [
 
-    manpages
-
-    tmux
-    screen
-    vimHugeX
-    git
     xclip
 
+    tmux
+    vimHugeX
+    git
+
     wget
-    links
     firefox
 
     gcc
     nodejs
 
-    haskellngPackages.wreq
-    haskellngPackages.aeson
-    haskellngPackages.lens
-    haskellngPackages.attoparsec
+    haskell.packages.ghc784.elm-make
 
-    haskellngPackages.elm-make
-    haskellngPackages.elm-package
-    haskellngPackages.elm-reactor
-    haskellngPackages.elm-repl
-    haskellngPackages.elm-server
+    # haskellPackages.aeson
+    # haskellPackages.wget
+    # haskellPackages.lens
+    # haskellPackages.attoparsec
+
+    # haskellPackages.elm-package
+    # haskellPackages.elm-reactor
+    # haskellPackages.elm-repl
+    # haskellPackages.elm-server
   ];
 
   services.openssh.enable = true;
