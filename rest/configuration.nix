@@ -21,7 +21,6 @@
     defaultLocale = "en_US.UTF-8";
   };
 
-  # TODO what about runtime dependencies (e.g. elm-repl and nodejs)?
   environment.systemPackages = with pkgs; [
 
     xclip
@@ -30,24 +29,18 @@
     vimHugeX
     git
 
-    wget
     firefox
 
     gcc
+    haskellPackages.ghc
     nodejs
+    jdk
 
-    haskell.packages.ghc784.elm-make
+    maven
 
-    # haskellPackages.aeson
-    # haskellPackages.wget
-    # haskellPackages.lens
-    # haskellPackages.attoparsec
-
-    # haskellPackages.elm-package
-    # haskellPackages.elm-reactor
-    # haskellPackages.elm-repl
-    # haskellPackages.elm-server
   ];
+
+  services.jboss.enable = true;
 
   services.openssh.enable = true;
 
