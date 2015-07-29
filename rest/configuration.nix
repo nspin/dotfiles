@@ -41,6 +41,7 @@
   ];
 
   services.jboss.enable = true;
+  services.jboss.user = "jboss";
 
   services.openssh.enable = true;
 
@@ -68,6 +69,10 @@
   users.extraUsers.nick = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+  };
+
+  users.extraUsers.jboss = {
+    isNormalUser = true;
   };
 
 }
