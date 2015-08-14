@@ -33,6 +33,7 @@
 
     gcc
     haskellPackages.ghc
+    haskellPackages.cabal-install
     nodejs
     jdk
 
