@@ -33,12 +33,12 @@
 
     gcc
     haskellPackages.ghc
-    haskellPackages.cabal-install
     nodejs
     jdk
 
     maven
-
+    haskellPackages.cabal-install
+    haskellPackages.cabal2nix
   ];
 
   services.jboss.enable = true;
