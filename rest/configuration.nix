@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
+    /etc/nixos/hardware-configuration.nix
   ];
 
   boot.loader.grub.enable = true;
@@ -38,7 +38,10 @@
 
     maven
     haskellPackages.cabal-install
+
     haskellPackages.cabal2nix
+
+    haskellPackages.wreq
   ];
 
   services.jboss.enable = true;
