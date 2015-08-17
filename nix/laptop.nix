@@ -32,6 +32,8 @@
     nodejs
     jdk
 
+    haskellPackages.idris
+
     maven
     haskellPackages.cabal-install
 
