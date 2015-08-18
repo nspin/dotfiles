@@ -29,16 +29,28 @@
 
     gcc
     haskellPackages.ghc
+    haskellPackages.idris
     nodejs
     jdk
+    coq
+    clojure
+    racket
 
-    haskellPackages.idris
+    # haskellPackages.Agda
+
+    # haskellPackages.elm-make
+    # haskellPackages.elm-reactor
+    # haskellPackages.elm-package
+    # haskellPackages.elm-repl
 
     maven
     haskellPackages.cabal-install
 
     haskellPackages.cabal2nix
   ];
+
+  # !!!!!
+  nixpkgs.config.allowBroken = true;
 
   services.jboss.enable = true;
   services.jboss.user = "jboss";
