@@ -4,6 +4,7 @@
 
 " TODO
 "   tabs vs buffers?
+"   language-specific ecosystems
 "   find mapping worthy of <backspace>
 "   clear autocmds before any here? (au!)?
 "   deal with ftplugins messing with my options (namely fo)
@@ -169,7 +170,6 @@ inoremap JJ j
 nnoremap Y y$
 
 noremap <cr> :
-noremap ; <c-w><c-w>
 
 inoremap <c-x> <esc>:wq<cr>
 inoremap <c-d> <bs><bs><bs><bs>
@@ -177,14 +177,10 @@ inoremap <c-c> <esc>cc
 
 inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
-" nnoremap <del> gT
-" figure out <bs> issues
-" nnoremap = gt
-
 nnoremap <tab> <c-w><c-w>
 
 let g:lasttab = 1
-nnoremap = :exe "tabn ".g:lasttab<CR>
+nnoremap ; :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 " ====== FAKE LEADER ======
