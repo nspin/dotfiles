@@ -32,10 +32,9 @@
     haskellPackages.ghc
     haskellPackages.cabal-install
     haskellPackages.cabal2nix
-    hoogle
-    ghc-mod
-    hdevtools
-    hlint
+    haskellPackages.hoogle
+    haskellPackages.hdevtools
+    haskellPackages.hlint
 
   # other languages
     gcc
@@ -51,6 +50,7 @@
 
   # failing for unknown reasons
 
+    # haskellPackages.ghc-mod
     # haskellPackages.Agda
 
     # haskellPackages.elm-make
