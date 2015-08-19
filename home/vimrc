@@ -177,15 +177,20 @@ inoremap <c-c> <esc>cc
 
 inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
-nnoremap <del> gT
+" nnoremap <del> gT
 " figure out <bs> issues
-nnoremap = gt
+" nnoremap = gt
+
+nnoremap <tab> <c-w><c-w>
 
 let g:lasttab = 1
-nnoremap <tab> :exe "tabn ".g:lasttab<CR>
+nnoremap = :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 " ====== FAKE LEADER ======
+
+nnoremap <space>k gT
+nnoremap <space>l gt
 
 " buffer management
 nnoremap <space>q :quit<cr>
@@ -208,6 +213,8 @@ vnoremap <space>c :call <sid>tabcomms()<cr>
 " n + v + s mode stuff
 noremap <space>z :Tabularize<space>/
 noremap <space>: :Tabularize<space>::<cr>
+
+" registers
 noremap <space>' "r
 noremap <space>h "_
 noremap <space>f @q
@@ -221,7 +228,7 @@ nnoremap <space>b :shell<cr>
 nnoremap <space>v :tabedit $MYVIMRC<cr>
 
 " remove trailing whitespace
-nnoremap <space>l :%s/\s\+$//e<cr>
+nnoremap <space>L :%s/\s\+$//e<cr>
 
 " ====== TOGGLES ======
 

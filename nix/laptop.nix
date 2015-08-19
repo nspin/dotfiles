@@ -76,7 +76,7 @@
       sha256 = "4cab5987a7f1ad3cc463780d9f1ee3fbf43603105e6a6e538e4c2147bde3ee6b";
   };
 
-  services.xserver.desktopManager.xterm.enable = true;
+  services.xserver.desktopManager.xterm.enable = false;
 
   users.extraUsers.nick = {
     isNormalUser = true;
