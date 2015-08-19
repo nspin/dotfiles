@@ -27,7 +27,7 @@ call vundle#begin()                           " required by vundle
 Plugin 'gmarik/Vundle.vim'                    " vundle has to manage vundle
 
 " language support
-Plugin 'lambdatoast/elm.vim'
+" Plugin 'lambdatoast/elm.vim'
 " Plugin 'MarcWeber/vim-addon-nix'
 
 " general
@@ -42,9 +42,9 @@ Plugin 'altercation/vim-colors-solarized'
 
 " snipmate (not ultisnips, because I often work on machines without +python)
 " and its dependencies
-Bundle "garbas/vim-snipmate"
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
+" Bundle 'garbas/vim-snipmate'
+" Bundle 'MarcWeber/vim-addon-mw-utils'
+" Bundle 'tomtom/tlib_vim'
 
 " not in use
 " Plugin 'gerw/vim-latex-suite'

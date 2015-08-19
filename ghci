@@ -1,0 +1,4 @@
+:set +m
+:set +r
+:set +t
+:def hoogle \s -> return $ ":! hoogle --count=15 \"" ++ s ++ "\""

@@ -19,22 +19,37 @@
 
   environment.systemPackages = with pkgs; [
 
+  # misc
     xclip
+    firefox
 
+  # general development
     tmux
     vimHugeX
     git
 
-    firefox
-
-    gcc
+  # haskell
     haskellPackages.ghc
-    haskellPackages.idris
-    nodejs
-    jdk
+    haskellPackages.cabal-install
+    haskellPackages.cabal2nix
+    hoogle
+    ghc-mod
+    hdevtools
+    hlint
+
+  # other languages
+    gcc
     coq
+    haskellPackages.idris
     clojure
     racket
+    nodejs
+
+  # java bullshit
+    jdk
+    maven
+
+  # failing for unknown reasons
 
     # haskellPackages.Agda
 
@@ -43,10 +58,6 @@
     # haskellPackages.elm-package
     # haskellPackages.elm-repl
 
-    maven
-    haskellPackages.cabal-install
-
-    haskellPackages.cabal2nix
   ];
 
   # !!!!!
