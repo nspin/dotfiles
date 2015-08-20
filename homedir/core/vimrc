@@ -3,8 +3,6 @@
 " +-----------------------+
 
 " TODO
-"   tabs vs buffers? (movement between buffers)
-"   language-specific ecosystems
 "   find mapping worthy of <backspace>
 "   clear autocmds before any here? (au!)?
 "   deal with ftplugins messing with my options (namely fo)
@@ -12,7 +10,7 @@
 "       will improve regex to only match last comment phrase in line
 "       and not match full-line comments
 
-" ############{VUNDLE STUFF}############
+" ############ VUNDLE STUFF ############
 
 set nocompatible
 
@@ -56,7 +54,7 @@ Plugin 'altercation/vim-colors-solarized'
 call vundle#end()                                " required by vundle
 filetype plugin on                               " required by vundle
 
-" ############{MISC}############
+" ############ MISC ############
 
 " ====== AESTHETICS ======
 
@@ -151,7 +149,7 @@ function! s:align()
     endif
 endfunction
 
-" ############{MAPPINGS}############
+" ############ MAPPINGS ############
 
 " --- Nop's ---
 
@@ -251,7 +249,7 @@ nnoremap ,M :set mouse=<cr>
 nmap ,t ,w,b,c,g
 nmap ,T ,w,b,C,G
 
-" ############{ABBREVIATIONS}############
+" ############ ABBREVIATIONS ############
 
 " laziness
 
