@@ -22,6 +22,7 @@
   # misc
     xclip
     firefox
+    zip
 
   # general development
     tmux
