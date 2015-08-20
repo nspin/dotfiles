@@ -5,7 +5,7 @@ My personal configuration files for various tools and systems.
 
 #### Contents
 
-*   **homedir**: Files and scripts for traditional dotfile-type configurations.
+*   **`homedir`**: Files and scripts for traditional dotfile-type configurations.
     *   `setup.sh`: Creates `.`-prefixed symlinks in `~` to files in `core`, backing up old files/links that would be replaces in a directory called `~/seliftod/`*seconds since 1970*, unless the script is called with an argument
     *   `putes.sh`: Removes files and symlinks in `~` with the same names as *(but not necessarily linking to*) files in `core`
     *   **`core`**: Files to be directly linked from `~`
