@@ -7,3 +7,4 @@
 *   Whenever you need Haskell stuff for your system (e.g. hlint) use the `beach` function from `core/bashrcs`. Binaries will have symlinks in `~/.beach/bin`, which `core/bash_profile` adds to `$PATH`.
 *   Annoying exceptions: xmonad, yi, etc - programs that compile their own config files (which have expexted locations, which are not in sandboxes). If future releases of such programs cause dependancy hell among themselves, then this approach may have to be revised.
 
+#### MORAL OF THE STORY: USE NIX
