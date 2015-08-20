@@ -6,7 +6,7 @@
 
 echo ""
 echo "-- Removing..."
-for file in $(ls $HOME/dotfiles/home) ; do
+for file in $(ls $HOME/dotfiles/homedir/core) ; do
     echo "--     $file"
     if [[ -h $HOME/.$file ]] ; then
         rm "$HOME/.$file"

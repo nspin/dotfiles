@@ -6,7 +6,7 @@
 # script is called with an argument.
 #################################################
 
-source=$HOME/dotfiles/home
+source=$HOME/dotfiles/homedir/core
 
 function finish {
     echo "-- $1"
