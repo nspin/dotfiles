@@ -14,6 +14,5 @@ My personal configuration files for various tools and systems.
 *   **`misc`**: Miscellaneous configuration files with no uniform means of installation
 *   **`notes`**: Files that aren't for computers
 
-> Most snippets come from [honza/vim-snippets](https://www.github.com/honza/vim-snippets)
-
+> Most snippets come from [honza/vim-snippets](https://www.github.com/honza/vim-snippets)  
 > The fonts that once existed in aux/fonts were created by [adobe](https://github.com/adobe-fonts/source-code-pro)
