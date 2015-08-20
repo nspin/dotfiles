@@ -60,9 +60,6 @@
 
   ];
 
-  # !!!!!
-  nixpkgs.config.allowBroken = true;
-
   services.jboss.enable = true;
   services.jboss.user = "jboss";
 
