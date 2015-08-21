@@ -23,6 +23,7 @@
     xclip
     firefox
     zip
+    unzip
 
   # general development
     tmux
