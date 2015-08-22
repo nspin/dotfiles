@@ -20,10 +20,11 @@
   environment.systemPackages = with pkgs; [
 
   # misc
-    xclip
-    firefox
     zip
     unzip
+    xclip
+    firefox
+    xchat
 
   # general development
     tmux

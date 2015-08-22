@@ -74,6 +74,11 @@ alias wc='wicd-curses'
 # FUNCTIONS
 #--------------------
 
+function x()
+    {
+    ($1 &> /dev/null &)
+    }
+
 function beach()
     {
     NEW=$HOME/.beach/boxes/$1
