@@ -31,20 +31,23 @@
     vimHugeX
     git
 
-  # haskell
-    haskellPackages.ghc
-    haskellPackages.cabal-install
-    haskellPackages.cabal2nix
-    haskellPackages.hoogle
-    haskellPackages.hdevtools
-    haskellPackages.hlint
+  # ghc
+    haskell.packages.ghc7102.ghc
+    haskell.packages.ghc7102.cabal-install
+    haskell.packages.ghc7102.cabal2nix
+    haskell.packages.ghc7102.hoogle
+    haskell.packages.ghc7102.hdevtools
+    haskell.packages.ghc7102.hlint
+
+  # ghcjs
+    haskell.packages.ghcjs.ghc
 
   # other languages
     gcc
-    coq
-    haskellPackages.idris
-    clojure
-    racket
+  # coq
+  # haskellPackages.idris
+  # clojure
+  # racket
     nodejs
 
   # java bullshit
@@ -53,13 +56,13 @@
 
   # failing for unknown reasons
 
-    # haskellPackages.ghc-mod
-    # haskellPackages.Agda
+  # haskellPackages.ghc-mod
+  # haskellPackages.Agda
 
-    # haskellPackages.elm-make
-    # haskellPackages.elm-reactor
-    # haskellPackages.elm-package
-    # haskellPackages.elm-repl
+  # haskellPackages.elm-make
+  # haskellPackages.elm-reactor
+  # haskellPackages.elm-package
+  # haskellPackages.elm-repl
 
   ];
 
