@@ -25,6 +25,7 @@
     xclip
     firefox
     xchat
+    tree
 
   # general development
     tmux
