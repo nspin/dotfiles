@@ -9,7 +9,7 @@ import qualified XMonad.StackSet as W
 
 main = xmonad $ defaultConfig
     { modMask            = mod3Mask -- See Xmodmap
-    -- , keys               = myKeys
+    , keys               = myKeys
     , layoutHook         = vbox
     , startupHook        = myStartupHook
     , normalBorderColor  = darkish
@@ -30,11 +30,10 @@ vbox = Full ||| tall ||| Mirror tall
 
 -- Keys
 
--- myKeys cfg = keys defaultConfig cfg `M.union` extraKeys cfg
+myKeys cfg = extraKeys cfg `M.union` keys defaultConfig cfg
 
--- extraKeys XConfig{..} = M.fromList
---     [ ((modMask, xK_o), windows W.focusUp)
---     , ((modMask, xK_p), windows W.focusDown)
---     ]
+extraKeys XConfig{..} = M.fromList
+    [ ((modMask, xK_backslash), windows W.focusDown)
+    ]
 
 myStartupHook = spawn "xterm"
