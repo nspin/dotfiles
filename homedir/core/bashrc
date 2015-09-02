@@ -34,6 +34,9 @@ PS1="\u@\h \w >> "
 
 set -o vi
 
+export VISUAL=vim
+export EDITOR=$VISUAL
+
 #--------------------
 # ALIASES
 #--------------------

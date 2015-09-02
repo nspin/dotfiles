@@ -78,8 +78,9 @@
   services.xserver.windowManager.xmonad.enableContribAndExtras = true;
 
   services.xserver.displayManager.sessionCommands = ''
+    xmodmap /home/nick/dotfiles/nix-config/Xmodmap
+    xrdb -merge /home/nick/dotfiles/nix-config/Xresources
     xset r rate 300 50
-    xmodmap -e 'clear Lock' -e 'keysym Caps_Lock = Escape'
   '';
 
   services.xserver.displayManager.slim.enable = true;
