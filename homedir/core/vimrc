@@ -94,6 +94,7 @@ set backspace=indent,eol,start                      " allow more deletion in ins
 set formatoptions=""                                " not familiar with all formatting behavior, so disable it all
 
 set nowrap                                          " say no to line wrapping
+set relativenumber                                  " show rel numbers
 set number                                          " show line numbers
 set showmatch                                       " of block delimiter
 set incsearch                                       " sometimes nice
@@ -163,8 +164,8 @@ noremap Y <nop>
 
 " --- Special ---
 
-inoremap j <esc>
-inoremap JJ j
+" inoremap j <esc>
+" inoremap JJ j
 
 nnoremap Y y$
 

@@ -22,10 +22,11 @@
   # misc
     zip
     unzip
-    xclip
-    firefox
-    xchat
     tree
+    xclip
+    xchat
+    xlibs.xmodmap
+    firefox
 
   # general development
     tmux
@@ -67,11 +68,6 @@
 
   ];
 
-  services.jboss.enable = true;
-  services.jboss.user = "jboss";
-
-  services.openssh.enable = true;
-
   # services.printing.enable = true;
 
   services.xserver.autorun = true;
@@ -81,7 +77,10 @@
   services.xserver.windowManager.xmonad.enable = true;
   services.xserver.windowManager.xmonad.enableContribAndExtras = true;
 
-  services.xserver.displayManager.sessionCommands ="xset r rate 300 50";
+  services.xserver.displayManager.sessionCommands = ''
+    xset r rate 300 50
+    xmodmap -e 'clear Lock' -e 'keysym Caps_Lock = Escape'
+  '';
 
   services.xserver.displayManager.slim.enable = true;
   services.xserver.displayManager.slim.defaultUser = "nick";

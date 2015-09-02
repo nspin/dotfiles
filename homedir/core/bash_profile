@@ -6,21 +6,17 @@
 # Check if interactive
 [ -z "$PS1" ] && reset
 
-# Add su binaries to pash
-SUSTUFF="/sbin:/usr/sbin"
-export PATH=$PATH:$SUSTUFF
+# # Add haskell binaries to path
+# HSBIN="$HOME/.cabal/bin"
+# if [ -d $HSBIN ] ; then
+#     export PATH=$HSBIN:$PATH
+# fi
 
-# Add haskell binaries to path
-HSBIN="$HOME/.cabal/bin"
-if [ -d $HSBIN ] ; then
-    export PATH=$HSBIN:$PATH
-fi
-
-# Add cabal sandbox binaries to path
-BBIN="$HOME/.beach/bin"
-if [ -d $BBIN ] ; then
-    export PATH=$BBIN:$PATH
-fi
+# # Add cabal sandbox binaries to path
+# BBIN="$HOME/.beach/bin"
+# if [ -d $BBIN ] ; then
+#     export PATH=$BBIN:$PATH
+# fi
 
 # SAND="$HOME/.sand"
 # BIN=".cabal-sandbox/bin"
@@ -31,12 +27,6 @@ fi
 #         done
 #     done
 # fi
-
-# Add misc binaries to path
-MBIN="$HOME/.mbin"
-if [ -d $MBIN ] ; then
-    export PATH=$MBIN:$PATH
-fi
 
 # Everything else
 source $HOME/.bashrc
