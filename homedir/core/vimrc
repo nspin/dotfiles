@@ -72,11 +72,14 @@ elseif has('unix')
     let s:uname = system("uname -s")
     if s:uname == "Darwin\n"
         colorscheme solarized
+        hi CursorLineNR ctermfg=14 ctermbg=black guifg=#93a1a1 guibg=#073642
     elseif exists('$WINDOWID')
         colorscheme solarized
+        hi CursorLineNR ctermfg=14 ctermbg=black guifg=#93a1a1 guibg=#073642
     elseif $SSH_CONNECTION
         set t_Co=16
         colorscheme solarized
+        hi CursorLineNR ctermfg=14 ctermbg=black guifg=#93a1a1 guibg=#073642
     endif
 endif
 
