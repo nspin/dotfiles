@@ -22,7 +22,6 @@ xterm*eightBitInput: false
 xterm*eightBitOutput: true
 
 xterm*faceName: Source Code Pro:antialias=True:pixelsize=18
-xterm*faceName: antialias=True:pixelsize=18
 
 xterm*background: S_base03
 xterm*foreground: S_base0

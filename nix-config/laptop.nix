@@ -70,6 +70,8 @@
 
   # services.printing.enable = true;
 
+  services.openssh.enable = true;
+
   services.xserver.autorun = true;
   services.xserver.enable = true;
   services.xserver.layout = "us";
@@ -77,11 +79,7 @@
   services.xserver.windowManager.xmonad.enable = true;
   services.xserver.windowManager.xmonad.enableContribAndExtras = true;
 
-  services.xserver.displayManager.sessionCommands = ''
-    xmodmap /home/nick/dotfiles/nix-config/Xmodmap
-    xrdb -merge /home/nick/dotfiles/nix-config/Xresources
-    xset r rate 300 50
-  '';
+  services.xserver.displayManager.sessionCommands = "bash /home/nick/dotfiles/nix-config/sessionCommands.sh";
 
   services.xserver.displayManager.slim.enable = true;
   services.xserver.displayManager.slim.defaultUser = "nick";

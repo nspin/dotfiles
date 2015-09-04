@@ -1,0 +1,3 @@
+xmodmap /home/nick/dotfiles/nix-config/Xmodmap
+xrdb -merge /home/nick/dotfiles/nix-config/Xresources
+xset r rate 300 50
