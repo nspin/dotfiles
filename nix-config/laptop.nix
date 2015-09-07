@@ -24,10 +24,15 @@
 
   fonts.enableFontDir = true;
   fonts.fontconfig.enable = true;
+  fonts.fonts = [
+    pkgs.dejavu_fonts
+  ];
 
   # services.printing.enable = true;
 
   services.openssh.enable = true;
+
+  services.xfs.enable = true;
 
   services.xserver = {
 
@@ -56,18 +61,22 @@
 
   environment.systemPackages = with pkgs; [
 
-  # misc
+  # misc command line utils
     zip
     unzip
     tree
 
   # x utils
+    xfontsel
+    xlsfonts
     xclip
     xlibs.xmodmap
     xlibs.xmessage
     dmenu
     gmrun
     haskell.packages.ghc7102.xmobar
+
+    dejavu_fonts
 
   # x applications
     firefox

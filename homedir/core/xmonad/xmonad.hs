@@ -1,4 +1,4 @@
-{-# OPTIONS -fno-warn-missing-signatures #-}
+{-# optioNS -fno-warn-missing-signatures #-}
 {-# LANGUAGE RecordWildCards #-}
 
 -- This file is an altered version of XMonad.Config
@@ -24,6 +24,13 @@ import           System.IO
 import           System.Exit
 import           Graphics.X11.Xlib
 import           Graphics.X11.Xlib.Extras
+
+dmenu :: String
+-- dmenu = "dmenu_run -fn \"-*-dejavu sans mono-*-*-*-*-*-*-*-*-*-*-*-*\""
+dmenu = "dmenu_run -fn \"-*-*-*-*-*-*-18-*-*-*-*-*-*-*\""
+-- dmenu = "dmenu_run -fn \"-*-fixed-medium-*-*-*-18-*-*-*-*-*-*-*\""
+-- dmenu = "dmenu_run -fn \"-*-*-medium-r-*-*-18-*-*-*-*-*-*-*\""
+-- dmenu = "dmenu_run"
 
 main :: IO ()
 main = do
@@ -148,9 +155,6 @@ myKeys (XConfig {..}) = M.fromList $
     | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
     , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
     ]
-
-dmenu :: String
-dmenu = "dmenu_run -fn \"-*-dejavu sans mono-medium-r-normal--*-80-*-*-*-*-iso10646-1\""
 
 -- | Mouse bindings: default actions bound to mouse events
 myMouseBindings :: XConfig Layout -> M.Map (KeyMask, Button) (Window -> X ())
