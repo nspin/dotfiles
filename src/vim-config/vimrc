@@ -23,7 +23,7 @@ set runtimepath+=$HOME/.vim/bundle/Vundle.vim
 filetype off                                  " required by vundle
 call vundle#begin()                           " required by vundle
 
-Plugin 'gmarik/Vundle.vim'                    " vundle has to manage vundle
+Plugin 'VundleVim/Vundle.vim'                    " vundle has to manage vundle
 
 " general
 Plugin 'tpope/vim-commentary'
