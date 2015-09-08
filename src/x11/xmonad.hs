@@ -33,6 +33,7 @@ dmenu = "dmenu_run -fn \"-*-*-*-*-*-*-18-*-*-*-*-*-*-*\""
 -- dmenu = "dmenu_run"
 
 main :: IO ()
+-- main = xmonad defaultConfix
 main = do
     xmproc <- spawnPipe "/run/current-system/sw/bin/xmobar"
 

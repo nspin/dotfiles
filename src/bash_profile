@@ -1,32 +1,11 @@
 ###############################
 # NICK SPINALE
-# $HOME/.bash_profile
+# ~/.bashrc
 ###############################
 
-# Check if interactive
-[ -z "$PS1" ] && reset
+export VISUAL=vim
+export EDITOR=$VISUAL
 
-# # Add haskell binaries to path
-# HSBIN="$HOME/.cabal/bin"
-# if [ -d $HSBIN ] ; then
-#     export PATH=$HSBIN:$PATH
-# fi
-
-# # Add cabal sandbox binaries to path
-# BBIN="$HOME/.beach/bin"
-# if [ -d $BBIN ] ; then
-#     export PATH=$BBIN:$PATH
-# fi
-
-# SAND="$HOME/.sand"
-# BIN=".cabal-sandbox/bin"
-# if [ -d $SAND ] ; then
-#     for BOX in $SAND/*/ ; do
-#         for GRAIN in $BOX$BIN/*/ ; do
-#             export PATH=$GRAIN:$PATH
-#         done
-#     done
-# fi
-
-# Everything else
-source $HOME/.bashrc
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi

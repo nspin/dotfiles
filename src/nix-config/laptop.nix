@@ -1,21 +1,15 @@
 { config, pkgs, ... }:
 
 {
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-
-  # ___
   boot.loader.grub.device = "/dev/sda";
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.version = 2;
 
   networking.hostName = "nixos";
   networking.hostId = "c890f48c";
   # networking.wireless.enable = true;
 
-  i18n = {
-    consoleFont = "lat9w-16";
-    consoleKeyMap = "us";
-    defaultLocale = "en_US.UTF-8";
-  };
+  time.timeZone = "America/Minneapolis";
 
   users.extraUsers.nick = {
     isNormalUser = true;
@@ -32,7 +26,7 @@
 
   services.openssh.enable = true;
 
-  services.xfs.enable = true;
+  # services.xfs.enable = true;
 
   services.xserver = {
 

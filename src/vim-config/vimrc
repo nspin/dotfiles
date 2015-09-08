@@ -73,7 +73,7 @@ elseif has('unix')
     if s:uname == "Darwin\n"
         colorscheme solarized
         hi CursorLineNR ctermfg=14 ctermbg=black guifg=#93a1a1 guibg=#073642
-    elseif exists('$WINDOWID')
+    elseif exists('$DISPLAY')
         colorscheme solarized
         hi CursorLineNR ctermfg=14 ctermbg=black guifg=#93a1a1 guibg=#073642
     elseif $SSH_CONNECTION

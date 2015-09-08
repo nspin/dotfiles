@@ -1,13 +1,13 @@
 ###############################
 # NICK SPINALE
-# $HOME/.bashrc
+# ~/.bashrc
 ###############################
 
 # HACKY WAY TO MAKE COLORS IN SCREEN OK IN X11/OSX
 # TODO - make this not suck
 # (note: also try $DISPLAY)
 
-if [ -n "$WINDOWID" ]; then
+if [ -n "$DISPLAY" ]; then
     export TERM="xterm-256color"
 fi
 
@@ -16,17 +16,21 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 #--------------------
-# COMMAND HISTORY
-#--------------------
-
-HISTSIZE=100000
-HISTFILESIZE=100000
-
-#--------------------
 # PROMPT
 #--------------------
 
-PS1="\u@\h \w >> "
+reset=$(tput sgr0)
+background=""
+symbols=$(tput setaf 2)
+content=$(tput setaf 6)
+
+PS1="\[$background\]\[$symbols\]λ\[$content\] \w \[$symbols\]→\[$reset\] "
+
+# if [ -n "$DISPLAY" ]; then
+#     PS1="\[$background\]\[$symbols\]λ\[$content\] \w \[$symbols\]→\[$reset\] "
+# else
+#     PS1="\\ \w -> "
+# fi
 
 #--------------------
 # SETTINGS
@@ -34,18 +38,14 @@ PS1="\u@\h \w >> "
 
 set -o vi
 
-export VISUAL=vim
-export EDITOR=$VISUAL
-
 #--------------------
 # ALIASES
 #--------------------
 
 # general
-alias d='cd'
-alias p='cd ..'
-alias r='cd /'
-alias s='sudo'
+alias pp='cd ..'
+alias rr='cd /'
+alias ss='sudo'
 
 # screen
 alias sc='screen -dRR'
@@ -76,30 +76,13 @@ alias ci='cabal sandbox init'
 alias ca='cabal sandbox add-source'
 alias co='cabal install --dependencies-only'
 
-# misc
-alias wc='wicd-curses'
-
 #--------------------
 # FUNCTIONS
 #--------------------
 
-function x()
-    {
-    ($1 &> /dev/null &)
-    }
-
-function beach()
-    {
-    NEW=$HOME/.beach/boxes/$1
-    BBIN=$HOME/.beach/bin/
-    mkdir -p $NEW
-    mkdir -p $BBIN
-    cd $NEW && {
-        cabal sandbox init
-        cabal install $1
-        ln -sf $NEW/.cabal-sandbox/bin/$1 $BBIN
-        }
-    }
+function x() {
+    $1 &> /dev/null &
+}
 
 # Status of git repos in current directory
 function statuses()
@@ -118,8 +101,7 @@ function statuses()
     }
 
 # Status of git repos in current directory
-function pulls()
-    {
+function pulls() {
     currdir=$(pwd)
     for subdir in ./*/ ; do
         cd $subdir
@@ -131,35 +113,30 @@ function pulls()
         cd $currdir
     done
     echo ""
-    }
+}
 
-function clone()
-    {
+function clone() {
     URL="https://github.com/$1/$2.git"
     git clone $URL
-    }
+}
 
-function enolc()
-    {
+function enolc() {
     URL="https://github.com/nickspinale/$1.git"
     git clone $URL
-    }
+}
 
-function module()
-    {
+function module() {
     URL="https://github.com/$1/$2.git"
     git submodule add $URL $3
-    }
+}
 
-function eludom()
-    {
+function eludom() {
     URL="https://github.com/nickspinale/$1.git"
     git submodule add $URL $3
-    }
+}
 
 # From Emmanuel Rouat's bashrc
-function extract()
-    {
+function extract() {
     if [ -f $1 ] ; then
         case $1 in
             *.tar.bz2)   tar xvjf $1     ;;
@@ -178,4 +155,4 @@ function extract()
     else
         echo "'$1' is not a valid file!"
     fi
-    }
+}
