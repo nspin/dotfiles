@@ -1,22 +1,27 @@
 Config
-    { font = "xft:DejaVu Sans Mono:antialias=True:pixelsize=18"
-    -- , bgColor = "#073642"
-    -- , fgColor = "#859900"
+    { position = Top
+    , persistent = True
+
+    , hideOnStart = False
+    , lowerOnStart = False
+
+    , font = "xft:DejaVu Sans Mono:antialias=True:pixelsize=18"
+
+    , alpha = 255
     , bgColor = "#002b36"
     , fgColor = "#657b83"
     , border = NoBorder
     , borderColor = "black"
-    , hideOnStart = False
-    , persistent = True
-    , position = Top
-    , lowerOnStart = False
+    , borderWidth = 0
+    , sepChar = "%"
+    , alignSep = "}{"
+
     , commands =
         [ Run Cpu ["-L","3","-H","50","--normal","#657b83","--high","#657b83"] 10
         , Run Memory ["-t","Mem: <usedratio>%"] 10
         , Run Date "<fc=#657b83>%a %b %d %Y %H:%M</fc>" "date" 10
         , Run StdinReader
         ]
-    , sepChar = "%"
-    , alignSep = "}{"
+
     , template = " %StdinReader% }{ %cpu% | %memory% | %date% "
     }
