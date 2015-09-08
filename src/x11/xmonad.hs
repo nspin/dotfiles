@@ -37,14 +37,16 @@ main :: IO ()
 main = do
     xmproc <- spawnPipe "/run/current-system/sw/bin/xmobar"
 
-    let myLogHook = dynamicLogWithPP xmobarPP
-           { ppOutput = hPutStrLn xmproc  
-           , ppTitle = xmobarColor "#657b83" "" . shorten 100   
-           , ppCurrent = xmobarColor "#c0c0c0" "" . wrap "" ""
-           , ppSep     = xmobarColor "#c0c0c0" "" " | "
-           , ppUrgent  = xmobarColor "#ff69b4" ""
-           , ppLayout = const "" -- to disable the layout info on xmobar  
-           } 
+    -- let myLogHook = dynamicLogWithPP xmobarPP
+    --        { ppOutput  = hPutStrLn xmproc  
+    --        , ppTitle   = xmobarColor "#657b83" "" . shorten 100   
+    --        , ppCurrent = xmobarColor "#657b83" "" . wrap "" ""
+    --        , ppSep     = xmobarColor "#657b83" "" " | "
+    --        , ppUrgent  = xmobarColor "#ff69b4" ""
+    --        , ppLayout  = const "" -- to disable the layout info on xmobar  
+    --        } 
+
+    let myLogHook = dynamicLogWithPP defaultPP { ppOutput = hPutStrLn xmproc }
 
         myConfig = XConfig
             {

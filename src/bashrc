@@ -20,11 +20,10 @@ fi
 #--------------------
 
 reset=$(tput sgr0)
-background=""
 symbols=$(tput setaf 2)
 content=$(tput setaf 6)
 
-PS1="\[$background\]\[$symbols\]λ\[$content\] \w \[$symbols\]→\[$reset\] "
+PS1=" \[$symbols\]λ\[$content\] \w \[$symbols\]→\[$reset\] "
 
 # if [ -n "$DISPLAY" ]; then
 #     PS1="\[$background\]\[$symbols\]λ\[$content\] \w \[$symbols\]→\[$reset\] "

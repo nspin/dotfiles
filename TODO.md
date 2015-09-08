@@ -13,3 +13,4 @@
 *   slim down xmonad conf
 *   xmobar colors
 *   vim tab bar?
+*   solarized haskell package

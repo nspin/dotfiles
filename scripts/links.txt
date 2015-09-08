@@ -4,6 +4,7 @@ vim-config/gvimrc   /home/nick/.gvimrc
 x11/xmonad.hs       /home/nick/.xmonad/xmonad.hs
 x11/xmobarrc        /home/nick/.xmobarrc
 gitconfig           /home/nick/.gitconfig
+inputrc             /home/nick/.inputrc
 bashrc              /home/nick/.bashrc
 bash_profile        /home/nick/.bash_profile
 ghci                /home/nick/.ghci
