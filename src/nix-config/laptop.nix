@@ -55,6 +55,8 @@
 
   environment.systemPackages = with pkgs; [
 
+    rlwrap
+
   # misc command line utils
     zip
     unzip
@@ -98,7 +100,7 @@
 
   # other languages
     gcc
-    racket
+    # racket
     nodejs
 
   # failing for unknown reasons
