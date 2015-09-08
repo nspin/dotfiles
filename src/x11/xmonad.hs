@@ -64,8 +64,8 @@ main = do
             -- , normalBorderColor = "#002b36"
             -- , focusedBorderColor = "#657b83"
 
-            , normalBorderColor  = darkish
-            , focusedBorderColor = darkish
+            , normalBorderColor  = border
+            , focusedBorderColor = border
 
             , workspaces         = map fst stuff
             , layoutHook         = avoidStruts $ vbox
@@ -88,6 +88,10 @@ stuff = [ ("0", xK_0)
 
 darkish :: String
 darkish = "#031518"
+
+border :: String
+border = "#073642"
+-- border = "#586e85"
 
 vbox = Full ||| tiled ||| Mirror tiled
   where
