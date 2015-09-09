@@ -8,20 +8,20 @@ Config
     , font = "xft:DejaVu Sans Mono:antialias=True:pixelsize=18"
 
     , alpha = 255
-    , bgColor = "#002b36"
+    , bgColor = "#073642"
     , fgColor = "#657b83"
     , border = NoBorder
-    , borderColor = "black"
-    , borderWidth = 0
     , sepChar = "%"
     , alignSep = "}{"
 
     , commands =
-        [ Run Cpu ["-L","3","-H","50","--normal","#657b83","--high","#657b83"] 10
-        , Run Memory ["-t","Mem: <usedratio>%"] 10
-        , Run Date "<fc=#657b83>%a %b %d %Y %H:%M</fc>" "date" 10
+        [ Run Cpu    ["-t","Cpu: <total>%"     ,"-H","75","--normal","#657b83","--high","#dc322f"] 10
+        , Run Memory ["-t","Mem: <usedratio>%" ,"-H","75","--normal","#657b83","--high","#dc322f"] 10
+        , Run Swap   ["-t","Swap: <usedratio>%","-H","75","--normal","#657b83","--high","#dc322f"] 10
+        , Run DiskU [("/", "Disk: <used>/<size>")] [] 20
+        , Run Date "%a %b %-d %Y %-H:%M" "date" 10
         , Run StdinReader
         ]
 
-    , template = " %StdinReader% }{ %cpu% | %memory% | %date% "
+    , template = " %StdinReader% }{ %cpu%  %memory%  %swap%  %disku%    %date% "
     }

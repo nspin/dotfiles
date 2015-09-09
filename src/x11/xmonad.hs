@@ -5,6 +5,7 @@
 
 module Main where
 
+-- xmonad
 import           XMonad
 import           XMonad.Core
 import           XMonad.Layout
@@ -12,11 +13,13 @@ import           XMonad.Operations
 import           XMonad.ManageHook
 import qualified XMonad.StackSet as W
 
--- Contrib
+-- xmonad-contrib
 import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.ManageDocks
 import           XMonad.Util.Run
+import           XMonad.Util.WorkspaceCompare
 
+-- base
 import           Data.Bits ((.|.))
 import           Data.Monoid
 import qualified Data.Map as M
@@ -25,34 +28,31 @@ import           System.Exit
 import           Graphics.X11.Xlib
 import           Graphics.X11.Xlib.Extras
 
-dmenu :: String
--- dmenu = "dmenu_run -fn \"-*-dejavu sans mono-*-*-*-*-*-*-*-*-*-*-*-*\""
-dmenu = "dmenu_run -fn \"-*-*-*-*-*-*-18-*-*-*-*-*-*-*\""
--- dmenu = "dmenu_run -fn \"-*-fixed-medium-*-*-*-18-*-*-*-*-*-*-*\""
--- dmenu = "dmenu_run -fn \"-*-*-medium-r-*-*-18-*-*-*-*-*-*-*\""
--- dmenu = "dmenu_run"
-
 main :: IO ()
--- main = xmonad defaultConfix
 main = do
+
     xmproc <- spawnPipe "/run/current-system/sw/bin/xmobar"
 
-    -- let myLogHook = dynamicLogWithPP xmobarPP
-    --        { ppOutput  = hPutStrLn xmproc  
-    --        , ppTitle   = xmobarColor "#657b83" "" . shorten 100   
-    --        , ppCurrent = xmobarColor "#657b83" "" . wrap "" ""
-    --        , ppSep     = xmobarColor "#657b83" "" " | "
-    --        , ppUrgent  = xmobarColor "#ff69b4" ""
-    --        , ppLayout  = const "" -- to disable the layout info on xmobar  
-    --        } 
-
-    let myLogHook = dynamicLogWithPP defaultPP { ppOutput = hPutStrLn xmproc }
+    -- let myPP = PP
+    let lines = ('-':) . (++ "-")
+        normal = pad . lines
+        myPP = defaultPP
+            { ppCurrent = xmobarColor "#657b83" "#002b36" . normal
+            , ppVisible = normal
+            , ppHidden = normal
+            , ppHiddenNoWindows = pad . pad
+            , ppUrgent = xmobarColor "#dc322f" "" . normal
+            , ppSep = ""
+            , ppWsSep = ""
+            , ppTitle = const ""
+            , ppLayout = const ""
+            , ppOrder = id
+            , ppSort = (fmap.fmap) reverse getSortByIndex
+            , ppOutput = hPutStrLn xmproc
+            }
 
         myConfig = XConfig
-            {
-            -- Simple
-
-              borderWidth        = 1
+            { borderWidth        = 1
             , terminal           = "xterm"
             , modMask            = mod3Mask
             , startupHook        = return ()
@@ -61,18 +61,13 @@ main = do
             , focusFollowsMouse  = True
             , clickJustFocuses   = True
 
-            -- More complex
-
-            -- , normalBorderColor = "#002b36"
-            -- , focusedBorderColor = "#657b83"
-
             , normalBorderColor  = border
             , focusedBorderColor = border
 
             , workspaces         = map fst stuff
             , layoutHook         = avoidStruts $ vbox
 
-            , logHook            = myLogHook
+            , logHook            = dynamicLogWithPP myPP
 
             , keys               = myKeys
             , mouseBindings      = myMouseBindings
@@ -101,6 +96,14 @@ vbox = Full ||| tiled ||| Mirror tiled
      nmaster = 1
      ratio   = 1/2
      delta   = 3/100
+
+-- TODO make this work
+dmenu :: String
+dmenu = "dmenu_run -fn \"-*-*-*-*-*-*-18-*-*-*-*-*-*-*\""
+-- dmenu = "dmenu_run -fn \"-*-dejavu sans mono-*-*-*-*-*-*-*-*-*-*-*-*\""
+-- dmenu = "dmenu_run -fn \"-*-fixed-medium-*-*-*-18-*-*-*-*-*-*-*\""
+-- dmenu = "dmenu_run -fn \"-*-*-medium-r-*-*-18-*-*-*-*-*-*-*\""
+-- dmenu = "dmenu_run"
 
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys (XConfig {..}) = M.fromList $
