@@ -57,6 +57,7 @@
 
   environment.systemPackages = with pkgs; [
 
+  # random
     rlwrap
 
   # misc command line utils
@@ -64,16 +65,21 @@
     unzip
     tree
 
-  # x utils
+  # x tools
     xfontsel
-    xlsfonts
     xclip
+    xorg.xlsfonts
+    xorg.xkill
     xlibs.xmodmap
-    xlibs.xmessage
+    xlibs.xev
+
+  # x utils
     dmenu
     gmrun
+    xlibs.xmessage
     haskell.packages.ghc7102.xmobar
 
+  # fonts
     dejavu_fonts
 
   # x applications
