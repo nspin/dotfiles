@@ -11,7 +11,7 @@
   networking.hostId = "c890f48c";
   # networking.wireless.enable = true;
 
-  time.timeZone = "America/Minneapolis";
+  time.timeZone = "America/Chicago";
 
   users.extraUsers.nick = {
     isNormalUser = true;
