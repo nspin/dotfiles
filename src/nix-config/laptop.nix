@@ -42,7 +42,7 @@
       haskellPackages.xmonad-extras
     ];
 
-    displayManager.sessionCommands = "bash /home/nick/dotfiles/src/x11/pre-wm.sh";
+    displayManager.sessionCommands = "bash /home/nick/dotfiles/src/x11/prewm.sh";
 
     displayManager.slim.enable = true;
     displayManager.slim.defaultUser = "nick";

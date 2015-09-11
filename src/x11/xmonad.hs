@@ -80,11 +80,11 @@ main = do
 
 -- workspace tags, along with keys to access them
 tagKeys :: [(WorkspaceId, KeySym)]
-tagKeys = [ ("0", xK_0)
+tagKeys = [ ("=", xK_equal)
+          , ("-", xK_minus)
+          , ("0", xK_0)
           , ("9", xK_9)
           , ("8", xK_8)
-          , ("7", xK_7)
-          , ("6", xK_6)
           ]
 
 -- layout for virtualbox on laptop
@@ -106,7 +106,7 @@ myKeys (XConfig {..}) = M.fromList $ meta ++ interWorkspace ++ intraWorkspace
         -- launching and killing programs
         [ ((modMask              , xK_Return), spawn terminal) -- %! Launch terminal
         , ((modMask              , xK_p     ), spawn dmenu) -- %! Launch dmenu
-        , ((modMask .|. shiftMask, xK_c     ), kill) -- %! Close the focused window
+        , ((modMask              , xK_x     ), kill) -- %! Close the focused window
 
         -- quit, or restart
         , ((modMask .|. shiftMask, xK_q     ), io (exitWith ExitSuccess)) -- %! Quit xmonad
@@ -115,9 +115,9 @@ myKeys (XConfig {..}) = M.fromList $ meta ++ interWorkspace ++ intraWorkspace
 
     interWorkspace =
         -- movement between workspaces adjascent in the config tag list or in time
-        [ ((modMask, xK_backslash), toggleWS) -- %! Move to last viewed workspace
-        , ((modMask, xK_minus    ), nextWS  ) -- %! Move to next workspace in stack
-        , ((modMask, xK_equal    ), prevWS  ) -- %! Move to previous workspace in stack
+        [ ((modMask, xK_backslash   ), toggleWS) -- %! Move to last viewed workspace
+        , ((modMask, xK_bracketleft ), nextWS  ) -- %! Move to next workspace in stack
+        , ((modMask, xK_bracketright), prevWS  ) -- %! Move to previous workspace in stack
         ] ++
 
         -- mod-N %! Switch to workspace N
@@ -133,17 +133,17 @@ myKeys (XConfig {..}) = M.fromList $ meta ++ interWorkspace ++ intraWorkspace
         , ((modMask .|. shiftMask, xK_space ), setLayout layoutHook) -- %!  Reset the layouts on the current workspace to default
 
         -- move focus up or down the window stack
-        , ((modMask              , xK_j     ), windows W.focusDown) -- %! Move focus to the next window
-        , ((modMask              , xK_k     ), windows W.focusUp  ) -- %! Move focus to the previous window
-        , ((modMask              , xK_m     ), windows W.focusMaster  ) -- %! Move focus to the master window
+        , ((modMask              , xK_j     ), windows W.focusDown  ) -- %! Move focus to the next window
+        , ((modMask              , xK_k     ), windows W.focusUp    ) -- %! Move focus to the previous window
+        , ((modMask              , xK_m     ), windows W.focusMaster) -- %! Move focus to the master window
 
         -- modifying the window order
-        , ((modMask .|. shiftMask, xK_Return), windows W.swapMaster) -- %! Swap the focused window and the master window
         , ((modMask .|. shiftMask, xK_j     ), windows W.swapDown  ) -- %! Swap the focused window with the next window
         , ((modMask .|. shiftMask, xK_k     ), windows W.swapUp    ) -- %! Swap the focused window with the previous window
+        , ((modMask .|. shiftMask, xK_m     ), windows W.swapMaster) -- %! Swap the focused window and the master window
 
         -- increase or decrease number of windows in the master area
-        , ((modMask              , xK_period ), sendMessage (IncMasterN   1 )) -- %! Increment the number of windows in the master area
+        , ((modMask              , xK_period), sendMessage (IncMasterN   1 )) -- %! Increment the number of windows in the master area
         , ((modMask .|. shiftMask, xK_comma ), sendMessage (IncMasterN (-1))) -- %! Deincrement the number of windows in the master area
 
         -- resizing the master/slave ratio

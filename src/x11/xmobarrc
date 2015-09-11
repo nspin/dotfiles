@@ -26,5 +26,5 @@ Config
         ]
 
     -- , template = "%StdinReader%}{%cpu%  %memory%  %swap%  %disku% <fc=#002b36>|</fc> %date% "
-    , template = "%StdinReader%}{%cpu%  %memory%  %swap%  %disku%    %date% "
+    , template = "%date%  |  %cpu%  %memory%  %swap%  %disku%}{%StdinReader%"
     }
