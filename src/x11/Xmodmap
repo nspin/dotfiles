@@ -1,10 +1,10 @@
 remove lock = Caps_Lock
 keysym Caps_Lock = Escape
 
-! remove Mod1 = Alt_R
-! keycode 108 = Alt_R
-! add Mod3 = Alt_R
+remove Mod1 = Alt_R
+keycode 108 = Alt_R
+add Mod3 = Alt_R
 
-remove Mod1 = Alt_L
-keycode 64 = Alt_L
-add Mod3 = Alt_L
+! remove Mod1 = Alt_L
+! keycode 64 = Alt_L
+! add Mod3 = Alt_L

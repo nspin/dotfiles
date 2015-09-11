@@ -28,10 +28,10 @@ Plugin 'VundleVim/Vundle.vim'                    " vundle has to manage vundle
 " general
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-repeat'
 Plugin 'godlygeek/tabular'
 Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
 Plugin 'sjl/gundo.vim'
 Plugin 'nickspinale/vim-colors-solarized'
 
@@ -70,16 +70,11 @@ if has('win32')
     colorscheme nicebox
 elseif has('unix')
     let s:uname = system("uname -s")
-    if s:uname == "Darwin\n"
+    if exists('$DISPLAY') || s:uname == "Darwin\n"
         colorscheme solarized
-        hi CursorLineNR ctermfg=14 ctermbg=black guifg=#93a1a1 guibg=#073642
-    elseif exists('$DISPLAY')
-        colorscheme solarized
-        hi CursorLineNR ctermfg=14 ctermbg=black guifg=#93a1a1 guibg=#073642
     elseif $SSH_CONNECTION
         set t_Co=16
         colorscheme solarized
-        hi CursorLineNR ctermfg=14 ctermbg=black guifg=#93a1a1 guibg=#073642
     endif
 endif
 
@@ -94,7 +89,7 @@ set mouse=                                          " not even once
 set noesckeys
 set virtualedit=block                               " sometimes convenient
 set backspace=indent,eol,start                      " allow more deletion in insert mode
-set formatoptions=""                                " not familiar with all formatting behavior, so disable it all
+set formatoptions=                                  " not familiar with all formatting behavior, so disable it all
 
 set nowrap                                          " say no to line wrapping
 set relativenumber                                  " show rel numbers
@@ -109,12 +104,13 @@ set laststatus=2                                    " status line always there
 set showtabline=2                                   " tab line always there
 
 set statusline=                                     " clear it
+set statusline+=[%v\ %l\ %L]                        " position
+set statusline+=\                                   " space
 set statusline+=%m%r%h%w%q                          " flags
-set statusline+=\ %F\ \ [%v\ %l\ %L]                " file and position
-set statusline+=\ \ %{strftime(\"%m/%d\ %H:%M\")}   " date+time
+set statusline+=\                                   " space
+set statusline+=%F                                  " file name
 
 set spelllang=en_us
-set wildmenu                                        " nifty autocomplete in command mode
 set nobackup
 
 " ====== MISC ======
@@ -163,6 +159,7 @@ noremap <bs> <nop>
 noremap <cr> <nop>
 noremap , <nop>
 noremap ; <nop>
+noremap S <nop>
 noremap Y <nop>
 
 " --- Special ---
@@ -170,13 +167,14 @@ noremap Y <nop>
 " inoremap j <esc>
 " inoremap JJ j
 
+nnoremap S :%s/
 nnoremap Y y$
 
 noremap <cr> :
 
-inoremap <c-x> <esc>:wq<cr>
-inoremap <c-d> <bs><bs><bs><bs>
-inoremap <c-c> <esc>cc
+" inoremap <c-x> <esc>:wq<cr>
+" inoremap <c-d> <bs><bs><bs><bs>
+" inoremap <c-c> <esc>cc
 
 inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
@@ -188,8 +186,9 @@ au TabLeave * let g:lasttab = tabpagenr()
 
 " ====== FAKE LEADER ======
 
-nnoremap <space>k gT
-nnoremap <space>l gt
+" tabs
+nnoremap <space>j gT
+nnoremap <space>k gt
 
 " buffer management
 nnoremap <space>q :quit<cr>
@@ -214,20 +213,13 @@ noremap <space>z :Tabularize<space>/
 noremap <space>: :Tabularize<space>::<cr>
 
 " registers
-noremap <space>' "r
-noremap <space>h "_
-noremap <space>f @q
+" noremap <space>' "r
+" noremap <space>h "_
+" noremap <space>f @q
 
 " --- misc ---
 
-nnoremap <space>s :%s/
-nnoremap <space>x 4x
-nnoremap <space>- 40i-<esc>
-nnoremap <space>b :shell<cr>
-nnoremap <space>v :tabedit $MYVIMRC<cr>
-
-" remove trailing whitespace
-nnoremap <space>L :%s/\s\+$//e<cr>
+nnoremap <space>l :%s/\s\+$//e<cr>
 
 " ====== TOGGLES ======
 
@@ -257,13 +249,13 @@ nmap ,T ,w,b,C,G
 
 " laziness
 
+iabbrev `i #include
+iabbrev `d #define
 iabbrev `n newtype
 iabbrev `m import
-iabbrev `s instance
 iabbrev `e extends
 iabbrev `p implements
-iabbrev `d #define
-iabbrev `i #include
+iabbrev `s instance
 iabbrev `- -----
 
 " mistakes

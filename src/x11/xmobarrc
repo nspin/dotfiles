@@ -11,6 +11,8 @@ Config
     , bgColor = "#073642"
     , fgColor = "#657b83"
     , border = NoBorder
+    , borderColor = "#002b36"
+    , borderWidth = 0
     , sepChar = "%"
     , alignSep = "}{"
 
@@ -23,5 +25,6 @@ Config
         , Run StdinReader
         ]
 
-    , template = " %StdinReader% }{ %cpu%  %memory%  %swap%  %disku%    %date% "
+    -- , template = "%StdinReader%}{%cpu%  %memory%  %swap%  %disku% <fc=#002b36>|</fc> %date% "
+    , template = "%StdinReader%}{%cpu%  %memory%  %swap%  %disku%    %date% "
     }
