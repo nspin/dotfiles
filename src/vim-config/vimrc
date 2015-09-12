@@ -107,7 +107,7 @@ set statusline=                                     " clear it
 set statusline+=[%v\ %l\ %L]                        " position
 set statusline+=\                                   " space
 set statusline+=%m%r%h%w%q                          " flags
-set statusline+=\                                   " space
+set statusline+=%=                                  " space
 set statusline+=%F                                  " file name
 
 set spelllang=en_us
@@ -190,13 +190,13 @@ au TabLeave * let g:lasttab = tabpagenr()
 nnoremap <space>j gT
 nnoremap <space>k gt
 
-" buffer management
-nnoremap <space>q :quit<cr>
-nnoremap <space>w :write<cr>
-nnoremap <space>e :edit<space>
-nnoremap <space>r :wq<cr>
-nnoremap <space>t :tabedit<space>
-nnoremap <space>y :quit!<cr>
+" " buffer management
+" nnoremap <space>q :quit<cr>
+" nnoremap <space>w :write<cr>
+" nnoremap <space>e :edit<space>
+" nnoremap <space>r :wq<cr>
+" nnoremap <space>t :tabedit<space>
+" nnoremap <space>y :quit!<cr>
 
 " plugins
 nnoremap <space>d :NERDTreeToggle<cr>
