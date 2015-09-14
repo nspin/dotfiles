@@ -108,7 +108,7 @@
 
   # other languages
     gcc
-    # racket
+    racket
     nodejs
 
   # failing for unknown reasons
