@@ -14,7 +14,7 @@
 
 set nocompatible
 
-set runtimepath+=/home/nick/dotfiles/src/vim-config/vim/bundle/Vundle.vim
+set runtimepath+=$HOME/.vim/bundle/Vundle.vim
 
 filetype off                                  " required by vundle
 call vundle#begin()                           " required by vundle

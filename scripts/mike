@@ -1,4 +1,4 @@
-vim-config/vim            /Accounts/spinalen/.vim
+vim-config/Vundle.vim     /Accounts/spinalen/.vim/bundle/Vundle.vim
 vim-config/vimrc          /Accounts/spinalen/.vimrc
 vc/gitconfig              /Accounts/spinalen/.gitconfig
 line-editing/inputrc      /Accounts/spinalen/.inputrc

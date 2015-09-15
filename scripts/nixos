@@ -1,5 +1,6 @@
 vim-config/vimrc          /home/nick/.vimrc
 vim-config/gvimrc         /home/nick/.gvimrc
+vim-config/Vundle.vim     /home/nick/.vim/bundle/Vundle.vim
 x11/xmonad.hs             /home/nick/.xmonad/xmonad.hs
 x11/xmobarrc              /home/nick/.xmobarrc
 vc/gitconfig              /home/nick/.gitconfig
