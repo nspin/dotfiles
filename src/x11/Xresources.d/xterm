@@ -1,0 +1,33 @@
+#include "solarized"
+
+xterm*faceName: DejaVu Sans Mono:antialias=True:pixelsize=18
+
+! for correct meta stuff
+! xterm*eightBitInput: false
+! xterm*eightBitOutput: true
+
+! *background:            S_base03
+! *foreground:            S_base0
+! *fadeColor:             S_base03
+! *cursorColor:           S_base1
+! *pointerColorBackground:S_base01
+! *pointerColorForeground:S_base1
+
+
+xterm*color0:  S_base02
+xterm*color1:  S_red
+xterm*color2:  S_green
+xterm*color3:  S_yellow
+xterm*color4:  S_blue
+xterm*color5:  S_magenta
+xterm*color6:  S_cyan
+xterm*color7:  S_base2
+
+xterm*color8:  S_base03
+xterm*color9:  S_orange
+xterm*color10: S_base01
+xterm*color11: S_base00
+xterm*color12: S_base0
+xterm*color13: S_violet
+xterm*color14: S_base1
+xterm*color15: S_base3

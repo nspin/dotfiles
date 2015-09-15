@@ -1,5 +1,0 @@
-xterm*faceName: DejaVu Sans Mono:antialias=True:pixelsize=18
-
-! for correct meta stuff
-xterm*eightBitInput: false
-xterm*eightBitOutput: true
