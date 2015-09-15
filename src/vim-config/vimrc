@@ -199,6 +199,7 @@ nnoremap <space>r :RainbowParenthesesToggle<cr>
 " plugin actions
 nnoremap <space>i :PluginInstall<cr>
 nnoremap <space>u :PluginUpdate<cr>
+nnoremap <space>s v%<c-c><c-c>
 
 " v mode stuff
 vnoremap <space>n :norm<space>
