@@ -15,3 +15,5 @@
 *   vim tab bar?
 *   solarized haskell package
 *   vim tags
+*   you complete me
+*   minimize vimrc

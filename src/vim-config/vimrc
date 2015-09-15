@@ -29,13 +29,14 @@ Plugin 'tpope/vim-repeat'
 Plugin 'godlygeek/tabular'
 Plugin 'kien/ctrlp.vim'
 Plugin 'sjl/gundo.vim'
+Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'nickspinale/vim-colors-solarized'
+Plugin 'jpalardy/vim-slime'
 
 " sexpr
 
 " stuff I don't want to forget about
 " Plugin 'scrooloose/syntastic'
-" Plugin 'jpalardy/vim-slime'
 " Plugin 'majutsushi/tagbar'
 
 " specific language support
@@ -114,7 +115,7 @@ set nobackup
 
 autocmd FileType * set formatoptions=""             " ftplugins mess up this option often
 
-let g:NERDTreeDirArrows=0                           " incase vim wasnt compiled with unicode support
+let g:slime_target = "tmux"
 
 " for commenting with tabular
 let b:ncomment = '#'
@@ -154,8 +155,6 @@ noremap <space> <nop>
 noremap <del> <nop>
 noremap <bs> <nop>
 noremap <cr> <nop>
-noremap , <nop>
-noremap ; <nop>
 noremap S <nop>
 noremap Y <nop>
 
@@ -175,10 +174,8 @@ noremap <cr> :
 
 inoremap <bar> <bar><esc>:call <sid>align()<cr>a
 
-nnoremap <tab> <c-w><c-w>
-
 let g:lasttab = 1
-nnoremap ; :exe "tabn ".g:lasttab<CR>
+nnoremap <tab> :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 " ====== FAKE LEADER ======
@@ -195,9 +192,11 @@ nnoremap <space>k gt
 " nnoremap <space>t :tabedit<space>
 " nnoremap <space>y :quit!<cr>
 
-" plugins
-nnoremap <space>d :NERDTreeToggle<cr>
+" plugin toggles
 nnoremap <space>g :GundoToggle<cr>
+nnoremap <space>r :RainbowParenthesesToggle<cr>
+
+" plugin actions
 nnoremap <space>i :PluginInstall<cr>
 nnoremap <space>u :PluginUpdate<cr>
 
@@ -210,54 +209,54 @@ noremap <space>z :Tabularize<space>/
 noremap <space>: :Tabularize<space>::<cr>
 
 " registers
-" noremap <space>' "r
-" noremap <space>h "_
-" noremap <space>f @q
+noremap <space>m "m
+noremap <space>h "_
+noremap <space>f @q
 
 " --- misc ---
 
-nnoremap <space>l :%s/\s\+$//e<cr>
+nnoremap <space>$ :%s/\s\+$//e<cr>
 
 " ====== TOGGLES ======
 
-nnoremap ,s :setlocal spell!<cr>
-nnoremap ,w :setlocal wrap!<cr>
-nnoremap ,l :setlocal list!<cr>
-nnoremap ,b :setlocal linebreak!<cr>
+" nnoremap ,s :setlocal spell!<cr>
+" nnoremap ,w :setlocal wrap!<cr>
+" nnoremap ,l :setlocal list!<cr>
+" nnoremap ,b :setlocal linebreak!<cr>
 
-nnoremap ,r :setlocal readonly!<cr>
-nnoremap ,d :set digraph<cr>
+" nnoremap ,r :setlocal readonly!<cr>
+" nnoremap ,d :set digraph<cr>
 
 " one-way toggles
-nnoremap ,c :setlocal colorcolumn=80<cr>
-nnoremap ,C :setlocal colorcolumn=0<cr>
-nnoremap ,v :set virtualedit=all<cr>
-nnoremap ,V :set virtualedit=block<cr>
-nnoremap ,g :noremap j gj<cr>:noremap k gk<cr>
-nnoremap ,G :unmap j<cr>:unmap k<cr>
-nnoremap ,m :set mouse=nvi<cr>
-nnoremap ,M :set mouse=<cr>
+" nnoremap ,c :setlocal colorcolumn=80<cr>
+" nnoremap ,C :setlocal colorcolumn=0<cr>
+" nnoremap ,v :set virtualedit=all<cr>
+" nnoremap ,V :set virtualedit=block<cr>
+" nnoremap ,g :noremap j gj<cr>:noremap k gk<cr>
+" nnoremap ,G :unmap j<cr>:unmap k<cr>
+" nnoremap ,m :set mouse=nvi<cr>
+" nnoremap ,M :set mouse=<cr>
 
 " composite toggles
-nmap ,t ,w,b,c,g
-nmap ,T ,w,b,C,G
+" nmap ,t ,w,b,c,g
+" nmap ,T ,w,b,C,G
 
 " ############ ABBREVIATIONS ############
 
 " laziness
 
-iabbrev `i #include
-iabbrev `d #define
-iabbrev `n newtype
-iabbrev `m import
-iabbrev `e extends
-iabbrev `p implements
-iabbrev `s instance
-iabbrev `- -----
+" iabbrev `i #include
+" iabbrev `d #define
+" iabbrev `n newtype
+" iabbrev `m import
+" iabbrev `e extends
+" iabbrev `p implements
+" iabbrev `s instance
+" iabbrev `- -----
 
 " mistakes
 
-iabbrev teh the
-iabbrev THe The
-iabbrev NIck Nick
-iabbrev SPinale Spinale
+" iabbrev teh the
+" iabbrev THe The
+" iabbrev NIck Nick
+" iabbrev SPinale Spinale
