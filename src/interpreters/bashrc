@@ -13,14 +13,9 @@ export EDITOR=$VISUAL
 #--------------------
 # HACKY WAY TO MAKE COLORS IN SCREEN OK IN X11/OSX
 # TODO - make this not suck
-# (note: also try $DISPLAY)
 #--------------------
 
-if [ -n "$DISPLAY" ]; then
-    export TERM="xterm-256color"
-fi
-
-if [ "$(uname)" == "Darwin" ]; then
+if [ -n "$DISPLAY" ] || [ "$(uname)" == "Darwin" ]; then
     export TERM="xterm-256color"
 fi
 
@@ -32,13 +27,16 @@ reset=$(tput sgr0)
 symbols=$(tput setaf 2)
 content=$(tput setaf 6)
 
-PS1=" \[$symbols\]λ\[$content\] \w \[$symbols\]→\[$reset\] "
 
-# if [ -n "$DISPLAY" ]; then
-#     PS1="\[$background\]\[$symbols\]λ\[$content\] \w \[$symbols\]→\[$reset\] "
-# else
-#     PS1="\\ \w -> "
-# fi
+if [[ $LANG == *"UTF-8"* ]]; then
+    lambda="λ"
+    arrow="→"
+else
+    lambda="\\"
+    arrow="->"
+fi
+
+PS1=" \[$symbols\]$lambda\[$content\] \w \[$symbols\]$arrow\[$reset\] "
 
 #--------------------
 # SETTINGS
@@ -51,9 +49,9 @@ set -o vi
 #--------------------
 
 # general
-alias pp='cd ..'
-alias rr='cd /'
-alias ss='sudo'
+# alias d='cd'
+# alias p='cd ..'
+# alias r='cd /'
 
 # screen
 alias sc='screen -dRR'

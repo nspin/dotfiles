@@ -1,3 +1,6 @@
 [submodule "src/vim-config/Vundle.vim"]
 	path = src/vim-config/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule "src/x11/xresources"]
+	path = src/x11/xresources
+	url = https://github.com/solarized/xresources.git
