@@ -64,6 +64,7 @@
     zip
     unzip
     tree
+    fzf
 
   # x tools
     xfontsel
