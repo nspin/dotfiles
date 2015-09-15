@@ -14,11 +14,7 @@
 
 set nocompatible
 
-if has('win32')
-    set runtimepath+=$HOME/.vim               " not messing with ~/vimfiles
-endif
-
-set runtimepath+=$HOME/.vim/bundle/Vundle.vim
+set runtimepath+=/home/nick/dotfiles/src/vim-config/vim/bundle/Vundle.vim
 
 filetype off                                  " required by vundle
 call vundle#begin()                           " required by vundle
@@ -35,11 +31,15 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'nickspinale/vim-colors-solarized'
 
-" language support
+" sexpr
+
+" stuff I don't want to forget about
 " Plugin 'scrooloose/syntastic'
-" Plugin 'bitc/vim-hdevtools'
-" Plugin 'majutsushi/tagbar'
 " Plugin 'jpalardy/vim-slime'
+" Plugin 'majutsushi/tagbar'
+
+" specific language support
+" Plugin 'bitc/vim-hdevtools'
 " Plugin 'lambdatoast/elm.vim'
 " Plugin 'MarcWeber/vim-addon-nix'
 " Plugin 'gerw/vim-latex-suite'
@@ -66,11 +66,8 @@ set background=dark                  " for correct defaults
 " setting t_Co is necessary in tmux over ssh, and I have no idea why.
 " (still ironing this out)
 
-if has('win32')
-    colorscheme nicebox
-elseif has('unix')
-    let s:uname = system("uname -s")
-    if exists('$DISPLAY') || s:uname == "Darwin\n"
+if has('unix')
+    if exists('$DISPLAY') || system("uname -s") == "Darwin\n"
         colorscheme solarized
     elseif $SSH_CONNECTION
         set t_Co=16

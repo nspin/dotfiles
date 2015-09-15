@@ -1,4 +1,3 @@
-vim-config/vim            /home/nick/.vim
 vim-config/vimrc          /home/nick/.vimrc
 vim-config/gvimrc         /home/nick/.gvimrc
 x11/xmonad.hs             /home/nick/.xmonad/xmonad.hs

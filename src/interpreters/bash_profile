@@ -3,9 +3,6 @@
 # ~/.bashrc
 ###############################
 
-export VISUAL=vim
-export EDITOR=$VISUAL
-
 if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi

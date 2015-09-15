@@ -3,9 +3,18 @@
 # ~/.bashrc
 ###############################
 
+#--------------------
+# ENV VARS
+#--------------------
+
+export VISUAL=vim
+export EDITOR=$VISUAL
+
+#--------------------
 # HACKY WAY TO MAKE COLORS IN SCREEN OK IN X11/OSX
 # TODO - make this not suck
 # (note: also try $DISPLAY)
+#--------------------
 
 if [ -n "$DISPLAY" ]; then
     export TERM="xterm-256color"

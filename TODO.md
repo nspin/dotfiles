@@ -14,3 +14,4 @@
 *   xmobar colors
 *   vim tab bar?
 *   solarized haskell package
+*   vim tags
