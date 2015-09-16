@@ -32,10 +32,11 @@ Plugin 'sjl/gundo.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'nickspinale/vim-colors-solarized'
 Plugin 'jpalardy/vim-slime'
-Plugin 'SirVer/ultisnips'
 
 Plugin 'guns/vim-sexp'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+
+Plugin 'honza/vim-snippets'
 
 " stuff I don't want to forget about
 " Plugin 'scrooloose/syntastic'
@@ -49,8 +50,10 @@ Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 " Plugin 'gerw/vim-latex-suite'
 " Plugin 'gerw/vim-tex-syntax'
 
-" snipmate (not ultisnips, because I often work on machines without +python)
-" and its dependencies
+" ultisnips
+Plugin 'SirVer/ultisnips'
+
+" snipmate and dependencies
 " Bundle 'garbas/vim-snipmate'
 " Bundle 'MarcWeber/vim-addon-mw-utils'
 " Bundle 'tomtom/tlib_vim'
@@ -162,7 +165,7 @@ let g:slime_target = "tmux"
 
 let g:sexp_filetypes = 'lisp,scheme,racket,clojure,timl'
 
-let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
@@ -187,6 +190,8 @@ noremap Y <nop>
 nnoremap Y y$
 
 noremap <cr> :
+
+imap <c-k> <tab><c-j>
 
 inoremap <c-z> <esc>:wq<cr>
 
