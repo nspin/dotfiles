@@ -7,8 +7,8 @@ vc/gitconfig              /home/nick/.gitconfig
 line-editing/inputrc      /home/nick/.inputrc
 line-editing/editrc       /home/nick/.editrc
 line-editing/haskeline    /home/nick/.haskeline
-interpreters/bashrc       /home/nick/.bashrc
-interpreters/bash_profile /home/nick/.bash_profile
+interpreters/bash/bashrc       /home/nick/.bashrc
+interpreters/bash/bash_profile /home/nick/.bash_profile
 interpreters/ghci         /home/nick/.ghci
 multiplexers/tmux.conf    /home/nick/.tmux.conf
 multiplexers/screenrc     /home/nick/.screenrc

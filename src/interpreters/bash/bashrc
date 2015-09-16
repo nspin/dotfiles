@@ -1,0 +1,59 @@
+###############################
+# NICK SPINALE
+# ~/.bashrc
+###############################
+
+#--------------------
+# ENV VARS
+#--------------------
+
+export VISUAL=vim
+export EDITOR=$VISUAL
+
+#--------------------
+# HACKY TO MAKE FZF-TMUX AVAILABLE
+#--------------------
+
+PATH=$PATH:$HOME/dotfiles/src/interpreters/bash/fzf/bin
+
+#--------------------
+# HACK TO MAKE COLORS IN SCREEN OK IN X11/OSX
+#--------------------
+
+if [ -n "$DISPLAY" ] || [ "$(uname)" == "Darwin" ]; then
+    export TERM="xterm-256color"
+fi
+
+#--------------------
+# PROMPT
+#--------------------
+
+reset=$(tput sgr0)
+symbols=$(tput setaf 2)
+content=$(tput setaf 6)
+
+
+if [[ $LANG == *"UTF-8"* ]]; then
+    lambda="λ"
+    arrow="→"
+else
+    lambda="\\"
+    arrow="->"
+fi
+
+PS1=" \[$symbols\]$lambda\[$content\] \w \[$symbols\]$arrow\[$reset\] "
+
+#--------------------
+# SETTINGS
+#--------------------
+
+set -o vi
+
+#--------------------
+# IMPORTS
+#--------------------
+
+source $HOME/dotfiles/src/interpreters/bash/aliases.sh
+source $HOME/dotfiles/src/interpreters/bash/functions.sh
+source $HOME/dotfiles/src/interpreters/bash/fzf/shell/completion.bash
+source $HOME/dotfiles/src/interpreters/bash/fzf/shell/key-bindings.bash
