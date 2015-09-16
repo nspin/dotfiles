@@ -25,6 +25,8 @@
 .DS_Store*
 ._*
 
+result
+
 dist
 cabal.sandbox.config
 .cabal-sandbox/*

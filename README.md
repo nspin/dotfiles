@@ -12,4 +12,6 @@ My personal configuration files for various tools and systems.
         `relative/path/of/target/from/src /absolute/path/of/link/name`
 *   **`notes`**: Files that aren't for computers
 
-> Most snippets come from [honza/vim-snippets](https://www.github.com/honza/vim-snippets)  
+#### Annoying Things
+
+*   To build YouCompleteMe's third_party stuff on nixos, run scripts/vimNixosSetup.sh, and make sure that nixpkgs.pkgs.python27 is in the user environment.

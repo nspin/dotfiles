@@ -33,6 +33,13 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'nickspinale/vim-colors-solarized'
 Plugin 'jpalardy/vim-slime'
 
+let s:whatToAppend = ''
+if system('uname -a') =~ 'NixOS'
+    let s:whatToAppend = '$HOME/dotfiles/src/vim-config/annoying/youcompleteme/result'
+else
+    Plugin 'Valloric/YouCompleteMe'
+endif
+
 Plugin 'guns/vim-sexp'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 
@@ -55,6 +62,8 @@ Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 
 call vundle#end()                                " required by vundle
 filetype plugin on                               " required by vundle
+
+exe 'set runtimepath+=' . s:whatToAppend
 
 " ############ MISC ############
 

@@ -59,6 +59,8 @@
 
   # random
     rlwrap
+    nix-repl
+    nix-prefetch-scripts
 
   # misc command line utils
     zip
@@ -111,6 +113,7 @@
     gcc
     racket
     nodejs
+    python27
 
   # failing for unknown reasons
 

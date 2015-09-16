@@ -10,4 +10,4 @@
 #      src = /home/nick/dotfiles/src/interpreters/bash/fzf/bin;
 #    }
   };
-};
+}
