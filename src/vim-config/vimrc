@@ -32,19 +32,14 @@ Plugin 'sjl/gundo.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'nickspinale/vim-colors-solarized'
 Plugin 'jpalardy/vim-slime'
-
-let s:whatToAppend = ''
-if system('uname -a') =~ 'NixOS'
-    let s:whatToAppend = '$HOME/dotfiles/src/vim-config/annoying/youcompleteme/result'
-else
-    Plugin 'Valloric/YouCompleteMe'
-endif
+Plugin 'SirVer/ultisnips'
 
 Plugin 'guns/vim-sexp'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 
 " stuff I don't want to forget about
 " Plugin 'scrooloose/syntastic'
+" Plugin 'majutsushi/tagbar'
 " Plugin 'majutsushi/tagbar'
 
 " specific language support
@@ -59,6 +54,14 @@ Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 " Bundle 'garbas/vim-snipmate'
 " Bundle 'MarcWeber/vim-addon-mw-utils'
 " Bundle 'tomtom/tlib_vim'
+
+" Conditional installation
+let s:whatToAppend = ''
+if system('uname -a') =~ 'NixOS'
+    let s:whatToAppend = '$HOME/dotfiles/src/vim-config/annoying/youcompleteme/result'
+else
+    Plugin 'Valloric/YouCompleteMe'
+endif
 
 call vundle#end()                                " required by vundle
 filetype plugin on                               " required by vundle
@@ -158,6 +161,12 @@ endfunction
 let g:slime_target = "tmux"
 
 let g:sexp_filetypes = 'lisp,scheme,racket,clojure,timl'
+
+let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+let g:UltiSnipsEdit="vertical"
 
 
 " ############ MAPPINGS ############
