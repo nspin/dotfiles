@@ -1,16 +1,16 @@
 [user]
-name = Nick Spinale
-email = spinalen@carleton.edu
+    name = Nick Spinale
+    email = spinalen@carleton.edu
 
 [core]
-editor = vim
-excludesfile = ~/dotfiles/src/vc/gitignore_global
+    editor = vim
+    excludesfile = ~/dotfiles/src/vc/gitignore_global
 
 [github]
-user = nickspinale
+    user = nickspinale
 
 [url "https://nickspinale@github.com"]
-insteadOf = https://github.com
+    insteadOf = https://github.com
 
 [credential]
-helper = cache --timeout=28800
+    helper = cache --timeout=28800
