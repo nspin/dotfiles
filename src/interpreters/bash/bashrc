@@ -11,12 +11,6 @@ export VISUAL=vim
 export EDITOR=$VISUAL
 
 #--------------------
-# HACKY TO MAKE FZF-TMUX AVAILABLE
-#--------------------
-
-PATH=$PATH:$HOME/dotfiles/src/interpreters/bash/fzf/bin
-
-#--------------------
 # HACK TO MAKE COLORS IN SCREEN OK IN X11/OSX
 #--------------------
 
@@ -50,10 +44,19 @@ PS1=" \[$symbols\]$lambda\[$content\] \w \[$symbols\]$arrow\[$reset\] "
 set -o vi
 
 #--------------------
+# BINDINGS
+#--------------------
+
+# bind '"\C-f":" $(fzf-tmux) "'
+
+#--------------------
 # IMPORTS
 #--------------------
 
 source $HOME/dotfiles/src/interpreters/bash/aliases.sh
 source $HOME/dotfiles/src/interpreters/bash/functions.sh
-source $HOME/dotfiles/src/interpreters/bash/fzf/shell/completion.bash
-source $HOME/dotfiles/src/interpreters/bash/fzf/shell/key-bindings.bash
+
+# source $HOME/dotfiles/src/interpreters/bash/fzfutil/functions.bash
+# source $HOME/dotfiles/src/interpreters/bash/fzfutil/completion.bash
+source $HOME/dotfiles/src/interpreters/bash/fzfutil/key-bindings.bash
+source $HOME/dotfiles/src/interpreters/bash/fzfutil/fzf-tmux.bash

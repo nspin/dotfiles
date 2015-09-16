@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+fzf-tmux() {
 # fzf-tmux: starts fzf in a tmux pane
 # usage: fzf-tmux [-u|-d [HEIGHT[%]]] [-l|-r [WIDTH[%]]] [--] [FZF OPTIONS]
 
@@ -136,3 +136,4 @@ fi
 cat $fifo2
 [ "$(cat $fifo3)" = '0' ]
 
+}
