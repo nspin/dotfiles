@@ -8,3 +8,9 @@ excludesfile = ~/dotfiles/src/vc/gitignore_global
 
 [github]
 user = nickspinale
+
+[url "https://nickspinale@github.com"]
+insteadOf = https://github.com
+
+[credential]
+helper = cache --timeout=28800
