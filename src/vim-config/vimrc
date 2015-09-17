@@ -24,7 +24,6 @@ Plugin 'VundleVim/Vundle.vim'                    " vundle has to manage vundle
 " editing
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-commentary'
 Plugin 'guns/vim-sexp'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
@@ -47,7 +46,8 @@ Plugin 'nickspinale/vim-colors-solarized'
 " Plugin 'altercation/vim-colors-solarized'
 
 " stuff I don't want to forget about
-" Plugin 'scrooloose/nerdtree'
+" Plugin 'tpope/vim-unimpaired'
+" Plugin 'tpope/vim-fugitive'
 " Plugin 'majutsushi/tagbar'
 " Plugin 'luochen1990/rainbow'
 " Plugin 'bitc/vim-hdevtools'
@@ -163,6 +163,8 @@ function! s:align()
 endfunction
 
 " ====== PLUGIN OPTIONS ======
+
+let g:netrw_liststyle = 3
 
 let g:slime_target = "tmux"
 
