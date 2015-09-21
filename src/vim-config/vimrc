@@ -9,6 +9,7 @@
 "   tabular comment function
 "       will improve regex to only match last comment phrase in line
 "       and not match full-line comments
+"   FUNCTION FOR WRAPPING COMMENTS AT 80 and 100
 
 " ############ VUNDLE STUFF ############
 
@@ -41,7 +42,6 @@ Plugin 'jpalardy/vim-slime'
 Plugin 'scrooloose/syntastic'
 
 " colors
-Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'nickspinale/vim-colors-solarized'
 " Plugin 'altercation/vim-colors-solarized'
 
@@ -49,12 +49,13 @@ Plugin 'nickspinale/vim-colors-solarized'
 " Plugin 'tpope/vim-unimpaired'
 " Plugin 'tpope/vim-fugitive'
 " Plugin 'majutsushi/tagbar'
-" Plugin 'luochen1990/rainbow'
 " Plugin 'bitc/vim-hdevtools'
 " Plugin 'lambdatoast/elm.vim'
 " Plugin 'MarcWeber/vim-addon-nix'
 " Plugin 'gerw/vim-latex-suite'
 " Plugin 'gerw/vim-tex-syntax'
+" Plugin 'luochen1990/rainbow'
+" Plugin 'kien/rainbow_parentheses.vim'
 
 " snipmate and dependencies
 " Plugin 'garbas/vim-snipmate'
@@ -104,7 +105,8 @@ set mouse=                                          " not even once
 set noesckeys
 set virtualedit=block                               " sometimes convenient
 set backspace=indent,eol,start                      " allow more deletion in insert mode
-set formatoptions=                                  " not familiar with all formatting behavior, so disable it all
+" set formatoptions=c,q
+set textwidth=80
 
 set nowrap                                          " say no to line wrapping
 set relativenumber                                  " show rel numbers
@@ -176,7 +178,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 let g:UltiSnipsEdit="vertical"
 
-autocmd FileType lisp,scheme,racket,clojure,timl RainbowParenthesesToggle
+" autocmd FileType lisp,scheme,racket,clojure,timl RainbowToggle
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -195,12 +197,14 @@ nnoremap <space>ps :SyntasticCheck
 nnoremap <space>pe :Errors
 
 nnoremap <space>pg :GundoToggle<cr>
-nnoremap <space>pp :RainbowParenthesesToggle<cr>
+" nnoremap <space>pp :RainbowToggle<cr>
 
 nnoremap <space>pi :PluginInstall<cr>
 nnoremap <space>pu :PluginUpdate<cr>
 
 nnoremap <space>p1 :SlimeSend1 "!-1"<cr>
+
+nmap <c-c><c-f> vaF<c-c><c-c>``
 
 " ############ MAPPINGS ############
 
@@ -245,7 +249,7 @@ nnoremap <space>r :wq<cr>
 nnoremap <space>t :tabedit<space>
 nnoremap <space>y :q!<cr>
 
-nnoremap <space>v v%<c-c><c-c>
+nmap <space>v v%<c-c><c-c>
 
 nnoremap <space>s :%s/
 nnoremap <space>$ :%s/\s\+$//e<cr> " removes trailing whitespace globally

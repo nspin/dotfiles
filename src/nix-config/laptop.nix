@@ -57,10 +57,12 @@
 
   environment.systemPackages = with pkgs; [
 
-  # random
-    rlwrap
+  # nix
     nix-repl
     nix-prefetch-scripts
+
+  # random
+    rlwrap
 
   # misc command line utils
     zip
@@ -111,6 +113,7 @@
 
   # other languages
     gcc
+    mitscheme
     racket
     nodejs
     python27
