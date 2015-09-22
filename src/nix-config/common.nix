@@ -42,8 +42,6 @@
       haskellPackages.xmonad-extras
     ];
 
-    displayManager.sessionCommands = "bash /home/nick/dotfiles/src/x11/prewm.sh";
-
     displayManager.slim.enable = true;
     displayManager.slim.defaultUser = "nick";
     # displayManager.slim.theme = pkgs.slimThemes.nixosSlim;
@@ -77,6 +75,7 @@
     xorg.xkill
     xlibs.xmodmap
     xlibs.xev
+    arandr
 
   # x utils
     dmenu
@@ -105,7 +104,7 @@
     haskell.packages.ghc7102.hlint
 
   # ghcjs
-    haskell.packages.ghcjs.ghc
+    # haskell.packages.ghcjs.ghc
 
   # java bullshit
     jdk
