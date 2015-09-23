@@ -107,7 +107,7 @@
     haskell.packages.ghc7102.hlint
 
   # ghcjs
-    haskell.packages.ghcjs.ghc
+    # haskell.packages.ghcjs.ghc
 
   # java bullshit
     jdk
