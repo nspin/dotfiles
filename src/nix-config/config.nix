@@ -1,13 +1,10 @@
+{ pkgs }:
+
 {
+  haskellPackageOverrides = with pkgs.haskell.lib; self: super: {
+    # ghcjs = pkgs.haskell.packages.ghcjs.ghc.override { vector = ./local/vector_0_11_0_0.nix; };
+  };
+
   packageOverrides = pkgs: rec {
-#    fzf-tmux = pkgs.stdenv.mkDerivation {
-#      name = "fzf-tmux";
-#      buildInputs = [ pkgs.fzf ]
-#      builder = ''
-#          mkdir -p "$out/bin"
-#
-#        '';
-#      src = /home/nick/dotfiles/src/interpreters/bash/fzf/bin;
-#    }
   };
 }

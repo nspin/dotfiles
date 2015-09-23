@@ -150,7 +150,7 @@ myKeys (XConfig {..}) = M.fromList $ meta ++ interWorkspace ++ intraWorkspace
 
         -- increase or decrease number of windows in the master area
         , ((modMask              , xK_period), sendMessage (IncMasterN   1 )) -- %! Increment the number of windows in the master area
-        , ((modMask .|. shiftMask, xK_comma ), sendMessage (IncMasterN (-1))) -- %! Deincrement the number of windows in the master area
+        , ((modMask              , xK_comma ), sendMessage (IncMasterN (-1))) -- %! Deincrement the number of windows in the master area
 
         -- resizing the master/slave ratio
         , ((modMask              ,xK_h     ), sendMessage Shrink) -- %! Shrink the master area
