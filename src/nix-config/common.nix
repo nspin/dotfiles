@@ -75,7 +75,10 @@
     xorg.xkill
     xlibs.xmodmap
     xlibs.xev
+    xbrightness
     arandr
+    xlibs.xgamma
+    xlibs.xbacklight
 
   # x utils
     dmenu
