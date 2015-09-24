@@ -3,6 +3,6 @@ vim-config/vimrc          /Accounts/spinalen/.vimrc
 vc/gitconfig              /Accounts/spinalen/.gitconfig
 line-editing/inputrc      /Accounts/spinalen/.inputrc
 line-editing/editrc       /Accounts/spinalen/.editrc
-interpreters/bashrc       /Accounts/spinalen/.bashrc
-interpreters/bash_profile /Accounts/spinalen/.bash_profile
+interpreters/bash/bashrc       /Accounts/spinalen/.bashrc
+interpreters/bash/bash_profile /Accounts/spinalen/.bash_profile
 multiplexers/screenrc     /Accounts/spinalen/.screenrc
