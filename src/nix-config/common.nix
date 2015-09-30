@@ -115,6 +115,7 @@
 
   # other languages
     gcc
+    clang
     mitscheme
     racket
     nodejs
