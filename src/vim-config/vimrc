@@ -225,7 +225,7 @@ nnoremap Y y$
 
 noremap <cr> :
 
-imap <c-k> <tab><c-j>
+" imap <c-k> <tab><c-j>
 
 inoremap <c-z> <esc>:wq<cr>
 
