@@ -130,6 +130,10 @@ set statusline+=%F                                  " file name
 set spelllang=en_us
 set nobackup
 
+" ====== INDENTATION ======
+
+" autocmd FileType c setlocal ts=8 sts=8 sw=8 noexpandtab
+
 " ====== MISC ======
 
 autocmd FileType * set formatoptions=""             " ftplugins mess up this option often
