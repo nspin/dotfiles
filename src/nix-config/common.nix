@@ -116,13 +116,13 @@
   # other languages
     gcc
     clang
-    mitscheme
-    racket
+    # mitscheme
+    # racket
     nodejs
-    python27
+    # python27
 
   # other languages
-    haskell.packages.ghc7102.hakyll
+    # haskell.packages.ghc7102.hakyll
 
   # failing for unknown reasons
 
