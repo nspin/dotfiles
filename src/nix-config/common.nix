@@ -119,7 +119,7 @@
     # mitscheme
     # racket
     nodejs
-    # python27
+    python27
 
   # other languages
     # haskell.packages.ghc7102.hakyll
