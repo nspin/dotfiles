@@ -17,4 +17,4 @@
 *   vim tags
 *   you complete me
 *   minimize vimrc
-*   autojump, z, fasd
+*   autojump, z, fasd?
