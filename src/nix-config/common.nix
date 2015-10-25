@@ -55,6 +55,8 @@
 
   environment.systemPackages = with pkgs; [
 
+    (texLiveAggregationFun { paths = [ texLive texLiveExtra texLiveBeamer lmodern ]; })
+
   # nix
     nix-repl
     nix-prefetch-scripts
@@ -121,7 +123,8 @@
     nodejs
     python27
 
-  # other languages
+  # other
+    haskell.packages.ghc7102.pandoc
     # haskell.packages.ghc7102.hakyll
 
   # failing for unknown reasons
