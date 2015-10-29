@@ -14,4 +14,4 @@ My personal configuration files for various tools and systems.
 
 #### Annoying Things
 
-*   To build YouCompleteMe's third_party stuff on nixos, run scripts/vimNixosSetup.sh, and make sure that nixpkgs.pkgs.python27 is in the user environment.
+*   To build YouCompleteMe's `third_party` stuff on nixos, run `scripts/vimNixosSetup.sh`, and make sure that `nixpkgs.pkgs.python27` is in the user environment.
