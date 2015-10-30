@@ -2,6 +2,9 @@
 
 {
   environment.systemPackages = with pkgs; [
+
+    adobe-reader
+
   # nix
     nix-repl
     nix-prefetch-scripts
