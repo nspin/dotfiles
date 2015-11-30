@@ -64,10 +64,10 @@
     nodejs
     python27
 
-    (texLiveAggregationFun { paths = [ texLive texLiveExtra texLiveBeamer lmodern ]; })
+    # (texLiveAggregationFun { paths = [ texLive texLiveExtra texLiveBeamer lmodern ]; })
 
   # fonts
-    cm_unicode
+    # cm_unicode
 
   # other
     haskell.packages.ghc7102.pandoc
