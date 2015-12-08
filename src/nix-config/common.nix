@@ -18,6 +18,8 @@
     extraGroups = [ "wheel" ];
   };
 
+  security.sudo.wheelNeedsPassword = false;
+
   fonts.enableFontDir = true;
   fonts.fontconfig.enable = true;
   fonts.fonts = [
