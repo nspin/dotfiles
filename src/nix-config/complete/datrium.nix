@@ -1,6 +1,12 @@
 { config, pkgs, ... }:
 
 {
+
+  imports =
+    [ ../common.nix
+      ../vmware.nix
+    ];
+
   services.vmwareGuest.enable = true;
 
   environment.systemPackages = with pkgs; [
