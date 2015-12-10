@@ -45,6 +45,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'nickspinale/vim-colors-solarized'
 " Plugin 'altercation/vim-colors-solarized'
 
+" Plugin 'vim-scripts/cscope_macros.vim'
+
 " stuff I don't want to forget about
 " Plugin 'tpope/vim-unimpaired'
 " Plugin 'tpope/vim-fugitive'
