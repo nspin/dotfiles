@@ -5,6 +5,3 @@ remove Mod1 = Meta_R
 keycode 71 = Meta_R
 add Mod3 = Meta_R
 
-! remove Mod1 = Meta_L
-! keycode 63 = Meta_L
-! add Mod3 = Meta_L
