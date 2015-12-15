@@ -11,7 +11,7 @@
 "       and not match full-line comments
 "   FUNCTION FOR WRAPPING COMMENTS AT 80 and 100
 
-" ############ VUNDLE STUFF ############
+"  {{{1 PLUGIN MANAGER
 
 set nocompatible
 
@@ -41,12 +41,11 @@ Plugin 'sjl/gundo.vim'
 " integration
 Plugin 'jpalardy/vim-slime'
 Plugin 'scrooloose/syntastic'
+Plugin 'vim-scripts/cscope_macros.vim'
 
 " colors
 Plugin 'nickspinale/vim-colors-solarized'
 " Plugin 'altercation/vim-colors-solarized'
-
-" Plugin 'vim-scripts/cscope_macros.vim'
 
 " stuff I don't want to forget about
 " Plugin 'tpope/vim-unimpaired'
@@ -68,7 +67,7 @@ Plugin 'nickspinale/vim-colors-solarized'
 " Conditional installation
 let s:whatToAppend = ''
 if system('uname -a') =~ 'NixOS'
-    let s:whatToAppend = '$HOME/dotfiles/src/vim-config/annoying/youcompleteme/result'
+    set runtimepath+='$HOME/dotfiles/src/vim-config/result/ycm'
 else
     Plugin 'Valloric/YouCompleteMe'
 endif
@@ -76,11 +75,8 @@ endif
 call vundle#end()                                " required by vundle
 filetype plugin on                               " required by vundle
 
-exe 'set runtimepath+=' . s:whatToAppend
-
-" ############ MISC ############
-
-" ====== AESTHETICS ======
+" MISC {{{1
+" Aesthetics {{{2
 
 syntax enable                        " don't override my colors
 
@@ -97,7 +93,7 @@ elseif $SSH_CONNECTION
     colorscheme solarized
 endif
 
-" ====== OPTIONS ======
+" Options {{{2
 
 set tabstop=4                                       " may add autocmd to adapt this to filetype
 set shiftwidth=4                                    " consistent with tabstop
@@ -133,11 +129,11 @@ set statusline+=%F                                  " file name
 set spelllang=en_us
 set nobackup
 
-" ====== INDENTATION ======
+" Indentation {{{2
 
 " autocmd FileType c setlocal ts=8 sts=8 sw=8 noexpandtab
 
-" ====== MISC ======
+" Misc {{{2
 
 autocmd FileType * set formatoptions=""             " ftplugins mess up this option often
 
@@ -171,7 +167,7 @@ function! s:align()
     endif
 endfunction
 
-" ====== PLUGIN OPTIONS ======
+" PLUGIN OPTIONS {{{1
 
 let g:netrw_liststyle = 3
 
@@ -213,7 +209,7 @@ nnoremap <space>p1 :SlimeSend1 "!-1"<cr>
 
 nmap <c-c><c-f> vaF<c-c><c-c>``
 
-" ############ MAPPINGS ############
+" MAPPINGS {{{1
 
 " --- nop's ---
 
@@ -242,7 +238,7 @@ let g:lasttab = 1
 nnoremap <tab> :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
-" ====== FAKE LEADER ======
+" Fake Leader {{{2
 
 " --- normal ---
 
@@ -274,32 +270,32 @@ noremap <space>m "m
 noremap <space>h "_
 noremap <space>f @q
 
-" ====== TOGGLES ======
+" Toggles {{{2
 
 " --- '!' toggles ---
 
-nnoremap <space>,s :setlocal spell!<cr>
-nnoremap <space>,w :setlocal wrap!<cr>
-nnoremap <space>,l :setlocal list!<cr>
-nnoremap <space>,b :setlocal linebreak!<cr>
-nnoremap <space>,r :setlocal readonly!<cr>
-nnoremap <space>,d :set digraph<cr>
+nnoremap <space>os :setlocal spell!<cr>
+nnoremap <space>ow :setlocal wrap!<cr>
+nnoremap <space>ol :setlocal list!<cr>
+nnoremap <space>ob :setlocal linebreak!<cr>
+nnoremap <space>or :setlocal readonly!<cr>
+nnoremap <space>od :set digraph<cr>
 
 " --- one-way toggles ---
 
-nnoremap <space>,c :setlocal colorcolumn=80<cr>
-nnoremap <space>,C :setlocal colorcolumn=0<cr>
-nnoremap <space>,v :set virtualedit=all<cr>
-nnoremap <space>,V :set virtualedit=block<cr>
-nnoremap <space>,g :noremap j gj<cr>:noremap k gk<cr>
-nnoremap <space>,G :unmap j<cr>:unmap k<cr>
+nnoremap <space>oc :setlocal colorcolumn=80<cr>
+nnoremap <space>oC :setlocal colorcolumn=0<cr>
+nnoremap <space>ov :set virtualedit=all<cr>
+nnoremap <space>oV :set virtualedit=block<cr>
+nnoremap <space>og :noremap j gj<cr>:noremap k gk<cr>
+nnoremap <space>oG :unmap j<cr>:unmap k<cr>
 
 " --- composite toggles ---
 
-nmap <space>,t <space>,w<space>,b<space>,c<space>,g
-nmap <space>,T <space>,w<space>,b<space>,C<space>,G
+nmap <space>ot <space>ow<space>ob<space>oc<space>og
+nmap <space>oT <space>ow<space>ob<space>oC<space>oG
 
-" ############ ABBREVIATIONS ############
+" ABBREVIATIONS {{{1
 
 " --- laziness ---
 

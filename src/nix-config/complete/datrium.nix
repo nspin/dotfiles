@@ -3,8 +3,8 @@
 {
 
   imports =
-    [ ../common.nix
-      ../vmware.nix
+    [ lib/common.nix
+      lib/vmware.nix
     ];
 
   services.vmwareGuest.enable = true;
