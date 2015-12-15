@@ -34,6 +34,7 @@ Plugin 'honza/vim-snippets'
 
 " tools
 Plugin 'tpope/vim-vinegar'
+" Plugin 'jeetsukumaran/vim-filebeagle'
 Plugin 'kien/ctrlp.vim'
 Plugin 'sjl/gundo.vim'
 
