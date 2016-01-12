@@ -1,7 +1,3 @@
-#--------------------
-# FUNCTIONS
-#--------------------
-
 function x() {
     $1 &> /dev/null &
 }
@@ -43,8 +39,16 @@ function clone() {
 }
 
 function enolc() {
-    URL="https://github.com/nickspinale/$1.git"
+    clone nickspinale $1
+}
+
+function cloneb() {
+    URL="https://github.com/$1/$2.git"
     git clone $URL
+}
+
+function enolcb() {
+    cloneb nickspinale $1
 }
 
 function module() {

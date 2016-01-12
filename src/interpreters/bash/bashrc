@@ -59,4 +59,4 @@ source $HOME/dotfiles/src/interpreters/bash/functions.sh
 # source $HOME/dotfiles/src/interpreters/bash/fzfutil/functions.bash
 source $HOME/dotfiles/src/interpreters/bash/fzfutil/completion.bash
 source $HOME/dotfiles/src/interpreters/bash/fzfutil/key-bindings.bash
-source $HOME/dotfiles/src/interpreters/bash/fzfutil/fzf-tmux.bash
+# source $HOME/dotfiles/src/interpreters/bash/fzfutil/fzf-tmux.bash

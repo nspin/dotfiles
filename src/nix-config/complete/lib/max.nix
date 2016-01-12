@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
 
+with import ../../../local-nix { nixpkgs = pkgs; } ;
+
 {
   environment.systemPackages = with pkgs; [
 
@@ -14,6 +16,7 @@
     unzip
     tree
     fzf
+    fzf-tmux
 
   # random
     rlwrap

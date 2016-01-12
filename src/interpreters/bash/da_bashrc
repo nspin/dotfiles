@@ -1,7 +1,0 @@
-###############################
-# NICK SPINALE
-# ~/.bashrc
-###############################
-
-source /auto/home/nick/dotfiles/src/interpreters/bash/bashrc
-export PATH=/da/ToolsAndLibs/CodingScripts:$PATH
