@@ -68,6 +68,7 @@ Plugin 'nickspinale/vim-colors-solarized'
 if system('uname -a') =~ 'NixOS'
     set runtimepath+=$HOME/.nix-vim/ycm
     set runtimepath+=$HOME/dotfiles/src/vim-config/fzf
+    nnoremap <c-p> :FZF<cr>
 else
     " Plugin 'Valloric/YouCompleteMe'
     Plugin 'kien/ctrlp.vim'
