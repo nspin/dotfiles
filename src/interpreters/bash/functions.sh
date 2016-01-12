@@ -34,7 +34,7 @@ function pulls() {
 }
 
 function clone() {
-    URL="https://github.com/$1/$2.git"
+    URL="https://nickspinale@github.com/$1/$2.git"
     git clone $URL
 }
 
@@ -43,7 +43,7 @@ function enolc() {
 }
 
 function cloneb() {
-    URL="https://github.com/$1/$2.git"
+    URL="https://nickspinale@bitbucket.org/$1/$2.git"
     git clone $URL
 }
 
