@@ -16,6 +16,7 @@ with import ../../../local-nix { nixpkgs = pkgs; } ;
     unzip
     tree
     fzf
+    fzf-tmux
 
   # random
     rlwrap

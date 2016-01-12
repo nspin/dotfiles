@@ -10,6 +10,7 @@
 "       will improve regex to only match last comment phrase in line
 "       and not match full-line comments
 "   FUNCTION FOR WRAPPING COMMENTS AT 80 and 100
+"   folding
 
 "  {{{1 PLUGIN MANAGER
 
@@ -34,8 +35,6 @@ Plugin 'honza/vim-snippets'
 
 " tools
 Plugin 'tpope/vim-vinegar'
-" Plugin 'jeetsukumaran/vim-filebeagle'
-Plugin 'kien/ctrlp.vim'
 Plugin 'sjl/gundo.vim'
 
 " integration
@@ -58,6 +57,7 @@ Plugin 'nickspinale/vim-colors-solarized'
 " Plugin 'gerw/vim-tex-syntax'
 " Plugin 'luochen1990/rainbow'
 " Plugin 'kien/rainbow_parentheses.vim'
+" Plugin 'jeetsukumaran/vim-filebeagle'
 
 " snipmate and dependencies
 " Plugin 'garbas/vim-snipmate'
@@ -67,8 +67,10 @@ Plugin 'nickspinale/vim-colors-solarized'
 " Conditional installation
 if system('uname -a') =~ 'NixOS'
     set runtimepath+=$HOME/.nix-vim/ycm
+    set runtimepath+=$HOME/dotfiles/src/vim-config/fzf
 else
-    Plugin 'Valloric/YouCompleteMe'
+    " Plugin 'Valloric/YouCompleteMe'
+    Plugin 'kien/ctrlp.vim'
 endif
 
 call vundle#end()                                " required by vundle
