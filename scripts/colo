@@ -1,8 +1,0 @@
-vim-config/vimrc               /auto/home/nick/.vimrc
-vim-config/Vundle.vim          /auto/home/nick/.vim/bundle/Vundle.vim
-vc/gitconfig                   /auto/home/nick/.gitconfig
-line-editing/inputrc           /auto/home/nick/.inputrc
-line-editing/editrc            /auto/home/nick/.editrc
-interpreters/bash/da_bashrc    /auto/home/nick/.bashrc
-interpreters/bash/bash_profile /auto/home/nick/.bash_profile
-multiplexers/tmux.conf         /auto/home/nick/.tmux.conf

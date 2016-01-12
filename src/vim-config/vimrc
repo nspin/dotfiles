@@ -65,9 +65,8 @@ Plugin 'nickspinale/vim-colors-solarized'
 " Plugin 'tomtom/tlib_vim'
 
 " Conditional installation
-let s:whatToAppend = ''
 if system('uname -a') =~ 'NixOS'
-    set runtimepath+='$HOME/dotfiles/src/vim-config/result/ycm'
+    set runtimepath+=$HOME/.nix-vim/ycm
 else
     Plugin 'Valloric/YouCompleteMe'
 endif
