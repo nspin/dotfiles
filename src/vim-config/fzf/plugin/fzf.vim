@@ -22,10 +22,10 @@
 " WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 let s:default_height = '40%'
-let s:fzf_go = system('which fzf')
+let s:fzf_go = '/run/current-system/sw/bin/fzf'
 let s:install = expand('<sfile>:h:h').'/install'
 let s:installed = 0
-let s:fzf_tmux = system('which fzf-tmux')
+let s:fzf_tmux = '/run/current-system/sw/bin/fzf-tmux'
 
 let s:cpo_save = &cpo
 set cpo&vim

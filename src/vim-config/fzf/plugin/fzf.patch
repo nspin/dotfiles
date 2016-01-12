@@ -1,8 +1,8 @@
 25c25
 < let s:fzf_go = expand('<sfile>:h:h').'/bin/fzf'
 ---
-> let s:fzf_go = system('which fzf')
+> let s:fzf_go = '/run/current-system/sw/bin/fzf'
 28c28
 < let s:fzf_tmux = expand('<sfile>:h:h').'/bin/fzf-tmux'
 ---
-> let s:fzf_tmux = system('which fzf-tmux')
+> let s:fzf_tmux = '/run/current-system/sw/bin/fzf-tmux'
