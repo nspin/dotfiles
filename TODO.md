@@ -1,3 +1,7 @@
+*   list dependencies of components
+*   cleanup nix-config
+*   make stuff work on cmc builds
+
 *   Keymap (both x and system?) capslock -> esc
 *   Tabs vs buffers (movement between buffers)
 *   Language-specific ecosystems for vim
