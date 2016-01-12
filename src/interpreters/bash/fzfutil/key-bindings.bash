@@ -1,7 +1,7 @@
 # Key bindings
 # ------------
 __fzf_select__() {
-  local cmd="${FZF_CTRL_T_COMMAND:-"command \\find -L . \\( -path '*/\\.*' -o -fstype 'dev' -o -fstype 'proc' \\) -prune \
+  local cmd="${FZF_CTRL_T_COMMAND:-"command find -L . \\( -path '*/\\.*' -o -fstype 'dev' -o -fstype 'proc' \\) -prune \
     -o -type f -print \
     -o -type d -print \
     -o -type l -print 2> /dev/null | sed 1d | cut -b3-"}"
@@ -25,13 +25,23 @@ __fzf_select_tmux__() {
   else
     height="-l $height"
   fi
-  tmux split-window $height "cd $(printf %q "$PWD"); FZF_CTRL_T_COMMAND=$(printf %q "$FZF_CTRL_T_COMMAND") bash -c 'source ~/.fzf.bash; tmux send-keys -t $TMUX_PANE \"\$(__fzf_select__)\"'"
+
+  tmux split-window $height "cd $(printf %q "$PWD"); FZF_DEFAULT_OPTS=$(printf %q "$FZF_DEFAULT_OPTS") PATH=$(printf %q "$PATH") FZF_CTRL_T_COMMAND=$(printf %q "$FZF_CTRL_T_COMMAND") bash -c 'source \"${BASH_SOURCE[0]}\"; tmux send-keys -t $TMUX_PANE \"\$(__fzf_select__)\"'"
+}
+
+__fzf_select_tmux_auto__() {
+  if [ ${FZF_TMUX:-1} -ne 0 -a ${LINES:-40} -gt 15 ]; then
+    __fzf_select_tmux__
+  else
+    tmux send-keys -t $TMUX_PANE "$(__fzf_select__)"
+  fi
 }
 
 __fzf_cd__() {
-  local dir
-  dir=$(command \find -L ${1:-.} \( -path '*/\.*' -o -fstype 'dev' -o -fstype 'proc' \) -prune \
-    -o -type d -print 2> /dev/null | sed 1d | cut -b3- | $(__fzfcmd) +m) && printf 'cd %q' "$dir"
+  local cmd dir
+  cmd="${FZF_ALT_C_COMMAND:-"command find -L . \\( -path '*/\\.*' -o -fstype 'dev' -o -fstype 'proc' \\) -prune \
+    -o -type d -print 2> /dev/null | sed 1d | cut -b3-"}"
+  dir=$(eval "$cmd" | $(__fzfcmd) +m) && printf 'cd %q' "$dir"
 }
 
 __fzf_history__() (
@@ -49,7 +59,11 @@ __fzf_history__() (
 )
 
 __use_tmux=0
-[ -n "$TMUX_PANE" -a ${FZF_TMUX:-1} -ne 0 -a ${LINES:-40} -gt 15 ] && __use_tmux=1
+__use_tmux_auto=0
+if [ -n "$TMUX_PANE" ]; then
+  [ ${FZF_TMUX:-1} -ne 0 -a ${LINES:-40} -gt 15 ] && __use_tmux=1
+  [ $BASH_VERSINFO -gt 3 ] && __use_tmux_auto=1
+fi
 
 if [ -z "$(set -o | \grep '^vi.*on')" ]; then
   # Required to refresh the prompt after fzf
@@ -57,7 +71,9 @@ if [ -z "$(set -o | \grep '^vi.*on')" ]; then
   bind '"\e^": history-expand-line'
 
   # CTRL-T - Paste the selected file path into the command line
-  if [ $__use_tmux -eq 1 ]; then
+  if [ $__use_tmux_auto -eq 1 ]; then
+    bind -x '"\C-t": "__fzf_select_tmux_auto__"'
+  elif [ $__use_tmux -eq 1 ]; then
     bind '"\C-t": " \C-u \C-a\C-k$(__fzf_select_tmux__)\e\C-e\C-y\C-a\C-d\C-y\ey\C-h"'
   else
     bind '"\C-t": " \C-u \C-a\C-k$(__fzf_select__)\e\C-e\C-y\C-a\C-y\ey\C-h\C-e\er \C-h"'
@@ -75,7 +91,9 @@ else
 
   # CTRL-T - Paste the selected file path into the command line
   # - FIXME: Selected items are attached to the end regardless of cursor position
-  if [ $__use_tmux -eq 1 ]; then
+  if [ $__use_tmux_auto -eq 1 ]; then
+    bind -x '"\C-t": "__fzf_select_tmux_auto__"'
+  elif [ $__use_tmux -eq 1 ]; then
     bind '"\C-t": "\e$a \eddi$(__fzf_select_tmux__)\C-x\C-e\e0P$xa"'
   else
     bind '"\C-t": "\e$a \eddi$(__fzf_select__)\C-x\C-e\e0Px$a \C-x\C-r\exa "'
@@ -91,6 +109,6 @@ else
   bind -m vi-command '"\ec": "i\ec"'
 fi
 
-unset __use_tmux
+unset -v __use_tmux __use_tmux_auto
 
 fi
