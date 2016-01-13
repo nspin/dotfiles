@@ -1,3 +1,6 @@
+*   ghc-mod vim
+*   hoogle into cabal nix-shells
+
 *   list dependencies of components
 *   cleanup nix-config
 *   make stuff work on cmc builds
