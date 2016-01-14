@@ -5,6 +5,8 @@ with import ../../../local-nix { nixpkgs = pkgs; } ;
 {
   environment.systemPackages = with pkgs; [
 
+    mars
+
     adobe-reader
 
   # nix

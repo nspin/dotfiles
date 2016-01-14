@@ -30,6 +30,9 @@ alias gl='git pull'
 alias gm='git submodule update --init'
 alias gu='git submodule foreach git pull origin master'
 
+# nix
+alias nb='nix-build "<nixpkgs>" -A'
+
 # cabal
 alias cr='cabal repl'
 alias ci='cabal sandbox init'
