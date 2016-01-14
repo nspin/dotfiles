@@ -3,9 +3,7 @@
 #--------------------
 
 # general
-# alias d='cd'
-# alias p='cd ..'
-# alias r='cd /'
+alias vf='vim $(fzf)'
 
 # screen
 alias sc='screen -dRR'
