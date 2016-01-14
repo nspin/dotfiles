@@ -12,7 +12,7 @@
 "   FUNCTION FOR WRAPPING COMMENTS AT 80 and 100
 "   folding
 
-"  {{{1 PLUGIN MANAGER
+" {{{1 PLUGIN MANAGER
 
 set nocompatible
 
@@ -44,20 +44,13 @@ Plugin 'vim-scripts/cscope_macros.vim'
 
 " colors
 Plugin 'nickspinale/vim-colors-solarized'
-" Plugin 'altercation/vim-colors-solarized'
 
 " stuff I don't want to forget about
 " Plugin 'tpope/vim-unimpaired'
 " Plugin 'tpope/vim-fugitive'
 " Plugin 'majutsushi/tagbar'
-" Plugin 'bitc/vim-hdevtools'
-" Plugin 'lambdatoast/elm.vim'
-" Plugin 'MarcWeber/vim-addon-nix'
-" Plugin 'gerw/vim-latex-suite'
-" Plugin 'gerw/vim-tex-syntax'
 " Plugin 'luochen1990/rainbow'
 " Plugin 'kien/rainbow_parentheses.vim'
-" Plugin 'jeetsukumaran/vim-filebeagle'
 
 " snipmate and dependencies
 " Plugin 'garbas/vim-snipmate'
@@ -116,6 +109,8 @@ set number                                          " show line numbers
 set showmatch                                       " of block delimiter
 set incsearch                                       " sometimes nice
 set nohlsearch
+
+set foldmethod=marker
 
 set splitbelow                                      " new splits below
 set splitright                                      " new splits to right
