@@ -1,5 +1,5 @@
 function marsf () {
-    mars $@ | grep ^.[^A] | sed -e "s/\t/ /g"
+    mars nc $@ | sed -e "s/\t/ /g"
 }
 
 function marsl () {
