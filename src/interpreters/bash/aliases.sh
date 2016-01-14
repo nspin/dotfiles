@@ -4,6 +4,8 @@
 
 # general
 alias vf='vim $(fzf)'
+alias cabaldef='cabal2nix . > default.nix'
+alias cabalsh='cp ~/dotfiles/store/shell.nix .'
 
 # screen
 alias sc='screen -dRR'
