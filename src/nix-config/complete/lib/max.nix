@@ -39,7 +39,7 @@ with import ../../../local-nix { nixpkgs = pkgs; } ;
 
   # x applications
     firefox
-    xchat
+    # xchat
 
   # general development
     tmux
