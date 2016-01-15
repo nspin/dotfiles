@@ -3,4 +3,4 @@
 module Aux where
 
 wat :: IO ()
-wat = putStrLn WHO
+wat = putStrLn _NAME >> putStrLn _OTHER
