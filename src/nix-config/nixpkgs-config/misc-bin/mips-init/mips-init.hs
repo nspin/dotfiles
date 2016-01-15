@@ -1,4 +1,6 @@
+{-# LANGUAGE CPP #-}
+
 import Data.Attoparsec.ByteString
 
 main :: IO ()
-main = putStrLn "hi"
+main = putStrLn _MARS

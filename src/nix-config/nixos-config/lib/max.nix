@@ -6,6 +6,8 @@ with import ../../../local-nix { nixpkgs = pkgs; } ;
   environment.systemPackages = with pkgs; [
 
     mars
+    mips-init
+    hscript-test
 
     adobe-reader
 
