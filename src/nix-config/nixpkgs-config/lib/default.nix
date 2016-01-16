@@ -17,6 +17,7 @@ let
     mkDerivation = { name, src, libs, cpp ? {} }:
       stdenv.mkDerivation {
         inherit name src libs;
+        ghcname = haskellPackages.ghc.name;
         builder = ./haskell-script-builder.sh;
         buildInputs = [ haskellPackages.ghc ];
         cppPairs = builtins.concatLists (map (attr: [attr (builtins.getAttr attr cpp)]) (builtins.attrNames cpp));

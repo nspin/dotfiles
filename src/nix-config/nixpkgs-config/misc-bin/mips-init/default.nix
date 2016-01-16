@@ -1,5 +1,5 @@
 { mars, attoparsec }:
-{ name = "hscript-test";
+{ name = "mips-init";
   src = ./.;
   libs = [ attoparsec ];
   cpp = { _MARS = mars;

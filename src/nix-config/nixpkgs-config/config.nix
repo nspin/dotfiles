@@ -17,6 +17,5 @@
         ycm = callPackage ./local-pkgs/ycm {};
 
         mips-init = callHaskellScript ./misc-bin/mips-init {};
-        hscript-test = callHaskellScript ./misc-bin/test {};
       };
 }
