@@ -5,18 +5,19 @@ mips-init
 
 # java bullshit
 jdk
-maven
+#maven
 
 # other languages
 gcc
 clang
-mitscheme
-# racket
-nodejs
+#mitscheme
+#racket
+#nodejs
 python27
+python34
 
 # doc prep
-haskell.packages.ghc7102.pandoc
-# (texLiveAggregationFun { paths = [ texLive texLiveExtra texLiveBeamer lmodern ]; })
+#haskell.packages.ghc7102.pandoc
+#(texLiveAggregationFun { paths = [ texLive texLiveExtra texLiveBeamer lmodern ]; })
 
 ]
