@@ -1,11 +1,18 @@
 { config, pkgs, ... }:
 
 {
+  imports = [ pieces/common.nix ];
 
-  imports =
-    [ lib/common.nix
-      lib/vmware.nix
-    ];
+  services.xserver.displayManager.sessionCommands = ''
+    sh /home/nick/dotfiles/src/x11/prewm.sh
+    xmodmap /home/nick/dotfiles/src/x11/Xmodmap
+    xset m 3/1 0
+  '';
+
+  environment.systemPackages = import ./lists/min.nix pkgs
+                            ++ import ./lists/full.nix pkgs
+                            ++ import ./lists/current.nix pkgs;
+  ];
 
   services.vmwareGuest.enable = true;
 
@@ -13,51 +20,4 @@
     "kernel.core_pattern" = "|/da/ToolsAndLibs/CodingScripts/zipcore.sh %p %r %u %s";
     "kernel.core_pipe_limit" = 64;
   };
-
-  environment.systemPackages = with pkgs; [
-
-    coreutils
-
-    adobe-reader
-
-  # nix
-    nix-repl
-    nix-prefetch-scripts
-
-  # misc command line utils
-    zip
-    unzip
-    tree
-    fzf
-
-  # random
-    rlwrap
-
-  # x tools
-    xclip
-    xorg.xkill
-    xlibs.xmodmap
-
-  # x utils
-    dmenu
-    gmrun
-    xlibs.xmessage
-    haskell.packages.ghc7102.xmobar
-
-  # fonts
-    dejavu_fonts
-
-  # x applications
-    firefox
-    xchat
-
-  # general development
-    tmux
-    vimHugeX
-    git
-
-  # other languages
-    gcc
-    python
-  ];
 }
