@@ -34,7 +34,7 @@ tmux
 vimHugeX
 git
 fzf
-fzf-tmux
+local.fzf-tmux
 
 # ghc
 haskell.packages.ghc7102.ghc

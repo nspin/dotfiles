@@ -1,7 +1,7 @@
 pkgs: with pkgs; [
 
-mars
-mips-init
+local.mars
+local.mips-init
 
 # java bullshit
 jdk

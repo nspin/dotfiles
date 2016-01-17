@@ -1,0 +1,3 @@
+25c25
+< let s:fzf_go = expand('<sfile>:h:h').'/bin/fzf'
+---

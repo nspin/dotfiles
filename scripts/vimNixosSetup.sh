@@ -1,9 +1,8 @@
 basedir=$HOME/.nix-vim
-nickspkgs=$HOME/dotfiles/src/local-nix
 
-plugins="ycm"
+plugins="ycm fzf-vim"
 mkdir -p $basedir
 
 for plugin in $plugins; do
-    nix-build $nickspkgs -A $plugin -o $basedir/$plugin
+    nix-build "<nixpkgs>" -A local.$plugin -o $basedir/$plugin
 done

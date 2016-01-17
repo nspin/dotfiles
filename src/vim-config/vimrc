@@ -60,7 +60,7 @@ Plugin 'nickspinale/vim-colors-solarized'
 " Conditional installation
 if system('uname -a') =~ 'NixOS'
     set runtimepath+=$HOME/.nix-vim/ycm
-    set runtimepath+=$HOME/dotfiles/src/vim-config/fzf
+    set runtimepath+=$HOME/.nix-vim/fzf-vim
     nnoremap <c-p> :FZF<cr>
     cmap <c-o> <c-r>=fzf#run({'source': 'find -type d -not -path ''*/\.*'''})<cr>
 else
