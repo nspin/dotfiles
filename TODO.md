@@ -14,9 +14,7 @@
 *   Vim automatch parens
 *   Xnest setup?
 *   Dmenu font
-*   nixos stable?
 *   tmux theme
-*   implement sh in hs?
 *   hmux
 *   setup.sh backup
 *   slim down xmonad conf
@@ -24,6 +22,5 @@
 *   vim tab bar?
 *   solarized haskell package
 *   vim tags
-*   you complete me
 *   minimize vimrc
 *   autojump, z, fasd?
