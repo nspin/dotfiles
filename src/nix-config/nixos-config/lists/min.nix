@@ -18,7 +18,7 @@ xclip
 xorg.xkill
 xlibs.xmodmap
 xlibs.xmessage
-haskell.packages.ghc7102.xmobar
+haskellPackages.xmobar
 dmenu
 gmrun
 
@@ -35,9 +35,5 @@ vimHugeX
 git
 fzf
 local.fzf-tmux
-
-# ghc
-haskell.packages.ghc7102.ghc
-haskell.packages.ghc7102.cabal2nix
 
 ]

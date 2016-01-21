@@ -24,6 +24,12 @@ let
       };
     };
 
-in
-  { callHaskellScript = haskell-scripting.callScript;
+in {
+  callHaskellScript = haskell-scripting.callScript;
+
+  ghcEnv = haskellPackages: pkgStrings:
+    pkgs.myEnvFun {
+      name = "ghc-env";
+      buildInputs = map (str: builtins.getAttr str haskellPackages) pkgStrings;
+    };
   }
