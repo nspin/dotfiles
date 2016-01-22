@@ -39,5 +39,5 @@ in {
       ghcname = hp.ghc.name;
       libraries = f hp;
       builder = ./ghc-package-db-builder.sh;
-    }
+    };
   }

@@ -1,3 +1,9 @@
+# URGENT
+
+*   youcompleteme without python in path
+
+# NOT URGENT
+
 *   ghc-mod vim
 *   hoogle into cabal nix-shells
 

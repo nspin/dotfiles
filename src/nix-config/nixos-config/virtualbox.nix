@@ -9,6 +9,6 @@
   '';
 
   environment.systemPackages = import ./lists/min.nix pkgs
-                            ++ import ./lists/full.nix pkgs;
-#                           ++ import ./lists/current.nix pkgs;
+                            ++ import ./lists/full.nix pkgs
+                            ++ import ./lists/current.nix pkgs;
 }

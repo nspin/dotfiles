@@ -1,25 +1,25 @@
 pkgs: with pkgs; [
 
 # ghc
-local.my-ghc
-haskellPackages.cabal2nix
+/* local.my-ghc */
+/* haskellPackages.cabal2nix */
 
 
 local.mars
-local.mips-init
+/* local.mips-init */
 
 # java bullshit
-jdk
+/* jdk */
 #maven
 
 # other languages
-gcc
-clang
+/* gcc */
+/* clang */
 #mitscheme
 #racket
 #nodejs
 python27
-python34
+/* python34 */
 
 # doc prep
 #haskell.packages.ghc7102.pandoc
