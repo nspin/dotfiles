@@ -27,9 +27,17 @@ let
 in {
   callHaskellScript = haskell-scripting.callScript;
 
-  ghcEnv = haskellPackages: pkgStrings:
+  ghcEnv = hp: pkgStrings:
     pkgs.myEnvFun {
       name = "ghc-env";
-      buildInputs = map (str: builtins.getAttr str haskellPackages) pkgStrings;
+      buildInputs = map (str: builtins.getAttr str hp) pkgStrings;
     };
+
+  ghcPkgDB = hp: f: stdenv.mkDerivation {
+      name = "ghc-package-db";
+      inherit (hp) ghc;
+      ghcname = hp.ghc.name;
+      libraries = f hp;
+      builder = ./ghc-package-db-builder.sh;
+    }
   }
