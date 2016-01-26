@@ -44,8 +44,8 @@
     sha256 = "5049cba3e1dc5e2e3f6c288495b4977c98897de5a5537854499d8e4225468ebc";
   };
   "scrooloose/syntastic" = {
-    rev = "972b87ca0ddd00dffbd586a4032fe1ad357a545d";
-    sha256 = "cf7feaa2fe86e106d00ac8cb6f2c332b1b2119d69aad9733348bf3cdb2c62839";
+    rev = "cc440f1b40adcdc0a5aabbc786a8d1750eefd3ee";
+    sha256 = "ae4339e2f8f41a82dda7ada19afc70b3841dc6d28d2f384616cf03eca4afa63d";
   };
   "vim-scripts/cscope_macros.vim" = {
     rev = "d1e0c369e8c25ecfd57d20382f1ed6fe0a1ac694";

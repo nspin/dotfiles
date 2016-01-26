@@ -29,8 +29,6 @@ in {
     let
       inherit (pkgs) callPackage;
       lib = callPackage ./lib {};
-      vim-plugins = callPackage ./local-pkgs/vim-plugins {};
-      my-plugins = import ./aux/git-plugins.nix;
     in {
         local = rec {
 
@@ -46,9 +44,7 @@ in {
           fzf-vim = callPackage ./local-pkgs/fzf-vim { inherit fzf-tmux; };
           ycm = callPackage ./local-pkgs/ycm {};
 
-          vim-rtp = vim-plugins.rtpOf (
-            [ ycm fzf-vim ] ++ map (str: builtins.getAttr str vim-plugins.gitPlugins) my-plugins
-          );
+          lame-vim-plugins = callPackage ./local-pkgs/lame-vim-plugins {};
         };
       };
 }

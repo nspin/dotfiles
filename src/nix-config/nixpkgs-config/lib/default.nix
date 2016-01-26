@@ -40,4 +40,17 @@ in {
       libraries = f hp;
       builder = ./ghc-package-db-builder.sh;
     };
-  }
+
+  vimRtpOf = plugins: stdenv.mkDerivation {
+    name = "vim-rtp";
+    builder = ./vimrtp-builder.sh;
+    inherit plugins;
+  };
+
+  txtToList = file:
+    builtins.filter
+      (str: builtins.stringLength str != 0 && builtins.substring 0 1 str != "#")
+      (pkgs.lib.splitString "\n" (builtins.readFile file));
+
+  flip = f: a: b: f b a;
+}

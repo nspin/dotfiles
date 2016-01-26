@@ -31,9 +31,15 @@ dejavu_fonts
 
 # productivity
 tmux
-vimHugeX
 git
 fzf
 local.fzf-tmux
+
+vimHugeX
+
+local.lib.vimRtpOf ( [  ]
+    /* ++ map (local.lib.flip builtins.getAttr local.lame-vim-plugins.github) */
+    /*        (local.lib.txtToList ../../../vim-config/plugins/github.txt) */
+)
 
 ]

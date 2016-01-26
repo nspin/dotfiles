@@ -1,15 +1,9 @@
 { fetchgit, stdenv }:
 
 {
-  rtpOf = plugins: stdenv.mkDerivation {
-    name = "rtp";
-    builder = ./builder.sh;
-    inherit plugins;
-  };
-
-  gitPlugins =
+  github =
     let
-      raw = import ./git-plugins.nix;
+      raw = import ./github.nix;
       f =  name: {
         inherit name;
         value = fetchgit {
