@@ -7,16 +7,15 @@
     inherit plugins;
   };
 
-  plugins =
+  gitPlugins =
     let
-      raw = import ./plugins.nix;
+      raw = import ./git-plugins.nix;
       f =  name: {
         inherit name;
         value = fetchgit {
           url = "git://github.com/${name}";
           inherit (builtins.getAttr name raw) rev sha256;
         };
-        /* } // builtins.getAttr name raw); */
       };
     in builtins.listToAttrs (map f (builtins.attrNames raw));
 }

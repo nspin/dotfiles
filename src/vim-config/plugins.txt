@@ -14,3 +14,5 @@ sjl/gundo.vim
 jpalardy/vim-slime
 scrooloose/syntastic
 vim-scripts/cscope_macros.vim
+
+nickspinale/vim-colors-solarized

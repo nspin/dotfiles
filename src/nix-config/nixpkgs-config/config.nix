@@ -29,19 +29,26 @@ in {
     let
       inherit (pkgs) callPackage;
       lib = callPackage ./lib {};
+      vim-plugins = callPackage ./local-pkgs/vim-plugins {};
+      my-plugins = import ./aux/git-plugins.nix;
     in {
         local = rec {
 
           inherit lib;
 
           fzf-tmux = callPackage ./local-pkgs/fzf-tmux {};
-          fzf-vim = callPackage ./local-pkgs/fzf-vim { inherit fzf-tmux; };
           mars = callPackage ./local-pkgs/mars {};
-          ycm = callPackage ./local-pkgs/ycm {};
 
           mips-init = lib.callHaskellScript ./misc-bin/mips-init {};
 
           my-ghc = pkgs.haskellPackages.ghcWithPackages ghcPackages;
+
+          fzf-vim = callPackage ./local-pkgs/fzf-vim { inherit fzf-tmux; };
+          ycm = callPackage ./local-pkgs/ycm {};
+
+          vim-rtp = vim-plugins.rtpOf (
+            [ ycm fzf-vim ] ++ map (str: builtins.getAttr str vim-plugins.gitPlugins) my-plugins
+          );
         };
       };
 }

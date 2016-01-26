@@ -12,205 +12,11 @@
 "   FUNCTION FOR WRAPPING COMMENTS AT 80 and 100
 "   folding
 
-" {{{1 PLUGIN MANAGER
+set rtp+=$HOME/dotfiles/src/vim-config/vim
 
 set nocompatible
 
-set runtimepath+=$HOME/.vim/bundle/Vundle.vim " add vundle to rtp
-
-filetype off                                  " required by vundle
-call vundle#begin()                           " required by vundle
-
-Plugin 'VundleVim/Vundle.vim'                    " vundle has to manage vundle
-
-" editing
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'guns/vim-sexp'
-Plugin 'tpope/vim-sexp-mappings-for-regular-people'
-Plugin 'godlygeek/tabular'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-
-" tools
-Plugin 'tpope/vim-vinegar'
-Plugin 'sjl/gundo.vim'
-
-" integration
-Plugin 'jpalardy/vim-slime'
-Plugin 'scrooloose/syntastic'
-Plugin 'vim-scripts/cscope_macros.vim'
-
-" colors
-Plugin 'nickspinale/vim-colors-solarized'
-" Plugin 'altercation/vim-colors-solarized'
-
-" stuff I don't want to forget about
-" Plugin 'tpope/vim-unimpaired'
-" Plugin 'tpope/vim-fugitive'
-" Plugin 'majutsushi/tagbar'
-" Plugin 'luochen1990/rainbow'
-" Plugin 'kien/rainbow_parentheses.vim'
-
-" snipmate and dependencies
-" Plugin 'garbas/vim-snipmate'
-" Plugin 'MarcWeber/vim-addon-mw-utils'
-" Plugin 'tomtom/tlib_vim'
-
-" Conditional installation
-if system('uname -a') =~ 'NixOS'
-    set runtimepath+=$HOME/.nix-vim/ycm
-    set runtimepath+=$HOME/.nix-vim/fzf-vim
-    nnoremap <c-p> :FZF<cr>
-    cmap <c-o> <c-r>=fzf#run({'source': 'find -type d -not -path ''*/\.*'''})<cr>
-else
-    " Plugin 'Valloric/YouCompleteMe'
-    Plugin 'kien/ctrlp.vim'
-endif
-
-call vundle#end()                                " required by vundle
-filetype plugin on                               " required by vundle
-
-" MISC {{{1
-" Aesthetics {{{2
-
-syntax enable                        " don't override my colors
-
-set background=dark                  " for correct defaults
-
-" terminal-dependant aesthetic stuff
-" setting t_Co is necessary in tmux over ssh, and I have no idea why.
-" (still ironing this out)
-
-if exists('$DISPLAY') || system("uname -s") == "Darwin\n"
-    colorscheme solarized
-elseif $SSH_CONNECTION
-    set t_Co=16
-    colorscheme solarized
-endif
-
-" Options {{{2
-
-set tabstop=4                                       " may add autocmd to adapt this to filetype
-set shiftwidth=4                                    " consistent with tabstop
-set expandtab                                       " may add autocmd to adapt this to filetype
-set autoindent
-
-set mouse=                                          " not even once
-set noesckeys
-set virtualedit=block                               " sometimes convenient
-set backspace=indent,eol,start                      " allow more deletion in insert mode
-" set formatoptions=c,q
-set textwidth=80
-
-set nowrap                                          " say no to line wrapping
-set relativenumber                                  " show rel numbers
-set number                                          " show line numbers
-set showmatch                                       " of block delimiter
-set incsearch                                       " sometimes nice
-set nohlsearch
-
-set foldmethod=marker
-
-set splitbelow                                      " new splits below
-set splitright                                      " new splits to right
-set laststatus=2                                    " status line always there
-set showtabline=2                                   " tab line always there
-
-set statusline=                                     " clear it
-set statusline+=[%v\ %l\ %L]                        " position
-set statusline+=\                                   " space
-set statusline+=%m%r%h%w%q                          " flags
-set statusline+=%=                                  " space
-set statusline+=%F                                  " file name
-
-set spelllang=en_us
-set nobackup
-
-" Indentation {{{2
-
-" autocmd FileType c setlocal ts=8 sts=8 sw=8 noexpandtab
-
-" Misc {{{2
-
-autocmd FileType * set formatoptions=""             " ftplugins mess up this option often
-
-" for commenting with tabular
-let b:ncomment = '#'
-autocmd FileType c,cpp,va,scala let b:ncomment = '//'
-autocmd FileType haskell let b:ncomment = '--'
-autocmd FileType tex let b:ncomment = '%'
-autocmd FileType mail let b:ncomment = '>'
-autocmd FileType vim let b:ncomment = '"'
-
-" formats visual area with filetype-specific comments with tablular
-
-function! s:tabcomms()
-    if exists(':Tabularize')
-        execute "'<,'>Tabularize /".b:ncomment
-    endif
-endfunction
-
-" aligns <bar> tables as you type in insert mode using tabular
-" by Tim Pope, not me
-
-function! s:align()
-    let p = '^\s*|\s.*\s|\s*$'
-    if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-        let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-        let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-        Tabularize/|/l1
-        normal! 0
-        call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-    endif
-endfunction
-
-" PLUGIN OPTIONS {{{1
-
-let g:netrw_liststyle = 3
-
-let g:slime_target = "tmux"
-
-let g:sexp_filetypes = 'lisp,scheme,racket,clojure,timl'
-
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
-let g:UltiSnipsEdit="vertical"
-
-" autocmd FileType lisp,scheme,racket,clojure,timl RainbowToggle
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_mode_map = {
-    \ "mode": "passive",
-    \ "active_filetypes": [],
-    \ "passive": [] }
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_wq = 0
-
-nnoremap <space>ps :SyntasticCheck
-nnoremap <space>pe :Errors
-
-nnoremap <space>pg :GundoToggle<cr>
-" nnoremap <space>pp :RainbowToggle<cr>
-
-nnoremap <space>pi :PluginInstall<cr>
-nnoremap <space>pu :PluginUpdate<cr>
-
-nnoremap <space>p1 :SlimeSend1 "!-1"<cr>
-
-nmap <c-c><c-f> vaF<c-c><c-c>``
-
-" MAPPINGS {{{1
-
-" --- nop's ---
+let g:vimrcDir = "$HOME/dotfiles/src/vim-config/vimrc.d/"
 
 noremap <space> <nop>
 noremap <del> <nop>
@@ -218,103 +24,28 @@ noremap <bs> <nop>
 noremap <cr> <nop>
 noremap Y <nop>
 
-" --- special ---
+let s:imports = [ 'plugins'
+              \ , 'abbreviations'
+              \ , 'appearance'
+              \ , 'buffers'
+              \ , 'controls'
+              \ , 'editing'
+              \ , 'proc'
+              \ , 'toggles'
+              \ ]
 
-" inoremap j <esc>
-" inoremap JJ j
+for import in s:imports
+    exec 'source ' . g:vimrcDir . import . '.vim'
+endfor
 
-nnoremap Y y$
 
-noremap <cr> :
+set foldmethod=marker
 
-" imap <c-k> <tab><c-j>
+set spelllang=en_us
+set nobackup
 
-inoremap <c-z> <esc>:wq<cr>
+autocmd FileType * set formatoptions=""             " ftplugins mess up this option often
 
-inoremap <bar> <bar><esc>:call <sid>align()<cr>a
-
-let g:lasttab = 1
-nnoremap <tab> :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
-
-" Fake Leader {{{2
-
-" --- normal ---
-
-nnoremap <space>j gT
-nnoremap <space>k gt
-
-nnoremap <space>q :q<cr>
-nnoremap <space>w :w<cr>
-nnoremap <space>e :e<space>
-nnoremap <space>r :wq<cr>
-nnoremap <space>t :tabedit<space>
-nnoremap <space>y :q!<cr>
-
-nmap <space>v v%<c-c><c-c>
-
-nnoremap <space>s :%s/
-nnoremap <space>$ :%s/\s\+$//e<cr> " removes trailing whitespace globally
-
-" --- visual ---
-
-vnoremap <space>n :norm<space>
-vnoremap <space>c :call <sid>tabcomms()<cr>
-
-" --- normal + visual + operator pending ---
-
-noremap <space>z :Tabularize<space>/
-
-noremap <space>m "m
-noremap <space>h "_
-noremap <space>f @q
-
-" Toggles {{{2
-
-" --- '!' toggles ---
-
-nnoremap <space>os :setlocal spell!<cr>
-nnoremap <space>ow :setlocal wrap!<cr>
-nnoremap <space>ol :setlocal list!<cr>
-nnoremap <space>ob :setlocal linebreak!<cr>
-nnoremap <space>or :setlocal readonly!<cr>
-nnoremap <space>od :set digraph<cr>
-
-" --- one-way toggles ---
-
-nnoremap <space>oc :setlocal colorcolumn=80<cr>
-nnoremap <space>oC :setlocal colorcolumn=0<cr>
-nnoremap <space>ov :set virtualedit=all<cr>
-nnoremap <space>oV :set virtualedit=block<cr>
-nnoremap <space>og :noremap j gj<cr>:noremap k gk<cr>
-nnoremap <space>oG :unmap j<cr>:unmap k<cr>
-
-" --- composite toggles ---
-
-nmap <space>ot <space>ow<space>ob<space>oc<space>og
-nmap <space>oT <space>ow<space>ob<space>oC<space>oG
-
-" ABBREVIATIONS {{{1
-
-" --- laziness ---
-
-iabbrev `i #include
-iabbrev `d #define
-iabbrev `n newtype
-iabbrev `m import
-iabbrev `e extends
-iabbrev `p implements
-iabbrev `s instance
-iabbrev `- -----
-
-" --- mistakes ---
-
-iabbrev teh the
-iabbrev THe The
-iabbrev NIck Nick
-iabbrev SPinale Spinale
-
-" }}}
 
 command! NixDefExpr exec "FZF " . system('readlink ~/.nix-defexpr/channels_root')
 command! RC e $MYVIMRC

@@ -1,15 +1,13 @@
-touch $out
 (
     echo -n "let g:pluginList = ["
-    cont___="                 \ "
+    cont="                 \ "
     first=1
     for plugin in $plugins; do
-        echo -n $cont___
         if test -z $first; then
-            echo -n ", "
+            echo -n "$cont,"
         fi
         first=""
-        echo "\"$plugin\""
+        echo " \"$plugin\""
     done
-    echo $cont___ "]"
+    echo "$cont]"
 ) > $out

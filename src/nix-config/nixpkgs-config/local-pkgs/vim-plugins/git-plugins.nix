@@ -51,4 +51,8 @@
     rev = "d1e0c369e8c25ecfd57d20382f1ed6fe0a1ac694";
     sha256 = "d2fca32e0b35b294d6b0265f529c4e3b6cbbb395c3c76d0f417f5fc66700a9a6";
   };
+  "nickspinale/vim-colors-solarized" = {
+    rev = "3993f5caa7f2b4cb7b190adcb4e6d26c0a1ffc6c";
+    sha256 = "af6ddc504b63c3d7a3d94a1b408c613bb4a11181b0cfb48c84b16070235700f9";
+  };
 }

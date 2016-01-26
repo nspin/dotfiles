@@ -1,4 +1,8 @@
 #!/bin/sh
+pluginList=~/dotfiles/src/vim-config/plugins.txt
+gitPlugins=~/dotfiles/src/nix-config/nixpkgs-config/local-pkgs/vim-plugins/git-plugins.nix
+myPlugins=~/dotfiles/src/nix-config/nixpkgs-config/aux/git-plugins.nix
+
 (
     (
         echo "{"
@@ -15,5 +19,15 @@
             )
         done
         echo "}"
-    ) < ../../../../vim-config/plugins.txt
-) > plugins.nix
+    ) < $pluginList
+) > $gitPlugins
+
+(
+    (
+        echo "["
+        grep ^[^\#] | while read plugin; do
+            echo "  \"$plugin\""
+        done
+        echo "]"
+    ) < $pluginList
+) > $myPlugins
