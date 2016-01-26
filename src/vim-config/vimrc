@@ -44,6 +44,7 @@ Plugin 'vim-scripts/cscope_macros.vim'
 
 " colors
 Plugin 'nickspinale/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
 
 " stuff I don't want to forget about
 " Plugin 'tpope/vim-unimpaired'
@@ -312,3 +313,8 @@ iabbrev teh the
 iabbrev THe The
 iabbrev NIck Nick
 iabbrev SPinale Spinale
+
+" }}}
+
+command! NixDefExpr exec "FZF " . system('readlink ~/.nix-defexpr/channels_root')
+command! RC e $MYVIMRC
