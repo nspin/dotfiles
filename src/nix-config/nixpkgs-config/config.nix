@@ -46,8 +46,8 @@ in {
 
           lame-vim-plugins = callPackage ./local-pkgs/lame-vim-plugins {};
 
-          vimRtp = lib.vimRtpOf "annoying.rtp" [ ycm fzf-vim ]
-          vimRtp = lib.vimRtpOf "lame.rtp" (
+          annoyingRtp = lib.vimRtpOf "annoying.rtp" [ ycm fzf-vim ];
+          lameRtp = lib.vimRtpOf "lame.rtp" (
             builtins.attrValues lame-vim-plugins.github
             /* map (lib.flip builtins.getAttr lame-vim-plugins.github) */
             /*     (lib.txtToList ../../vim-config/plugins/github.txt) */

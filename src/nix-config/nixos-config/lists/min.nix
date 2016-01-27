@@ -37,6 +37,7 @@ local.fzf-tmux
 
 vimHugeX
 
-local.vimRtp
+local.annoyingRtp
+local.lameRtp
 
 ]

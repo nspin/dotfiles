@@ -41,10 +41,10 @@ in {
       builder = ./ghc-package-db-builder.sh;
     };
 
-  vimRtpOf = plugins: stdenv.mkDerivation {
+  vimRtpOf = outName: plugins: stdenv.mkDerivation {
     name = "vim-rtp";
     builder = ./vimrtp-builder.sh;
-    inherit plugins;
+    inherit plugins outName;
   };
 
   txtToList = file:
