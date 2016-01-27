@@ -9,14 +9,26 @@
 "   tabular comment function
 "       will improve regex to only match last comment phrase in line
 "       and not match full-line comments
-"   FUNCTION FOR WRAPPING COMMENTS AT 80 and 100
-"   folding
 
-set rtp+=$HOME/dotfiles/src/vim-config/vim
+set rtp+=~/dotfiles/src/vim-config/vim
 
-set nocompatible
+if system('uname -a') =~ 'NixOS'
+  let s:pluginLists = [ '/run/current-system/sw/share/vim-plugins/lame.rtp'
+                    \ , '/run/current-system/sw/share/vim-plugins/annoying.rtp'
+                    \ ]
+else
+  let s:pluginLists = [ '~/.vimrc.rc' ]
+endif
+
+for plugins in s:pluginLists
+  for plugin in readfile(plugins)
+    exec 'set rtp+=' . plugin
+  endfor
+endfor
 
 let g:vimrcDir = "$HOME/dotfiles/src/vim-config/vimrc.d/"
+
+set nocompatible
 
 noremap <space> <nop>
 noremap <del> <nop>
@@ -24,41 +36,17 @@ noremap <bs> <nop>
 noremap <cr> <nop>
 noremap Y <nop>
 
-if system('uname -a') =~ 'NixOS'
-    let s:pluginLists = [ '/run/current-system/sw/share/vim-plugins/lame.rtp'
-                      \ , '/run/current-system/sw/share/vim-plugins/annoying.rtp'
-                      \ ]
-else
-    let s:pluginLists = [ '~/.vimrc.rc' ]
-endif
-
-for plugins in s:pluginLists
-    for plugin in readfile(plugins)
-        exec 'set rtp+=' . plugin
-    endfor
-endfor
-
 let s:imports = [ 'abbreviations'
               \ , 'appearance'
               \ , 'buffers'
               \ , 'controls'
               \ , 'editing'
+              \ , 'editor'
               \ , 'proc'
               \ , 'toggles'
+              \ , 'misc'
               \ ]
 
 for import in s:imports
-    exec 'source ' . g:vimrcDir . import . '.vim'
+  exec 'source ' . g:vimrcDir . import . '.vim'
 endfor
-
-
-set foldmethod=marker
-
-set spelllang=en_us
-set nobackup
-
-autocmd FileType * set formatoptions=""             " ftplugins mess up this option often
-
-
-command! NixDefExpr exec "FZF " . system('readlink ~/.nix-defexpr/channels_root')
-command! RC e $MYVIMRC
