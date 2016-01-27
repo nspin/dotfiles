@@ -24,8 +24,21 @@ noremap <bs> <nop>
 noremap <cr> <nop>
 noremap Y <nop>
 
-let s:imports = [ 'plugins'
-              \ , 'abbreviations'
+if system('uname -a') =~ 'NixOS'
+    let s:pluginLists = [ '/run/current-system/sw/share/vim-plugins/lame.rtp'
+                      \ , '/run/current-system/sw/share/vim-plugins/annoying.rtp'
+                      \ ]
+else
+    let s:pluginLists = [ '~/.vimrc.rc' ]
+endif
+
+for pluginList in s:pluginLists
+    for plugin in readfile(pluginList)
+        exec 'set rtp+=' . plugin
+    endfor
+endfor
+
+let s:imports = [ 'abbreviations'
               \ , 'appearance'
               \ , 'buffers'
               \ , 'controls'
