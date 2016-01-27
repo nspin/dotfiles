@@ -1,2 +1,0 @@
-#!/bin/sh
-nix-build "<nixpkgs>" -A local.vim-rtp -o $HOME/.vim-rtp

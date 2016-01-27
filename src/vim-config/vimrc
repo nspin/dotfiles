@@ -32,8 +32,8 @@ else
     let s:pluginLists = [ '~/.vimrc.rc' ]
 endif
 
-for pluginList in s:pluginLists
-    for plugin in readfile(pluginList)
+for plugins in s:pluginLists
+    for plugin in readfile(plugins)
         exec 'set rtp+=' . plugin
     endfor
 endfor
