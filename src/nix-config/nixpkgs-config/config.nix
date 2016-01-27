@@ -36,6 +36,7 @@ in {
 
           fzf-tmux = callPackage ./local-pkgs/fzf-tmux {};
           mars = callPackage ./local-pkgs/mars {};
+          pdp8 = callPackage ./local-pkgs/pdp8 {};
 
           mips-init = lib.callHaskellScript ./misc-bin/mips-init {};
 

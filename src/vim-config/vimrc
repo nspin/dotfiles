@@ -10,6 +10,10 @@
 "       will improve regex to only match last comment phrase in line
 "       and not match full-line comments
 
+"   ELEGANT RUNTIMEPATH
+"       as list: let &runtimepath = join(myrtp, ',')
+"       order: $VIMRUNTIME, ./vim, plugins
+
 set rtp+=~/dotfiles/src/vim-config/vim
 
 if system('uname -a') =~ 'NixOS'

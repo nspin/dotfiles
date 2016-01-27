@@ -3,7 +3,7 @@ pkgs: with pkgs; [
 # ghc
 /* local.my-ghc */
 /* haskellPackages.cabal2nix */
-
+cabal2nix
 
 local.mars
 /* local.mips-init */
