@@ -1,0 +1,11 @@
+#!/bin/sh
+
+basedir=~/dotfiles
+readDir=$basedir/src/vim-config/plugins
+installDir=$basedir/build/plugins-$(date | sha256sum | head -c 8)
+rtpDir=~/.vim.rtp
+
+mkdir -p $installDir
+
+(./github2install $installDir < $readDir/common/github) > $rtpDir/common
+(./github2install $installDir < $readDir/non-nix/github) > $rtpDir/non-nix

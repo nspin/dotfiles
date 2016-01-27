@@ -1,0 +1,3 @@
+#!/bin/sh
+( ../scripts/github2nix < ../plugins/common/github
+) > ../../nix-config/nixpkgs-config/local-pkgs/lame-vim-plugins/plugins/github.nix
