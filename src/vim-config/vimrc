@@ -14,7 +14,15 @@
 "       as list: let &runtimepath = join(myrtp, ',')
 "       order: $VIMRUNTIME, ./vim, plugins
 
-let s:nice_rtp = [ '$VIMRUNTIME', expand('<sfile>:h') . 'vim' ]
+set nocompatible
+filetype plugin indent on
+
+" let g:vim_config_dir = expand('<sfile>:h')
+let g:vim_config_dir = expand('~/dotfiles/src/vim-config/')
+
+for f in split(glob(g:vim_config_dir . 'vimrc.d/lib/*'))
+  exec 'source '.f
+endfor
 
 if system('uname -a') =~ 'NixOS'
   let s:plugin_lists = [ '/run/current-system/sw/share/vim-plugins/lame.rtp'
@@ -24,25 +32,12 @@ else
   let s:plugin_lists = [ '~/.vimrc.rc' ]
 endif
 
-function g:Mapped(fn, l)
-  let new_list = deepcopy(a:l)
-  call map(new_list, string(a:fn) . '(v:val)')
-  return new_list
-endfunction
+let s:nice_rtp = [ expand('$VIMRUNTIME'), g:vim_config_dir.'vim' ]
 
-function g:Concat(xss)
-  let ys = []
-  for xs in a:xss
-    let ys += xs
-  endfor
-  return ys
-endfunction
+let s:all_rtp = s:nice_rtp + g:Concat(g:Mapped(function('readfile'), s:plugin_lists))
 
-let &rtp = join(s:nice_rtp + g:Concat(g:Mapped(function('readfile'), s:plugin_lists)), ',')
-
-let g:vimrcDir = "$HOME/dotfiles/src/vim-config/vimrc.d/"
-
-set nocompatible
+let &rtp = join(s:all_rtp, ',')
+" exec 'set rtp+='.join(s:all_rtp, ',')
 
 noremap <space> <nop>
 noremap <del> <nop>
@@ -50,17 +45,6 @@ noremap <bs> <nop>
 noremap <cr> <nop>
 noremap Y <nop>
 
-let s:imports = [ 'abbreviations'
-              \ , 'appearance'
-              \ , 'buffers'
-              \ , 'controls'
-              \ , 'editing'
-              \ , 'editor'
-              \ , 'proc'
-              \ , 'toggles'
-              \ , 'misc'
-              \ ]
-
-for import in s:imports
-  exec 'source ' . g:vimrcDir . 'modules/' . import . '.vim'
+for f in split(glob(g:vim_config_dir . 'vimrc.d/modules/*'))
+  exec 'source '.f
 endfor
