@@ -24,8 +24,8 @@
     sha256 = "28c860ad621587f2c3213fae47d1a3997746527c17d51e9ab94c209eb7bfeb0f";
   };
   "SirVer/ultisnips" = {
-    rev = "bdd9012eb5274933fcf6713d0e251f802ac74a94";
-    sha256 = "244fd527166c4b91f496fb8a84bb26f39a464348553727f6247b3a0068c4d2cf";
+    rev = "0657e61e61abdeeb98013629eabda7248c72cf0d";
+    sha256 = "e5913f923a0b720090cc52342281e3a5ce902c8a9202e353f3575a4fc3decd0a";
   };
   "honza/vim-snippets" = {
     rev = "0fc7fd1181f33b26c015d0f306d149b756f9d679";

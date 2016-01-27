@@ -14,21 +14,31 @@
 "       as list: let &runtimepath = join(myrtp, ',')
 "       order: $VIMRUNTIME, ./vim, plugins
 
-set rtp+=~/dotfiles/src/vim-config/vim
+let s:nice_rtp = [ '$VIMRUNTIME', expand('<sfile>:h') . 'vim' ]
 
 if system('uname -a') =~ 'NixOS'
-  let s:pluginLists = [ '/run/current-system/sw/share/vim-plugins/lame.rtp'
-                    \ , '/run/current-system/sw/share/vim-plugins/annoying.rtp'
-                    \ ]
+  let s:plugin_lists = [ '/run/current-system/sw/share/vim-plugins/lame.rtp'
+                     \ , '/run/current-system/sw/share/vim-plugins/annoying.rtp'
+                     \ ]
 else
-  let s:pluginLists = [ '~/.vimrc.rc' ]
+  let s:plugin_lists = [ '~/.vimrc.rc' ]
 endif
 
-for plugins in s:pluginLists
-  for plugin in readfile(plugins)
-    exec 'set rtp+=' . plugin
+function g:Mapped(fn, l)
+  let new_list = deepcopy(a:l)
+  call map(new_list, string(a:fn) . '(v:val)')
+  return new_list
+endfunction
+
+function g:Concat(xss)
+  let ys = []
+  for xs in a:xss
+    let ys += xs
   endfor
-endfor
+  return ys
+endfunction
+
+let &rtp = join(s:nice_rtp + g:Concat(g:Mapped(function('readfile'), s:plugin_lists)), ',')
 
 let g:vimrcDir = "$HOME/dotfiles/src/vim-config/vimrc.d/"
 
@@ -52,5 +62,5 @@ let s:imports = [ 'abbreviations'
               \ ]
 
 for import in s:imports
-  exec 'source ' . g:vimrcDir . import . '.vim'
+  exec 'source ' . g:vimrcDir . 'modules/' . import . '.vim'
 endfor
