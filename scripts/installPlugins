@@ -7,6 +7,8 @@ rtpFile=~/.vimrc.rtp
 
 mkdir -p $installDir
 
+set -e
+
 (
     (
         grep '^[^#]' | while read plugin; do
