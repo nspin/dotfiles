@@ -15,5 +15,5 @@
             )
         done
         echo "}"
-    ) < ./github.txt
-) > ./github.nix
+    ) < ./plugins/github.txt
+) > ../nix-config/nixpkgs-config/local-pkgs/lame-vim-plugins/plugins/github.nix

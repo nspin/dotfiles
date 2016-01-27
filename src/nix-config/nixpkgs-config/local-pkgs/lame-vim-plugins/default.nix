@@ -3,7 +3,7 @@
 {
   github =
     let
-      raw = import ./github.nix;
+      raw = import ./plugins/github.nix;
       f =  name: {
         inherit name;
         value = fetchgit {
