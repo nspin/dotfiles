@@ -1,50 +1,33 @@
-" +-----------------------+
-" | NICK SPINALE'S .vimrc |
-" +-----------------------+
-
-" TODO
-"   find mapping worthy of <backspace>
-"   clear autocmds before any here? (au!)?
-"   deal with ftplugins messing with my options (namely fo)
-"   tabular comment function
-"       will improve regex to only match last comment phrase in line
-"       and not match full-line comments
-
-"   ELEGANT RUNTIMEPATH
-"       as list: let &runtimepath = join(myrtp, ',')
-"       order: $VIMRUNTIME, ./vim, plugins
+" +-------+
+" | vimrc |
+" +-------+
 
 set nocompatible
-filetype plugin indent on
 
-" let g:vim_config_dir = expand('<sfile>:h')
-let g:vim_config_dir = expand('~/dotfiles/src/vim-config/')
-
-for f in split(glob(g:vim_config_dir . 'vimrc.d/lib/*'))
-  exec 'source '.f
-endfor
+let g:vim_config_dir = fnamemodify(system('readlink $MYVIMRC')[0:-2], ':p:h').'/'
 
 if system('uname -a') =~ 'NixOS'
   let s:plugin_lists = [ '/run/current-system/sw/share/vim-plugins/lame.rtp'
                      \ , '/run/current-system/sw/share/vim-plugins/annoying.rtp'
                      \ ]
 else
-  let s:plugin_lists = [ '~/.vimrc.rc' ]
+  let s:plugin_lists = ['~/.vimrc.rc']
 endif
 
-let s:nice_rtp = [ expand('$VIMRUNTIME'), g:vim_config_dir.'vim' ]
+let s:rtp_list = [expand('$VIMRUNTIME'), g:vim_config_dir.'vim']
 
-let s:all_rtp = s:nice_rtp + g:Concat(g:Mapped(function('readfile'), s:plugin_lists))
+for plugin_list in s:plugin_lists
+  let s:rtp_list += readfile(plugin_list)
+endfor
 
-let &rtp = join(s:all_rtp, ',')
-" exec 'set rtp+='.join(s:all_rtp, ',')
+let &rtp = join(s:rtp_list, ',')
 
-noremap <space> <nop>
-noremap <del> <nop>
-noremap <bs> <nop>
-noremap <cr> <nop>
-noremap Y <nop>
-
-for f in split(glob(g:vim_config_dir . 'vimrc.d/modules/*'))
+for f in split(glob(g:vim_config_dir . 'vimrc.d/lib/*'))
   exec 'source '.f
+endfor
+
+for modules in split(glob(g:vim_config_dir.'vimrc.d/modules.*'))
+  for module in split(glob(modules.'/*.vim'))
+    exec 'source '.module
+  endfor
 endfor

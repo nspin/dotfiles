@@ -17,6 +17,9 @@ let
       optparse-applicative
       stm
       vector
+      containers
+      taggy-lens
+      bytestring
     ];
 
 in {
@@ -33,6 +36,7 @@ in {
         local = rec {
 
           inherit lib;
+          inherit ghcPackages;
 
           fzf-tmux = callPackage ./local-pkgs/fzf-tmux {};
           mars = callPackage ./local-pkgs/mars {};

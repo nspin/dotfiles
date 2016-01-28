@@ -1,3 +1,5 @@
+filetype plugin indent on
+
 set tabstop=4                                       " may add autocmd to adapt this to filetype
 set shiftwidth=4                                    " consistent with tabstop
 set expandtab                                       " may add autocmd to adapt this to filetype
