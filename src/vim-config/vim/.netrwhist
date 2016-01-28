@@ -1,4 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/home/nick/dotfiles'
 let g:netrw_dirhist_2='/home/nick/dotfiles/src/vim-config'
+let g:netrw_dirhist_3='/home/nick/dotfiles/src/nix-config/nixpkgs-config'
+let g:netrw_dirhist_4='/home/nick/dotfiles/src/nix-config/nixpkgs-config/lib'
+let g:netrw_dirhist_5='/home/nick/scratch'
