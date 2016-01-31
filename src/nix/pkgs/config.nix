@@ -38,18 +38,15 @@ in {
           inherit lib;
           inherit ghcPackages;
 
-          fzf-tmux = callPackage ./local-pkgs/fzf-tmux {};
-          mars = callPackage ./local-pkgs/mars {};
-          pdp8 = callPackage ./local-pkgs/pdp8 {};
-
-          mips-init = lib.callHaskellScript ./misc-bin/mips-init {};
+          fzf-tmux = callPackage ./local/fzf-tmux {};
+          mars = callPackage ./local/mars {};
 
           my-ghc = pkgs.haskellPackages.ghcWithPackages ghcPackages;
 
-          fzf-vim = callPackage ./local-pkgs/fzf-vim { inherit fzf-tmux; };
-          ycm = callPackage ./local-pkgs/ycm {};
+          fzf-vim = callPackage ./local/fzf-vim { inherit fzf-tmux; };
+          ycm = callPackage ./local/ycm {};
 
-          lame-vim-plugins = callPackage ./local-pkgs/lame-vim-plugins {};
+          lame-vim-plugins = callPackage ./local/lame-vim-plugins {};
 
           annoyingRtp = lib.vimRtpOf "annoying.rtp" [ ycm fzf-vim ];
           lameRtp = lib.vimRtpOf "lame.rtp" (
