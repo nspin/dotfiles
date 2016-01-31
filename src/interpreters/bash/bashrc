@@ -55,6 +55,6 @@ set -o vi
 
 basedir=$HOME/dotfiles/src/interpreters/bash
 
-for script in $(find $basedir/bashrc.d | grep sh); do
+for script in $(find $basedir/bashrc.d | grep 'sh$'); do
     source $script
 done
