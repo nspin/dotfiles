@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  nixpkgs.config = import ../../nixpkgs-config/config.nix;
+  nixpkgs.config = import ../../pkgs/config.nix;
 
   boot.loader.grub.device = "/dev/sda";
   # boot.loader.grub.enable = true;

@@ -11,10 +11,10 @@ if system('uname -a') =~ 'NixOS'
                      \ , '/run/current-system/sw/share/vim-plugins/annoying.rtp'
                      \ ]
 else
-  let s:plugin_lists = ['~/.vimrc.rc']
+  let s:plugin_lists = ['~/.vimrc.rtp']
 endif
 
-let s:rtp_list = [expand('$VIMRUNTIME'), g:vim_config_dir.'vim']
+let s:rtp_list = [expand('$VIMRUNTIME'), g:vim_config_dir.'vim.1']
 
 for plugin_list in s:plugin_lists
   let s:rtp_list += readfile(plugin_list)
