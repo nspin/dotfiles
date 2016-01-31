@@ -1,3 +1,0 @@
-123c123
-< fzf="$(which fzf 2> /dev/null)" || fzf="$(dirname "$0")/fzf"
----
