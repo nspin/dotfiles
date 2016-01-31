@@ -1,7 +1,7 @@
 #!/bin/sh
 
 basedir=~/dotfiles
-readDir=$basedir/src/vim-config/plugins
+readDir=$basedir/src/editors/vim/plugins
 installDir=$basedir/build/plugins-$(date +%s)
 rtpDir=~/.vim.rtp
 
