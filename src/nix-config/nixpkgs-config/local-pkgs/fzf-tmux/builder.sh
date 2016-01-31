@@ -1,13 +1,10 @@
 source $stdenv/setup
-cp --no-preserve=mode $src fzf-tmux
-
-cp --no-preserve=mode $patch fzf-tmux.patch
-echo "> fzf=$fzf" >> fzf-tmux.patch
-patch fzf-tmux fzf-tmux.patch
-
-patchShebangs fzf-tmux
-substituteInPlace fzf-tmux --replace tmux $tmux/bin/tmux
 
 mkdir -p $out/bin
-chmod +x fzf-tmux
-mv fzf-tmux $out/bin
+echo '#!/bin/sh' > $out/bin/fzf-tmux
+echo -n 'PATH=$PATH:' >> $out/bin/fzf-tmux
+echo "$tmux/bin:$fzf/bin:$coreutils/bin" >> $out/bin/fzf-tmux
+echo "which fzf" >> $out/bin/fzf-tmux
+echo "sh $src" >> $out/bin/fzf-tmux
+ls $fzf/bin
+chmod +x $out/bin/fzf-tmux
