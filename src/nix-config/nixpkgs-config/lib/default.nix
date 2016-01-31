@@ -8,38 +8,33 @@ let
       auto = builtins.intersectAttrs (builtins.functionArgs f) autoArgs;
     in f (auto // args);
 
-  haskell-scripting = rec {
+  callPackage = callPackageWith pkgs;
 
-    callScript = fn: args: mkDerivation (callPackage fn args);
+in rec {
 
-    callPackage = callPackageWith (pkgs // haskellPackages);
-
-    mkDerivation = { name, src, libs, cpp ? {} }:
+  haskellScript = args:
+    ({ name, src, libs, cpp ? {}, hp ? haskellPackages }:
       stdenv.mkDerivation {
-        inherit name src libs;
-        ghcname = haskellPackages.ghc.name;
+        inherit name src;
+        pkgdb = ghcPkgDB hp libs;
+        ghcname = hp.ghc.name;
         builder = ./haskell-script-builder.sh;
-        buildInputs = [ haskellPackages.ghc ];
+        buildInputs = [ hp.ghc ];
         cppPairs = builtins.concatLists (map (attr: [attr (builtins.getAttr attr cpp)]) (builtins.attrNames cpp));
-      };
-    };
+      }) (callPackage args {});
 
-in {
-  callHaskellScript = haskell-scripting.callScript;
+  ghcEnv = hp: pkgStrings: pkgs.myEnvFun {
+    name = "ghc-env";
+    buildInputs = map (str: builtins.getAttr str hp) pkgStrings;
+  };
 
-  ghcEnv = hp: pkgStrings:
-    pkgs.myEnvFun {
-      name = "ghc-env";
-      buildInputs = map (str: builtins.getAttr str hp) pkgStrings;
-    };
-
-  ghcPkgDB = hp: f: stdenv.mkDerivation {
-      name = "ghc-package-db";
-      inherit (hp) ghc;
-      ghcname = hp.ghc.name;
-      libraries = f hp;
-      builder = ./ghc-package-db-builder.sh;
-    };
+  ghcPkgDB = hp: pkgStrings: stdenv.mkDerivation {
+    name = "ghc-package-db";
+    inherit (hp) ghc;
+    ghcname = hp.ghc.name;
+    libraries = map (str: builtins.getAttr str hp) pkgStrings;
+    builder = ./ghc-package-db-builder.sh;
+  };
 
   vimRtpOf = outName: plugins: stdenv.mkDerivation {
     name = "vim-rtp";
