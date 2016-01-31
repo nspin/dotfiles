@@ -53,13 +53,8 @@ set -o vi
 # IMPORTS
 #--------------------
 
-source $HOME/dotfiles/src/interpreters/bash/aliases.sh
+basedir=$HOME/dotfiles/src/interpreters/bash
 
-for f in $(ls $HOME/dotfiles/src/interpreters/bash/functions); do
-    source $HOME/dotfiles/src/interpreters/bash/functions/$f
+for script in $(find $basedir/bashrc.d | grep sh); do
+    source $script
 done
-
-# source $HOME/dotfiles/src/interpreters/bash/fzfutil/functions.bash
-source $HOME/dotfiles/src/interpreters/bash/fzfutil/completion.bash
-source $HOME/dotfiles/src/interpreters/bash/fzfutil/key-bindings.bash
-# source $HOME/dotfiles/src/interpreters/bash/fzfutil/fzf-tmux.bash

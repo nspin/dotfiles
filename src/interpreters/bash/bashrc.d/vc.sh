@@ -34,17 +34,9 @@ function clone() {
     git clone $URL
 }
 
-function enolc() {
-    clone nickspinale $1
-}
-
 function cloneb() {
     URL="https://nickspinale@bitbucket.org/$1/$2.git"
     git clone $URL
-}
-
-function enolcb() {
-    cloneb nickspinale $1
 }
 
 function module() {
@@ -52,7 +44,14 @@ function module() {
     git submodule add $URL $3
 }
 
-function eludom() {
-    URL="https://github.com/nickspinale/$1.git"
-    git submodule add $URL $3
-}
+alias enolc='clone nickspinale'
+alias enolcb='cloneb nickspinale'
+alias edulom='module nickspinale'
+
+alias ga='git add -A :/'
+alias gs='git status'
+alias gc='git commit'
+alias gp='git push'
+alias gl='git pull'
+alias gm='git submodule update --init'
+alias gu='git submodule foreach git pull origin master'

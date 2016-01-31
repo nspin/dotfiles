@@ -21,15 +21,6 @@ alias ptm='TERM=screen-256color-bce tmux -u'
 alias pta='TERM=screen-256color-bce tmux attach -u'
 alias ptt='TERM=screen-256color-bce tmux attach -u -t'
 
-# git
-alias ga='git add -A :/'
-alias gs='git status'
-alias gc='git commit'
-alias gp='git push'
-alias gl='git pull'
-alias gm='git submodule update --init'
-alias gu='git submodule foreach git pull origin master'
-
 # nix
 alias nb='nix-build "<nixpkgs>" -A'
 
