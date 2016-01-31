@@ -12,21 +12,20 @@ set backspace=indent,eol,start
 set formatoptions=c,q
 set textwidth=80
 
+nnoremap Y y$
+
+noremap <cr> :
+
 noremap <space>m "m
 noremap <space>h "_
 noremap <space>f @q
 
 vnoremap <space>n :norm<space>
-vnoremap <space>c :call <sid>tabcomms()<cr>
 
 noremap <space>z :Tabularize<space>/
 
 nnoremap <space>s :%s/
 nnoremap <space>$ :%s/\s\+$//e<cr> " removes trailing whitespace globally
-
-nnoremap Y y$
-
-noremap <cr> :
 
 " for commenting with tabular
 let b:inline_comment_str = '#'
@@ -39,17 +38,15 @@ for [types, str] in [ ['c,cpp,va,scala' , '//']
   exe 'autocmd FileType '.types." let b:inline_comment_str = '".str."'"
 endfor
 
-" formats visual area with filetype-specific comments with tablular
-
+" Formats visual area with filetype-specific comments with tablular
 function! s:tabcomms()
     if exists(':Tabularize')
-        execute "'<,'>Tabularize /".b:ncomment
+        execute "'<,'>Tabularize /".b:inline_comment_str
     endif
 endfunction
 
-" aligns <bar> tables as you type in insert mode using tabular
-" by Tim Pope, not me
-
+" Aligns <bar> tables as you type in insert mode using tabular
+" By Tim Pope, not me
 function! s:AlignTable()
     let p = '^\s*|\s.*\s|\s*$'
     if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)

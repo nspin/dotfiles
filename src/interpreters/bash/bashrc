@@ -54,8 +54,10 @@ set -o vi
 #--------------------
 
 source $HOME/dotfiles/src/interpreters/bash/aliases.sh
-source $HOME/dotfiles/src/interpreters/bash/functions.sh
-source $HOME/dotfiles/src/interpreters/bash/env-specific.sh
+
+for f in $(ls $HOME/dotfiles/src/interpreters/bash/functions); do
+    source $HOME/dotfiles/src/interpreters/bash/functions/$f
+done
 
 # source $HOME/dotfiles/src/interpreters/bash/fzfutil/functions.bash
 source $HOME/dotfiles/src/interpreters/bash/fzfutil/completion.bash
