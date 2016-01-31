@@ -1,14 +1,14 @@
 filetype plugin indent on
 
-set tabstop=4                                       " may add autocmd to adapt this to filetype
-set shiftwidth=4                                    " consistent with tabstop
-set expandtab                                       " may add autocmd to adapt this to filetype
+set tabstop=4
+set shiftwidth=4
+set expandtab
 set autoindent
 
-set mouse=                                          " not even once
+set mouse=
 set noesckeys
-set virtualedit=block                               " sometimes convenient
-set backspace=indent,eol,start                      " allow more deletion in insert mode
+set virtualedit=block
+set backspace=indent,eol,start
 set formatoptions=c,q
 set textwidth=80
 
@@ -28,15 +28,16 @@ nnoremap Y y$
 
 noremap <cr> :
 
-inoremap <bar> <bar><esc>:call <sid>align()<cr>a
-
 " for commenting with tabular
-let b:ncomment = '#'
-autocmd FileType c,cpp,va,scala let b:ncomment = '//'
-autocmd FileType haskell let b:ncomment = '--'
-autocmd FileType tex let b:ncomment = '%'
-autocmd FileType mail let b:ncomment = '>'
-autocmd FileType vim let b:ncomment = '"'
+let b:inline_comment_str = '#'
+for [types, str] in [ ['c,cpp,va,scala' , '//']
+                  \ , ['haskell'        , '--']
+                  \ , ['tex'            , '%' ]
+                  \ , ['mail'           , '>' ]
+                  \ , ['vim'            , '"' ]
+                  \ ]
+  exe 'autocmd FileType '.types." let b:inline_comment_str = '".str."'"
+endfor
 
 " formats visual area with filetype-specific comments with tablular
 
@@ -49,7 +50,7 @@ endfunction
 " aligns <bar> tables as you type in insert mode using tabular
 " by Tim Pope, not me
 
-function! s:align()
+function! s:AlignTable()
     let p = '^\s*|\s.*\s|\s*$'
     if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
         let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
@@ -60,5 +61,4 @@ function! s:align()
     endif
 endfunction
 
-
-let g:sexp_filetypes = 'lisp,scheme,racket,clojure,timl'
+inoremap <bar> <bar><esc>:call <sid>AlignTable()<cr>a

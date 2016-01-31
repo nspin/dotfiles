@@ -1,11 +1,24 @@
-syntax enable                        " don't override my colors
+syntax enable
 
-set background=dark                  " for correct defaults
+set background=dark
 
-set nowrap                                          " say no to line wrapping
-set showmatch                                       " of block delimiter
-set incsearch                                       " sometimes nice
+set nowrap
+set showmatch
+set incsearch
 set nohlsearch
+
+set relativenumber
+set number
+
+set statusline=              " clear it
+set statusline+=[%v\ %l\ %L] " position
+set statusline+=\            " space
+set statusline+=%m%r%h%w%q   " flags
+set statusline+=%=           " space
+set statusline+=%F           " file name
+
+set laststatus=2
+set showtabline=2
 
 " terminal-dependant aesthetic stuff
 " setting t_Co is necessary in tmux over ssh, and I have no idea why.
@@ -17,18 +30,3 @@ elseif $SSH_CONNECTION
     set t_Co=16
     colorscheme solarized
 endif
-
-set relativenumber                                  " show rel numbers
-set number                                          " show line numbers
-
-set statusline=                                     " clear it
-set statusline+=[%v\ %l\ %L]                        " position
-set statusline+=\                                   " space
-set statusline+=%m%r%h%w%q                          " flags
-set statusline+=%=                                  " space
-set statusline+=%F                                  " file name
-
-set laststatus=2                                    " status line always there
-set showtabline=2                                   " tab line always there
-
-let g:netrw_liststyle = 3

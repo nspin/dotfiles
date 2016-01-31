@@ -4,5 +4,8 @@ set spelllang=en_us
 
 " autocmd FileType * set formatoptions=""             " ftplugins mess up this option often
 
-command! NixDefExpr exec "FZF " . system('readlink ~/.nix-defexpr/channels_root')
-command! RC e $MYVIMRC
+" autocmd FileType lisp,scheme,racket,clojure,timl RainbowToggle
+
+
+nnoremap <space>pg :GundoToggle<cr>
+" nnoremap <space>pp :RainbowToggle<cr>

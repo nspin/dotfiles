@@ -1,19 +1,23 @@
-set splitbelow                                      " new splits below
-set splitright                                      " new splits to right
+set splitbelow
+set splitright
 
 inoremap <c-z> <esc>:wq<cr>
 
 nnoremap <space>j gT
 nnoremap <space>k gt
 
-nnoremap <space>q :q<cr>
-nnoremap <space>w :w<cr>
-nnoremap <space>e :e<space>
+nnoremap <space>q :quit<cr>
+nnoremap <space>w :write<cr>
+nnoremap <space>e :edit<space>
 nnoremap <space>r :wq<cr>
 nnoremap <space>t :tabedit<space>
-nnoremap <space>y :q!<cr>
+nnoremap <space>y :quit!<cr>
 
-let g:lasttab = 1
-nnoremap <tab> :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
+let s:last_tab = 1
+au TabLeave * let s:last_tab = tabpagenr()
 
+function! s:LastTab()
+  exec 'tabn '.s:last_tab
+endfunction
+
+nnoremap <tab> :call <SID>LastTab()
