@@ -2,6 +2,7 @@
 
 *   youcompleteme without python in path
 *   get rid of vundle gitmodule
+*   get fzf tmux working in vim
 
 # NOT URGENT
 

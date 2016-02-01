@@ -5,4 +5,6 @@ libreoffice
 
 haskellPackages.pandoc
 
+vlc
+
 ]
