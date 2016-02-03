@@ -27,6 +27,8 @@ noremap <space>z :Tabularize<space>/
 nnoremap <space>s :%s/
 nnoremap <space>$ :%s/\s\+$//e<cr> " removes trailing whitespace globally
 
+inoremap <c-d> <esc>:w<cr>
+
 " for commenting with tabular
 let b:inline_comment_str = '#'
 for [types, str] in [ ['c,cpp,va,scala' , '//']

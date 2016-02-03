@@ -31,3 +31,7 @@ for modules in split(glob(g:vim_config_dir.'vimrc.d/modules.*'))
     exec 'source '.module
   endfor
 endfor
+
+if filereadable('local.vim')
+  source local.vim
+endif

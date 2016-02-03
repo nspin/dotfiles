@@ -8,9 +8,9 @@ nnoremap <space>k gt
 
 nnoremap <space>q :quit<cr>
 nnoremap <space>w :write<cr>
-nnoremap <space>e :edit<space>
+nnoremap <space>e :edit<cr>
 nnoremap <space>r :wq<cr>
-nnoremap <space>t :tabedit<space>
+nnoremap <space>t :tabedit<cr>
 nnoremap <space>y :quit!<cr>
 
 let s:last_tab = 1
@@ -20,4 +20,4 @@ function! s:LastTab()
   exec 'tabn '.s:last_tab
 endfunction
 
-nnoremap <tab> :call <SID>LastTab()
+nnoremap <tab> :call <SID>LastTab()<CR>
