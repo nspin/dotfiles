@@ -3,6 +3,7 @@
 " +-------+
 
 set nocompatible
+filetype off
 
 let g:vim_config_dir = fnamemodify(system('readlink $MYVIMRC')[0:-2], ':p:h').'/'
 
@@ -17,7 +18,10 @@ endif
 let s:rtp_list = [expand('$VIMRUNTIME'), g:vim_config_dir.'vim.1']
 
 for plugin_list in s:plugin_lists
-  let s:rtp_list += readfile(plugin_list)
+  for plugin in readfile(plugin_list)
+    call add(s:rtp_list, plugin)
+    call add(s:rtp_list, plugin.'/after')
+  endfor
 endfor
 
 let &rtp = join(s:rtp_list, ',')
@@ -35,3 +39,6 @@ endfor
 if filereadable('local.vim')
   source local.vim
 endif
+
+filetype plugin indent on
+
