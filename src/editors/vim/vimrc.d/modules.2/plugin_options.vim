@@ -4,11 +4,11 @@ let g:slime_target = "tmux"
 
 let g:netrw_liststyle = 3
 
-let g:UltiSnipsExpandTrigger='<c-l>'
-let g:UltiSnipsJumpForwardTrigger='<c-l>'
-let g:UltiSnipsJumpBackwardTrigger='<c-h>'
+let g:UltiSnipsExpandTrigger='<c-j>'
+let g:UltiSnipsJumpForwardTrigger='<c-j>'
+let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 
-imap <c-j> <tab><c-l>
+imap <c-l> <tab><c-j>
 
 let g:UltiSnipsEdit='vertical'
 
