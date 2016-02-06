@@ -8,7 +8,13 @@ haskellPackages.pandoc
 vlc
 
 (texlive.combine {
-  inherit (texlive) scheme-small pbox csquotes beamerposter;
+  inherit (texlive)
+    scheme-small
+    pbox
+    csquotes
+    beamerposter
+    type1cm
+  ;
 })
 
 ]

@@ -1,5 +1,5 @@
-command TexMain w | !pdftex main.tex
-command ViewMain !zathura main.pdf &
+command TexMain w | !pdflatex main.tex
+command ViewMain !(zathura main.pdf &> /dev/null) &
 
 inoremap <c-x> <esc>:TexMain<cr>
 
