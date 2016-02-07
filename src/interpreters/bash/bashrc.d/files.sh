@@ -1,11 +1,25 @@
-function confbash() {
-    vim $(find ~/dotfiles/src/interpreters/bash | fzf-tmux)
+function fzfFiles(){
+    file=$(find $1 -type f \
+            | sed 's#^'$1'/##g' \
+            | grep -v '/\.' \
+            | grep -v '^\.' \
+            | fzf-tmux)
+    if test -z $file; then
+        echo nop
+    else
+        echo $file
+        vim $1/$file
+    fi
 }
 
-function confnix() {
-    vim $(find ~/dotfiles/src/nix | fzf-tmux)
+function dot() {
+    fzfFiles /home/nick/dotfiles
 }
 
-function nixdefexp() {
-    vim $(find $(readlink $(readlink $HOME/.nix-defexpr/channels_root)/nixos) | fzf-tmux)
+function nder(){
+    readlink $(readlink $HOME/.nix-defexpr/channels_root)/nixos
+}
+
+function nde() {
+    fzfFiles $(nder)
 }

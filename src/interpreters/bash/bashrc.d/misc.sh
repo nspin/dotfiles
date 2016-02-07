@@ -1,7 +1,3 @@
-#--------------------
-# ALIASES
-#--------------------
-
 # general
 alias vf='vim $(fzf)'
 alias cabaldef='cabal2nix . > default.nix'

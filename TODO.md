@@ -1,3 +1,11 @@
+# QUICK
+
+*   helm emacs
+*   two alt keys
+*   fn to ctr?
+*   menu and windows keys for xmonad?
+*   more fzf use
+
 # URGENT
 
 *   youcompleteme without python in path
