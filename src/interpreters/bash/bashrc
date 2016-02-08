@@ -6,6 +6,7 @@ set -o vi
 
 export VISUAL=vim
 export EDITOR=$VISUAL
+export VIM=/home/nick/dotfiles/src/editors/vim/init/
 
 # HACK TO MAKE COLORS IN SCREEN OK IN X11/OSX
 if [ -n "$DISPLAY" ] || [ "$(uname)" == "Darwin" ]; then
