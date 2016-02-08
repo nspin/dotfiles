@@ -32,6 +32,7 @@ dejavu_fonts
 # productivity
 tmux
 git
+mercurial
 fzf
 local.fzf-tmux
 
