@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/nix/store/yfk7kslqvjm95cb3gks02hy15f66x50n-vim_configurable-7.4.826/share/vim/vim74/spell'
+let g:netrw_dirhist_2='/nix/store/yfk7kslqvjm95cb3gks02hy15f66x50n-vim_configurable-7.4.826/share/vim/vim74'
+let g:netrw_dirhist_3='/nix/store/yfk7kslqvjm95cb3gks02hy15f66x50n-vim_configurable-7.4.826/share/vim/vim74/spell'
+let g:netrw_dirhist_4='/nix/store/yfk7kslqvjm95cb3gks02hy15f66x50n-vim_configurable-7.4.826/share/vim/vim74'
+let g:netrw_dirhist_5='/nix/store/yfk7kslqvjm95cb3gks02hy15f66x50n-vim_configurable-7.4.826/share/vim/vim74/spell'
+let g:netrw_dirhist_6='/nix/store/yfk7kslqvjm95cb3gks02hy15f66x50n-vim_configurable-7.4.826/share/vim/vim74'
