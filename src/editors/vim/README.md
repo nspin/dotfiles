@@ -13,8 +13,8 @@ plugins that annoy me (e.g. netrw - it's over 11k lines of vimscript),
 and more.
 
 I've chosen those of these files that I do/may find useful,
-and put them into `./init/`.
-By setting `$VIM` to `./init/` in my `.bashrc` (see `:h initialization`),
+and put them into `~/vim-runtime/`
+By setting `$VIM` to `./init/` and `$VIMRUNTIME` and to `~/vim-runtime` in my `.bashrc` (see `:h initialization`),
 vim never sees anything in `/usr/share/vim`,
 and I have full control over everything.
 
