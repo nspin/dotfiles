@@ -8,11 +8,13 @@ SirVer/ultisnips
 honza/vim-snippets
 
 # file stuff
-tpope/vim-vinegar
-sjl/gundo.vim
+# tpope/vim-vinegar
+# sjl/gundo.vim
 
 jpalardy/vim-slime
 # scrooloose/syntastic
 vim-scripts/cscope_macros.vim
 
 nickspinale/vim-colors-solarized
+
+jeetsukumaran/vim-filebeagle

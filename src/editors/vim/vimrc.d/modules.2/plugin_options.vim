@@ -14,7 +14,7 @@ let g:slime_target = "tmux"
 " let g:loaded_tarPlugin=1
 " let g:loaded_zipPlugin=1
 
-" let g:netrw_liststyle = 3
+let g:netrw_liststyle = 3
 let g:netrw_dirhistmax = 0
 
 let g:UltiSnipsExpandTrigger = '<c-j>'
@@ -27,3 +27,4 @@ let g:UltiSnipsEdit = 'vertical'
 
 let g:UltiSnipsSnippetsDir = g:vim_config_dir.'vim.1/UltiSnips'
 
+let g:filebeagle_hijack_netrw = 1

@@ -28,16 +28,8 @@
     sha256 = "e5913f923a0b720090cc52342281e3a5ce902c8a9202e353f3575a4fc3decd0a";
   };
   "honza/vim-snippets" = {
-    rev = "0fc7fd1181f33b26c015d0f306d149b756f9d679";
-    sha256 = "d67ccdcfa42e8e713e7a5bee34b5b150fb955a81fdddfe9c956a1f652f1235b6";
-  };
-  "tpope/vim-vinegar" = {
-    rev = "b8b6de8d4affb7ed4215e90686b482e2bb53bc65";
-    sha256 = "e746f475e4cea9df8f579100df59343c1a0b568819b161f08f4fbff05c8e5ef5";
-  };
-  "sjl/gundo.vim" = {
-    rev = "e7fe41024ace9047eee610f23311d44fd9d917c0";
-    sha256 = "30955656dd2cb6017e14658a3a5e98c79ec87ff1264b70cd6f628a4f3216bfcd";
+    rev = "0b025c6afcd5304e779518ecbf76e3d6a703ae9d";
+    sha256 = "0e04c687d7d2468fc351cdab36236be6a70e6ae212780216711197220f0eeafe";
   };
   "jpalardy/vim-slime" = {
     rev = "7c1b6dc04c2858a59bc6e43e2a5f4afe59e4e56d";
@@ -50,5 +42,9 @@
   "nickspinale/vim-colors-solarized" = {
     rev = "3993f5caa7f2b4cb7b190adcb4e6d26c0a1ffc6c";
     sha256 = "af6ddc504b63c3d7a3d94a1b408c613bb4a11181b0cfb48c84b16070235700f9";
+  };
+  "jeetsukumaran/vim-filebeagle" = {
+    rev = "5a3aa5d9815e7de9b66d4b7ac653d113baa72fc8";
+    sha256 = "2714629224dd4c6a30d00d33d6da6bb891ada30453481a9debc71441fd9020c4";
   };
 }
