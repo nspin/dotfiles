@@ -1,10 +1,8 @@
 Vim Config
 ==========
 
-Vim is a wonderful editor.
-However, imho, it is, in some ways, a mess.
-It's really well documented, stable, portable, etc.,
-but the different components are all jumbled together.
+As a project, vim is well documented, stable, portable, etc.,
+However, imho, the different components are jumbled together.
 The best way to deal with this that I know of is to have
 as much control as possible over the environment in which vim runs.
 
