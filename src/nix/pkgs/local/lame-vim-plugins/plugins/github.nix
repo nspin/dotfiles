@@ -43,8 +43,8 @@
     rev = "3993f5caa7f2b4cb7b190adcb4e6d26c0a1ffc6c";
     sha256 = "af6ddc504b63c3d7a3d94a1b408c613bb4a11181b0cfb48c84b16070235700f9";
   };
-  "jeetsukumaran/vim-filebeagle" = {
-    rev = "5a3aa5d9815e7de9b66d4b7ac653d113baa72fc8";
-    sha256 = "2714629224dd4c6a30d00d33d6da6bb891ada30453481a9debc71441fd9020c4";
+  "justinmk/vim-dirvish" = {
+    rev = "86ae1dabf7429fb4b27cc0331b9f4a208cbd41bd";
+    sha256 = "1ecaec05b0711a6ca85db35f6665a8ca5d5fe0a1f373bea15ea54889f3738103";
   };
 }

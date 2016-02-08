@@ -17,4 +17,5 @@ vim-scripts/cscope_macros.vim
 
 nickspinale/vim-colors-solarized
 
-jeetsukumaran/vim-filebeagle
+# jeetsukumaran/vim-filebeagle
+justinmk/vim-dirvish
