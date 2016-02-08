@@ -52,29 +52,6 @@ in {
             ycm
             fzf-vim
           ];
-
-          lameRtp = lib.vimRtpOf "lame.rtp" (
-
-            /* lame-vim-plugins."tpope/vim-repeat" */
-            /* lame-vim-plugins."tpope/vim-surround" */
-            /* lame-vim-plugins."tpope/vim-commentary" */
-            /* lame-vim-plugins."guns/vim-sexp" */
-            /* lame-vim-plugins."tpope/vim-sexp-mappings-for-regular-people" */
-            /* lame-vim-plugins."godlygeek/tabular" */
-            /* lame-vim-plugins."SirVer/ultisnips" */
-            /* lame-vim-plugins."honza/vim-snippets" */
-            /* lame-vim-plugins."tpope/vim-vinegar" */
-            /* lame-vim-plugins."sjl/gundo.vim" */
-            /* lame-vim-plugins."jpalardy/vim-slime" */
-            /* lame-vim-plugins."vim-scripts/cscope_macros.vim" */
-            /* lame-vim-plugins."nickspinale/vim-colors-solarized" */
-          /* } */
-
-            builtins.attrValues lame-vim-plugins.github
-
-            /* map (lib.flip builtins.getAttr lame-vim-plugins.github) */
-            /*     (lib.txtToList ../../vim-config/plugins/github.txt) */
-          );
         };
       };
 }

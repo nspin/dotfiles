@@ -39,6 +39,5 @@ local.fzf-tmux
 vimHugeX
 
 local.annoyingRtp
-local.lameRtp
 
 ]

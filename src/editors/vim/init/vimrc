@@ -5,36 +5,45 @@
 set nocompatible
 filetype off
 
-let g:vim_config_dir = fnamemodify(expand('$VIM'), ':h:h').'/'
+let g:my_vim_dir = fnamemodify(expand('$VIM'), ':h:h')
 
+function MyVimFile(path)
+  return g:my_vim_dir.'/'.a:path
+endfunction
+
+" Runtimepath initialization
+
+let s:combined_vim = []
+let s:combined_vim += [ MyVimFile('vim.1') ]
+let s:combined_vim += systemlist('ls -d ~/vim-bundle/bundle/*')
 if system('uname -a') =~ 'NixOS'
-  let s:plugin_lists = [ '/run/current-system/sw/share/vim-plugins/lame.rtp'
-                     \ , '/run/current-system/sw/share/vim-plugins/annoying.rtp'
-                     \ ]
-else
-  let s:plugin_lists = ['~/.vimrc.rtp']
-endif
-
-let s:rtp_list = [expand('$VIMRUNTIME'), g:vim_config_dir.'vim.1']
-
-for plugin_list in s:plugin_lists
-  for plugin in readfile(plugin_list)
-    call add(s:rtp_list, plugin)
-    call add(s:rtp_list, plugin.'/after')
+  for extern in readfile('/run/current-system/sw/share/vim-plugins/annoying.rtp')
+    call add(s:combined_vim, extern)
   endfor
+endif
+let s:combined_vim += [MyVimFile('vim.2') ]
+
+let s:combined_vim_after = []
+for dir in s:combined_vim
+  call add(s:combined_vim_after, dir.'/after')
 endfor
 
-let &rtp = join(s:rtp_list, ',')
+let s:rtp = s:combined_vim + [expand('$VIMRUNTIME')] + s:combined_vim_after
+let &rtp = join(s:rtp, ',')
 
-for f in split(glob(g:vim_config_dir . 'vimrc.d/lib/*'))
+" Source actual configuration
+
+for f in split(glob(g:my_vim_dir . 'vimrc.d/lib/*'))
   exec 'source '.f
 endfor
 
-for modules in split(glob(g:vim_config_dir.'vimrc.d/modules.*'))
+for modules in split(glob(MyVimFile('vimrc.d/modules.*')))
   for module in split(glob(modules.'/*.vim'))
     exec 'source '.module
   endfor
 endfor
+
+" Allow for project-specific options/mappings
 
 if filereadable('local.vim')
   source local.vim

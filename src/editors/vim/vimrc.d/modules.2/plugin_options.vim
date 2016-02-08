@@ -25,7 +25,7 @@ imap <c-l> <tab><c-j>
 
 let g:UltiSnipsEdit = 'vertical'
 
-let g:UltiSnipsSnippetsDir = g:vim_config_dir.'vim.1/UltiSnips'
+let g:UltiSnipsSnippetsDir = MyVimFile('vim.1/UltiSnips')
 
 let g:dirvish_relative_paths = 1
 
