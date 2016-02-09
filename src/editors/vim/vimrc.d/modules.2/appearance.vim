@@ -21,8 +21,7 @@ set laststatus=2
 set showtabline=2
 
 " terminal-dependant aesthetic stuff
-" setting t_Co is necessary in tmux over ssh, and I have no idea why.
-" (still ironing this out)
+" setting t_Co is necessary in tmux over ssh (?)
 
 if exists('$DISPLAY') || system("uname -s") == "Darwin\n"
     colorscheme solarized

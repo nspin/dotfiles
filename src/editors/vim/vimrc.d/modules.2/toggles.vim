@@ -1,4 +1,4 @@
-function! PlainText()
+fun s:plain_text()
   setlocal wrap
   setlocal linebreak
   setlocal nonumber
@@ -9,9 +9,9 @@ function! PlainText()
   noremap k gk
   noremap gj j
   noremap gk k
-endfunction
+endfun
 
-function! UnPlainText()
+fun s:un_plain_text()
   setlocal nowrap
   setlocal nolinebreak
   setlocal number
@@ -22,7 +22,7 @@ function! UnPlainText()
   unmap k
   unmap gj
   unmap gk
-endfunction
+endfun
 
-command! PlainText :call PlainText()
-command! UnPlainText :call UnPlainText()
+command! PlainText :call <sid>plain_text()
+command! UnPlainText :call <sid>un_plain_text()

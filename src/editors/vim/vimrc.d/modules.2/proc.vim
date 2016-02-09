@@ -3,9 +3,9 @@ nmap <space>v v%<c-c><c-c>
 
 nnoremap <space>p1 :SlimeSend1 "!-1"<cr>
 
-function! WordCount() range
+fun s:word_count() range
   let lines = join(getline(a:firstline, a:lastline), "\n")
   echo system('echo "'.lines.'" | wc -w')
-endfunction
+endfun
 
-command! -range WC <line1>,<line2>:call WordCount()
+command! -range WC <line1>,<line2>:call <sid>word_count()
