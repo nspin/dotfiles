@@ -10,12 +10,18 @@ set nohlsearch
 set relativenumber
 set number
 
-set statusline=              " clear it
-set statusline+=[%v\ %l\ %L] " position
-set statusline+=\            " space
-set statusline+=%m%r%h%w%q   " flags
-set statusline+=%=           " space
-set statusline+=%F           " file name
+let s:statusline_left_side = '[%v %l %L]' " position in file
+                         \ . ' '
+                         \ . '%m%r%h%w%q' " flags
+
+let g:bufferline_echo = 0
+au VimEnter * let &statusline = s:statusline_left_side
+                            \ . '%='
+                            \ . '%{bufferline#refresh_status()}'
+                            \ . bufferline#get_status_string()
+
+" set statusline+=%=           " space
+" set statusline+=%F           " file name
 
 set laststatus=2
 set showtabline=2

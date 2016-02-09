@@ -2,8 +2,31 @@ set hidden
 set splitbelow
 set splitright
 
-inoremap <c-z> <esc>:wq<cr>
-noremap <c-z> :wq<cr>
+fun s:nrbufs()
+  let i = bufnr('$')
+  let j = 0
+  while i > 0
+    if buflisted(i)
+      let j += i
+    endif
+    let i -= 1
+  endwhile
+  return j
+endfun
+
+fun s:wipeout_out()
+  let n = s:nrbufs()
+  write
+  bwipeout
+  if n == 1
+    quit
+  endif
+endfun
+
+command Wipeout call <sid>wipeout_out()
+
+inoremap <c-z> <esc>:Wipeout<cr>
+noremap <c-z> :Wipeout<cr>
 
 nnoremap <space>j :bprev<cr>
 nnoremap <space>k :bnext<cr>
@@ -11,9 +34,7 @@ nnoremap <space>d :bwipeout<cr>
 
 nnoremap <space>q :quit<cr>
 nnoremap <space>w :write<cr>
-nnoremap <space>W :wall<cr>
 nnoremap <space>e :edit<cr>
-nnoremap <space>r :wq<cr>
 nnoremap <space>t :tabedit<cr>
 nnoremap <space>y :quit!<cr>
 

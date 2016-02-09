@@ -1,6 +1,13 @@
 # TODO
 
+*   roll own bufferline:
+    *   fg color based
+    *   all flags (both buffer and file)
+*   minify tabline
+*   where full file name?
+
 *   add filter, to allow toggling for plugins
+*   Helptags (see pathogen)
 
 *   roll own file browser?
 *   dirvish shell integration

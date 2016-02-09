@@ -8,5 +8,6 @@ set spelllang=en_us
 " autocmd FileType lisp,scheme,racket,clojure,timl RainbowToggle
 " nnoremap <space>pp :RainbowToggle<cr>
 
-cabbrev help tab help
-cabbrev h tab help
+command Help help tab
+" cabbrev help tab help
+" cabbrev h tab help

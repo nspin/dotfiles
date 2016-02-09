@@ -1,5 +1,7 @@
 # TODO
 
+*   roll own fzf shell scripts
+
 *   helm emacs
 *   two alt keys
 *   fn to ctr?
