@@ -24,8 +24,9 @@ and I have full control over everything.
 *   `init/vimrc`...
     *   Carefully sets `rtp` with
         *   `pre`
-        *   The stripped down runtime files
         *   External plugins
+        *   The stripped down runtime files
+        *   External plugins `/after` directories
         *   `post`
     *   Sources stuff from `vimrc.d`
     *   Sources `$(pwd)/local.vim` if it exists
