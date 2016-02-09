@@ -11,24 +11,27 @@ function MyVimFile(path)
   return g:my_vim_dir.'/'.a:path
 endfunction
 
-" Runtimepath initialization
-
 let s:my_plugin_list = '/run/current-system/sw/share/vim-plugins/annoying.rtp'
 
-let s:combined_vim = []
-let s:combined_vim += [ MyVimFile('pre') ]
-let s:combined_vim += systemlist('ls -d ~/vim-bundle/bundle/*')
-if system('uname -a') =~ 'NixOS'
-  let s:combined_vim += readfile(s:my_plugin_list)
-endif
-let s:combined_vim += [MyVimFile('post') ]
+" Runtimepath initialization
 
-let s:combined_vim_after = []
-for dir in s:combined_vim
-  call add(s:combined_vim_after, dir.'/after')
+let s:plugins = systemlist('ls -d ~/vim-bundle/bundle/*')
+if system('uname -a') =~ 'NixOS'
+  let s:plugins += readfile(s:my_plugin_list)
+endif
+
+let s:plugins_after = []
+for dir in s:plugins
+  call add(s:plugins_after, dir.'/after')
 endfor
 
-let s:rtp = s:combined_vim + [expand('$VIMRUNTIME')] + s:combined_vim_after
+" This order is based on :h initialization
+let s:rtp = [ MyVimFile('pre') ]
+        \ + s:plugins
+        \ + [ expand('$VIMRUNTIME') ]
+        \ + s:plugins_after
+        \ + [ MyVimFile('post') ]
+
 let &rtp = join(s:rtp, ',')
 
 " Source actual configuration
