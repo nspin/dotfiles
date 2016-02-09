@@ -12,14 +12,13 @@ function MyVimFile(path)
 endfunction
 
 " Runtimepath initialization
+" TODO: add filter, to allow toggling
 
 let s:combined_vim = []
 let s:combined_vim += [ MyVimFile('vim.1') ]
 let s:combined_vim += systemlist('ls -d ~/vim-bundle/bundle/*')
 if system('uname -a') =~ 'NixOS'
-  for extern in readfile('/run/current-system/sw/share/vim-plugins/annoying.rtp')
-    call add(s:combined_vim, extern)
-  endfor
+  let s:combined_vim += readfile('/run/current-system/sw/share/vim-plugins/annoying.rtp')
 endif
 let s:combined_vim += [MyVimFile('vim.2') ]
 
