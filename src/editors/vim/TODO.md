@@ -1,5 +1,11 @@
 # TODO
 
+*   plugin idea:
+    *   associate each window with a set of buffers
+    *   statusline of each window shows these buffers
+    *   cycle through buffers window-wise
+    *   operate on buffers in groups of windows
+
 *   roll own bufferline:
     *   fg color based
     *   all flags (both buffer and file)
