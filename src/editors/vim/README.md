@@ -1,5 +1,4 @@
-Vim Config
-==========
+# Vim Configuration
 
 As a project, vim is well documented, stable, portable, etc.,
 However, imho, the different components are jumbled together.
@@ -14,16 +13,19 @@ and more.
 
 I've chosen those of these files that I do/may find useful,
 and put them into `~/vim-runtime/`
-By setting `$VIM` to `./init/` and `$VIMRUNTIME` and to `~/vim-runtime` in my `.bashrc` (see `:h initialization`),
+By setting `$VIM` to `init/` and `$VIMRUNTIME` and to `~/vim-runtime` in my `.bashrc` (see `:h initialization`),
 vim never sees anything in `/usr/share/vim`,
 and I have full control over everything.
 
-**More specifically, ...**
+**Details**
 
-`./init/vimrc` sets `rtp` and sources stuff from `vimrc.d`
-
-`./plugins` contains files of plugin names
-
-`./scripts` contains scripts for things like installing plugins
-
-`./vim.1` is has my own indent files, etc.
+*   Simple external plugins are in `~/vim-bundle`
+*   More complicated ones are listed in a text file somewhere (`s:my_plugin_list`)
+*   `init/vimrc`...
+    *   Carefully sets `rtp` with
+        *   `pre`
+        *   The stripped down runtime files
+        *   External plugins
+        *   `post`
+    *   Sources stuff from `vimrc.d`
+    *   Sources `$(pwd)/local.vim` if it exists
