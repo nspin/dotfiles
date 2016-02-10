@@ -32,6 +32,10 @@ PS1=" \[$symbols\]$lambda\[$content\] \w \[$symbols\]$arrow\[$reset\] "
 
 # IMPORTS
 
+if test -d ~/bin; then
+    PATH=$PATH:~/bin
+fi
+
 basedir=$HOME/dotfiles/src/interpreters/bash
 
 for script in $(find $basedir/bashrc.d | grep 'sh$'); do
