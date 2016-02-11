@@ -1,13 +1,12 @@
 # ~/.bashrc
 
-set -o vi
+# generic sh stuff
+
+source $HOME/dotfiles/src/interpreters/sh/init.sh
+
+# set -o vi
 
 # bind '"\C-f":" $(fzf-tmux) "'
-
-export VISUAL=vim
-export EDITOR=$VISUAL
-export VIM=/home/nick/dotfiles/src/editors/vim/init/
-export VIMRUNTIME=/home/nick/vim-runtime/runtime
 
 # HACK TO MAKE COLORS IN SCREEN OK IN X11/OSX
 if [ -n "$DISPLAY" ] || [ "$(uname)" == "Darwin" ]; then
@@ -32,16 +31,6 @@ PS1=" \[$symbols\]$lambda\[$content\] \w \[$symbols\]$arrow\[$reset\] "
 
 # IMPORTS
 
-if test -d ~/dotfiles/src/interpreters/sh; then
-    PATH=$PATH:~/dotfiles/src/interpreters/sh; 
-fi
-
-if test -d ~/bin; then
-    PATH=$PATH:~/bin
-fi
-
-basedir=$HOME/dotfiles/src/interpreters/bash
-
-for script in $(find $basedir/bashrc.d | grep 'sh$'); do
+for script in $basedir/bash/bashrc.d/*.bash; do
     source $script
 done
