@@ -24,7 +24,6 @@ gmrun
 
 # x applications
 firefox
-#xchat
 
 # fonts
 dejavu_fonts
