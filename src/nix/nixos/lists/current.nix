@@ -1,28 +1,40 @@
 pkgs: with pkgs; [
 
+# school
+local.mars
+
 # ghc
-/* local.my-ghc */
-/* haskellPackages.cabal2nix */
+
+local.my-ghc
 cabal2nix
 
-local.mars
-/* local.mips-init */
-
 # java bullshit
-/* jdk */
-#maven
+
+# jdk
+# maven
 
 # other languages
-/* gcc */
-/* clang */
-#mitscheme
-#racket
-#nodejs
+
+# gcc
+# clang
+# mitscheme
+# racket
+# nodejs
 python27
-/* python34 */
+python34
 
 # doc prep
-#haskell.packages.ghc7102.pandoc
-#(texLiveAggregationFun { paths = [ texLive texLiveExtra texLiveBeamer lmodern ]; })
+
+haskell.packages.ghc7102.pandoc
+
+(texlive.combine {
+  inherit (texlive)
+    scheme-small
+    pbox
+    csquotes
+    beamerposter
+    type1cm
+  ;
+})
 
 ]

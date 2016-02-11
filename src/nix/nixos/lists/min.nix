@@ -34,7 +34,6 @@ tmux
 git
 mercurial
 fzf
-local.fzf-tmux
 
 vimHugeX
 

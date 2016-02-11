@@ -38,19 +38,14 @@ in {
           inherit lib;
           inherit ghcPackages;
 
-          fzf-tmux = callPackage ./local/fzf-tmux {};
-          mars = callPackage ./local/mars {};
-
           my-ghc = pkgs.haskellPackages.ghcWithPackages ghcPackages;
 
-          fzf-vim = callPackage ./local/fzf-vim { inherit fzf-tmux; };
-          ycm = callPackage ./local/ycm {};
+          mars = callPackage ./local/mars {};
 
-          lame-vim-plugins = callPackage ./local/lame-vim-plugins {};
+          ycm = callPackage ./local/ycm {};
 
           annoyingRtp = lib.vimRtpOf "annoying.rtp" [
             ycm
-            fzf-vim
           ];
         };
       };
