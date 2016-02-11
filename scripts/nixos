@@ -1,4 +1,3 @@
-nix/pkgs/config.nix            /home/nick/.nixpkgs/config.nix
 editors/emacs                  /home/nick/.emacs.d
 x11/xmonad.hs                  /home/nick/.xmonad/xmonad.hs
 x11/xmobarrc                   /home/nick/.xmobarrc
