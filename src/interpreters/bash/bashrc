@@ -1,14 +1,11 @@
 # ~/.bashrc
 
-# generic sh stuff
+# POSIX
 
 source $HOME/dotfiles/src/interpreters/sh/init.sh
 
-# set -o vi
-
-# bind '"\C-f":" $(fzf-tmux) "'
-
 # HACK TO MAKE COLORS IN SCREEN OK IN X11/OSX
+
 if [ -n "$DISPLAY" ] || [ "$(uname)" == "Darwin" ]; then
     export TERM="xterm-256color"
 fi
