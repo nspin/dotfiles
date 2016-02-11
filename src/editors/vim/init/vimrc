@@ -15,7 +15,28 @@ let s:my_plugin_list = '/run/current-system/sw/share/vim-plugins/annoying.rtp'
 
 " Runtimepath initialization
 
-let s:plugins = systemlist('ls -d ~/vim-bundle/bundle/*')
+let s:bundle_plugins =
+  \ [ 'vim-surround'
+  \ , 'vim-commentary'
+  \ , 'vim-dirvish'
+  \ , 'vim-repeat'
+  \ , 'vim-bufferline'
+  \ , 'vim-colors-solarized'
+  \ , 'ultisnips'
+  \ , 'vim-snippets'
+  \ ]
+  "  \ , 'tabular'
+  "  \ , 'vim-sexp'
+  "  \ , 'vim-sexp-mappings-for-regular-people'
+  "  \ , 'vim-slime'
+  "  \ , 'cscope_macros.vim'
+
+let s:plugins = []
+
+for plugin in s:bundle_plugins
+  call add(s:plugins, '/home/nick/vim-bundle/bundle/'.plugin)
+endfor
+
 if system('uname -a') =~ 'NixOS'
   let s:plugins += readfile(s:my_plugin_list)
 endif
@@ -37,12 +58,12 @@ let &rtp = join(s:rtp, ',')
 " Source actual configuration
 
 for f in split(glob(g:my_vim_dir . 'vimrc.d/lib/*'))
-  exec 'source '.f
+  exec 'source' f
 endfor
 
 for modules in split(glob(MyVimFile('vimrc.d/modules.*')))
   for module in split(glob(modules.'/*.vim'))
-    exec 'source '.module
+    exec 'source' module
   endfor
 endfor
 
