@@ -25,11 +25,11 @@ let s:bundle_plugins =
   \ , 'ultisnips'
   \ , 'vim-snippets'
   \ , 'vim-nix'
+  \ , 'vim-slime'
   \ ]
   "  \ , 'tabular'
   "  \ , 'vim-sexp'
   "  \ , 'vim-sexp-mappings-for-regular-people'
-  "  \ , 'vim-slime'
   "  \ , 'cscope_macros.vim'
 
 let s:plugins = []
