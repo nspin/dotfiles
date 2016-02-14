@@ -24,7 +24,6 @@ gmrun
 
 # x applications
 firefox
-#xchat
 
 # fonts
 dejavu_fonts
@@ -34,7 +33,6 @@ tmux
 git
 mercurial
 fzf
-local.fzf-tmux
 
 vimHugeX
 

@@ -1,8 +1,6 @@
-vim-config/Vundle.vim     /Accounts/spinalen/.vim/bundle/Vundle.vim
-vim-config/vimrc          /Accounts/spinalen/.vimrc
-vc/gitconfig              /Accounts/spinalen/.gitconfig
-line-editing/inputrc      /Accounts/spinalen/.inputrc
-line-editing/editrc       /Accounts/spinalen/.editrc
+line-editing/inputrc           /Accounts/spinalen/.inputrc
+line-editing/editrc            /Accounts/spinalen/.editrc
 interpreters/bash/bashrc       /Accounts/spinalen/.bashrc
 interpreters/bash/bash_profile /Accounts/spinalen/.bash_profile
-multiplexers/screenrc     /Accounts/spinalen/.screenrc
+multiplexers/tmux.conf         /Accounts/spinalen/.tmux.conf
+vc/gitconfig                   /Accounts/spinalen/.gitconfig
