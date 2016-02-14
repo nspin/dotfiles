@@ -12,10 +12,12 @@ vlc
 (texlive.combine {
   inherit (texlive)
     scheme-small
-    pbox
-    csquotes
-    beamerposter
-    type1cm
+    /* scheme-medium */
+    collection-latexextra
+    /* pbox */
+    /* csquotes */
+    /* beamerposter */
+    /* type1cm */
   ;
 })
 
