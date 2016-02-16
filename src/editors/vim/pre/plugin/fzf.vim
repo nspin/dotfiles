@@ -1,6 +1,6 @@
 let s:default_height = '40%'
 let s:fzf_go = system('which fzf')[0:-2]
-let s:fzf_tmux = expand('<sfile>:h:h').'/bin/fzf-tmux'
+let s:fzf_tmux = system('which fzf-tmux')[0:-2]
 
 let s:cpo_save = &cpo
 set cpo&vim

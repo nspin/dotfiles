@@ -11,33 +11,25 @@ function MyVimFile(path)
   return g:my_vim_dir.'/'.a:path
 endfunction
 
-let s:my_plugin_list = '/run/current-system/sw/share/vim-plugins/annoying.rtp'
-
 " Runtimepath initialization
-
-let s:bundle_plugins =
-  \ [ 'vim-surround'
-  \ , 'vim-commentary'
-  \ , 'vim-dirvish'
-  \ , 'vim-repeat'
-  \ , 'vim-bufferline'
-  \ , 'vim-colors-solarized'
-  \ , 'ultisnips'
-  \ , 'vim-snippets'
-  \ , 'vim-nix'
-  \ , 'vim-slime'
-  \ ]
-  "  \ , 'tabular'
-  "  \ , 'vim-sexp'
-  "  \ , 'vim-sexp-mappings-for-regular-people'
-  "  \ , 'cscope_macros.vim'
 
 let s:plugins = []
 
-for plugin in s:bundle_plugins
-  call add(s:plugins, '/home/nick/vim-bundle/bundle/'.plugin)
+let s:bundle_dir = '/home/nick/vim-bundle/bundle/'
+let s:bundle_ignore =
+  \ [ 'tabular'
+  \ , 'vim-sexp'
+  \ , 'vim-sexp-mappings-for-regular-people'
+  \ , 'cscope_macros.vim'
+  \ ]
+
+for plugin in systemlist('ls '.s:bundle_dir)
+  if index(s:bundle_ignore, plugin) < 0
+    call add(s:plugins, s:bundle_dir.plugin)
+  endif
 endfor
 
+let s:my_plugin_list = '/run/current-system/sw/share/vim-plugins/annoying.rtp'
 if system('uname -a') =~ 'NixOS'
   let s:plugins += readfile(s:my_plugin_list)
 endif
@@ -58,7 +50,7 @@ let &rtp = join(s:rtp, ',')
 
 " Source actual configuration
 
-for f in split(glob(g:my_vim_dir . 'vimrc.d/lib/*'))
+for f in split(glob(MyVimFile('vimrc.d/lib/*')))
   exec 'source' f
 endfor
 

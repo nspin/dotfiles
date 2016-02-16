@@ -9,17 +9,16 @@ let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 imap <c-l> <tab><c-j>
 
 let g:UltiSnipsEdit = 'vertical'
-
 let g:UltiSnipsSnippetsDir = MyVimFile('vim.1/UltiSnips')
 
 let g:dirvish_relative_paths = 1
 
 nnoremap - :call DirvishHere()<cr>
 
-function DirvishHere()
+fun DirvishHere()
   if empty(expand('%'))
     Dirvish
   else
     Dirvish %
   endif
-endfunction
+endfun

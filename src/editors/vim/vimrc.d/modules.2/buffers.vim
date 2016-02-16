@@ -14,23 +14,24 @@ fun s:nrbufs()
   return j
 endfun
 
-fun s:wipeout_out()
+fun s:my_wipeout()
   let n = s:nrbufs()
-  write
-  bwipeout
   if n == 1
     quit
+  else
+    bwipeout
   endif
 endfun
 
-command Wipeout call <sid>wipeout_out()
+command Wipeout call <sid>my_wipeout()
+command WWipeout write | Wipeout
 
-inoremap <c-z> <esc>:Wipeout<cr>
-noremap <c-z> :Wipeout<cr>
+inoremap <c-z> <esc>:WWipeout<cr>
+noremap <c-z> :WWipeout<cr>
 
 nnoremap <space>j :bprev<cr>
 nnoremap <space>k :bnext<cr>
-nnoremap <space>d :bwipeout<cr>
+nnoremap <space>d :Wipeout<cr>
 
 nnoremap <space>q :quit<cr>
 nnoremap <space>w :write<cr>
@@ -50,6 +51,7 @@ fun! s:last_buf()
 endfun
 au BufLeave * let s:last_buf = bufnr('%')
 
+" TODO: use # here
 nnoremap <tab> :call <sid>last_buf()<cr>
 
 fun s:buflist()
