@@ -10,7 +10,7 @@ cabal2nix
 
 # java bullshit
 
-# jdk
+jdk
 # maven
 
 # other languages

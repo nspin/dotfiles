@@ -12,9 +12,8 @@ function fzfFiles(){
     fi
 }
 
-function dot() {
-    fzfFiles /home/nick/dotfiles
-}
+alias tod='fzfFiles /home/nick/todo'
+alias dot='fzfFiles /home/nick/dotfiles'
 
 function nder(){
     readlink $(readlink $HOME/.nix-defexpr/channels_root)/nixos

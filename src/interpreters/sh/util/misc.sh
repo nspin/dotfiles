@@ -1,4 +1,5 @@
 # general
+alias v='vim'
 alias vf='vim $(fzf)'
 alias cabaldef='cabal2nix . > default.nix'
 alias cabalsh='cp ~/dotfiles/store/shell.nix .'

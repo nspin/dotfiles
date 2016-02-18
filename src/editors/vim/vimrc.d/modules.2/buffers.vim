@@ -35,8 +35,8 @@ nnoremap <space>d :Wipeout<cr>
 
 nnoremap <space>q :quit<cr>
 nnoremap <space>w :write<cr>
-nnoremap <space>e :edit<cr>
-nnoremap <space>t :tabedit<cr>
+nnoremap <space>e :edit
+nnoremap <space>t :tabedit
 nnoremap <space>y :quit!<cr>
 
 let s:last_tab = 1
@@ -86,6 +86,11 @@ nnoremap <silent> <space>; :call <sid>fzf_select_buf('<sid>bufdelete')<cr>
 
 noremap <c-p> :FZF!<cr>
 
-command VimConfigFile exe 'FZF!' g:my_vim_dir
-command Dotfile exe 'FZF!' expand('~/dotfiles')
-command NixDefExpr exe 'FZF!' systemlist('readlink $(readlink ~/.nix-defexpr/channels_root)/nixos')[0]
+fun s:fzf_dir(start)
+  call fzf#run( { 'source': 'find '.a:start.' -type d | grep -v "/\."'
+              \ , 'sink': 'Dirvish'
+              \ })
+endfun
+
+command -nargs=1 DirOf call <sid>fzf_dir('<args>')
+command DirHere call <sid>fzf_dir('.')
