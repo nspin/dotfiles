@@ -1,5 +1,7 @@
 pkgs: with pkgs; [
 
+which
+
 coreutils
 
 # nix
