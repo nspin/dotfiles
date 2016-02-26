@@ -20,6 +20,7 @@ let
       containers
       taggy-lens
       bytestring
+      random
     ];
 
 in {
