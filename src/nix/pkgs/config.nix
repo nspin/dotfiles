@@ -20,6 +20,11 @@ let
       containers
       taggy-lens
       bytestring
+
+      xml-conduit
+      html-conduit
+      xml-lens
+      dom-selector
     ];
 
 in {
