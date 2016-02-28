@@ -25,6 +25,8 @@ let
       html-conduit
       xml-lens
       dom-selector
+
+      random
     ];
 
 in {

@@ -1,5 +1,7 @@
 pkgs: with pkgs; [
 
+openssl
+
 which
 
 coreutils
