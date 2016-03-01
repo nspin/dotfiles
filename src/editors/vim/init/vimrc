@@ -17,8 +17,7 @@ let s:plugins = []
 
 let s:bundle_dir = '/home/nick/vim-bundle/bundle/'
 let s:bundle_ignore =
-  \ [ 'tabular'
-  \ , 'vim-sexp'
+  \ [ 'vim-sexp'
   \ , 'vim-sexp-mappings-for-regular-people'
   \ , 'cscope_macros.vim'
   \ ]

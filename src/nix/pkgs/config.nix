@@ -27,6 +27,9 @@ let
       dom-selector
 
       random
+      cereal
+      cereal-text
+      ansi-wl-pprint
     ];
 
 in {
