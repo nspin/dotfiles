@@ -6,6 +6,7 @@ local.mars
 # ghc
 
 local.my-ghc
+haskellPackages.cabal-install
 cabal2nix
 
 # java bullshit
