@@ -36,6 +36,7 @@ dejavu_fonts
 tmux
 git
 mercurial
+subversion
 fzf
 
 vimHugeX
