@@ -7,3 +7,7 @@ function marsl () {
     shift
     marsf 0x10010000-$((0x10010000 + ($length - 1) * 4)) $@
 }
+
+function nixtest () {
+    nix-build -E "(import <nixpkgs> {}).callPackage $1 {}"
+}
