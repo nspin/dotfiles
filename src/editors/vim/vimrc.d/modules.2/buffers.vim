@@ -35,8 +35,8 @@ nnoremap <space>d :Wipeout<cr>
 
 nnoremap <space>q :quit<cr>
 nnoremap <space>w :write<cr>
-nnoremap <space>e :edit
-nnoremap <space>t :tabedit
+nnoremap <space>e :e 
+nnoremap <space>t :tabe 
 nnoremap <space>y :quit!<cr>
 
 let s:last_tab = 1

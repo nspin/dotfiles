@@ -47,7 +47,7 @@ main = do
             -- simple
             { borderWidth        = 1
             , terminal           = "xterm"
-            , modMask            = mod3Mask
+            , modMask            = mod4Mask
             , startupHook        = return ()
             , manageHook         = manageDocks
             , handleEventHook    = const $ return (All True)
