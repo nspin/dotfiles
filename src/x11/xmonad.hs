@@ -43,7 +43,7 @@ main = do
             , ppOutput = hPutStrLn xmproc
             }
 
-        myConfig = XConfig
+        myConfig = defaultConfig
             -- simple
             { borderWidth        = 1
             , terminal           = "xterm"
