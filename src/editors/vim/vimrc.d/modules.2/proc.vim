@@ -9,3 +9,5 @@ fun s:word_count() range
 endfun
 
 command! -range WC <line1>,<line2>:call <sid>word_count()
+
+command! CW echo split(system('wc '.expand('%'))[:-2])[1]
