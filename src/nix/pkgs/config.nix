@@ -30,6 +30,8 @@ let
       cereal
       cereal-text
       ansi-wl-pprint
+
+      diagrams
     ];
 
 in {
