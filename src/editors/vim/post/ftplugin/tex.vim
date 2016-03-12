@@ -1,5 +1,5 @@
-command! LtxMain w | !pdflatex -output-directory out main.ltx
-command! ViewMain !(zathura out/main.pdf &> /dev/null) &
+command! LtxMain w | !(cd ..; ./build)
+command! ViewMain !(zathura ../main.pdf &> /dev/null) &
 
 inoremap <c-x> <esc>:LtxMain<cr>
 

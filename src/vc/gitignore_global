@@ -1,3 +1,7 @@
+*.aux
+*.bbl
+*.blg
+
 *.exe
 *.hi
 *.o
