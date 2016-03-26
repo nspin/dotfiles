@@ -7,3 +7,4 @@ line-editing/haskeline         /home/nick/.haskeline
 interpreters/bash/bashrc       /home/nick/.bashrc
 interpreters/bash/bash_profile /home/nick/.bash_profile
 multiplexers/tmux.conf         /home/nick/.tmux.conf
+net/mutt/muttrc                /home/nick/.muttrc
