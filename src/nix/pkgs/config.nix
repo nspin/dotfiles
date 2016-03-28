@@ -32,6 +32,12 @@ let
       ansi-wl-pprint
 
       diagrams
+
+      http-client
+      http-types
+
+      cryptohash
+      base16-bytestring
     ];
 
 in {
