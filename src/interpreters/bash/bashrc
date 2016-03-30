@@ -26,6 +26,11 @@ fi
 
 PS1=" \[$symbols\]$lambda\[$content\] \w \[$symbols\]$arrow\[$reset\] "
 
+# MISC
+
+HISTSIZE=10000
+HISTFILESIZE=10000
+
 # IMPORTS
 
 for script in $basedir/bash/bashrc.d/*.bash; do
