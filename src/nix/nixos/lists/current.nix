@@ -13,6 +13,10 @@ cabal2nix
 
 jdk
 # maven
+# idea.idea-community
+chuck
+
+# chuck
 
 # other languages
 
