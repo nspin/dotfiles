@@ -3,6 +3,8 @@ dotfiles
 
 My personal configuration files for various tools and systems.
 
+Note that larger bodies of config files (e.g. those for vim and nix) are located in their own repositories.
+
 #### Contents
 
 *   **`src/`**: All of my configuration files for everything, with a few vim-related exceptions (see `src/editors/vim` for more info)
