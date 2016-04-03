@@ -1,7 +1,7 @@
 export VISUAL=vim
 export EDITOR=$VISUAL
-export VIM=/home/nick/vim-config/init
-export VIMRUNTIME=/home/nick/vim-runtime/runtime
+export VIM=/home/nick/config/vim-config/init
+export VIMRUNTIME=/home/nick/config/vim-runtime/runtime
 
 basedir=$HOME/dotfiles/src/interpreters
 
