@@ -1,0 +1,70 @@
+" +-------+
+" | vimrc |
+" +-------+
+
+set nocompatible
+filetype off
+
+function MyVimFile(rel)
+  return expand('$VIM').'/'.a:rel
+endfunction
+
+function MyBundleFile(rel)
+  return expand('~/vim-bundle').'/'.a:rel
+endfunction
+
+" Runtimepath initialization
+
+let s:plugin_paths = []
+
+let s:bundle_dir = expand('~/vim-bundle/bundle/')
+let s:bundle_ignore =
+  \ [ 'vim-sexp'
+  \ , 'vim-sexp-mappings-for-regular-people'
+  \ , 'cscope_macros.vim'
+  \ ]
+for plugin in systemlist('ls '.s:bundle_dir)
+  if index(s:bundle_ignore, plugin) < 0
+    call add(s:plugin_paths, s:bundle_dir.plugin)
+  endif
+endfor
+
+if system('uname -a') =~ 'NixOS'
+  let s:my_plugin_list = '/run/current-system/sw/share/vim-plugins/annoying.rtp'
+  let s:plugin_paths += readfile(s:my_plugin_list)
+endif
+
+let s:plugin_after_paths = []
+for dir in s:plugin_paths
+  call add(s:plugin_after_paths, dir.'/after')
+endfor
+
+" This order is based on :h initialization
+let s:rtp = [ MyVimFile('pre') ]
+        \ + s:plugin_paths
+        \ + [ expand('$VIMRUNTIME') ]
+        \ + s:plugin_after_paths
+        \ + [ MyVimFile('post') ]
+
+let &rtp = join(s:rtp, ',')
+
+" Source actual configuration
+
+for f in split(glob(MyVimFile('init/lib/*')))
+  exec 'source' f
+endfor
+
+for modules in split(glob(MyVimFile('init/modules.*')))
+  for module in split(glob(modules.'/*.vim'))
+    exec 'source' module
+  endfor
+endfor
+
+" Allow for project-specific options/mappings
+
+if filereadable('.local.vim')
+  source .local.vim
+endif
+
+filetype plugin indent on
+
