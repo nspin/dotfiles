@@ -2,6 +2,7 @@ export VISUAL=vim
 export EDITOR=$VISUAL
 export VIM=/home/nick/dotfiles/src/editors/vim
 export VIMRUNTIME=/home/nick/vim-runtime/runtime
+export GIT_SSL_NO_VERIFY=true
 
 basedir=$HOME/dotfiles/src/interpreters
 
