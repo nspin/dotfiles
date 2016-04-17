@@ -2,19 +2,23 @@
 
 import os
 import sys
+import random
+import subprocess
 from enum import Enum
+
+env_var = 'TMEX_POSITION'
 
 usage = (
     'usage: tmex [(-(u|d|l|r) <size>[%]] COMMAND\n'
-    'If the first two arguments are absent, tmex checks in $TMEX_POS.\n'
-)
+    'If position is absent, tmex checks in ${}, which, if present, must be correctly formatted.\n'
+).format(env_var)
 
 sides = Enum('side', ['UP', 'DOWN', 'LEFT', 'RIGHT'])
 
-side_parse = { '-u': 'UP'
-             , '-d': 'DOWN'
-             , '-l': 'LEFT'
-             , '-r': 'RIGHT'
+side_parse = { '-u': sides.UP
+             , '-d': sides.DOWN
+             , '-l': sides.LEFT
+             , '-r': sides.RIGHT
              }
 
 def parse_pos(side, size):
@@ -30,7 +34,7 @@ def parse_pos(side, size):
 def parse_args():
     if len(sys.argv) == 2:
         args = { 'cmd': sys.argv[1] }
-        env = sys.getenv('TMEX_POS')
+        env = sys.getenv(env_var)
         if env is None:
             return pos
         else:
@@ -40,18 +44,29 @@ def parse_args():
                 if pos is not None:
                     args.update(pos)
                     return pos
-            return None
     elif len(sys.argv) == 4:
         args = { 'cmd': sys.argv[3] }
         pos = parse_pos(sys.argv[1], sys.argv[2])
-        if pos is None:
-            return None
-        else:
+        if pos is not None:
             args.update(pos)
             return args
 
-def tmex(cmd, side=sides.UP, size=40, percent=True, stdin=None, stdout=None, stderr=None):
-    print(cmd, side, size, percent, stdin, stdout, stderr)
+def tmex(cmd, side=sides.UP, size=40, percent=True):
+    suffix = str(random.randint(0, 999999))
+    fifo_in  = 'tmex-in-'  + suffix
+    fifo_out = 'tmex-out-' + suffix
+    fifo_ret = 'tmex-ret-' + suffix
+    os.mkfifo(fifo_in)
+    os.mkfifo(fifo_out)
+    os.mkfifo(fifo_ret)
+    new_cmd = '{} < {} > {}; echo $? > {}'.format(cmd, fifo_in, fifo_out, fifo_ret)
+    subprocess.call(['echo', 'hi'])
+    os.remove(fifo_in)
+    os.remove(fifo_out)
+    os.remove(fifo_ret)
+
+def test():
+    tmex('echo ho')
 
 def main():
     args = parse_args()
@@ -62,4 +77,5 @@ def main():
         tmex(**args)
 
 if __name__ == '__main__':
-    main()
+    # main()
+    test()

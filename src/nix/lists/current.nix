@@ -1,6 +1,6 @@
 pkgs: with pkgs; [
 
-opencv3Huge
+reptyr
 
 gcc
 
