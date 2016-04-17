@@ -1,5 +1,9 @@
 pkgs: with pkgs; [
 
+opencv3Huge
+
+gcc
+
 # school
 mars
 

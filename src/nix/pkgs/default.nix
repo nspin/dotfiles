@@ -8,5 +8,10 @@ pkgs: with pkgs; {
 
   ycm = callPackage ./local/ycm {};
   mars = callPackage ./local/mars {};
+
+  opencv3Huge = callPackage (<nixpkgs> + /pkgs/development/libraries/opencv/3.x.nix) {
+    enableContrib = true;
+    enableBloat = true;
+  };
 }
 
