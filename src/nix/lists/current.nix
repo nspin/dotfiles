@@ -1,6 +1,8 @@
 pkgs: with pkgs; [
 
-reptyr
+gdb
+
+# reptyr
 
 gcc
 
