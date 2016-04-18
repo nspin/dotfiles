@@ -2,6 +2,8 @@ pkgs: with pkgs; [
 
 openssl
 
+gnumake
+
 which
 
 coreutils
