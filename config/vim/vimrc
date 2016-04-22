@@ -23,7 +23,7 @@ let s:bundle_ignore =
   \ , 'vim-sexp-mappings-for-regular-people'
   \ , 'cscope_macros.vim'
   \ ]
-for plugin in systemlist('ls '.s:bundle_dir)
+for plugin in split(system('ls '.s:bundle_dir), '\n', 0)
   if index(s:bundle_ignore, plugin) < 0
     call add(s:plugin_paths, s:bundle_dir.plugin)
   endif
