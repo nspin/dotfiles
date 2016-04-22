@@ -1,6 +1,5 @@
 # Status of git repos in current directory
-function statuses()
-    {
+function statuses() {
     currdir=$(pwd)
     for subdir in ./*/ ; do
         cd $subdir
@@ -12,7 +11,7 @@ function statuses()
         cd $currdir
     done
     echo ""
-    }
+}
 
 # Status of git repos in current directory
 function pulls() {

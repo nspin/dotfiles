@@ -1,12 +1,12 @@
 export VISUAL=vim
 export EDITOR=$VISUAL
-export VIM=/home/nick/dotfiles/src/vim
+export VIM=/home/nick/dotfiles/config/vim
 export VIMRUNTIME=/home/nick/vim-runtime/runtime
 export GIT_SSL_NO_VERIFY=true
 
-basedir=$HOME/dotfiles/src/shell
+basedir=$HOME/dotfiles/config/shell
 
-PATH=$basedir/sh/bin:$PATH
+PATH=$basedir/bin:$PATH
 
 if test -d $HOME/bin; then
     PATH=$HOME/bin:$PATH
