@@ -1,3 +1,4 @@
-xrdb -merge -I $HOME/dotfiles/src/x11/Xresources.d $HOME/dotfiles/src/x11/Xresources.d/xterm
-xset r rate 300 50
-xsetroot -solid '#002B36'
+X11DIR=/home/nick/dotfiles/config/x11
+xrdb -merge -I $X11DIR/xresources $X11DIR/xresources/xterm
+sh $X11DIR/misc_config.sh
+xmodmap $X11DIR/Xmodmap

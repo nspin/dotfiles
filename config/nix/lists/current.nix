@@ -1,42 +1,16 @@
 pkgs: with pkgs; [
 
-gdb
-
-# reptyr
-
-gcc
-
-# school
-mars
-
 # ghc
-
 (haskellPackages.ghcWithPackages (import ../lists/hp.nix))
-
 haskellPackages.cabal-install
 cabal2nix
 
-# java bullshit
-
-jdk
-# maven
-# idea.idea-community
-chuck
-
-# chuck
-
 # other languages
-
-# gcc
-# clang
-# mitscheme
-# racket
-# nodejs
+gcc
 python27
 python34
-
-pycrypto
-pythonPackages.pyaudio
+jdk
+chuck
 
 # doc prep
 

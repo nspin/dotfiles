@@ -1,23 +1,18 @@
 pkgs: with pkgs; [
 
-openssl
-
-gnumake
-
-which
-
-coreutils
-
 # nix
 nix-repl
 nix-prefetch-scripts
 
-# misc command line utils
+# convenience
+rlwrap
+
+# general
+coreutils
+gnumake
+which
 zip
 unzip
-
-# random
-rlwrap
 
 # x utils
 xclip
@@ -34,15 +29,13 @@ firefox
 # fonts
 dejavu_fonts
 
-# productivity
+# dev
 tmux
 git
 mercurial
 subversion
 fzf
-
 vimHugeX
-
 (vim-rtp "annoying.rtp" [ ycm ])
 
 ]
