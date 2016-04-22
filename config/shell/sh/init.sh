@@ -1,7 +1,7 @@
 export VISUAL=vim
 export EDITOR=$VISUAL
-export VIM=/home/nick/dotfiles/config/vim
-export VIMRUNTIME=/home/nick/vim-runtime/runtime
+export VIM=$HOME/dotfiles/config/vim
+export VIMRUNTIME=$HOME/vim-runtime/runtime
 export GIT_SSL_NO_VERIFY=true
 
 basedir=$HOME/dotfiles/config/shell
