@@ -7,7 +7,7 @@
   ];
 
   environment.systemPackages = pkgs.mylib.gatherLists pkgs [
-    ../lists/corenix
+    ../lists/core.nix
     ../lists/huge.nix
     ../lists/current.nix
   ];

@@ -40,7 +40,7 @@
 
     windowManager.xmonad.enable = true;
     windowManager.xmonad.extraPackages = haskellPackages: [
-      (haskellPackages.callPackage /home/nick/dotfiles/confix/xmonad {})
+      (haskellPackages.callPackage /home/nick/dotfiles/config/xmonad {})
     ];
 
     displayManager.slim.enable = true;
