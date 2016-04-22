@@ -1,6 +1,6 @@
-line-editing/inputrc           /Accounts/spinalen/.inputrc
-line-editing/editrc            /Accounts/spinalen/.editrc
-interpreters/bash/bashrc       /Accounts/spinalen/.bashrc
-interpreters/bash/bash_profile /Accounts/spinalen/.bash_profile
+line-editors/inputrc           /Accounts/spinalen/.inputrc
+line-editors/editrc            /Accounts/spinalen/.editrc
+git/gitconfig                  /Accounts/spinalen/.gitconfig
 multiplexers/tmux.conf         /Accounts/spinalen/.tmux.conf
-vc/gitconfig                   /Accounts/spinalen/.gitconfig
+shell/bash/bashrc              /Accounts/spinalen/.bashrc
+shell/bash/bash_profile        /Accounts/spinalen/.bash_profile
