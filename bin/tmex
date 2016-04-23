@@ -57,28 +57,39 @@ def tmp_context():
     skeleton = '/tmp/tmex-{}-' + str(random.randint(0, 999999))
     fifo_in  = skeleton.format('in')
     fifo_out = skeleton.format('out')
-    fifo_ret = skeleton.format('ret')
+    retf     = skeleton.format('ret')
     argsf    = skeleton.format('args')
     os.mkfifo(fifo_in)
     os.mkfifo(fifo_out)
-    os.mkfifo(fifo_ret)
-    yield fifo_in, fifo_out, fifo_ret, argsf
+    yield fifo_in, fifo_out, retf, argsf
     os.remove(fifo_in)
     os.remove(fifo_out)
-    os.remove(fifo_ret)
+    os.remove(retf)
     os.remove(argsf)
 
 def tmex(cmd, side=sides.UP, size=40, percent=True):
-    with tmp_context() as (fifo_in, fifo_out, fifo_ret, argsf):
-        new_cmd = '({}) < {} > {}; echo $? > {}'.format(cmd, fifo_in, fifo_out, fifo_ret)
+    with tmp_context() as (fifo_in, fifo_out, retf, argsf):
+        new_cmd = '({}) < {} > {}; echo $? > {}'.format(cmd, fifo_in, fifo_out, retf)
         with open(argsf, 'w+') as f:
             f.write(new_cmd)
         tmux_args = ['set-window-option', 'remain-on-exit', 'off', ';'
                     ,'split-window', 'sh ' + argsf + ' &> wat']
         subprocess.call(['tmux'] + tmux_args)
+        with open(fifo_in, 'w') as f:
+            for line in sys.stdin:
+                f.write(line)
+                f.write('\n')
+        with open(fifo_out, 'r') as f:
+            for line in f:
+                sys.stdout.write(line)
+                sys.stdout.write('\n')
+        with open(retf, 'r') as f:
+            r = f.read()
+            n = str(r)
+            exit(n)
 
 def test():
-    tmex('vim')
+    tmex('fzf')
 
 def main():
     args = parse_args()
