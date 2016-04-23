@@ -1,5 +1,7 @@
 # TODO
 
+*   WRITE GENERALIZED FZF PLUGIN
+
 *   plugin idea:
     *   associate each window with a set of buffers
     *   statusline of each window shows these buffers

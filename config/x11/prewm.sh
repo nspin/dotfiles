@@ -1,4 +1,4 @@
-X11DIR=/home/nick/dotfiles/config/x11
-xrdb -merge -I $X11DIR/xresources $X11DIR/xresources/xterm
-sh $X11DIR/misc_config.sh
-xmodmap $X11DIR/Xmodmap
+CONFIGDIR=/home/nick/dotfiles/config
+xrdb -merge -I $CONFIGDIR/xresources $CONFIGDIR/xresources/xterm
+sh $CONFIGDIR/x11/misc_config.sh
+xmodmap $CONFIGDIR/x11/Xmodmap

@@ -5,6 +5,7 @@ import sys
 import random
 import subprocess
 from enum import Enum
+from contextlib import contextmanager
 
 env_var = 'TMEX_POSITION'
 
@@ -51,22 +52,33 @@ def parse_args():
             args.update(pos)
             return args
 
-def tmex(cmd, side=sides.UP, size=40, percent=True):
-    suffix = str(random.randint(0, 999999))
-    fifo_in  = 'tmex-in-'  + suffix
-    fifo_out = 'tmex-out-' + suffix
-    fifo_ret = 'tmex-ret-' + suffix
+@contextmanager
+def tmp_context():
+    skeleton = '/tmp/tmex-{}-' + str(random.randint(0, 999999))
+    fifo_in  = skeleton.format('in')
+    fifo_out = skeleton.format('out')
+    fifo_ret = skeleton.format('ret')
+    argsf    = skeleton.format('args')
     os.mkfifo(fifo_in)
     os.mkfifo(fifo_out)
     os.mkfifo(fifo_ret)
-    new_cmd = '{} < {} > {}; echo $? > {}'.format(cmd, fifo_in, fifo_out, fifo_ret)
-    subprocess.call(['echo', 'hi'])
+    yield fifo_in, fifo_out, fifo_ret, argsf
     os.remove(fifo_in)
     os.remove(fifo_out)
     os.remove(fifo_ret)
+    os.remove(argsf)
+
+def tmex(cmd, side=sides.UP, size=40, percent=True):
+    with tmp_context() as (fifo_in, fifo_out, fifo_ret, argsf):
+        new_cmd = '({}) < {} > {}; echo $? > {}'.format(cmd, fifo_in, fifo_out, fifo_ret)
+        with open(argsf, 'w+') as f:
+            f.write(new_cmd)
+        tmux_args = ['set-window-option', 'remain-on-exit', 'off', ';'
+                    ,'split-window', 'sh ' + argsf + ' &> wat']
+        subprocess.call(['tmux'] + tmux_args)
 
 def test():
-    tmex('echo ho')
+    tmex('vim')
 
 def main():
     args = parse_args()
