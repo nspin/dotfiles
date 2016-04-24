@@ -6,7 +6,7 @@ export GIT_SSL_NO_VERIFY=true
 
 basedir=$HOME/dotfiles/config/shell
 
-PATH=$basedir/bin:$PATH
+PATH=$HOME/dotfiles/bin:$PATH
 
 if test -d $HOME/bin; then
     PATH=$HOME/bin:$PATH
