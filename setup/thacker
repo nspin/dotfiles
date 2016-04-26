@@ -1,0 +1,7 @@
+line-editors/inputrc           /home/spinalen/.inputrc
+line-editors/editrc            /home/spinalen/.editrc
+git/gitconfig                  /home/spinalen/.gitconfig
+multiplexers/tmux.conf         /home/spinalen/.tmux.conf
+shell/bash/bashrc              /home/spinalen/.bashrc
+shell/bash/bash_profile        /home/spinalen/.bash_profile
+vim/vimrc                      /home/spinalen/.vimrc
