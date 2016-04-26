@@ -12,9 +12,9 @@ fi
 
 # PROMPT
 
-reset=$(tput sgr0)
-symbols=$(tput setaf 2)
-content=$(tput setaf 6)
+reset="\[$(tput sgr0)\]"
+symbol="\[$(tput setaf 2)\]"
+text="\[$(tput setaf 6)\]"
 
 if [[ $LANG == *"UTF-8"* ]]; then
     lambda="λ"
@@ -24,7 +24,7 @@ else
     arrow="->"
 fi
 
-PS1=" \[$symbols\]$lambda\[$content\] \w \[$symbols\]$arrow\[$reset\] "
+PS1="$text \u@\h $symbol$lambda$text \w $symbol$arrow$reset "
 
 # MISC
 
