@@ -1,5 +1,7 @@
 pkgs: with pkgs; [
 
+pythonPackages.screenkey
+
 # ghc
 (haskellPackages.ghcWithPackages (import ../lists/hp.nix))
 haskellPackages.cabal-install
@@ -20,6 +22,7 @@ haskell.packages.ghc7102.pandoc
   inherit (texlive)
     scheme-small
     collection-latexextra
+    collection-fontsrecommended
     # pbox
     # csquotes
     # beamerposter
