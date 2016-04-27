@@ -1,7 +1,7 @@
 line-editors/inputrc           /home/nick/.inputrc
 line-editors/editrc            /home/nick/.editrc
 line-editors/haskeline         /home/nick/.haskeline
-x11/xmonad.hs                  /home/nick/.xmonad/xmonad.hs
+xmonad/xmonad.hs               /home/nick/.xmonad/xmonad.hs
 x11/xmobarrc                   /home/nick/.xmobarrc
 mutt/muttrc                    /home/nick/.muttrc
 git/gitconfig                  /home/nick/.gitconfig
