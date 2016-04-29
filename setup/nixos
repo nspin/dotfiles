@@ -7,5 +7,5 @@ mutt/muttrc                    /home/nick/.muttrc
 git/gitconfig                  /home/nick/.gitconfig
 interpreters/ghci              /home/nick/.ghci
 multiplexers/tmux.conf         /home/nick/.tmux.conf
-shell/bash/bashrc              /home/nick/.bashrc
-shell/bash/bash_profile        /home/nick/.bash_profile
+bash/bashrc                    /home/nick/.bashrc
+bash/bash_profile              /home/nick/.bash_profile

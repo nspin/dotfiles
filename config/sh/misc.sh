@@ -1,4 +1,3 @@
-# From Emmanuel Rouat's bashrc
 function extract() {
     if [ -f $1 ] ; then
         case $1 in

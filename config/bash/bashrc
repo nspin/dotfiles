@@ -2,7 +2,9 @@
 
 # POSIX
 
-source $HOME/dotfiles/config/shell/sh/init.sh
+for file in $HOME/dotfiles/config/sh/*.sh; do
+    source $file
+done
 
 # HACK TO MAKE COLORS IN SCREEN OK IN X11/OSX
 
@@ -33,6 +35,6 @@ HISTFILESIZE=10000
 
 # IMPORTS
 
-for script in $basedir/bash/bashrc.d/*.bash; do
-    source $script
+for file in $HOME/dotfiles/config/bash/fzf/*.bash; do
+    source $file
 done
