@@ -1,0 +1,6 @@
+line-editors/inputrc           /Users/labuser/.inputrc
+line-editors/editrc            /Users/labuser/.editrc
+git/gitconfig                  /Users/labuser/.gitconfig
+multiplexers/screenrc          /Users/labuser/.screenrc
+bash/bashrc                    /Users/labuser/.bashrc
+bash/bash_profile              /Users/labuser/.bash_profile
