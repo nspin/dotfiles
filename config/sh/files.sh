@@ -8,7 +8,7 @@ function fzfd(){
 }
 
 function efd(){
-    files=$(fzfdir $1)
+    files=$(fzfd $1)
     echo $files
     vim $(echo $files | tr '\n' ' ')
 }
