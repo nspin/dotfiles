@@ -1,0 +1,13 @@
+#!/bin/sh
+case $1 in
+    nsh)
+        src=$2.shell.nix
+        dest=shell.nix
+        ;;
+    *)
+        echo 'Invalid argument'
+        exit
+        ;;
+esac
+
+cp $HOME/dotfiles/boilerplate/$src ./$dest

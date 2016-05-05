@@ -1,4 +1,4 @@
-function fzfd(){
+function fzfd() {
     dir=$(echo $1 | sed 's:/$::')
     find $dir -type f \
       | sed 's:^'$dir'/::' \
@@ -7,13 +7,13 @@ function fzfd(){
       | sed 's:^:'$dir'/:'
 }
 
-function efd(){
+function efd() {
     files=$(fzfd $1)
     echo $files
     vim $(echo $files | tr '\n' ' ')
 }
 
-function nder(){
+function nder() {
     readlink $(readlink $HOME/.nix-defexpr/channels_root)/nixos
 }
 
@@ -25,4 +25,3 @@ alias v='vim'
 alias vf='vim $(fzf)'
 alias tod='efd $HOME/todo'
 alias dot='efd $HOME/dotfiles'
-
