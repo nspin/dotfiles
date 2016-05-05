@@ -1,9 +1,6 @@
 with import <nixpkgs> {}; stdenv.mkDerivation {
-  name = "git-audio";
+  name = "env";
   buildInputs = [
     python
-    pythonPackages.pygit2
-    pythonPackages.pyaudio
-    pythonPackages.termcolor
   ];
 }

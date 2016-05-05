@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  services.xserver.displayManager.sessionCommands = builtins.readFile /home/nick/dotfiles/config/x11/prewm.sh;
+  services.xserver.displayManager.sessionCommands = builtins.readFile <dotfig/x11/prewm.sh>;
 }

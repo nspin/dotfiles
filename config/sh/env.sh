@@ -4,6 +4,8 @@ export VISUAL=vim
 export EDITOR=vim
 export VIM=$HOME/dotfiles/config/vim
 
+export NIX_PATH=$NIX_PATH:dotfig=$HOME/dotfiles/config
+
 if [ -d $HOME/vim-runtime ]; then
     export VIMRUNTIME=$HOME/vim-runtime/runtime
 fi

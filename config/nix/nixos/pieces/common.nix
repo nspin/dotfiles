@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  nixpkgs.config = import ../../config.nix;
+  nixpkgs.config = import <dotfig/nix/config.nix>;
 
   boot.loader.grub.device = "/dev/sda";
   # boot.loader.grub.enable = true;
@@ -19,6 +19,10 @@
   };
 
   security.sudo.wheelNeedsPassword = false;
+
+  security.sudo.extraConfig = ''
+    Defaults env_keep += "NIX_PATH"
+  '';
 
   fonts.enableFontDir = true;
   fonts.fontconfig.enable = true;
@@ -40,7 +44,7 @@
 
     windowManager.xmonad.enable = true;
     windowManager.xmonad.extraPackages = haskellPackages: [
-      (haskellPackages.callPackage /home/nick/dotfiles/config/xmonad {})
+      (haskellPackages.callPackage <dotfig/xmonad> {})
     ];
 
     displayManager.slim.enable = true;

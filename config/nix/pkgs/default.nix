@@ -8,8 +8,7 @@ pkgs: with pkgs; {
 
   ycm = callPackage ./local/ycm {};
 
-  opencv3Huge = callPackage (<nixpkgs> + /pkgs/development/libraries/opencv/3.x.nix) {
-    enableContrib = true;
+  opencvBloated = callPackage <nixpkgs/pkgs/development/libraries/opencv> {
     enableBloat = true;
   };
 }
