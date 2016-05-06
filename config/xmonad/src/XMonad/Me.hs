@@ -105,7 +105,7 @@ myKeys (XConfig {..}) = M.fromList $ meta ++ interWorkspace ++ intraWorkspace
     meta =
         -- launching and killing programs
         [ ((modMask, xK_c), spawn terminal) -- %! Launch terminal
-        , ((modMask, xK_p), spawn dmenu) -- %! Launch dmenu
+        , ((modMask, xK_u), spawn dmenu) -- %! Launch dmenu
         , ((modMask, xK_x), kill) -- %! Close the focused window
 
         -- quit, or restart
