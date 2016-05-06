@@ -80,11 +80,11 @@ main = do
 
 -- workspace tags, along with keys to access them
 tagKeys :: [(WorkspaceId, KeySym)]
-tagKeys = [ ("=", xK_g)
-          , ("-", xK_f)
-          , ("0", xK_d)
-          , ("9", xK_s)
-          , ("8", xK_a)
+tagKeys = [ ("G", xK_g)
+          , ("F", xK_f)
+          , ("D", xK_d)
+          , ("S", xK_s)
+          , ("A", xK_a)
           ]
 
 -- layout for virtualbox on laptop
@@ -115,7 +115,8 @@ myKeys (XConfig {..}) = M.fromList $ meta ++ interWorkspace ++ intraWorkspace
 
     interWorkspace =
         -- movement between workspaces adjascent in the config tag list or in time
-        [ ((modMask, xK_q), toggleWS) -- %! Move to last viewed workspace
+        [ ((mod1Mask, xK_p), toggleWS) -- %! Quick move to last viewed workspace
+        , ((modMask, xK_q), toggleWS) -- %! Move to last viewed workspace
         , ((modMask, xK_n), nextWS  ) -- %! Move to next workspace in stack
         , ((modMask, xK_p), prevWS  ) -- %! Move to previous workspace in stack
         ] ++
