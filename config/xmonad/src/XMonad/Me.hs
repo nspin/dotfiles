@@ -43,11 +43,11 @@ main = do
             , ppOutput = hPutStrLn xmproc
             }
 
-        myConfig = defaultConfig
+        myConfig = def
             -- simple
             { borderWidth        = 1
             , terminal           = "xterm"
-            , modMask            = mod3Mask
+            , modMask            = mod4Mask
             , startupHook        = return ()
             , manageHook         = manageDocks
             , handleEventHook    = const $ return (All True)
@@ -80,11 +80,11 @@ main = do
 
 -- workspace tags, along with keys to access them
 tagKeys :: [(WorkspaceId, KeySym)]
-tagKeys = [ ("=", xK_equal)
-          , ("-", xK_minus)
-          , ("0", xK_0)
-          , ("9", xK_9)
-          , ("8", xK_8)
+tagKeys = [ ("=", xK_g)
+          , ("-", xK_f)
+          , ("0", xK_d)
+          , ("9", xK_s)
+          , ("8", xK_a)
           ]
 
 -- layout for virtualbox on laptop
@@ -104,20 +104,20 @@ myKeys (XConfig {..}) = M.fromList $ meta ++ interWorkspace ++ intraWorkspace
 
     meta =
         -- launching and killing programs
-        [ ((modMask              , xK_Return), spawn terminal) -- %! Launch terminal
-        , ((modMask              , xK_p     ), spawn dmenu) -- %! Launch dmenu
-        , ((modMask              , xK_x     ), kill) -- %! Close the focused window
+        [ ((modMask, xK_c), spawn terminal) -- %! Launch terminal
+        , ((modMask, xK_p), spawn dmenu) -- %! Launch dmenu
+        , ((modMask, xK_x), kill) -- %! Close the focused window
 
         -- quit, or restart
-        , ((modMask .|. shiftMask, xK_q     ), io (exitWith ExitSuccess)) -- %! Quit xmonad
-        , ((modMask              , xK_q     ), spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi") -- %! Restart xmonad
+        , ((modMask, xK_y), io (exitWith ExitSuccess)) -- %! Quit xmonad
+        , ((modMask, xK_r), spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi") -- %! Restart xmonad
         ]
 
     interWorkspace =
         -- movement between workspaces adjascent in the config tag list or in time
-        [ ((modMask, xK_backslash   ), toggleWS) -- %! Move to last viewed workspace
-        , ((modMask, xK_bracketleft ), nextWS  ) -- %! Move to next workspace in stack
-        , ((modMask, xK_bracketright), prevWS  ) -- %! Move to previous workspace in stack
+        [ ((modMask, xK_q), toggleWS) -- %! Move to last viewed workspace
+        , ((modMask, xK_n), nextWS  ) -- %! Move to next workspace in stack
+        , ((modMask, xK_p), prevWS  ) -- %! Move to previous workspace in stack
         ] ++
 
         -- mod-N %! Switch to workspace N
@@ -127,11 +127,12 @@ myKeys (XConfig {..}) = M.fromList $ meta ++ interWorkspace ++ intraWorkspace
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
         ] ++
 
-        -- mod-{w,e,r} %! Switch to physical/Xinerama screens 1, 2, or 3
+        -- mod-{1,2,3} %! Switch to physical/Xinerama screens 1, 2, or 3
         -- mod-shift-{w,e,r} %! Move client to screen 1, 2, or 3
-        [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
-            | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
-            , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+        [ ((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
+        | (key, sc) <- zip [xK_1, xK_2, xK_3] [0..]
+        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
+        ]
 
     intraWorkspace =
         -- changing layouts
@@ -139,9 +140,9 @@ myKeys (XConfig {..}) = M.fromList $ meta ++ interWorkspace ++ intraWorkspace
         , ((modMask .|. shiftMask, xK_space ), setLayout layoutHook) -- %!  Reset the layouts on the current workspace to default
 
         -- move focus up or down the window stack
-        , ((modMask              , xK_j     ), windows W.focusDown  ) -- %! Move focus to the next window
-        , ((modMask              , xK_k     ), windows W.focusUp    ) -- %! Move focus to the previous window
-        , ((modMask              , xK_m     ), windows W.focusMaster) -- %! Move focus to the master window
+        , ((modMask, xK_j), windows W.focusDown  ) -- %! Move focus to the next window
+        , ((modMask, xK_k), windows W.focusUp    ) -- %! Move focus to the previous window
+        , ((modMask, xK_m), windows W.focusMaster) -- %! Move focus to the master window
 
         -- modifying the window order
         , ((modMask .|. shiftMask, xK_j     ), windows W.swapDown  ) -- %! Swap the focused window with the next window
@@ -149,15 +150,15 @@ myKeys (XConfig {..}) = M.fromList $ meta ++ interWorkspace ++ intraWorkspace
         , ((modMask .|. shiftMask, xK_m     ), windows W.swapMaster) -- %! Swap the focused window and the master window
 
         -- increase or decrease number of windows in the master area
-        , ((modMask              , xK_period), sendMessage (IncMasterN   1 )) -- %! Increment the number of windows in the master area
-        , ((modMask              , xK_comma ), sendMessage (IncMasterN (-1))) -- %! Deincrement the number of windows in the master area
+        , ((modMask, xK_period), sendMessage (IncMasterN   1 )) -- %! Increment the number of windows in the master area
+        , ((modMask, xK_comma ), sendMessage (IncMasterN (-1))) -- %! Deincrement the number of windows in the master area
 
         -- resizing the master/slave ratio
-        , ((modMask              ,xK_h     ), sendMessage Shrink) -- %! Shrink the master area
-        , ((modMask              ,xK_l     ), sendMessage Expand) -- %! Expand the master area
+        , ((modMask, xK_h), sendMessage Shrink) -- %! Shrink the master area
+        , ((modMask, xK_l), sendMessage Expand) -- %! Expand the master area
 
         -- misc
-        , ((modMask              ,xK_t     ), withFocused $ windows . W.sink) -- %! Push window back into tiling
+        , ((modMask, xK_i), withFocused $ windows . W.sink) -- %! Push window back into tiling
         ]
 
 -- dmenu command -- TODO make this work

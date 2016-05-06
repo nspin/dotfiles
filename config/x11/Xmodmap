@@ -1,7 +1,7 @@
-remove lock = Caps_Lock
+remove Lock = Caps_Lock
 keysym Caps_Lock = Escape
 
-remove Mod1 = Alt_R
-keycode 108 = Alt_R
-add Mod3 = Alt_R
+keycode 127 = Menu
+keysym Menu = Super_R
+add Mod4 = Super_R
 
