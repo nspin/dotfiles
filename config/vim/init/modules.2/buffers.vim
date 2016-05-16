@@ -26,6 +26,13 @@ endfun
 command Wipeout call <sid>my_wipeout()
 command WWipeout write | Wipeout
 
+fun s:buf_replace(new)
+  let old = bufnr('%')
+  exec 'edit '.a:new
+  exec 'bwipeout '.old
+endfun
+command -nargs=? BReplace call <sid>buf_replace('<args>')
+
 inoremap <c-z> <esc>:WWipeout<cr>
 noremap <c-z> :WWipeout<cr>
 
@@ -73,6 +80,11 @@ fun s:bufdelete(line)
   exec 'bwipeout' matchstr(a:line, '^[ 0-9]*')
 endfun
 
+" fun s:bufreplace(line)
+"   echom a:line
+"   exec 'BReplace' matchstr(a:line, '^[ 0-9]*')
+" endfun
+
 fun s:fzf_select_buf(action)
   call fzf#run( { 'source': reverse(<sid>buflist())
               \ , 'sink': function(a:action)
@@ -81,10 +93,16 @@ fun s:fzf_select_buf(action)
               \ })
 endfun
 
-nnoremap <silent> <space>l :call <sid>fzf_select_buf('<sid>bufopen')<cr>
-nnoremap <silent> <space>; :call <sid>fzf_select_buf('<sid>bufdelete')<cr>
+fun s:fzf_select_file()
+  call fzf#run( { 'sink': 'BReplace'
+              \ , 'down': '40%'
+              \ })
+endfun
 
-noremap <c-p> :FZF!<cr>
+nnoremap <silent> <space>l :call <sid>fzf_select_buf('<sid>bufopen')<cr>
+nnoremap <silent> <space>o :call <sid>fzf_select_file()<cr>
+
+noremap <space>p :FZF!<cr>
 
 fun s:fzf_dir(start)
   call fzf#run( { 'source': 'find '.a:start.' -type d | grep -v "/\."'
@@ -94,3 +112,4 @@ endfun
 
 command -nargs=1 DirOf call <sid>fzf_dir('<args>')
 command DirHere call <sid>fzf_dir('.')
+

@@ -1,5 +1,7 @@
 # TODO
 
+* replace buffer
+
 *   WRITE GENERALIZED FZF PLUGIN
 
 *   plugin idea:
