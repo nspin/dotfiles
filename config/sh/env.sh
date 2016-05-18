@@ -8,6 +8,8 @@ export NIX_PATH=$NIX_PATH:dotfig=$HOME/dotfiles/config
 
 if [ -d $HOME/vim-runtime ]; then
     export VIMRUNTIME=$HOME/vim-runtime/runtime
+else
+    export VIMRUNTIME=/usr/share/vim/vim73
 fi
 
 # Git
