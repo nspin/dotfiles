@@ -1,6 +1,6 @@
 pkgs: with pkgs; [
 
-pythonPackages.screenkey
+rtorrent
 
 # ghc
 (haskellPackages.ghcWithPackages (import ../lists/hp.nix))
