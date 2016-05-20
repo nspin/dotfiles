@@ -1,6 +1,7 @@
 pkgs: with pkgs; [
 
 rtorrent
+gimp
 
 # ghc
 (haskellPackages.ghcWithPackages (import ../lists/hp.nix))
