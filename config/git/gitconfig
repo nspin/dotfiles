@@ -6,6 +6,9 @@
     editor = vim
     excludesfile = ~/dotfiles/config/git/gitignore_global
 
+[push]
+    default = simple
+
 [github]
     user = nickspinale
 
