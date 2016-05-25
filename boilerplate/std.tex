@@ -15,47 +15,20 @@
 \begin{document}
 
 \headline{
-  Sam McHugh \\
-  Eli Orvis \\
-  Nick Spinale
+  Nick Spinale \\
+  Carleton College
 }{
-  {\Large Final Project} \smallskip \\
-  \centering {\large Phase 1}
+  {\Large Title} \smallskip \\
+  \centering {\large Subtitle}
 }{
-  \hfill CS 257 \\
+  \hfill DEPT NUMBER \\
   \hfill \today
 }
 
 \medskip \hrule \vspace{1pt} \hrule height .8pt \medskip
 \bigskip
 
-We will make a probabilistic variant of Mine Sweeper.
-Instead of containing either a bomb or no bomb,
-each square on the board will contain a probability of being a bomb.
-Squares which have been uncovered (and were not bombs)
-will not contain the number of adjacent bombs,
-but either the sum of the probabilities of adjacent squares,
-or the actual real-time probability of any of its adjacent squares being a bomb
-(which one we choose will depend on which one is more fun).
-Controls available to the user before the game starts will include a board size and difficulty selector.
-Controls during the game will include a finished button, tools for marking squares with flags,
-and a threshold for auto-mine
-(squares with probabilities under this threshold will be automatically mined
-when one of their neighbors is mined, similarly to how squares with no
-adjacent mines are treated in lame Mine Sweeper).
-Additionally, the interface will include a clock and statistics such as the total risk taken.
-Because it is theoretically possible to clear the entire board,
-he player can end the game at any time.
-There will then be two final scores:
-the number of covered squares remaining (fewer is beter),
-and the probability that one of the covered squares is not a bomb (lower is better).
-
-Our application has a well-defined notion of state:
-layout of the mine field (including which squares have been uncovered), flags placed, running statistics, user-selected threshold, etc.
-The view simply renders this state to the UI:
-each uncovered square is rendered with the appropriate label,
-and each covered square is rendered with the appropriate marker.
-Given these two facts, our planned implementation of probabilistic Mine Sweeper fits the MVC approach well.
+\lipsum
 
 \end{document}
 
