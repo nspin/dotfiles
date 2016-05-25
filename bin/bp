@@ -1,2 +1,16 @@
 #!/bin/sh
-cp $HOME/dotfiles/boilerplate/$1 $2
+
+bpdir=$HOME/dotfiles/boilerplate
+
+if test -z $1; then
+    echo 'INPUT ERROR. READ ME:'
+    cat $0
+    exit
+fi
+
+case $1 in
+    -l) ls $bpdir
+        ;;
+    *) cat $bpdir/$1
+        ;;
+esac
