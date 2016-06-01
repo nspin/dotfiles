@@ -113,3 +113,8 @@ endfun
 command -nargs=1 DirOf call <sid>fzf_dir('<args>')
 command DirHere call <sid>fzf_dir('.')
 
+let i = 1
+while i < 10
+  exec 'noremap <space>'.i.' :buff '.i.'<cr>'
+  let i += 1
+endwhile
