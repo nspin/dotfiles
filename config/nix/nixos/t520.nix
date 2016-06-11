@@ -9,9 +9,9 @@
 
   environment.systemPackages = pkgs.mylib.gatherLists pkgs [
     ../lists/core.nix
-    ../lists/huge.nix
-    ../lists/current.nix
   ];
-
-  boot.loader.grub.device = "/dev/sda";
+ 
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.timeout = 0;
+  #boot.loader.gummiboot.enable = true;
 }

@@ -3,10 +3,6 @@
 {
   nixpkgs.config = import <dotfig/nix/config.nix>;
 
-  boot.loader.grub.device = "/dev/sda";
-  # boot.loader.grub.enable = true;
-  # boot.loader.grub.version = 2;
-
   networking.hostName = "nixos";
   networking.hostId = "c890f48c";
   # networking.wireless.enable = true;

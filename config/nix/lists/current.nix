@@ -19,16 +19,16 @@ chuck
 
 haskell.packages.ghc7102.pandoc
 
-(texlive.combine {
-  inherit (texlive)
-    scheme-small
-    collection-latexextra
-    collection-fontsrecommended
-    # pbox
-    # csquotes
-    # beamerposter
-    # type1cm
-  ;
-})
+#(texlive.combine {
+#  inherit (texlive)
+#    scheme-small
+#    collection-latexextra
+#    collection-fontsrecommended
+#    # pbox
+#    # csquotes
+#    # beamerposter
+#    # type1cm
+#  ;
+#})
 
 ]
