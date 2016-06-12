@@ -7,6 +7,7 @@ pkgs: with pkgs; {
   ghc-pkg-db = callPackage ./aux/ghc-pkg-db {};
 
   ycm = callPackage ./local/ycm {};
+  wicd = callPackage ./local/wicd {};
 
   opencvBloated = callPackage <nixpkgs/pkgs/development/libraries/opencv> {
     enableBloat = true;

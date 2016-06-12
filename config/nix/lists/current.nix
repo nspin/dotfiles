@@ -9,9 +9,6 @@ haskellPackages.cabal-install
 cabal2nix
 
 # other languages
-gcc
-python27
-python34
 jdk
 chuck
 

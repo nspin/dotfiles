@@ -38,4 +38,10 @@ fzf
 vimHugeX
 (vim-rtp "annoying.rtp" [ ycm ])
 
+gcc
+python27
+python34
+
+wicd
+
 ]
