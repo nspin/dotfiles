@@ -42,6 +42,12 @@ gcc
 python27
 python34
 
-wicd
+# wicd
 
+wpa_supplicant
+wpa_supplicant_gui
+wirelesstools
+iw
+# networkmanager
+# networkmanagerapplet
 ]

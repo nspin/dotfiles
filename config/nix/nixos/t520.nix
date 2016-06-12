@@ -14,4 +14,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.gummiboot.enable = true;
 
+  # networking.wicd.enable = true;
+  networking.wpa_supplicant.enable = true;
+  # networking.wireless.enable = true;
+
+  # networking.networkmanager.enable = true;
 }

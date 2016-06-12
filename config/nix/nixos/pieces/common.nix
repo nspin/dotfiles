@@ -5,14 +5,13 @@
 
   networking.hostName = "nixos";
   networking.hostId = "c890f48c";
-  # networking.wireless.enable = true;
 
   time.timeZone = "America/Chicago";
 
   users.extraUsers.nick = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" ];
   };
 
   security.sudo.wheelNeedsPassword = false;
