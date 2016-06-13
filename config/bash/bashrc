@@ -38,3 +38,5 @@ HISTFILESIZE=10000
 for file in $HOME/dotfiles/config/bash/fzf/*.bash; do
     source $file
 done
+
+source $HOME/.local.sh
