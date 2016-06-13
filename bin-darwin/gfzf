@@ -27,8 +27,17 @@ mkfifo -m o+w $fifo2
 mkfifo -m o+w $fifo3
 
 opts="$@"
-echo "fzf $opts > $fifo2; echo \$? > $fifo3" > $argsf
-term "cd $(printf %q "$PWD");$envs sh $argsf; exit"
+
+if [ -n "$term" -o -t 0 ]; then
+    echo "fzf $opts > $fifo2; echo \$? > $fifo3" > $argsf
+    term "cd $(printf %q "$PWD");$envs sh $argsf; exit"
+else
+    mkfifo $fifo1
+    echo "fzf $opts < $fifo1 > $fifo2; echo \$? > $fifo3" > $argsf
+    term "$envs bash $argsf; exit"
+    cat <&0 > $fifo1 &
+fi
+
 cat $fifo2
 exit "$(cat $fifo3)"
 
