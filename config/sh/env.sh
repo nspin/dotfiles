@@ -19,6 +19,9 @@ export GIT_SSL_NO_VERIFY=true
 # PATH
 
 PATH=$HOME/dotfiles/bin:$PATH
+if [ $(uname -s) == 'Darwin' ]; then
+    PATH=$HOME/dotfiles/bin-darwin:$PATH
+fi
 
 if [ -d $HOME/bin ]; then
     PATH=$HOME/bin:$PATH
