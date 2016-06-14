@@ -17,7 +17,7 @@
   boot.loader.gummiboot.enable = true;
 
   networking.wireless = {
-    enable = false;
+    enable = true;
     userControlled.enable = true;
     interfaces = [ "wlp3s0" ];
     driver = "wext";
