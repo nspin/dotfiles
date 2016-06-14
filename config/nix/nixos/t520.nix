@@ -16,9 +16,11 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.gummiboot.enable = true;
 
-  networking = {
-    wireless.enable = false;
-    wireless.userControlled.enable = true;
+  networking.wireless = {
+    enable = false;
+    userControlled.enable = true;
+    interfaces = [ "wlp3s0" ];
+    driver = "wext";
   };
 
   system.stateVersion = "16.03";
