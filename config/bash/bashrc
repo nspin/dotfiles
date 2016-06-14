@@ -39,4 +39,6 @@ for file in $HOME/dotfiles/config/bash/fzf/*.bash; do
     source $file
 done
 
-source $HOME/.local.sh
+if [ -e $HOME/.local.sh ]; then
+    source $HOME/.local.sh
+fi
