@@ -1,0 +1,44 @@
+#!/bin/sh
+# gfzf: starts fzf in a new xterm window
+# usage: gfzf [FZF OPTIONS]
+# TODO geometry
+
+set -e
+
+# Clean up named pipes on exit
+id=$RANDOM
+argsf="${TMPDIR:-/tmp}/fzf-args-$id"
+fifo1="${TMPDIR:-/tmp}/fzf-fifo1-$id"
+fifo2="${TMPDIR:-/tmp}/fzf-fifo2-$id"
+fifo3="${TMPDIR:-/tmp}/fzf-fifo3-$id"
+cleanup() {
+  rm -f $argsf $fifo1 $fifo2 $fifo3
+}
+trap cleanup EXIT SIGINT SIGTERM
+
+fail() {
+  >&2 echo "$1"
+  exit 2
+}
+
+[ -n "$FZF_DEFAULT_OPTS"    ] && envs="$envs FZF_DEFAULT_OPTS=$(printf %q "$FZF_DEFAULT_OPTS")"
+[ -n "$FZF_DEFAULT_COMMAND" ] && envs="$envs FZF_DEFAULT_COMMAND=$(printf %q "$FZF_DEFAULT_COMMAND")"
+
+mkfifo -m o+w $fifo2
+mkfifo -m o+w $fifo3
+
+opts="$@"
+
+if [ -n "$term" -o -t 0 ]; then
+    echo "fzf $opts > $fifo2; echo \$? > $fifo3" > $argsf
+    xterm -c "$envs sh $argsf"
+else
+    mkfifo $fifo1
+    echo "fzf $opts < $fifo1 > $fifo2; echo \$? > $fifo3" > $argsf
+    xterm -c "$envs sh $argsf"
+    cat <&0 > $fifo1 &
+fi
+
+cat $fifo2
+exit "$(cat $fifo3)"
+
