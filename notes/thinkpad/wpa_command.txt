@@ -1,1 +1,0 @@
-wpa_supplicant -B -D wext -i wlp3s0 -c /etc/wpa_supplicant.conf
