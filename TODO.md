@@ -1,5 +1,10 @@
 # TODO
 
+*   fzf instead of dmenu
+*   middle mouse button
+
+---
+
 *   roll own fzf shell scripts
 
 *   helm emacs

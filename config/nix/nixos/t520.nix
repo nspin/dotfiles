@@ -27,4 +27,11 @@
   system.stateVersion = "16.03";
 
   services.upower.enable = true;
+
+  services.xserver.synaptics = {
+    enable = true;
+    vertTwoFingerScroll = true;
+    horizTwoFingerScroll = true;
+  };
+
 }
