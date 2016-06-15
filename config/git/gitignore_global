@@ -23,3 +23,6 @@
 dist
 cabal.sandbox.config
 .cabal-sandbox/*
+
+.local.vim
+local.vim

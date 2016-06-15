@@ -62,6 +62,10 @@ endfor
 
 " Allow for project-specific options/mappings
 
+if filereadable('local.vim')
+  source local.vim
+endif
+
 if filereadable('.local.vim')
   source .local.vim
 endif
