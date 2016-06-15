@@ -9,6 +9,7 @@
 
   environment.systemPackages = pkgs.mylib.gatherLists pkgs [
     ../lists/core.nix
+    ../lists/linux.nix
     # ../lists/huge.nix
     # ../lists/current.nix
   ];
@@ -25,4 +26,5 @@
 
   system.stateVersion = "16.03";
 
+  services.upower.enable = true;
 }
