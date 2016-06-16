@@ -1,7 +1,15 @@
 #!/bin/sh
 # gfzf: starts fzf in a new xterm window
 # usage: gfzf [FZF OPTIONS]
-# TODO geometry
+
+function term() {
+    # xy=$(xrandr | grep \* | awk '{ print $1 }')
+    # x=$(echo $xy | cut -d x -f 1)
+    # y=$(echo $xy | cut -d x -f 2)
+    # xterm -geometry $(expr $x '/' 2)x$(expr $y '/' 2)+$(expr $x '/' 4)+$(expr $y '/' 4) "$@"
+    # https://bbs.archlinux.org/viewtopic.php?id=44256
+    xterm "$@"
+}
 
 set -e
 
@@ -24,19 +32,15 @@ fail() {
 [ -n "$FZF_DEFAULT_OPTS"    ] && envs="$envs FZF_DEFAULT_OPTS=$(printf %q "$FZF_DEFAULT_OPTS")"
 [ -n "$FZF_DEFAULT_COMMAND" ] && envs="$envs FZF_DEFAULT_COMMAND=$(printf %q "$FZF_DEFAULT_COMMAND")"
 
-mkfifo -m o+w $fifo2
-mkfifo -m o+w $fifo3
-
 opts="$@"
 
 if [ -n "$term" -o -t 0 ]; then
     echo "fzf $opts > $fifo2; echo \$? > $fifo3" > $argsf
-    xterm -c "$envs sh $argsf"
+    term -e sh -c "$envs sh $argsf"
 else
-    mkfifo $fifo1
+    cat <&0 > $fifo1
     echo "fzf $opts < $fifo1 > $fifo2; echo \$? > $fifo3" > $argsf
-    xterm -c "$envs sh $argsf"
-    cat <&0 > $fifo1 &
+    term -e sh -c "$envs sh $argsf"
 fi
 
 cat $fifo2
