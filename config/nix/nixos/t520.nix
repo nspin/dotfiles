@@ -12,6 +12,7 @@
     ../lists/linux.nix
     # ../lists/huge.nix
     # ../lists/current.nix
+    ../lists/520.nix
   ];
  
   boot.loader.efi.canTouchEfiVariables = true;

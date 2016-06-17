@@ -1,0 +1,8 @@
+#!/bin/sh
+cmd=$(
+    (for x in $(echo $PATH | sed 's/:/ /g'); do
+       test -d "$x" && find -L "$x" -maxdepth 1 -executable -type f
+     done) | gfzf -d '/' --with-nth '-1'
+)
+
+[ -n "$cmd" ] && $cmd
