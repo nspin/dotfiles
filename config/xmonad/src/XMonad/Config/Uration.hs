@@ -2,7 +2,7 @@
 
 -- This file is based off of XMonad/Config.hs
 
-module XMonad.Me where
+module XMonad.Config.Uration where
 
 -- xmonad
 import           XMonad
@@ -71,7 +71,7 @@ main = do
     -- xmobar styling
     lines     = (" -" ++) . (++ "- ")
     squiggles = (" ~" ++) . (++ "~ ")
-    nothing   = ("  " ++) . (++ "  ")
+    -- nothing   = ("  " ++) . (++ "  ")
 
     -- colors
     darkish = "#031518"

@@ -1,2 +1,2 @@
-import qualified XMonad.Me as M
-main = M.main
+import qualified XMonad.Config.Uration as C
+main = C.main
