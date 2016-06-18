@@ -22,3 +22,4 @@ library
   build-depends:       base >=4.8 && <4.9, containers >=0.5 && <0.6, xmonad, xmonad-contrib
   hs-source-dirs:      src
   default-language:    Haskell2010
+  Data-Files:          data/statusbar.sh

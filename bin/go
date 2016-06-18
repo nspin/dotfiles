@@ -5,4 +5,4 @@ cmd=$(
      done) | gfzf -d '/' --with-nth '-1'
 )
 
-[ -n "$cmd" ] && $cmd &> /dev/null
+[ -n "$cmd" ] && $cmd &> /dev/null &
