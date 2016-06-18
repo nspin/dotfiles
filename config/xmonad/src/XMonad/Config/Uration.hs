@@ -24,7 +24,7 @@ import           System.Exit
 main :: IO ()
 main = do
 
-    xmproc <- spawnPipe "/run/current-system/sw/bin/xmobar"
+    xmproc <- spawnPipe "xmobar $HOME/dotfiles/config/xmobar/xmobarrc"
 
     let myPP = PP
             { ppCurrent = xmobarColor "#657b83" "#002b36" . squiggles

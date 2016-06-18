@@ -25,6 +25,7 @@ gmrun
 
 # x applications
 firefox
+# google-chrome
 
 # fonts
 dejavu_fonts
