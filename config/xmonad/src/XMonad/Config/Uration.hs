@@ -4,6 +4,8 @@
 
 module XMonad.Config.Uration where
 
+import  XMonad.Layout.My
+
 -- xmonad
 import           XMonad
 import qualified XMonad.StackSet as W
@@ -49,7 +51,7 @@ main = do
             , terminal           = "xterm"
             , modMask            = mod4Mask
             , startupHook        = return ()
-            , manageHook         = manageDocks
+            -- , manageHook         = manageDocks
             , handleEventHook    = const $ return (All True)
             , focusFollowsMouse  = True
             , clickJustFocuses   = True
@@ -58,7 +60,8 @@ main = do
 
             -- more complex
             , workspaces         = map fst tagKeys
-            , layoutHook         = avoidStruts $ vbox
+            , layoutHook         = Trivial
+            -- , layoutHook         = avoidStruts $ vbox
             , logHook            = dynamicLogWithPP myPP
             , keys               = myKeys
             , mouseBindings      = myMouseBindings
@@ -88,8 +91,10 @@ tagKeys = [ ("G", xK_g)
           ]
 
 -- layout for virtualbox on laptop
-vbox :: Choose (Mirror Tall) (Choose Tall Full) a
-vbox = Mirror tiled ||| tiled ||| Full
+vbox :: Space (Choose (Mirror Tall) (Choose Tall Full)) a
+vbox = Space 10 (Mirror tiled ||| tiled ||| Full)
+-- vbox :: Choose (Mirror Tall) (Choose Tall Full) a
+-- vbox = Mirror tiled ||| tiled ||| Full
   where
      tiled   = Tall nmaster delta ratio
      nmaster = 1
