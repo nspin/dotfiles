@@ -9,6 +9,8 @@ minibar:
         + _NET_WM_STRUT/_NET_WM_STRUT_PARTIAL
         + _NET_WM_WINDOW_TYPE
     - how to make xterm just one line?
+        echo -en '\033[3;0;0t' # position
+        echo -en '\033[8;1;0t' # size
         ```
         CSI Ps ; Ps ; Ps t
                   Window manipulation (from dtterm, as well as extensions).

@@ -2,9 +2,9 @@
 
 -- This file is based off of XMonad/Config.hs
 
-module XMonad.Config.Uration where
-
-import  XMonad.Layout.My
+module XMonad.Config.Uration
+    ( main
+    ) where
 
 -- xmonad
 import           XMonad
@@ -16,6 +16,7 @@ import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.ManageDocks
 import           XMonad.Util.Run
 import           XMonad.Util.WorkspaceCompare
+import           XMonad.Layout.Spacing
 
 -- base
 import           Data.Monoid
@@ -23,35 +24,34 @@ import qualified Data.Map as M
 import           System.IO
 import           System.Exit
 
+import           Control.Monad.Reader
+import           Control.Concurrent
+
 main :: IO ()
 main = do
 
-    xmproc <- spawnPipe "xmobar $HOME/dotfiles/config/xmobar/xmobarrc"
+    -- xmproc <- spawnPipe "xmobar $HOME/dotfiles/config/xmobar/xmobarrc"
+    xmproc <- spawnPipe "sh /home/nick/dotfiles/config/xmonad/data/statusbar.sh"
 
-    let myPP = PP
-            { ppCurrent = xmobarColor "#657b83" "#002b36" . squiggles
-            , ppVisible = lines
-            , ppHidden = lines
-            , ppHiddenNoWindows = pad . pad
-            , ppUrgent = xmobarColor "#dc322f" "" . lines
-            , ppSep = ""
-            , ppWsSep = ""
-            , ppTitle = const ""
-            , ppTitleSanitize = const ""
-            , ppLayout = const ""
-            , ppOrder = id
-            , ppSort = (fmap.fmap) reverse getSortByIndex
-            , ppExtras = []
-            , ppOutput = hPutStrLn xmproc
-            }
+    -- hGetLine xmproc
+    threadDelay 10000000
 
+    let myLogHook = do
+            s <- get
+            let Query x = checkDock
+                f :: Maybe Window
+                f = fmap W.focus (W.stack . W.workspace . W.current . windowset $ s)
+            cw <- case f of
+                    Just y -> Just <$> runReaderT x y
+                    Nothing -> return Nothing
+            io . hPutStrLn xmproc . show $ cw
         myConfig = def
             -- simple
             { borderWidth        = 1
             , terminal           = "xterm"
             , modMask            = mod4Mask
             , startupHook        = return ()
-            -- , manageHook         = manageDocks
+            , manageHook         = manageDocks
             , handleEventHook    = const $ return (All True)
             , focusFollowsMouse  = True
             , clickJustFocuses   = True
@@ -60,9 +60,8 @@ main = do
 
             -- more complex
             , workspaces         = map fst tagKeys
-            , layoutHook         = Trivial
-            -- , layoutHook         = avoidStruts $ vbox
-            , logHook            = dynamicLogWithPP myPP
+            , layoutHook         = avoidStruts $ vbox
+            , logHook            = myLogHook
             , keys               = myKeys
             , mouseBindings      = myMouseBindings
             }
@@ -91,8 +90,8 @@ tagKeys = [ ("G", xK_g)
           ]
 
 -- layout for virtualbox on laptop
-vbox :: Space (Choose (Mirror Tall) (Choose Tall Full)) a
-vbox = Space 10 (Mirror tiled ||| tiled ||| Full)
+vbox :: Choose (Mirror Tall) (Choose Tall Full) a
+vbox = Mirror tiled ||| tiled ||| Full
 -- vbox :: Choose (Mirror Tall) (Choose Tall Full) a
 -- vbox = Mirror tiled ||| tiled ||| Full
   where

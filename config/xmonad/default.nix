@@ -1,4 +1,4 @@
-{ mkDerivation, base, containers, stdenv, stm, text, xmonad
+{ mkDerivation, base, containers, mtl, stdenv, stm, text, xmonad
 , xmonad-contrib
 }:
 mkDerivation {
@@ -6,7 +6,7 @@ mkDerivation {
   version = "0.1.0.0";
   src = ./.;
   libraryHaskellDepends = [
-    base containers stm text xmonad xmonad-contrib
+    base containers mtl stm text xmonad xmonad-contrib
   ];
   license = stdenv.lib.licenses.mit;
 }

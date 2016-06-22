@@ -51,4 +51,6 @@ wirelesstools
 iw
 # networkmanager
 # networkmanagerapplet
+
+feh
 ]
