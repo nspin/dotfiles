@@ -1,31 +1,35 @@
 # TODO
 
+OPTIONS:
+    title as hook
+    embed in another window
+    wait a bit
+
+general:
+    take picture after incorrect login:
+        http://askubuntu.com/questions/253189/can-i-make-the-webcam-take-a-picture-when-an-incorrect-password-is-entered
+
 xmonad:
 
 minibar:
     - external library?
     - use xprop with $WINDOWID, or control sequences (OSC ...)
         + https://specifications.freedesktop.org/wm-spec/1.3/ar01s05.html
-        + _NET_WM_STRUT/_NET_WM_STRUT_PARTIAL
-        + _NET_WM_WINDOW_TYPE
     - how to make xterm just one line?
-        echo -en '\033[3;0;0t' # position
-        echo -en '\033[8;1;0t' # size
-        ```
-        CSI Ps ; Ps ; Ps t
-                  Window manipulation (from dtterm, as well as extensions).
-                  These controls may be disabled using the allowWindowOps
-                  resource.  Valid values for the first (and any additional
-                  parameters) are:
-                    Ps = 7  -> Refresh the xterm window.
-                    Ps = 8  ;  height ;  width -> Resize the text area to given
-                  height and width in characters.  Omitted parameters reuse the
-                  current height or width.  Zero parameters use the display's
-                  height or width.
-        ```
+        + $LINES
+    - pass windowid INTO statusline.hs
+
+    --- xterm --into
+
+    --- URXVT: -embed
+               -pty-fd
+        
 
 fzf launcher:
     - WM_TRANSIENT_FOR or both MIM and MAX size hints
+
+xterm:
+    - xterm\*highlightSelction: true
 
 ---
 
