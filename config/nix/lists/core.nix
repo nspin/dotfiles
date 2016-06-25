@@ -53,4 +53,7 @@ iw
 # networkmanagerapplet
 
 feh
+bind
+telnet
+xorg.xwininfo
 ]

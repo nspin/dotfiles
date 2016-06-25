@@ -14,6 +14,7 @@ import qualified XMonad.StackSet as W
 import           XMonad.Actions.CycleWS
 import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.ManageDocks
+import           XMonad.ManageHook
 import           XMonad.Util.Run
 import           XMonad.Util.WorkspaceCompare
 import           XMonad.Layout.Spacing
@@ -27,31 +28,33 @@ import           System.Exit
 import           Control.Monad.Reader
 import           Control.Concurrent
 
+import           Control.Exception
+
+import           Minibar
+
 main :: IO ()
 main = do
 
-    -- xmproc <- spawnPipe "xmobar $HOME/dotfiles/config/xmobar/xmobarrc"
-    xmproc <- spawnPipe "sh /home/nick/dotfiles/config/xmonad/data/statusbar.sh"
-
-    -- hGetLine xmproc
-    threadDelay 10000000
+    forkIO $ minibar (pure show)
 
     let myLogHook = do
-            s <- get
-            let Query x = checkDock
-                f :: Maybe Window
-                f = fmap W.focus (W.stack . W.workspace . W.current . windowset $ s)
-            cw <- case f of
-                    Just y -> Just <$> runReaderT x y
-                    Nothing -> return Nothing
-            io . hPutStrLn xmproc . show $ cw
+            return ()
+
+        -- myManageHook = ignore <+> avoid
+        myManageHook = ignore
+          where
+            ignore = title =? "statusline" --> doIgnore
+            -- avoid = Query . ReaderT $ \w -> do
+            --     (_, x, y, width, height, _, _) <- getGeometry w
+            --     return . Endo $ changeWith x y width height
+
         myConfig = def
             -- simple
             { borderWidth        = 1
             , terminal           = "xterm"
             , modMask            = mod4Mask
             , startupHook        = return ()
-            , manageHook         = manageDocks
+            , manageHook         = myManageHook
             , handleEventHook    = const $ return (All True)
             , focusFollowsMouse  = True
             , clickJustFocuses   = True
@@ -68,17 +71,10 @@ main = do
 
     xmonad myConfig
 
-  where
+-- changeWith :: Position -> Position -> Dimension -> Dimension -> WindowSet -> WindowSet
+-- changeWith x y width height (W.StackSet cur vis hid flo) = W.StackSet cur vis hid flo
 
-    -- xmobar styling
-    lines     = (" -" ++) . (++ "- ")
-    squiggles = (" ~" ++) . (++ "~ ")
-    -- nothing   = ("  " ++) . (++ "  ")
-
-    -- colors
-    darkish = "#031518"
-    border  = "#073642"
-        -- border "#586e85"
+border = "#073642"
 
 -- workspace tags, along with keys to access them
 tagKeys :: [(WorkspaceId, KeySym)]
