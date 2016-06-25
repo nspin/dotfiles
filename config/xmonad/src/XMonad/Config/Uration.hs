@@ -37,6 +37,8 @@ main = do
 
     forkIO $ minibar (pure show)
 
+    threadDelay 10000000
+
     let myLogHook = do
             return ()
 
@@ -54,7 +56,7 @@ main = do
             , terminal           = "xterm"
             , modMask            = mod4Mask
             , startupHook        = return ()
-            , manageHook         = myManageHook
+            , manageHook         = manageDocks -- myManageHook
             , handleEventHook    = const $ return (All True)
             , focusFollowsMouse  = True
             , clickJustFocuses   = True
