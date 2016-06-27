@@ -1,5 +1,6 @@
 line-editors/inputrc           /Users/spinalen/.inputrc
 line-editors/editrc            /Users/spinalen/.editrc
+line-editors/haskeline         /Users/spinalen/.haskeline
 git/gitconfig                  /Users/spinalen/.gitconfig
 multiplexers/tmux.osx.conf     /Users/spinalen/.tmux.conf
 bash/bashrc                    /Users/spinalen/.bashrc
