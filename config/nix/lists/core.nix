@@ -56,4 +56,5 @@ feh
 bind
 telnet
 xorg.xwininfo
+rxvt_unicode
 ]

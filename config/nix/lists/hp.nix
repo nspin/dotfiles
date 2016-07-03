@@ -1,5 +1,8 @@
 hp: with hp; [
 
+unix
+process
+
 attoparsec
 aeson
 wreq

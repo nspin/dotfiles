@@ -31,13 +31,28 @@ import           Control.Concurrent
 import           Control.Exception
 
 import           Minibar
+import           System.Posix.IO
+import           System.Posix.Terminal
+import           System.Process
 
 main :: IO ()
 main = do
 
-    forkIO $ minibar (pure show)
+    -- forkIO $ minibar (pure show)
+    (master, slave) <- openPseudoTerminal
+    slaveName <- getSlaveTerminalName master
+    let cmd = "xterm -title statusline -geometry 80x1+0+0 -S" ++ slaveName ++ "/" ++ show master
+    -- let cmd = "xterm -S" ++ slaveName ++ "/" ++ show master
+    -- let cmd = "urxvt -pty-fd " ++ show master
+    spawnCommand cmd
+    h <- fdToHandle slave
+    -- threadDelay 4000000
+    hPutStr h "\27[8;1;0t"
+    threadDelay 400000
+    hPutStr h "hi"
 
-    threadDelay 10000000
+    -- spawnCommand $ "xmessage '" ++ cmd ++ " # " ++ slaveName ++ "'"
+
 
     let myLogHook = do
             return ()
@@ -56,7 +71,7 @@ main = do
             , terminal           = "xterm"
             , modMask            = mod4Mask
             , startupHook        = return ()
-            , manageHook         = manageDocks -- myManageHook
+            , manageHook         = myManageHook
             , handleEventHook    = const $ return (All True)
             , focusFollowsMouse  = True
             , clickJustFocuses   = True
