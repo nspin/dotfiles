@@ -25,7 +25,6 @@ library
                      , stm
                      , text
                      , mtl
-                     , minibar
                      , process
                      , unix
                      , X11

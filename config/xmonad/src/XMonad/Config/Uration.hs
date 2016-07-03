@@ -1,3 +1,4 @@
+{-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE RecordWildCards #-}
 
 -- This file is based off of XMonad/Config.hs
@@ -30,13 +31,14 @@ import           Control.Concurrent
 
 import           Control.Exception
 
-import           Minibar
+-- import           Minibar
 import           System.Posix.IO
 import           System.Posix.Terminal
 import           System.Process
 
 import           Graphics.X11.Xinerama
 import           Graphics.X11.Xlib.Types
+import           XMonad.Layout.Gaps
 
 main :: IO ()
 main = do
@@ -70,11 +72,19 @@ main = do
 
         myManageHooks = status
           where
-            status = title =? "statusline" --> (resize >> doIgnore)
+            status = title =? "statusline" --> ((fmap gapify resize) <+> doIgnore)
+            resize :: Query Int
             resize = Query . ReaderT $ \window -> withDisplay $ \d -> liftIO $ do
                 [rect] <- getScreenInfo d
                 (_, x1, y1, w1, h1, _, _) <- getGeometry d window
                 moveResizeWindow d window x1 y1 (rect_width rect) h1
+                return $ fromIntegral h1
+            gapify :: Int -> Endo WindowSet
+            gapify h = Endo $ \ws -> W.mapLayout f ws
+                where
+                    f (Layout a) = Layout $ gaps [(U, h)] a
+                    -- f (Layout a) = Layout $ gaps [(U, 100)] a
+                
 
         myConfig = def
             -- simple
