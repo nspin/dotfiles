@@ -35,6 +35,9 @@ import           System.Posix.IO
 import           System.Posix.Terminal
 import           System.Process
 
+import           Graphics.X11.Xinerama
+import           Graphics.X11.Xlib.Types
+
 main :: IO ()
 main = do
 
@@ -47,9 +50,9 @@ main = do
     spawnCommand cmd
     h <- fdToHandle slave
     -- threadDelay 4000000
-    hPutStr h "\27[8;1;0t"
-    threadDelay 400000
-    hPutStr h "hi"
+    -- hPutStr h "\27[8;1;0t"
+    -- threadDelay 400000
+    -- hPutStr h "hi"
 
     -- spawnCommand $ "xmessage '" ++ cmd ++ " # " ++ slaveName ++ "'"
 
@@ -65,13 +68,21 @@ main = do
             --     (_, x, y, width, height, _, _) <- getGeometry w
             --     return . Endo $ changeWith x y width height
 
+        myManageHooks = status
+          where
+            status = title =? "statusline" --> (resize >> doIgnore)
+            resize = Query . ReaderT $ \window -> withDisplay $ \d -> liftIO $ do
+                [rect] <- getScreenInfo d
+                (_, x1, y1, w1, h1, _, _) <- getGeometry d window
+                moveResizeWindow d window x1 y1 (rect_width rect) h1
+
         myConfig = def
             -- simple
             { borderWidth        = 1
             , terminal           = "xterm"
             , modMask            = mod4Mask
             , startupHook        = return ()
-            , manageHook         = myManageHook
+            , manageHook         = myManageHooks
             , handleEventHook    = const $ return (All True)
             , focusFollowsMouse  = True
             , clickJustFocuses   = True
