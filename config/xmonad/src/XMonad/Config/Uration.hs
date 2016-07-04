@@ -1,49 +1,27 @@
-{-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE RecordWildCards #-}
+
 
 module XMonad.Config.Uration
     ( main
     ) where
 
--- xmonad
+
+import           XMonad.Util.StatusBar
+import           XMonad.Util.PopUp
+import           XMonad.Util.Terminal
+
 import           XMonad
 import qualified XMonad.StackSet as W
 
--- xmonad-contrib
 import           XMonad.Actions.CycleWS
-import           XMonad.Hooks.DynamicLog
-import           XMonad.Hooks.ManageDocks
-import           XMonad.ManageHook
-import           XMonad.Util.Run
-import           XMonad.Util.WorkspaceCompare
-import           XMonad.Layout.Spacing
 
--- base
 import           Data.Monoid
 import qualified Data.Map as M
-import           System.IO
+import           Control.Monad
 import           System.Exit
 
-import           Control.Monad.Reader
-import           Control.Concurrent
-
-import           Control.Exception
-
--- import           Minibar
-import           System.Posix.Types
 import           System.Posix.IO
-import           System.Posix.Terminal
-import           System.Process
 
-import           Graphics.X11.Xinerama
-import           Graphics.X11.Xlib.Types
-import           XMonad.Layout.Gaps
-
-import           Data.IORef
-
-import XMonad.Util.StatusBar
-import XMonad.Util.PopUp
-import XMonad.Util.Terminal
 
 main :: IO ()
 main = do
@@ -54,8 +32,8 @@ main = do
 
         myManageHooks = statusBar <+> popUp
           where
-            statusBar = title =? "statusbar" --> (mkStatusBar U 0 <+> doIgnore)
-            popUp     = title =? "popup"     --> (mkPopUp 50 50 <+> doFloat)
+            statusBar = title =? "statusbar" --> mkStatusBar U 0
+            popUp     = title =? "popup"     --> mkPopUp 50 50
 
         myConfig = def
             -- simple
@@ -72,7 +50,7 @@ main = do
 
             -- more complex
             , workspaces         = map fst tagKeys
-            , layoutHook         = avoidStruts $ vbox
+            , layoutHook         = vbox
             , logHook            = myLogHook
             , keys               = myKeys
             , mouseBindings      = myMouseBindings

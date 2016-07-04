@@ -1,28 +1,23 @@
-{-# LANGUAGE FlexibleInstances #-}
-{-# LANGUAGE MultiParamTypeClasses #-}
-{-# LANGUAGE RecordWildCards #-}
-
 module XMonad.Util.Terminal
     ( spawnPty
     , unitsToDimension
+    , units2DToDimensions
+    , Direction2D(..)
     ) where
 
-import           XMonad
-import qualified XMonad.StackSet as W
-import           Data.List
-import           Data.Monoid
-
-import           System.Posix.Types
-import           System.Posix.IO
-import           System.Posix.Terminal
-import           System.Process
 
 import           Graphics.X11.Xinerama
+import           Graphics.X11.Xlib.Extras
 import           Graphics.X11.Xlib.Types
-import           XMonad.Layout.Gaps
 
-import           Data.Word
-import           Control.Monad.Reader
+import           System.Posix.Terminal
+import           System.Posix.Types
+
+import           System.Process
+
+
+data Direction2D = U | D | L | R
+    deriving (Eq, Read, Show)
 
 spawnPty :: [String] -> IO Fd
 spawnPty args = do
@@ -43,4 +38,10 @@ unitsToDimension sh dir units = do
                     D -> y
                     L -> x
                     R -> x
+
+units2DToDimensions :: SizeHints -> Integer -> Integer -> Maybe (Dimension, Dimension)
+units2DToDimensions sh dir units = do
+     (minX, minY) <- sh_min_size sh
+     (incX, incY) <- sh_resize_inc sh
+     return (minX + fromIntegral units * incX, minY + fromIntegral units * incY)
 

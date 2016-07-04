@@ -2,29 +2,22 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE RecordWildCards #-}
 
+
 module XMonad.Util.StatusBar
     ( FakeStrut(..)
     , mkStatusBar
     ) where
 
+
+import           XMonad.Util.Terminal
+
 import           XMonad
 import qualified XMonad.StackSet as W
+
+import           Control.Monad.Reader
 import           Data.List
 import           Data.Monoid
 
-import           System.Posix.Types
-import           System.Posix.IO
-import           System.Posix.Terminal
-import           System.Process
-
-import           Graphics.X11.Xinerama
-import           Graphics.X11.Xlib.Types
-import           XMonad.Layout.Gaps
-
-import           Data.Word
-import           Control.Monad.Reader
-
-import           XMonad.Util.Terminal
 
 currentScreen :: X ScreenId
 currentScreen = gets $ W.screen . W.current . windowset
@@ -66,13 +59,12 @@ instance LayoutClass l a => LayoutClass (FakeStrut l) a where
         ]
 
 mkStatusBar :: Direction2D -> Integer -> ManageHook
-mkStatusBar dir units = Query (ReaderT go)
+mkStatusBar dir units = Query (ReaderT go) <+> doIgnore
   where
-    go :: Window -> X (Endo WindowSet)
     go w = do
         sh <- withDisplay $ \d -> io (getWMNormalHints d w)
         case unitsToDimension sh dir units of
-            Nothing -> error "XMonad.Util.mkStatusBar"
+            Nothing -> error "XMonad.Util.StatusBar.mkStatusBar"
             Just dim -> do
                 nb <- asks normalBorder
                 bw <- asks $ borderWidth . config
@@ -85,4 +77,4 @@ mkStatusBar dir units = Query (ReaderT go)
                 tileWindow w statusBarRect
                 sid <- currentScreen
                 return $ Endo . W.mapLayout $ \(Layout a) -> Layout (FakeStrut sid dir fullDim a)
-            
+
