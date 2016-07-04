@@ -17,6 +17,9 @@ cabal-version:       >=1.10
 
 library
   exposed-modules:     XMonad.Config.Uration
+  other-modules:       XMonad.Util.StatusBar
+                     , XMonad.Util.PopUp
+                     , XMonad.Util.Terminal
   other-extensions:    RecordWildCards
   build-depends:       base >=4.8 && <4.9
                      , containers >=0.5 && <0.6

@@ -1,8 +1,6 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE RecordWildCards #-}
 
--- This file is based off of XMonad/Config.hs
-
 module XMonad.Config.Uration
     ( main
     ) where
@@ -32,6 +30,7 @@ import           Control.Concurrent
 import           Control.Exception
 
 -- import           Minibar
+import           System.Posix.Types
 import           System.Posix.IO
 import           System.Posix.Terminal
 import           System.Process
@@ -40,51 +39,23 @@ import           Graphics.X11.Xinerama
 import           Graphics.X11.Xlib.Types
 import           XMonad.Layout.Gaps
 
+import           Data.IORef
+
+import XMonad.Util.StatusBar
+import XMonad.Util.PopUp
+import XMonad.Util.Terminal
+
 main :: IO ()
 main = do
 
-    -- forkIO $ minibar (pure show)
-    (master, slave) <- openPseudoTerminal
-    slaveName <- getSlaveTerminalName master
-    let cmd = "xterm -title statusline -geometry 80x1+0+0 -S" ++ slaveName ++ "/" ++ show master
-    -- let cmd = "xterm -S" ++ slaveName ++ "/" ++ show master
-    -- let cmd = "urxvt -pty-fd " ++ show master
-    spawnCommand cmd
-    h <- fdToHandle slave
-    -- threadDelay 4000000
-    -- hPutStr h "\27[8;1;0t"
-    -- threadDelay 400000
-    -- hPutStr h "hi"
+    pty <- spawnPty ["-title", "statusbar"]
 
-    -- spawnCommand $ "xmessage '" ++ cmd ++ " # " ++ slaveName ++ "'"
+    let myLogHook = void . io $ fdWrite pty "hi"
 
-
-    let myLogHook = do
-            return ()
-
-        -- myManageHook = ignore <+> avoid
-        myManageHook = ignore
+        myManageHooks = statusBar <+> popUp
           where
-            ignore = title =? "statusline" --> doIgnore
-            -- avoid = Query . ReaderT $ \w -> do
-            --     (_, x, y, width, height, _, _) <- getGeometry w
-            --     return . Endo $ changeWith x y width height
-
-        myManageHooks = status
-          where
-            status = title =? "statusline" --> ((fmap gapify resize) <+> doIgnore)
-            resize :: Query Int
-            resize = Query . ReaderT $ \window -> withDisplay $ \d -> liftIO $ do
-                [rect] <- getScreenInfo d
-                (_, x1, y1, w1, h1, _, _) <- getGeometry d window
-                moveResizeWindow d window x1 y1 (rect_width rect) h1
-                return $ fromIntegral h1
-            gapify :: Int -> Endo WindowSet
-            gapify h = Endo $ \ws -> W.mapLayout f ws
-                where
-                    f (Layout a) = Layout $ gaps [(U, h)] a
-                    -- f (Layout a) = Layout $ gaps [(U, 100)] a
-                
+            statusBar = title =? "statusbar" --> (mkStatusBar U 0 <+> doIgnore)
+            popUp     = title =? "popup"     --> (mkPopUp 50 50 <+> doFloat)
 
         myConfig = def
             -- simple
@@ -108,9 +79,6 @@ main = do
             }
 
     xmonad myConfig
-
--- changeWith :: Position -> Position -> Dimension -> Dimension -> WindowSet -> WindowSet
--- changeWith x y width height (W.StackSet cur vis hid flo) = W.StackSet cur vis hid flo
 
 border = "#073642"
 
