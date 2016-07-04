@@ -5,7 +5,7 @@
 
 module XMonad.Util.StatusBar
     ( FakeStrut(..)
-    , mkStatusBar
+    , doStatusBar
     ) where
 
 
@@ -58,23 +58,26 @@ instance LayoutClass l a => LayoutClass (FakeStrut l) a where
         , description l
         ]
 
-mkStatusBar :: Direction2D -> Integer -> ManageHook
-mkStatusBar dir units = Query (ReaderT go) <+> doIgnore
+doStatusBar :: String -> Direction2D -> Integer -> ManageHook
+doStatusBar border dir units = Query (ReaderT go) <+> doIgnore
   where
     go w = do
         sh <- withDisplay $ \d -> io (getWMNormalHints d w)
         case unitsToDimension sh dir units of
-            Nothing -> error "XMonad.Util.StatusBar.mkStatusBar"
+            Nothing -> error "XMonad.Util.StatusBar.doStatusBar"
             Just dim -> do
-                nb <- asks normalBorder
-                bw <- asks $ borderWidth . config
-                withDisplay $ \d -> io $ do
-                    setWindowBorderWidth d w bw
-                    setWindowBorder d w nb
-                sr <- gets $ screenRect . W.screenDetail . W.current . windowset
-                let fullDim = (dim + fromIntegral (2 * bw))
-                    (statusBarRect, _) = splitRectangle dir fullDim sr
-                tileWindow w statusBarRect
-                sid <- currentScreen
-                return $ Endo . W.mapLayout $ \(Layout a) -> Layout (FakeStrut sid dir fullDim a)
+                mpix <- withDisplay $ \d -> io (initColor d border)
+                case mpix of
+                    Nothing -> error "XMonad.Util.StatusBar.doStatusBar"
+                    Just pix -> do
+                        bw <- asks $ borderWidth . config
+                        withDisplay $ \d -> io $ do
+                            setWindowBorderWidth d w bw
+                            setWindowBorder d w pix
+                        sr <- gets $ screenRect . W.screenDetail . W.current . windowset
+                        let fullDim = (dim + fromIntegral (2 * bw))
+                            (statusBarRect, _) = splitRectangle dir fullDim sr
+                        tileWindow w statusBarRect
+                        sid <- currentScreen
+                        return $ Endo . W.mapLayout $ \(Layout a) -> Layout (FakeStrut sid dir fullDim a)
 

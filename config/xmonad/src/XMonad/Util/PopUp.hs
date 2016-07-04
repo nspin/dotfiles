@@ -2,7 +2,7 @@
 
 
 module XMonad.Util.PopUp
-    ( mkPopUp
+    ( doPopUp
     ) where
 
 
@@ -23,21 +23,16 @@ rationalRectIn x y Rectangle{..} = W.RationalRect ((1 - w) / 2) ((1 - h) / 2) w 
     h = fi y % fi rect_width
     fi z = fromIntegral z
 
-mkPopUp :: Integer -> Integer -> ManageHook
-mkPopUp x y = Query (ReaderT go)
+doPopUp :: Integer -> Integer -> ManageHook
+doPopUp x y = Query (ReaderT go)
   where
     go w = do
         sh <- withDisplay $ \d -> io (getWMNormalHints d w)
         case units2DToDimensions sh x y of
-            Nothing -> error "XMonad.Util.PopUp.mkPopUp"
+            Nothing -> error "XMonad.Util.PopUp.doPopUp"
             Just (xd, yd) -> do
-                nb <- asks normalBorder
                 bw <- asks $ borderWidth . config
-                withDisplay $ \d -> io $ do
-                    setWindowBorderWidth d w bw
-                    setWindowBorder d w nb
                 sr <- gets $ screenRect . W.screenDetail . W.current . windowset
                 let totalBorder = fromIntegral (2 * bw)
                     rr = rationalRectIn (xd + totalBorder) (yd + totalBorder) sr
                 return . Endo $ W.float w rr
-

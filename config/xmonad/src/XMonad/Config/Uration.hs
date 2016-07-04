@@ -19,8 +19,25 @@ import           Data.Monoid
 import qualified Data.Map as M
 import           Control.Monad
 import           System.Exit
-
 import           System.Posix.IO
+
+
+base01 = "#586e75"
+base02 = "#073642"
+green  = "#859900"
+
+dmenu = "dmenu_run -fn \"-*-*-*-*-*-*-18-*-*-*-*-*-*-*\""
+
+
+floatBorderColor :: String -> X ()
+floatBorderColor color = do
+    keys <- gets $ M.keys . W.floating . windowset
+    withDisplay $ \d -> io $ do
+        mpix <- initColor d color
+        case mpix of
+            Nothing -> error "XMonad.Config.Uration.floatBorderColor"
+            Just pix -> let go w = setWindowBorder d w pix
+                        in mapM_ go keys
 
 
 main :: IO ()
@@ -28,12 +45,14 @@ main = do
 
     pty <- spawnPty ["-title", "statusbar"]
 
-    let myLogHook = void . io $ fdWrite pty "hi"
+    let myLogHook = do
+            io $ fdWrite pty "hi"
+            floatBorderColor base01
 
         myManageHooks = statusBar <+> popUp
           where
-            statusBar = title =? "statusbar" --> mkStatusBar U 0
-            popUp     = title =? "popup"     --> mkPopUp 50 50
+            statusBar = title =? "statusbar" --> doStatusBar base02 U 0
+            popUp     = title =? "popup"     --> doPopUp 50 50
 
         myConfig = def
             -- simple
@@ -45,8 +64,8 @@ main = do
             , handleEventHook    = const $ return (All True)
             , focusFollowsMouse  = True
             , clickJustFocuses   = True
-            , normalBorderColor  = border
-            , focusedBorderColor = border
+            , normalBorderColor  = base02
+            , focusedBorderColor = base02
 
             -- more complex
             , workspaces         = map fst tagKeys
@@ -57,8 +76,6 @@ main = do
             }
 
     xmonad myConfig
-
-border = "#073642"
 
 -- workspace tags, along with keys to access them
 tagKeys :: [(WorkspaceId, KeySym)]
@@ -145,14 +162,6 @@ myKeys (XConfig {..}) = M.fromList $ meta ++ interWorkspace ++ intraWorkspace
         -- misc
         , ((modMask, xK_i), withFocused $ windows . W.sink) -- %! Push window back into tiling
         ]
-
--- dmenu command -- TODO make this work
-dmenu :: String
-dmenu = "dmenu_run -fn \"-*-*-*-*-*-*-18-*-*-*-*-*-*-*\""
-    -- dmenu = "dmenu_run -fn \"-*-dejavu sans mono-*-*-*-*-*-*-*-*-*-*-*-*\""
-    -- dmenu = "dmenu_run -fn \"-*-fixed-medium-*-*-*-18-*-*-*-*-*-*-*\""
-    -- dmenu = "dmenu_run -fn \"-*-*-medium-r-*-*-18-*-*-*-*-*-*-*\""
-    -- dmenu = "dmenu_run"
 
 -- mouse bindings
 myMouseBindings :: XConfig Layout -> M.Map (KeyMask, Button) (Window -> X ())
