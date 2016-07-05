@@ -13,6 +13,8 @@ import           XMonad.Util.Terminal
 import           Minibar
 import           Minibar.My
 
+import           System.Posix.LockedFd
+
 import           XMonad
 import qualified XMonad.StackSet as W
 
@@ -49,7 +51,10 @@ main = do
 
     pty <- spawnPty ["-title", "statusbar"]
 
-    forkIO $ minibar pty myMinibar
+    -- minibar pty myMinibar
+    -- forkIO $ minibar lpty myMinibar
+    -- threadDelay 5000000
+    -- fdWrite pty "hello"
 
     let myLogHook = do
             io $ fdWrite pty "hi"

@@ -4,6 +4,7 @@ module Data.LOT
     , rightpad
     , printables
     , stradle
+    , raw
     , Chunk(..)
     ) where
 
@@ -40,3 +41,6 @@ rightpad n s = s ++ replicate (max 0 (n - length s)) ' '
 stradle :: Int -> [Chunk] -> [Chunk] -> [Chunk]
 stradle width c0 c1 = c0 <> [Chunk [] (replicate n ' ')] <> c1
   where n = width - (printables c0 + printables c1)
+
+raw :: String -> [Chunk]
+raw = (:[]) . Chunk []
