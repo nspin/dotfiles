@@ -10,11 +10,15 @@ import           XMonad.Util.StatusBar
 import           XMonad.Util.PopUp
 import           XMonad.Util.Terminal
 
+import           Minibar
+import           Minibar.My
+
 import           XMonad
 import qualified XMonad.StackSet as W
 
 import           XMonad.Actions.CycleWS
 
+import           Control.Concurrent
 import           Data.Monoid
 import qualified Data.Map as M
 import           Control.Monad
@@ -44,6 +48,8 @@ main :: IO ()
 main = do
 
     pty <- spawnPty ["-title", "statusbar"]
+
+    forkIO $ minibar pty myMinibar
 
     let myLogHook = do
             io $ fdWrite pty "hi"
