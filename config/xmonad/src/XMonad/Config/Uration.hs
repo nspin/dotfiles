@@ -13,8 +13,6 @@ import           XMonad.Util.Terminal
 import           Minibar
 import           Minibar.My
 
-import           System.Posix.LockedFd
-
 import           XMonad
 import qualified XMonad.StackSet as W
 
@@ -25,7 +23,7 @@ import           Data.Monoid
 import qualified Data.Map as M
 import           Control.Monad
 import           System.Exit
-import           System.Posix.IO
+import           System.IO
 
 
 base01 = "#586e75"
@@ -52,12 +50,12 @@ main = do
     pty <- spawnPty ["-title", "statusbar"]
 
     -- minibar pty myMinibar
-    -- forkIO $ minibar lpty myMinibar
+    forkIO $ minibar pty myMinibar
     -- threadDelay 5000000
     -- fdWrite pty "hello"
 
     let myLogHook = do
-            io $ fdWrite pty "hi"
+            io $ hPutStr pty "hi" >> hFlush pty
             floatBorderColor base01
 
         myManageHooks = statusBar <+> popUp

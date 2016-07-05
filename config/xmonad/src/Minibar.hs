@@ -6,18 +6,22 @@ import Data.LOT
 
 import Control.Monad
 import Control.Variable
-import System.Posix.IO
-import System.Posix.Types
+import System.IO
 import System.Console.ANSI
 import System.Console.Terminal.Size
+import System.Process
 
-minibar :: Fd -> VVar (Int -> [Chunk]) -> IO ()
+minibar :: Handle -> VVar (Int -> [Chunk]) -> IO ()
 minibar pty v = do
-    fdWrite pty hideCursorCode
+    hHideCursor pty
     actOn v $ \f -> do
-        mwindow <- fdSize pty
+        mwindow <- hSize pty
         case mwindow of
             Nothing -> error "Minibar.minibar"
-            Just (Window h w) -> void $ do
-                fdWrite pty clearScreenCode
-                fdWrite pty . render $ f w
+            Just (Window h w) -> do
+                hClearScreen pty
+                hPutStr pty . render $ f 80
+                -- hPutStr pty . render $ f w
+                hFlush pty
+                spawnCommand $ "echo '" ++ show w ++ "' >> ~/wat"
+                return ()
