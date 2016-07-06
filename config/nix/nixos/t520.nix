@@ -2,17 +2,15 @@
 
 {
   imports = [
-    ./pieces/common.nix
-    ./pieces/normal.nix
-    ./pieces/current.nix
+    ./common.nix
   ];
 
   environment.systemPackages = pkgs.mylib.gatherLists pkgs [
-    ../lists/core.nix
-    ../lists/linux.nix
-    # ../lists/huge.nix
-    # ../lists/current.nix
-    ../lists/520.nix
+    ./lists/core.nix
+    ./lists/linux.nix
+    # ./lists/huge.nix
+    # ./lists/current.nix
+    ./lists/520.nix
   ];
  
   boot.loader.efi.canTouchEfiVariables = true;
