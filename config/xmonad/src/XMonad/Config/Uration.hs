@@ -56,13 +56,6 @@ main = do
 
     -- forkIO $ minibar pty myMinibar
 
-    let go = do
-            print "sup"
-            hFlush stdout
-            threadDelay 10000
-
-    forkIO $ catch (forever go) (\e -> print (e :: SomeException))
-
     let myLogHook = do
             io $ hPutStr pty "hi" >> hFlush pty
             floatBorderColor base01
