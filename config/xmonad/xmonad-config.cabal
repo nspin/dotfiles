@@ -8,6 +8,11 @@ build-type:          Simple
 extra-source-files:  README.md
 cabal-version:       >=1.10
 
+executable xmonad
+    main-is:           Main.hs
+    build-depends:     base
+                     , xmonad-config
+
 library
 
   hs-source-dirs:      src

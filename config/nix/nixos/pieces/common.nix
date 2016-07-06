@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  imports = [ ../modules/wmdev.nix ];
+
   nixpkgs.config = import <dotfig/nix/config.nix>;
 
   networking.hostName = "nixos";
@@ -38,10 +40,15 @@
     enable = true;
     layout = "us";
 
-    windowManager.xmonad.enable = true;
-    windowManager.xmonad.extraPackages = haskellPackages: [
-      (haskellPackages.callPackage <dotfig/xmonad> {})
-    ];
+    windowManager.wmdev = {
+      enable = true;
+      command = "/home/nick/dotfiles/config/xmonad/dist/build/xmonad/xmonad";
+    };
+
+    # windowManager.xmonad.enable = true;
+    # windowManager.xmonad.extraPackages = haskellPackages: [
+    #   (haskellPackages.callPackage <dotfig/xmonad> {})
+    # ];
 
     displayManager.slim.enable = true;
     displayManager.slim.defaultUser = "nick";
