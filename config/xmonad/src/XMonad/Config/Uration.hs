@@ -11,6 +11,7 @@ import           XMonad.Util.PopUp
 import           XMonad.Util.Terminal
 
 import           Minibar
+import           Control.Variable
 import           Minibar.My
 
 import           XMonad
@@ -19,6 +20,7 @@ import qualified XMonad.StackSet as W
 import           XMonad.Actions.CycleWS
 
 import           Control.Concurrent
+import           Control.Exception
 import           Data.Monoid
 import qualified Data.Map as M
 import           Control.Monad
@@ -47,12 +49,19 @@ floatBorderColor color = do
 main :: IO ()
 main = do
 
+    hSetBuffering stdout NoBuffering
+    hSetBuffering stderr NoBuffering
+
     pty <- spawnPty ["-title", "statusbar"]
 
-    -- minibar pty myMinibar
-    forkIO $ minibar pty myMinibar
-    -- threadDelay 5000000
-    -- fdWrite pty "hello"
+    -- forkIO $ minibar pty myMinibar
+
+    let go = do
+            print "sup"
+            hFlush stdout
+            threadDelay 10000
+
+    forkIO $ catch (forever go) (\e -> print (e :: SomeException))
 
     let myLogHook = do
             io $ hPutStr pty "hi" >> hFlush pty

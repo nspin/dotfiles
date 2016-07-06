@@ -9,6 +9,12 @@ in
   options = {
     services.xserver.windowManager.wmdev = {
       enable = mkEnableOption "wmdev";
+      logDir = mkOption {
+        default = "/home/nick/log/wmdev";
+        description = ''
+          Directory for log files
+        '';
+      };
       command = mkOption {
         default = "true";
         description = ''
@@ -22,7 +28,8 @@ in
       session = [{
         name = "wmdev";
         start = ''
-          ${cfg.command} &
+          mkdir -p ${cfg.logDir}
+          ${cfg.command} > ${cfg.logDir}/out.log 2> ${cfg.logDir}/err.log &
           waitPID=$!
         '';
       }];

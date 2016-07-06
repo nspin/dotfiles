@@ -28,7 +28,9 @@ spawnPty args = do
     slaveName <- getSlaveTerminalName master
     let ptyArg = "-S" ++ slaveName ++ "/" ++ show master
     spawnProcess "xterm" (ptyArg:args)
-    fdToHandle slave
+    h <- fdToHandle slave
+    hSetBuffering h NoBuffering
+    return h
 
 unitsToDimension :: SizeHints -> Direction2D -> Integer -> Maybe Dimension
 unitsToDimension sh dir units = do

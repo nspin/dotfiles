@@ -26,7 +26,7 @@ import qualified Data.Text as T
 
 data Chunk = Chunk { sgr :: [SGR]
                    , contents :: String
-                   }
+                   } deriving Show
 
 printables :: [Chunk] -> Int
 printables = sum . map (length . contents)
