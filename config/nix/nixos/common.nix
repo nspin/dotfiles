@@ -46,7 +46,7 @@
 
     windowManager.wmdev = {
       enable = true;
-      command = "/home/nick/dotfiles/config/xmonad/dist/build/xmonad/xmonad";
+      command = "/home/nick/bin/wm";
     };
 
     # windowManager.xmonad.enable = true;

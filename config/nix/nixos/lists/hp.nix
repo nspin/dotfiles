@@ -44,4 +44,6 @@ AES
 
 data-default-class
 
+xmonad
+xmonad-contrib
 ]

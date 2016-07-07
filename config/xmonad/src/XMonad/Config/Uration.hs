@@ -11,8 +11,9 @@ import           XMonad.Util.PopUp
 import           XMonad.Util.Terminal
 
 import           Minibar
-import           Control.Variable
 import           Minibar.My
+import           Data.LOT
+import           Control.Variable
 
 import           XMonad
 import qualified XMonad.StackSet as W
@@ -45,7 +46,6 @@ floatBorderColor color = do
             Just pix -> let go w = setWindowBorder d w pix
                         in mapM_ go keys
 
-
 main :: IO ()
 main = do
 
@@ -54,11 +54,9 @@ main = do
 
     pty <- spawnPty ["-title", "statusbar"]
 
-    -- forkIO $ minibar pty myMinibar
+    forkIO $ minibar pty myMinibar
 
-    let myLogHook = do
-            io $ hPutStr pty "hi" >> hFlush pty
-            floatBorderColor base01
+    let myLogHook = floatBorderColor base01
 
         myManageHooks = statusBar <+> popUp
           where

@@ -9,8 +9,9 @@ extra-source-files:  README.md
 cabal-version:       >=1.10
 
 executable xmonad
-    main-is:           Main.hs
-    build-depends:     base
+  main-is:             Main.hs
+  ghc-options:         -threaded
+  build-depends:       base
                      , xmonad-config
 
 library
