@@ -29,11 +29,10 @@ import           System.Exit
 import           System.IO
 
 
-base01 = "#586e75"
-base02 = "#073642"
-green  = "#859900"
-
-dmenu = "dmenu_run -fn \"-*-*-*-*-*-*-18-*-*-*-*-*-*-*\""
+myNormalBorderColor = black
+myFocusedBorderColor = base00
+myFloatBorderColor = myNormalBorderColor
+-- myFloatBorderColor = base01
 
 
 floatBorderColor :: String -> X ()
@@ -56,11 +55,11 @@ main = do
 
     forkIO $ minibar pty myMinibar
 
-    let myLogHook = floatBorderColor base01
+    let myLogHook = floatBorderColor myFloatBorderColor
 
         myManageHooks = statusBar <+> popUp
           where
-            statusBar = title =? "statusbar" --> doStatusBar base02 U 0
+            statusBar = title =? "statusbar" --> doStatusBar myNormalBorderColor U 0
             popUp     = title =? "popup"     --> doPopUp 50 50
 
         myConfig = def
@@ -73,8 +72,8 @@ main = do
             , handleEventHook    = const $ return (All True)
             , focusFollowsMouse  = True
             , clickJustFocuses   = True
-            , normalBorderColor  = base02
-            , focusedBorderColor = base02
+            , normalBorderColor  = myNormalBorderColor
+            , focusedBorderColor = myFocusedBorderColor
 
             -- more complex
             , workspaces         = map fst tagKeys
@@ -182,3 +181,27 @@ myMouseBindings (XConfig {..}) = M.fromList
     -- mod-button3 %! Set the window to floating mode and resize by dragging
     , ((modMask, button3), \w -> focus w >> mouseResizeWindow w >> windows W.shiftMaster)
     ]
+
+
+dmenu = "dmenu_run -fn \"-*-*-*-*-*-*-18-*-*-*-*-*-*-*\""
+
+
+base03  = "#002b36"
+base02  = "#073642"
+base01  = "#586e75"
+base00  = "#657b83"
+base0   = "#839496"
+base1   = "#93a1a1"
+base2   = "#eee8d5"
+base3   = "#fdf6e3"
+
+yellow  = "#b58900"
+orange  = "#cb4b16"
+red     = "#dc322f"
+magenta = "#d33682"
+violet  = "#6c71c4"
+blue    = "#268bd2"
+cyan    = "#2aa198"
+green   = "#859900"
+
+black  = "#000000"
