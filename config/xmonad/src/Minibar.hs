@@ -19,7 +19,6 @@ minibar pty v = do
         case mwindow of
             Nothing -> error "Minibar.minibar"
             Just (Window h w) -> do
-                hClearScreen pty
                 hPutChar pty '\r'
                 hPutStr pty . render $ f w
                 hFlush pty
