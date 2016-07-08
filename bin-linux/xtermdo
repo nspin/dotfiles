@@ -24,12 +24,11 @@ cleanup() {
 
 trap cleanup EXIT SIGINT SIGTERM
 
-cmd="$1"
+cmd="sh -c $1 < $fifo_0 > $fifo_1; echo \$? > $fifo_r"
+
 shift
 
-dashe="sh -c $cmd < $fifo_0 > $fifo_1; echo \$? > $fifo_r"
-
-xterm "$@" -e "$dashe" &
+xterm "$@" -e sh -c "$cmd" &
 cat <&0 > $fifo_0 &
 cat $fifo_1
 exit "$(cat $fifo_r)"

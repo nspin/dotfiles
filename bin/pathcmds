@@ -1,0 +1,11 @@
+#!/bin/sh
+
+IFS=:
+
+path () {
+    for x in $PATH; do
+       [ -d "$x" ] && find -L "$x" -maxdepth 1 -executable -type f
+    done
+}
+
+path | sed 's#.*/##' | sort

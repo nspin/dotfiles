@@ -1,0 +1,5 @@
+#!/bin/sh
+# TODO use exec? disown? nohup?
+cmd=$(pathcmds | fzf)
+$cmd &> /dev/null &
+

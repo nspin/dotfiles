@@ -103,6 +103,9 @@ vbox = Mirror tiled ||| tiled ||| Full
      delta   = 3/100
 
 
+launch :: String
+launch = "xlaunch -title popup"
+
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys (XConfig {..}) = M.fromList $ meta ++ interWorkspace ++ intraWorkspace
 
@@ -112,7 +115,7 @@ myKeys (XConfig {..}) = M.fromList $ meta ++ interWorkspace ++ intraWorkspace
 
         -- launching and killing programs
         [ ((modMask, xK_c), spawn terminal) -- Launch terminal
-        , ((modMask, xK_u), spawn go) -- Launch dmenu
+        , ((modMask, xK_u), spawn launch) -- Launch hacky launcher
         , ((modMask, xK_x), kill) -- Close the focused window
 
         -- quit, or restart
