@@ -30,6 +30,7 @@ library
                      , Minibar.My
                      , Minibar.Actors
                      , System.Posix.LockedFd
+                     , Data.Colors
 
   build-depends:       base >=4.8 && <4.9
                      , ansi-terminal

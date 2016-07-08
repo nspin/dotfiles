@@ -1,0 +1,36 @@
+#!/bin/sh
+#
+# usage: xtermdo COMMAND [XTERM_OPTIONS...]
+#
+# runs COMMAND on an xterm, sharing stdin and stdout with it (kind of),
+# and returning with its exit code
+
+set -e
+
+prefix="/tmp/xtermdo"
+suffix="$RANDOM"
+
+fifo_0="$prefix-0-$suffix"
+fifo_1="$prefix-1-$suffix"
+fifo_r="$prefix-r-$suffix"
+
+mkfifo -m o+w $fifo_0
+mkfifo -m o+w $fifo_1
+mkfifo -m o+w $fifo_r
+
+cleanup() {
+  rm -f $fifo_0 $fifo_1 $fifo_r
+}
+
+trap cleanup EXIT SIGINT SIGTERM
+
+cmd="$1"
+shift
+
+dashe="sh -c $cmd < $fifo_0 > $fifo_1; echo \$? > $fifo_r"
+
+xterm "$@" -e "$dashe" &
+cat <&0 > $fifo_0 &
+cat $fifo_1
+exit "$(cat $fifo_r)"
+
