@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # TODO wtf
-xterm "$@" -e sh -i -c 'cmd=$(pathcmds | fzf); $cmd &> /dev/null &'
+# xterm "$@" -e sh -i -c 'cmd=$(pathcmds | fzf); $cmd &> /dev/null &'
 
 # OR
 
-# exec $(pathcmds | xtermdo fzf "$@")
+exec $(pathcmds | xtermdo fzf "$@")
 

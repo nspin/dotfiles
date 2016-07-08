@@ -23,6 +23,7 @@ function nde() {
 }
 
 alias v='vim'
+alias vi='vim'
 alias vf='vim $(fzf)'
 alias tod='efd $HOME/todo'
 alias dot='efd $HOME/dotfiles'

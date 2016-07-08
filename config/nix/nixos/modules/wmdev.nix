@@ -28,6 +28,7 @@ in
       session = [{
         name = "wmdev";
         start = ''
+          source $HOME/dotfiles/config/sh/env.sh
           mkdir -p ${cfg.logDir}
           ${cfg.command} > ${cfg.logDir}/out.log 2> ${cfg.logDir}/err.log &
           waitPID=$!

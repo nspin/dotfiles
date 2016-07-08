@@ -28,7 +28,8 @@ import qualified Data.Map as M
 import           Control.Monad
 import           System.Exit
 import           System.IO
-
+import           System.Posix.Process (executeFile)
+import           System.Posix.Env (getEnvironment)
 
 myNormalBorderColor = black
 myFocusedBorderColor = black
@@ -101,7 +102,6 @@ vbox = Mirror tiled ||| tiled ||| Full
      nmaster = 1
      ratio   = 1/2
      delta   = 3/100
-
 
 launch :: String
 launch = "xlaunch -title popup"
