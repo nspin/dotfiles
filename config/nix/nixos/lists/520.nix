@@ -7,5 +7,8 @@ cabal2nix
 apktool
 androidsdk
 usbutils
+mitmproxy
+pypi2nix
+python2nix
 
 ]

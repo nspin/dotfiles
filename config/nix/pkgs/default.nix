@@ -8,6 +8,7 @@ pkgs: with pkgs; {
 
   ycm = callPackage ./local/ycm {};
   wicd = callPackage ./local/wicd {};
+  mitmproxy = callPackage ./local/mitmproxy {};
 
   opencvBloated = callPackage <nixpkgs/pkgs/development/libraries/opencv> {
     enableBloat = true;
