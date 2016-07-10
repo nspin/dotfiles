@@ -4,4 +4,8 @@ pkgs: with pkgs; [
 haskellPackages.cabal-install
 cabal2nix
 
+apktool
+androidsdk
+usbutils
+
 ]

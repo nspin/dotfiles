@@ -8,7 +8,7 @@
   networking.hostName = "nixos";
   networking.hostId = "c890f48c";
 
-  time.timeZone = "America/Chicago";
+  time.timeZone = "America/New_York";
 
   users.extraUsers.nick = {
     isNormalUser = true;
@@ -46,7 +46,7 @@
 
     windowManager.wmdev = {
       enable = true;
-      command = "/home/nick/bin/wm";
+      command = "/home/nick/wmdev/go";
     };
 
     # windowManager.xmonad.enable = true;
