@@ -11,4 +11,5 @@ mitmproxy
 pypi2nix
 python2nix
 
+jre
 ]
