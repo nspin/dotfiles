@@ -4,11 +4,11 @@ let self = pythonPackages;
 in with pkgs.lib; pythonPackages.buildPythonPackage rec {
     baseName = "mitmproxy";
     name = "${baseName}-${version}";
-    version = "0.14.0";
+    version = "0.17";
 
     src = pkgs.fetchurl {
-      url = "https://github.com/mitmproxy/mitmproxy/archive/v0.14.tar.gz";
-      sha256 = "072yihnrv78lffk2r12jk7phs4c8mc1gs4y96cp9rg63vw6w1fry";
+      url = "https://github.com/mitmproxy/mitmproxy/archive/v0.17.tar.gz";
+      sha256 = "14yqk50fb8q73m9sdv29a8drz0m2xk30wg33xblj22rw89mgn2hk";
     };
 
     propagatedBuildInputs = with self; [
