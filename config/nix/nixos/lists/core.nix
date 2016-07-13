@@ -24,8 +24,10 @@ dmenu
 gmrun
 
 # x applications
-firefox
+# firefox
 # google-chrome
+opera
+# chromium
 
 # fonts
 dejavu_fonts
@@ -57,4 +59,6 @@ bind
 telnet
 xorg.xwininfo
 rxvt_unicode
+
+xlibs.xev
 ]

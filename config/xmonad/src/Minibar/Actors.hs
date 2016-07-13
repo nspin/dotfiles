@@ -23,7 +23,7 @@ command delay cmd = actor $ \sink -> forever $ do
     case code of
         ExitSuccess -> sink $ Just out
         ExitFailure _ -> sink Nothing
-    threadDelay $ 10000 * delay
+    threadDelay $ 1000 * delay
 
 handle :: Handle -> VVar (Maybe (Maybe String))
 handle hndl = undefined
