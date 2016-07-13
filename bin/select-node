@@ -1,0 +1,16 @@
+#!/bin/sh
+cd "${1:-.}"
+shift
+find $(pwd) -maxdepth 5 "$@" \
+    | fzf $FZF_DEFAULT_OPTS --expect ctrl-f,ctrl-g \
+    | ( case $(head -n 1) in
+            ctrl-f)
+                exec select-node .. "$@"
+                ;;
+            ctrl-g)
+                exec select-node "$(cat)" "$@"
+                ;;
+            *) cat
+                ;;
+        esac
+      )
