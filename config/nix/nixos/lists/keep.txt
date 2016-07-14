@@ -1,0 +1,6 @@
+
+rtorrent
+gimp
+chuck
+
+libreoffice
