@@ -12,6 +12,7 @@ pkgs: with pkgs; {
   apktool = callPackage ./local/apktool {
     buildTools = androidenv.buildTools;
   };
+  gophish = callPackage ./local/gophish {};
 
   opencvBloated = callPackage <nixpkgs/pkgs/development/libraries/opencv> {
     enableBloat = true;
