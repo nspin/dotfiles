@@ -32,3 +32,5 @@ fun DirvishHere()
     Dirvish %
   endif
 endfun
+
+let g:NERDTreeHijackNetrw = 0
