@@ -17,5 +17,5 @@ pkgs: with pkgs; {
   opencvBloated = callPackage <nixpkgs/pkgs/development/libraries/opencv> {
     enableBloat = true;
   };
-}
 
+}

@@ -16,7 +16,10 @@
   };
 
   haskellPackageOverrides = self: super: with pkgs.haskell.lib; {
-    # minibar = self.callPackage /home/nick/repos/minibar {};
+
+    xhb-requests = (import ~/xhb/xhb-requests { nixpkgs = pkgs; }).xhb-requests;
+    xhb-keysyms = self.callPackage ~/xhb/xhb-keysyms;
+
   };
 
 }
