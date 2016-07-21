@@ -7,3 +7,4 @@ interpreters/ghci              /home/nick/.ghci
 multiplexers/tmux.conf         /home/nick/.tmux.conf
 bash/bashrc                    /home/nick/.bashrc
 bash/bash_profile              /home/nick/.bash_profile
+nix/config.nix                 /Users/spinalen/.nixpkgs/config.nix

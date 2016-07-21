@@ -2,7 +2,7 @@
 
 {
 
-  nixpkgs.config = import <dotfig/nix/config.nix>;
+  nixpkgs.config = import <dotfig/nix/pkgs/config.nix>;
 
   networking.hostName = "nixos";
   networking.hostId = "c890f48c";

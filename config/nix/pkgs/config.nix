@@ -10,7 +10,16 @@
 
   };
 
-  packageOverrides = pkgs: with pkgs; {
+  packageOverrides = pkgs: (import ./pkgs pkgs) // {
+    foo = pkgs.fzf;
+    darwinEnv = pkgs.buildEnv {
+      name = "darwinEnv";
+      paths = pkgs.lib.concatMap (x: import x pkgs) [
+        ../lists/core.nix
+        ../lists/hs.nix
+        ../lists/darwin/core.nix
+      ];
+    };
 
     mylib = callPackage ./lib {};
 
@@ -29,16 +38,6 @@
     opencvBloated = callPackage <nixpkgs/pkgs/development/libraries/opencv> {
       enableBloat = true;
     };
-
-    darwinEnv = pkgs.buildEnv {
-      name = "darwinEnv";
-      paths = pkgs.lib.concatMap (x: import x pkgs) [
-        ../lists/core.nix
-        ../lists/hs.nix
-        ../lists/darwin/core.nix
-      ];
-    };
-
   };
 
 }
