@@ -1,9 +1,5 @@
 pkgs: with pkgs; [
 
-emacs
-
-(vim-rtp "annoying.rtp" [ ycm ])
-
 (texlive.combine {
   inherit (texlive)
     scheme-small
@@ -15,9 +11,5 @@ emacs
     # type1cm
   ;
 })
-
-apktool
-androidsdk
-# mitmproxy
 
 ]

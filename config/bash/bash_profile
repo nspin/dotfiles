@@ -1,4 +1,7 @@
 # Source .bashrc if interactive
-if test -n $(echo $- | grep i); then
+if [ -n $(echo $- | grep i) ]; then
   source $HOME/.bashrc
+fi
+if [ -e /Users/spinalen/.nix-profile/etc/profile.d/nix.sh ]; then
+    . /Users/spinalen/.nix-profile/etc/profile.d/nix.sh
 fi

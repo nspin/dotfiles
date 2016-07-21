@@ -20,16 +20,9 @@ git
 mercurial
 subversion
 fzf
-vimHugeX
 
-gcc
 python27
 python34
-
-bind
-telnet
-
-usbutils
 
 jre
 

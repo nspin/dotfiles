@@ -26,3 +26,24 @@ endfun
 
 command! PlainText :call <sid>plain_text()
 command! UnPlainText :call <sid>un_plain_text()
+
+fun s:plain()
+  setlocal wrap
+  setlocal linebreak
+  noremap j gj
+  noremap k gk
+  noremap gj j
+  noremap gk k
+endfun
+
+fun s:un_plain()
+  setlocal nowrap
+  setlocal nolinebreak
+  unmap j
+  unmap k
+  unmap gj
+  unmap gk
+endfun
+
+command! Plain :call <sid>plain()
+command! UnPlain :call <sid>un_plain()
