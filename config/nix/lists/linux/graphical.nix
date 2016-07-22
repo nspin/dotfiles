@@ -10,6 +10,7 @@ xlibs.xmessage
 # firefox
 # google-chrome
 opera
+firefox
 # chromium
 
 # fonts

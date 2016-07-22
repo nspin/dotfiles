@@ -26,5 +26,6 @@ python27
 python34
 
 jre
+openssl
 
 ]

@@ -38,4 +38,11 @@
     accelFactor = "0.025";
   };
 
+  # services.opensmtpd = {
+  #   enable = true;
+  #   serverConfiguration = ''
+  #     listen on 127.0.0.1 port 25 hostname somehost.com
+  #   '';
+  # };
+
 }
