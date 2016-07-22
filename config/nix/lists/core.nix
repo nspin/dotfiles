@@ -3,6 +3,7 @@ pkgs: with pkgs; [
 # nix
 nix-repl
 nix-prefetch-scripts
+patchelf
 
 # convenience
 rlwrap

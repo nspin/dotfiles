@@ -10,7 +10,7 @@
 
   };
 
-  packageOverrides = pkgs: (import ./pkgs pkgs) // {
+  packageOverrides = pkgs: with pkgs; {
     foo = pkgs.fzf;
     darwinEnv = pkgs.buildEnv {
       name = "darwinEnv";
@@ -33,7 +33,8 @@
     apktool = callPackage ./local/apktool {
       buildTools = androidenv.buildTools;
     };
-    # gophish = callPackage ./local/gophish {};
+
+    gophish = callPackage ./local/gophish {};
 
     opencvBloated = callPackage <nixpkgs/pkgs/development/libraries/opencv> {
       enableBloat = true;
