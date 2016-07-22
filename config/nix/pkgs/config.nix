@@ -5,8 +5,8 @@
 
   haskellPackageOverrides = self: super: with pkgs.haskell.lib; {
 
-    # xhb-requests = (import ~/xhb/xhb-requests { nixpkgs = pkgs; }).xhb-requests;
-    # xhb-keysyms = self.callPackage ~/xhb/xhb-keysyms;
+    xhb-requests = (import ~/xhb/xhb-requests { inherit pkgs; }).xhb-requests;
+    xhb-keysyms = (import ~/xhb/xhb-keysyms { inherit pkgs; }).xhb-keysyms;
 
   };
 
