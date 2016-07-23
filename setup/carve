@@ -5,4 +5,4 @@ git/gitconfig                  /Users/spinalen/.gitconfig
 multiplexers/tmux.osx.conf     /Users/spinalen/.tmux.conf
 bash/bashrc                    /Users/spinalen/.bashrc
 bash/bash_profile              /Users/spinalen/.bash_profile
-nix/config.nix                 /Users/spinalen/.nixpkgs/config.nix
+nix/pkgs/config.nix            /Users/spinalen/.nixpkgs/config.nix
