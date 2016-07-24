@@ -8,6 +8,7 @@
     xhb-requests = (import ~/xhb/xhb-requests { inherit pkgs; }).xhb-requests;
     xhb-keysyms = (import ~/xhb/xhb-keysyms { inherit pkgs; }).xhb-keysyms;
     xhb-monad = self.callPackage ~/xhb/xhb-monad {};
+    xhb-mapping-state = self.callPackage ~/xhb/xhb-mapping-state {};
 
   };
 
