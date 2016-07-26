@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ ../modules/wmdev.nix ];
+  imports = [ ../modules/anywm.nix ];
 
   fonts = {
     enableFontDir = true;
@@ -17,15 +17,18 @@
     enable = true;
     layout = "us";
 
-    windowManager.wmdev = {
-      enable = true;
-      command = "/home/nick/wmdev/go";
-    };
-
-    # windowManager.xmonad.enable = true;
-    # windowManager.xmonad.extraPackages = haskellPackages: [
-    #   (haskellPackages.callPackage <dotfig/xmonad> {})
-    # ];
+    windowManager.anywm =
+      let my-xmonad = pkgs.haskellPackages.callPackage <dotfig/xmonad> {};
+      in {
+        enable = true;
+        start = ''
+          source $HOME/dotfiles/config/sh/env.sh
+          logdir=$HOME/log/anywm
+          mkdir -p $logdir
+          ${my-xmonad}/bin/xmonad > $logdir/out.log 2> $logdir/err.log &
+          waitPID=$!
+        '';
+      };
 
     displayManager = {
       sessionCommands = builtins.readFile <dotfig/x11/prewm.sh>;
