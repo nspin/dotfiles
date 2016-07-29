@@ -46,6 +46,8 @@ nnoremap <space>e :e
 nnoremap <space>t :tabe 
 nnoremap <space>y :quit!<cr>
 
+nnoremap <space>, gt
+
 let s:last_tab = 1
 fun! s:last_tab()
   exe 'tabn '.s:last_tab
