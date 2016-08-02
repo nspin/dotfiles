@@ -72,3 +72,5 @@ endif
 
 filetype plugin indent on
 
+" yup
+set mouse=a
