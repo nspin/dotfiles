@@ -32,7 +32,7 @@ cereal
 cereal-text
 ansi-wl-pprint
 
-diagrams
+# diagrams
 
 http-client
 http-types
