@@ -11,4 +11,7 @@ iw
 # networkmanager
 # networkmanagerapplet
 
+pmtools
+pmutils
+
 ]
