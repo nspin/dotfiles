@@ -13,7 +13,10 @@ import Data.List
 
 
 myMinibar :: VVar (Int -> [Chunk])
-myMinibar = f <$> command 1000 "date" <*> command 300 "date"
+myMinibar = f <$> command 300 "date"
+  where
+    f lm width = stradle width [] [Chunk [] $ defMess init lm]
+-- myMinibar = f <$> command 1000 "date" <*> command 300 "date"
 
 f :: Late (Maybe String) -> Late (Maybe String) -> (Int -> [Chunk])
 f x y width = stradle width [Chunk [] $ defMess init x] [Chunk [] $ defMess init y]

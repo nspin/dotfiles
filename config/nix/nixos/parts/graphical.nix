@@ -1,7 +1,9 @@
 { pkgs, ... }:
 
 {
-  imports = [ ../modules/anywm.nix ];
+  imports = [
+    ../modules/anywm.nix
+  ];
 
   fonts = {
     enableFontDir = true;
@@ -41,6 +43,9 @@
     };
 
     desktopManager.xterm.enable = false;
+
+    # desktopManager.kde4.enable = true;
+    # displayManager.kdm.enable = true;
 
   };
 }

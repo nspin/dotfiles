@@ -4,6 +4,7 @@
   imports = [
     ./parts/base.nix
     ./parts/graphical.nix
+    ./modules/my-acpid.nix
   ];
 
   environment.systemPackages = pkgs.mylib.gatherLists pkgs [
@@ -44,5 +45,23 @@
   #     listen on 127.0.0.1 port 25 hostname somehost.com
   #   '';
   # };
+
+  services.acpid = {
+    enable = true;
+    handlers = {
+      mute = {
+        event = "button/mute.*";
+        action = "${pkgs.alsaUtils}/bin/amixer set Master toggle";
+      };
+      vup = {
+        event = "button/volumeup.*";
+        action = "${pkgs.alsaUtils}/bin/amixer set Master 5%+";
+      };
+      vdown = {
+        event = "button/volumedown.*";
+        action = "${pkgs.alsaUtils}/bin/amixer set Master 5%-";
+      };
+    };
+  };
 
 }

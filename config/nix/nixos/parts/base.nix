@@ -7,7 +7,8 @@
   networking.hostName = "nixos";
   networking.hostId = "c890f48c";
 
-  time.timeZone = "America/New_York";
+  # time.timeZone = "America/New_York";
+  time.timeZone = "Europe/Budapest";
 
   users.extraUsers.nick = {
     isNormalUser = true;
