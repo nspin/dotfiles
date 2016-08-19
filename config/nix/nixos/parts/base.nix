@@ -23,6 +23,16 @@
     '';
   };
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+  };
+
+  services.transmission = {
+    enable = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    transmission_gtk
+  ];
 
 }

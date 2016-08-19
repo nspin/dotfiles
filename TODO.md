@@ -1,5 +1,7 @@
 # TODO
 
+show volume on volume change
+
 tws
 file browser
 vim mark stack
