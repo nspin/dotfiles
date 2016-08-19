@@ -33,6 +33,7 @@ library
                      , Data.Colors
 
   build-depends:       base >=4.8 && <4.9
+                     , bytestring
                      , ansi-terminal
                      , containers >=0.5 && <0.6
                      , mtl
@@ -44,3 +45,4 @@ library
                      , X11
                      , xmonad
                      , xmonad-contrib
+                     , attoparsec

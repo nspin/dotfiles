@@ -32,7 +32,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    transmission_gtk
+    transmission_remote_gtk
   ];
 
 }
