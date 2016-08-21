@@ -10,10 +10,16 @@
   # time.timeZone = "America/New_York";
   time.timeZone = "Europe/Budapest";
 
-  users.extraUsers.nick = {
-    isNormalUser = true;
-    uid = 1000;
-    extraGroups = [ "wheel" "networkmanager" ];
+  users.extraUsers = {
+    nick = {
+      isNormalUser = true;
+      uid = 1000;
+      extraGroups = [ "wheel" "networkmanager" "transmission" ];
+    };
+    guest = {
+      isNormalUser = true;
+      uid = 1001;
+    };
   };
 
   security.sudo = {
@@ -29,6 +35,14 @@
 
   services.transmission = {
     enable = true;
+    settings = {
+      # TODO
+      # download-dir = "/home/nick/Downloads";
+      # download-dir = "/home/nick/trr";
+      download-dir = "/var/lib/transmission/Downloads";
+      incomplete-dir = "/var/lib/transmission/Downloads";
+      incomplete-dir-enabled = true;
+    };
   };
 
   environment.systemPackages = with pkgs; [

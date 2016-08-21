@@ -95,8 +95,8 @@ tagKeys = [ ("G", xK_g)
           ]
 
 
-vbox :: Choose (Mirror Tall) (Choose Tall Full) a
-vbox = Mirror tiled ||| tiled ||| Full
+vbox :: Choose Tall (Choose (Mirror Tall) Full) a
+vbox = tiled ||| Mirror tiled ||| Full
   where
      tiled   = Tall nmaster delta ratio
      nmaster = 1
