@@ -17,7 +17,7 @@
   ];
  
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.gummiboot.enable = true;
+  boot.loader.systemd-boot.enable = true;
 
   networking.wireless = {
     enable = true;

@@ -32,10 +32,10 @@ library
                      , System.Posix.LockedFd
                      , Data.Colors
 
-  build-depends:       base >=4.8 && <4.9
+  build-depends:       base
                      , bytestring
                      , ansi-terminal
-                     , containers >=0.5 && <0.6
+                     , containers
                      , mtl
                      , process
                      , stm
