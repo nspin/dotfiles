@@ -15,9 +15,9 @@ import System.Exit
 -- go cmd args = do
 --     (pin, pout, perr, ph) <- runInteractiveProcess
 
-command :: Int -> String -> VVar (Maybe (Maybe String))
-command delay cmd = actor $ \sink -> forever $ do
-    out <- runProcessWithInput "sh" ["-c", cmd] ""
+command :: Int -> String -> [String] -> VVar (Maybe (Maybe String))
+command delay cmd args = actor $ \sink -> forever $ do
+    out <- runProcessWithInput cmd args ""
     let code = ExitSuccess
     -- (code, out, _) <- go "sh" ["-c", cmd]
     case code of
