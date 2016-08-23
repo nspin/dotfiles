@@ -45,8 +45,16 @@
     };
   };
 
+  services.mpd = {
+    enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
     transmission_remote_gtk
+    haskellPackages.vimus
+    ario
+    gmpc
+    mpc_cli
   ];
 
 }

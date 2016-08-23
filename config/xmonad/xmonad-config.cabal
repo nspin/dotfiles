@@ -36,6 +36,7 @@ library
                      , bytestring
                      , ansi-terminal
                      , containers
+                     , transformers
                      , mtl
                      , process
                      , stm

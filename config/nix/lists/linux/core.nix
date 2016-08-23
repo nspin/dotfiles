@@ -4,4 +4,5 @@ vimHugeX
 usbutils
 bind
 telnet
+sysstat
 ]

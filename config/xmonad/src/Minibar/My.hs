@@ -7,19 +7,23 @@ module Minibar.My
 
 import Minibar
 import Data.LOT
+import Control.Variable
+import Minibar.Actors
 
 import Control.Applicative
 import Control.Monad
-import Control.Variable
-import Minibar.Actors
+import Data.Attoparsec.ByteString.Char8
 import Data.Function
+import Data.Functor.Compose
 import Data.List
-import qualified Data.ByteString.Char8 as C
+import Data.Maybe
+import Data.Monoid
 import System.IO
+
+import qualified Data.ByteString.Char8 as C
 
 import XMonad.Util.Run
 
-import Data.Attoparsec.ByteString.Char8
 
 
 -- TODO logging
@@ -27,47 +31,61 @@ import Data.Attoparsec.ByteString.Char8
 test :: IO ()
 test = minibar stdout myMinibar
 
+type Component = Compose VVar Maybe [Chunk]
+
+parsed :: [Chunk] -> Parser [Chunk] -> VVar (Maybe (Maybe String)) -> Component
+parsed onErr parser =
+    fmap ( fromMaybe onErr
+         . (=<<) ( either (const Nothing) Just
+                 . parseOnly parser
+                 . C.pack
+                 )
+         ) . Compose
+
+plain :: [Chunk] -> (String -> [Chunk]) -> VVar (Maybe (Maybe String)) -> Component
+plain onErr format = fmap (maybe onErr format) . Compose
+
 myMinibar :: VVar (Int -> [Chunk])
-myMinibar = f <$> wifi <*> bat <*> mem <*> datetime
+myMinibar = (fmap (fromMaybe waiting)) . getCompose $ f
+    <$> date
+    <*> cpu
+    <*> mem
+    <*> bat
+    <*> wifi
   where
-    f w b m dt width = stradle width [ Chunk [] $ defMess init w
-                                     , Chunk [] " | "
-                                     , Chunk [] $ defMess init b
-                                     , Chunk [] " | "
-                                     , Chunk [] $ defMess init m
-                                     ]
-                                     [ Chunk [] $ defMess init dt
-                                     ]
--- myMinibar = f <$> command 1000 "date" <*> command 300 "date"
+    waiting width = raw "waiting"
+    f date cpu mem bat wifi width = stradle width left right
+      where
+        right = date
+        left = cpu
+            <> raw " | "
+            <> mem
+            <> raw " | "
+            <> wifi
+            <> raw " | "
+            <> bat
 
-datetime = command 300 "date" ["+%a %b %_d %H:%M %Z %Y"]
 
-wifi = fmap (join . fmap (fmap f)) $ command 300 "iwconfig" []
-  where
-    f str = case parseOnly wifiParser (C.pack str) of
-        Left err -> Nothing
-        Right (rate, unit, qual) -> Just $ "Wifi: " ++ show rate ++ " " ++ unit ++ " " ++ show (round $ qual * 100) ++ "%"
+date :: Component
+date = plain (raw "err") (raw . init) $ command 300 "date" ["+%a %b %_d %H:%M %Z %Y"]
 
-wifiTest = (parseOnly wifiParser . C.pack) <$> (runProcessWithInput "sh" ["-c", "iwconfig"] "" :: IO String)
 
-wifiParser = do
+wifi :: Component
+wifi = parsed (raw "err") parseWifi $ command 300 "iwconfig" []
+
+parseWifi = do
     manyTill anyChar (string "Bit Rate=")
     rate <- double
     unit <- char ' ' *> manyTill anyChar (char ' ')
     manyTill anyChar (string "Link Quality=")
     qual <- on (/) fromIntegral <$> (decimal <* char '/') <*> (decimal :: Parser Int)
-    return (rate, unit, qual)
+    return . raw $ "Wifi: " ++ show rate ++ " " ++ unit ++ " " ++ show (round (100 * qual)) ++ "%"
 
 
-bat = fmap (join . fmap (fmap f)) $ command 300 "upower" ["--dump"]
-  where
-    f str = case parseOnly batParser (C.pack str) of
-        Left err -> Nothing
-        Right (state, percentage) -> Just $ "Battery: " ++ state ++ " " ++ percentage ++ "%"
+bat :: Component
+bat = parsed (raw "err") parseBat $ command 300 "upower" ["--dump"]
 
-batTest = (parseOnly batParser . C.pack) <$> (runProcessWithInput "upower" ["--dump"] "" :: IO String)
-
-batParser = do
+parseBat = do
     manyTill (manyTill anyChar endOfLine) (string "Device: " >> toBat >> manyTill anyChar endOfLine)
     manyTill anyChar (string "state:")
     skipSpace
@@ -75,20 +93,15 @@ batParser = do
     manyTill anyChar (string "percentage:")
     skipSpace
     percentage <- manyTill anyChar endOfLine
-    return (state, percentage)
+    return . raw $ "Battery: " ++ state ++ " " ++ percentage
   where
     toBat = string "BAT" <|> (satisfy (not . isSpace) >> toBat)
 
 
-mem = fmap (join . fmap (fmap f)) $ command 300 "free" ["-m"]
-  where
-    f str = case parseOnly memParser (C.pack str) of
-        Left err -> Nothing
-        Right (used, total, usedS, totalS) -> Just $ "Mem: " ++ show used ++ "/" ++ show total ++ ", Swap: " ++ show usedS ++ "/" ++ show totalS ++ " "
+mem :: Component
+mem = parsed (raw "err") parseMem $ command 300 "free" ["-m"]
 
-memTest = (parseOnly memParser . C.pack) <$> (runProcessWithInput "free" ["-m"] "" :: IO String)
-
-memParser = do
+parseMem = do
     manyTill anyChar (string "Mem:")
     skipSpace
     total <- decimal
@@ -99,15 +112,17 @@ memParser = do
     totalS <- decimal
     skipSpace
     usedS <- decimal
-    return (used, total, usedS, totalS)
+    return . raw $ "Mem: "
+                ++ show used ++ "/" ++ show total
+                ++ ", Swap: "
+                ++ show usedS ++ "/" ++ show totalS
 
 
-f :: Late (Maybe String) -> Late (Maybe String) -> (Int -> [Chunk])
-f x y width = stradle width [Chunk [] $ defMess init x] [Chunk [] $ defMess init y]
+cpu :: Component
+cpu = parsed (raw "err") parseCpu $ command 300 "mpstat" []
 
-maybes :: a -> a -> (b -> a) -> Late (Maybe b) -> a
-maybes a0 a1 f = maybe a0 (maybe a1 f)
--- maybes = (.) `on` maybe
-
-defMess :: (a -> String) -> Late (Maybe a) -> String
-defMess = maybes "NIL" "ERR"
+parseCpu = do
+    manyTill anyChar (string "all")
+    skipSpace
+    d <- double
+    return . raw $ "Cpu: " ++ show d ++ "%"

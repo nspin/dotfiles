@@ -1,6 +1,6 @@
 { mkDerivation, ansi-terminal, attoparsec, base, containers, mtl
 , process, stdenv, stm, terminal-size, text, unix, X11, xmonad
-, xmonad-contrib, bytestring
+, xmonad-contrib, bytestring, transformers
 }:
 mkDerivation {
   pname = "xmonad-config";
@@ -11,7 +11,7 @@ mkDerivation {
   libraryHaskellDepends = [
     ansi-terminal attoparsec base containers mtl process stm
     terminal-size text unix X11 xmonad xmonad-contrib
-    bytestring
+    bytestring transformers
   ];
   executableHaskellDepends = [ base ];
   license = stdenv.lib.licenses.mit;

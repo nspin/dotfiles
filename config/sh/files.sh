@@ -15,7 +15,7 @@ function efd() {
 }
 
 function nder() {
-    readlink $(readlink $HOME/.nix-defexpr/channels_root)/nixos
+    readlink $(readlink $HOME/.nix-defexpr/channels_root)/nixpkgs
 }
 
 function nde() {
