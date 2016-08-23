@@ -47,8 +47,7 @@
 
   services.mpd = {
     enable = true;
-    # musicDirectory = "/home/nick/music";
-    # dataDir = "/home/nick/mpd";
+    musicDirectory = "/music";
   };
 
   environment.systemPackages = with pkgs; [
@@ -57,7 +56,6 @@
     ario
     gmpc
     mpc_cli
-    mpd
   ];
 
 }
