@@ -46,6 +46,7 @@
   #   '';
   # };
 
+  # TODO pass %e to scripts in nixpkgs
   services.acpid = {
     enable = true;
     handlers = {
@@ -60,6 +61,38 @@
       vdown = {
         event = "button/volumedown.*";
         action = "${pkgs.alsaUtils}/bin/amixer set Master 5%-";
+      };
+      play = {
+        event = "cd/play.*";
+        action = "${pkgs.mpc_cli}/bin/mpc toggle";
+      };
+      stop = {
+        event = "cd/stop.*";
+        action = "${pkgs.mpc_cli}/bin/mpc stop";
+      };
+      next = {
+        event = "cd/next.*";
+        action = "${pkgs.mpc_cli}/bin/mpc next";
+      };
+      prev = {
+        event = "cd/prev.*";
+        action = "${pkgs.mpc_cli}/bin/mpc prev";
+      };
+      mic = {
+        event = "button/f20.*";
+        action = "";
+      };
+      bat = {
+        event = "button/battery.*";
+        action = "";
+      };
+      lock = {
+        event = "button/screenlock.*";
+        action = "";
+      };
+      wat = {
+        event = "video/switchmode.*";
+        action = "";
       };
     };
   };
