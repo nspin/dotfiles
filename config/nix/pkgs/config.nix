@@ -3,6 +3,8 @@
   allowUnfree = true;
   allowBroken = true;
 
+  firefox.enableAdobeFlash = true;
+
   haskellPackageOverrides = self: super: with pkgs.haskell.lib; {
 
     xhb-requests = (import ~/xhb/xhb-requests { inherit pkgs; }).xhb-requests;
@@ -29,6 +31,7 @@
     # hscript = callPackage ./aux/hscript {};
     ghc-pkg-db = callPackage ./aux/ghc-pkg-db {};
 
+    spotify-ripper = callPackage ./local/spotify-ripper {};
     ycm = callPackage ./local/ycm {};
     wicd = callPackage ./local/wicd {};
     mitmproxy = callPackage ./local/mitmproxy {};

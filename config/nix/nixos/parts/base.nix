@@ -20,6 +20,10 @@
       isNormalUser = true;
       uid = 1001;
     };
+    other = {
+      isNormalUser = true;
+      uid = 1002;
+    };
   };
 
   security.sudo = {
