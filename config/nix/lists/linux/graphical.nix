@@ -24,4 +24,5 @@ xlibs.xev
 vlc
 zathura
 
+hexchat
 ]

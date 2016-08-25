@@ -62,4 +62,17 @@
     mpc_cli
   ];
 
+  environment.variables = {
+    thisisatest = "worked";
+  };
+
+  environment.etc = {
+    "tmux.conf" = {
+      source = <dotfig/multiplexers/tmux.conf>;
+    };
+    # "inputrc" = { # or INPUTRC
+    #   source = <dotfig/line-editors/inputrc>;
+    # };
+  };
+
 }
