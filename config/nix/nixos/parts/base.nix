@@ -63,8 +63,16 @@
   ];
 
   environment.variables = {
-    thisisatest = "worked";
+    VISUAL = "vim";
+    EDITOR = "vim";
+    VIM = "/home/nick/dotfiles/config/vim";
+    VIMRUNTIME = "/home/nick/vim-runtime/runtime";
   };
+
+  environment.extraInit = ''
+    export PATH=/home/nick/dotfiles/bin:/home/nick/dotfiles/bin/linux:$PATH
+    export NIX_PATH=$NIX_PATH:dotfig=/home/nick/dotfiles/config
+  '';
 
   environment.etc = {
     "tmux.conf" = {
