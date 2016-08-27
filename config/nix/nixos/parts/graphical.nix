@@ -33,7 +33,16 @@
       };
 
     displayManager = {
-      sessionCommands = builtins.readFile <dotfig/x11/prewm.sh>;
+      sessionCommands = ''
+        xrdb -merge ${<dotfig/nix/nixos/x11/xresources>}
+        xmodmap ${<dotfig/nix/nixos/x11/Xmodmap>}
+        xset r rate 300 50
+        feh --bg-max ~/.background.jpg
+        # for img in ~./background.{png,jpg}; do
+        #     feh --bg-max "$img"
+        # done
+        # xsetroot -solid '#002B36'
+      '';
       slim.enable = true;
       slim.defaultUser = "nick";
       slim.theme = pkgs.fetchurl {
