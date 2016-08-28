@@ -2,6 +2,10 @@
 
 # POSIX
 
+case "$(uname -s)" in
+    Darwin) source $HOME/dotfiles/config/bash/darwin-env.sh
+esac
+
 for file in $HOME/dotfiles/config/sh/*.sh; do
     source $file
 done
