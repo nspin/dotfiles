@@ -200,6 +200,23 @@ let
         };
       };
 
+      pyopenssl_bumped = pythonPackages.buildPythonPackage rec {
+        name = "pyopenssl-${version}";
+        version = "16.0.0";
+
+        src = pkgs.fetchurl {
+          url = "mirror://pypi/p/pyOpenSSL/pyOpenSSL-${version}.tar.gz";
+          sha256 = "0zfijaxlq4vgi6jz0d4i5xq9ygqnyps6br7lmigjhqnh8gp10g9n";
+        };
+
+        doCheck = false;
+
+        propagatedBuildInputs = [
+          cryptography_1_3_2
+          pythonPackages.pyasn1
+          pythonPackages.idna
+        ];
+      };
 
       mitmproxy_0_17 = pythonPackages.buildPythonPackage rec {
 
@@ -229,7 +246,8 @@ let
           ConfigArgParse_0_10_0 
           lxml_3_5
           html2text_2016_1_8
-          pyopenssl pyasn1 flask protobuf netlib click construct pyparsing
+          pyopenssl_bumped
+          pyasn1 flask protobuf click construct pyparsing
         ];
 
         doCheck = false;
