@@ -3,12 +3,12 @@
 with lib;
 let
   inherit (lib) mkOption mkIf optionals literalExample;
-  cfg = config.services.xserver.windowManager.anywm;
+  cfg = config.services.xserver.windowManager.wmdev;
 in
 {
   options = {
-    services.xserver.windowManager.anywm = {
-      enable = mkEnableOption "anywm";
+    services.xserver.windowManager.wmdev = {
+      enable = mkEnableOption "wmdev";
       start = mkOption {
         default = "true";
         description = ''
@@ -20,7 +20,7 @@ in
   config = mkIf cfg.enable {
     services.xserver.windowManager = {
       session = [{
-        name = "anywm";
+        name = "wmdev";
         inherit (cfg) start;
       }];
     };

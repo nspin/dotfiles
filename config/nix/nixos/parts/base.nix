@@ -23,6 +23,7 @@
     other = {
       isNormalUser = true;
       uid = 1002;
+      extraGroups = [ "wheel" "networkmanager" "transmission" ];
     };
   };
 
@@ -41,8 +42,6 @@
     enable = true;
     settings = {
       # TODO
-      # download-dir = "/home/nick/Downloads";
-      # download-dir = "/home/nick/trr";
       download-dir = "/var/lib/transmission/Downloads";
       incomplete-dir = "/var/lib/transmission/Downloads";
       incomplete-dir-enabled = true;
@@ -65,12 +64,12 @@
   environment.variables = {
     VISUAL = "vim";
     EDITOR = "vim";
-    VIM = "/home/nick/dotfiles/config/vim";
-    VIMRUNTIME = "/home/nick/vim-runtime/runtime";
+    VIM = "${<dotfig/vim>}";
+    VIMRUNTIME = "${/home/nick/vim-runtime/runtime}";
   };
 
   environment.extraInit = ''
-    export PATH=/home/nick/dotfiles/bin:/home/nick/dotfiles/bin/linux:$PATH
+    export PATH="$PATH:${/home/nick/dotfiles/bin}:${/home/nick/dotfiles/bin/linux}"
     export NIX_PATH=$NIX_PATH:dotfig=/home/nick/dotfiles/config
   '';
 

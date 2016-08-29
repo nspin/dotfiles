@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../modules/anywm.nix
+    ../modules/wmdev.nix
   ];
 
   fonts = {
@@ -19,15 +19,15 @@
     enable = true;
     layout = "us";
 
-    windowManager.anywm =
+    windowManager.wmdev =
       let my-xmonad = pkgs.haskellPackages.callPackage <dotfig/xmonad> {};
       in {
         enable = true;
         start = ''
-          source $HOME/dotfiles/config/sh/env.sh
-          logdir=$HOME/log/anywm
-          mkdir -p $logdir
-          ${my-xmonad}/bin/xmonad > $logdir/out.log 2> $logdir/err.log &
+          # logdir=/var/log/wmdev
+          # mkdir -p $logdir
+          # ${my-xmonad}/bin/xmonad > $logdir/out.log 2> $logdir/err.log &
+          ${my-xmonad}/bin/xmonad
           waitPID=$!
         '';
       };
