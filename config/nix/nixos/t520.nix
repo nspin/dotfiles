@@ -88,7 +88,7 @@
       };
       lock = {
         event = "button/screenlock.*";
-        action = "";
+        action = "systemctl start physlock";
       };
       wat = {
         event = "video/switchmode.*";

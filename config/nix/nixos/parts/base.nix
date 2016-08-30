@@ -10,6 +10,13 @@
   # time.timeZone = "America/New_York";
   time.timeZone = "Europe/Budapest";
 
+  services.physlock = {
+    enable = true;
+    user = "nick";
+    lockOn.suspend = true;
+    lockOn.hibernate = true;
+  };
+
   users.extraUsers = {
     nick = {
       isNormalUser = true;
