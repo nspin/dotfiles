@@ -1,5 +1,5 @@
 #!/bin/sh
-basedir="$HOME/dotfiles"
+basedir="$CFGDIR/dotfiles"
 
 (while read line; do
     read link target <<< $(echo $line | awk '{ print $1; print $2; }')

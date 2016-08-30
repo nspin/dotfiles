@@ -61,16 +61,18 @@
     mpc_cli
   ];
 
-  environment.variables = {
+  environment.variables = rec {
     VISUAL = "vim";
     EDITOR = "vim";
-    VIM = "${<dotfig/vim>}";
-    VIMRUNTIME = "${/home/nick/vim-runtime/runtime}";
+    CFGDIR = "/cfg";
+    VIM = CFGDIR + "/dotfiles/config/vim";
+    VIMRUNTIME = CFGDIR + "/vim-runtime/runtime";
+    VIMBUNDLE = CFGDIR + "/vim-bundle/bundle";
   };
 
   environment.extraInit = ''
-    export PATH="$PATH:${/home/nick/dotfiles/bin}:${/home/nick/dotfiles/bin/linux}"
-    export NIX_PATH=$NIX_PATH:dotfig=/home/nick/dotfiles/config
+    export PATH="$PATH:$CFGDIR/dotfiles/bin:$CFGDIR/dotfiles/bin/linux"
+    export NIX_PATH="$NIX_PATH:dotfig=$CFGDIR/dotfiles/config"
   '';
 
   environment.etc = {

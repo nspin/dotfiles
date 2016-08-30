@@ -10,14 +10,14 @@ function MyVimFile(rel)
 endfunction
 
 function MyBundleFile(rel)
-  return expand('~/vim-bundle').'/'.a:rel
+  return $VIMBUNDLE.'/'.a:rel
 endfunction
 
 " Runtimepath initialization
 
 let s:plugin_paths = []
 
-let s:bundle_dir = expand('~/vim-bundle/bundle/')
+let s:bundle_dir = $VIMBUNDLE
 let s:bundle_ignore =
   \ [ 'vim-sexp'
   \ , 'vim-sexp-mappings-for-regular-people'
@@ -25,7 +25,7 @@ let s:bundle_ignore =
   \ ]
 for plugin in split(system('ls '.s:bundle_dir), '\n', 0)
   if index(s:bundle_ignore, plugin) < 0
-    call add(s:plugin_paths, s:bundle_dir.plugin)
+    call add(s:plugin_paths, s:bundle_dir.'/'.plugin)
   endif
 endfor
 

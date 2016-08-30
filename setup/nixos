@@ -3,6 +3,7 @@ line-editors/editrc            /home/nick/.editrc
 line-editors/haskeline         /home/nick/.haskeline
 mutt/muttrc                    /home/nick/.muttrc
 git/gitconfig                  /home/nick/.gitconfig
+git/gitignore_global           /home/nick/.gitignore_global
 interpreters/ghci              /home/nick/.ghci
 multiplexers/tmux.conf         /home/nick/.tmux.conf
 bash/bashrc                    /home/nick/.bashrc

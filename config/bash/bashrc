@@ -3,10 +3,10 @@
 # POSIX
 
 case "$(uname -s)" in
-    Darwin) source $HOME/dotfiles/config/bash/darwin-env.sh
+    Darwin) source $CFGDIR/dotfiles/config/bash/darwin-env.sh
 esac
 
-for file in $HOME/dotfiles/config/sh/*.sh; do
+for file in $CFGDIR/dotfiles/config/sh/*.sh; do
     source $file
 done
 
@@ -39,7 +39,7 @@ HISTFILESIZE=10000
 
 # IMPORTS
 
-for file in $HOME/dotfiles/config/bash/fzf/*.bash; do
+for file in $CFGDIR/dotfiles/config/bash/fzf/*.bash; do
     source $file
 done
 
