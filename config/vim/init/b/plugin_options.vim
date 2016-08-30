@@ -19,7 +19,7 @@ let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 imap <c-l> <tab><c-j>
 
 let g:UltiSnipsEdit = 'vertical'
-let g:UltiSnipsSnippetsDir = MyVimFile('vim.1/UltiSnips')
+let g:UltiSnipsSnippetsDir = $VIM.'/TODO/UltiSnips'
 
 let g:dirvish_relative_paths = 1
 

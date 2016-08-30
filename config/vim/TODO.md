@@ -1,6 +1,6 @@
 # TODO
 
-* replace buffer
+*   replace buffer
 
 *   WRITE GENERALIZED FZF PLUGIN
 

@@ -3,7 +3,7 @@ set shiftwidth=4
 set expandtab
 set autoindent
 
-set mouse=
+set mouse=a
 set noesckeys
 set virtualedit=block
 set backspace=indent,eol,start

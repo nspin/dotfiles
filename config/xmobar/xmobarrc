@@ -23,7 +23,7 @@ Config
         -- , Run DiskU [("/", "Disk: <used>/<size>")] [] 20
         -- , Run Com "/bin/sh" ["$HOME/dotfiles/config/xmobar/wireless.sh"] "wifi" 30
         , Run BatteryP ["Bat0"] [] 600
-        , Run Com "/bin/sh" ["/home/nick/dotfiles/config/xmobar/wireless.sh"] "wifi" 30
+        , Run Com "wifi_status" [] "wifi" 30
         , Run Date "%a %b %-d %Y %-H:%M" "date" 10
         , Run StdinReader
         ]
