@@ -1,6 +1,3 @@
-
-rtorrent
 gimp
 chuck
-
 libreoffice

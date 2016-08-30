@@ -15,7 +15,7 @@
   };
 
   packageOverrides = pkgs: with pkgs; {
-    foo = pkgs.fzf;
+
     darwinEnv = pkgs.buildEnv {
       name = "darwinEnv";
       paths = pkgs.lib.concatMap (x: import x pkgs) [
@@ -44,6 +44,7 @@
     opencvBloated = callPackage <nixpkgs/pkgs/development/libraries/opencv> {
       enableBloat = true;
     };
+
   };
 
 }
