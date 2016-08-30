@@ -1,8 +1,8 @@
-line-editors/inputrc           /Users/spinalen/.inputrc
-line-editors/editrc            /Users/spinalen/.editrc
-line-editors/haskeline         /Users/spinalen/.haskeline
-git/gitconfig                  /Users/spinalen/.gitconfig
-multiplexers/tmux.conf         /Users/spinalen/.tmux.conf
-bash/bashrc                    /Users/spinalen/.bashrc
-bash/bash_profile              /Users/spinalen/.bash_profile
-nix/pkgs/config.nix            /Users/spinalen/.nixpkgs/config.nix
+line-editors/inputrc           .inputrc
+line-editors/editrc            .editrc
+line-editors/haskeline         .haskeline
+git/gitconfig                  .gitconfig
+multiplexers/tmux.conf         .tmux.conf
+bash/bashrc                    .bashrc
+bash/bash_profile              .bash_profile
+nix/pkgs/config.nix            .nixpkgs/config.nix
