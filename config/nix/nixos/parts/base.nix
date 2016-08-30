@@ -68,6 +68,7 @@
     VIM = CFGDIR + "/dotfiles/config/vim";
     VIMRUNTIME = CFGDIR + "/vim-runtime/runtime";
     VIMBUNDLE = CFGDIR + "/vim-bundle/bundle";
+    VIM_PLUGIN_PATH = "${pkgs.ycm}";
   };
 
   environment.extraInit = ''
