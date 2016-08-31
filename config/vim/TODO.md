@@ -16,18 +16,13 @@
 *   minify tabline
 *   where full file name?
 
-*   add filter, to allow toggling for plugins
 *   Helptags (see pathogen)
 
 *   roll own file browser?
 *   dirvish shell integration
 *   dirvish 'invalid or access denied' after cd (report upstream)
 
-*   document approach better
-
-*   more fzf use
 *   youcompleteme without python in path
-*   get fzf tmux working in vim
 *   more buffers (movement between buffers)
 *   tab bar = buffers?
 *   fzf tags
