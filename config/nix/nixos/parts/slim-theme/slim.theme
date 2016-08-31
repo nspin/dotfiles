@@ -21,7 +21,7 @@ password_msg                password:
 session_font                fixed:size=13:dpi=75
 session_color               #eeeeee
 # session_x                   10%
-# session_y                   85%
+# session_y                   90%
 
 # msg_font                    fixed:size=13:dpi=75
 # msg_color                   #eeeeee
