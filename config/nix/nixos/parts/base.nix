@@ -43,7 +43,6 @@
     wheelNeedsPassword = false;
     extraConfig = ''
       Defaults env_keep += "NIX_PATH"
-      Defaults env_keep += "VIM"
       Defaults env_keep += "VISUAL"
       Defaults env_keep += "EDITOR"
       Defaults env_keep += "CFGDIR"
