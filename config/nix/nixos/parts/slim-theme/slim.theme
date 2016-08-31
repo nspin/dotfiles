@@ -1,23 +1,12 @@
-msg_color                   #666666
-msg_font                    fixed:size=13:dpi=75
-msg_x                       50%
-msg_y                       40%
-# msg_shadow_xoffset          1
-# msg_shadow_yoffset          1
-
-# welcome_font                fixed:size=13:dpi=75
-# welcome_color               #eeeeee
-
 background_style            tile
-background_color            #222222
+background_color            #000000
 
-input_panel_x               50%
-input_panel_y               50%
+input_font                  fixed:size=13:dpi=75
+input_color                 #eeeeee
+input_panel_x               10%
+input_panel_y               10%
 input_name_x                200
 input_name_y                90
-input_font                  fixed:size=13:dpi=75
-input_fgcolor               #ffffff
-input_color                 #ffffff
 
 username_font               fixed:size=13:dpi=75
 username_color              #eeeeee
@@ -28,3 +17,14 @@ password_y                  90
 
 username_msg                username:
 password_msg                password:
+
+session_font                fixed:size=13:dpi=75
+session_color               #eeeeee
+# session_x                   10%
+# session_y                   85%
+
+# msg_font                    fixed:size=13:dpi=75
+# msg_color                   #eeeeee
+
+# welcome_font                fixed:size=13:dpi=75
+# welcome_color               #eeeeee
