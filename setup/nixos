@@ -8,3 +8,4 @@ interpreters/ghci              .ghci
 multiplexers/tmux.conf         .tmux.conf
 bash/bashrc                    .bashrc
 bash/bash_profile              .bash_profile
+mutliplexers/tmux.conf         .tmux.conf

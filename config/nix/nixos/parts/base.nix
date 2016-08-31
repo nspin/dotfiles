@@ -7,6 +7,11 @@
   networking.hostName = "nixos";
   networking.hostId = "c890f48c";
 
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 8080 ];
+  };
+
   # time.timeZone = "America/New_York";
   time.timeZone = "Europe/Budapest";
 
@@ -38,6 +43,14 @@
     wheelNeedsPassword = false;
     extraConfig = ''
       Defaults env_keep += "NIX_PATH"
+      Defaults env_keep += "VIM"
+      Defaults env_keep += "VISUAL"
+      Defaults env_keep += "EDITOR"
+      Defaults env_keep += "CFGDIR"
+      Defaults env_keep += "VIM"
+      Defaults env_keep += "VIMRUNTIME"
+      Defaults env_keep += "VIMBUNDLE"
+      Defaults env_keep += "VIM_PLUGIN_PATH"
     '';
   };
 
@@ -83,13 +96,13 @@
     export NIX_PATH="$NIX_PATH:dotfig=$CFGDIR/dotfiles/config"
   '';
 
-  environment.etc = {
-    "tmux.conf" = {
-      source = <dotfig/multiplexers/tmux.conf>;
-    };
-    # "inputrc" = { # or INPUTRC
-    #   source = <dotfig/line-editors/inputrc>;
-    # };
-  };
+  # environment.etc = {
+  #   "tmux.conf" = {
+  #     source = <dotfig/multiplexers/tmux.conf>;
+  #   };
+  #   "inputrc" = { # or INPUTRC
+  #     source = <dotfig/line-editors/inputrc>;
+  #   };
+  # };
 
 }
