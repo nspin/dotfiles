@@ -1,9 +1,6 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ./wmdev.nix
-  ];
 
   fonts = {
     enableFontDir = true;
@@ -66,4 +63,5 @@
     # displayManager.kdm.enable = true;
 
   };
+
 }

@@ -1,10 +1,12 @@
 { pkgs, ... }:
 
 {
+
   imports = [
-    ./base.nix
-    ./graphical.nix
-    ./my-acpid.nix
+    ./modules/base.nix
+    ./modules/graphical.nix
+    ./modules/my-acpid.nix
+    ./modules/wmdev.nix
   ];
 
   environment.systemPackages = pkgs.mylib.gatherLists pkgs [
