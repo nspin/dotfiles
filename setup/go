@@ -5,4 +5,4 @@
     mkdir -p $(dirname $target)
     echo "ln -sfnv $CFGDIR/dotfiles/config/$link $HOME/$target"
     ln -sfnv $CFGDIR/dotfiles/config/$link $HOME/$target
-done) < $(dirname $0)/setup/$1
+done) < $(dirname $0)/$1
