@@ -2,9 +2,9 @@
 
 {
   imports = [
-    ./parts/base.nix
-    ./parts/graphical.nix
-    ./modules/my-acpid.nix
+    ./base.nix
+    ./graphical.nix
+    ./my-acpid.nix
   ];
 
   environment.systemPackages = pkgs.mylib.gatherLists pkgs [

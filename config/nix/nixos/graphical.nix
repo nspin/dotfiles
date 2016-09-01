@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../modules/wmdev.nix
+    ./wmdev.nix
   ];
 
   fonts = {
