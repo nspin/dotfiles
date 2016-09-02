@@ -2,21 +2,23 @@ background_style            tile
 background_color            #000000
 
 username_font               DejaVu Sans Mono:antialias=True:pixelsize=18
-username_color              #eeeeee
-username_x                  125
-username_y                  90
-password_x                  125
-password_y                  90
+username_color              #ffffff
+username_x                  128
+username_y                  128
+password_x                  128
+password_y                  128
 
 username_msg                username:
 password_msg                password:
 
 input_font                  DejaVu Sans Mono:antialias=True:pixelsize=18
-input_color                 #eeeeee
+input_color                 #ffffff
 input_panel_x               0
 input_panel_y               0
-input_name_x                250
-input_name_y                90
+input_name_x                256
+input_name_y                128
 
 session_font                DejaVu Sans Mono:antialias=True:pixelsize=18
-session_color               #eeeeee
+session_color               #ffffff
+session_x                   128
+session_y                   640
