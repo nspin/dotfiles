@@ -23,8 +23,8 @@
     };
 
     displayManager.sessionCommands = ''
-        xrdb -merge ${./x11/xresources}
-        xmodmap ${./x11/Xmodmap}
+        xrdb -merge ${./xresources}
+        xmodmap ${./Xmodmap}
         xset r rate 300 50
         xsetroot -cursor_name left_ptr&
         pape=""

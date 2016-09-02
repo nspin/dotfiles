@@ -4,7 +4,7 @@
 
   imports = [
     ./modules/base.nix
-    ./modules/graphical.nix
+    ./modules/graphical
     ./modules/t520.nix
   ];
 
