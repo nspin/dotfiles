@@ -27,16 +27,20 @@
         xmodmap ${./Xmodmap}
         xset r rate 300 50
         xsetroot -cursor_name left_ptr&
-        pape=""
-        for img in ~/.wallpaper.{png,jpg}; do
-            if [ -f "$img" ]; then
-                pape="$img"
-            fi
-        done
-        if [ -n "$pape" ]; then
-            feh --bg-max "$pape"
+        if [ -x "~/.fehbg" ]; then
+          ~/.fehbg
         else
-          xsetroot -solid '#000000'
+          pape=""
+          for img in ~/.wallpaper.{png,jpg}; do
+              if [ -f "$img" ]; then
+                  pape="$img"
+              fi
+          done
+          if [ -n "$pape" ]; then
+              feh --no-fehbg --bg-max "$pape"
+          else
+            xsetroot -solid '#000000'
+          fi
         fi
     '';
 
