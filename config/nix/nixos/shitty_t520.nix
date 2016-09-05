@@ -11,6 +11,7 @@
   environment.systemPackages = pkgs.mylib.gatherLists pkgs [
     ../lists/core.nix
     ../lists/extra.nix
+    ../lists/math.nix
     ../lists/hs.nix
     ../lists/linux/core.nix
     ../lists/linux/graphical.nix
