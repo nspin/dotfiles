@@ -9,3 +9,4 @@ multiplexers/tmux.conf         .tmux.conf
 bash/bashrc                    .bashrc
 bash/bash_profile              .bash_profile
 multiplexers/tmux.conf         .tmux.conf
+mitmproxy/common.conf          .mitmproxy/common.conf
