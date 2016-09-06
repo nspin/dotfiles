@@ -1,8 +1,10 @@
 pkgs: with pkgs; [
 
 emacs
-mitmproxy
+chuck
 geeqie
 gimp
+libreoffice
+mitmproxy
 
 ]
