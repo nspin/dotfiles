@@ -14,6 +14,7 @@ gnumake
 which
 zip
 unzip
+rsync
 
 # dev
 tmux
