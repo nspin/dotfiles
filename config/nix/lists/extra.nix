@@ -9,4 +9,9 @@ gimp
 libreoffice
 mitmproxy
 
+python34Packages.mutagen # for mid3v2
+id3v2
+picard
+beets
+
 ]
