@@ -14,4 +14,6 @@ id3v2
 picard
 beets
 
+sqlite
+
 ]

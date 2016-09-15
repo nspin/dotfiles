@@ -1,0 +1,2 @@
+#!/bin/sh
+sqlite3 ~/.mozilla/firefox/*.[dD]efault/places.sqlite "SELECT url FROM moz_places, moz_bookmarks WHERE moz_places.id = moz_bookmarks.fk ORDER BY dateAdded;" | gfzf | xargs firefox
