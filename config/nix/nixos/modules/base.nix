@@ -88,6 +88,7 @@
     VIMRUNTIME = CFGDIR + "/vim-runtime/runtime";
     VIMBUNDLE = CFGDIR + "/vim-bundle/bundle";
     VIM_PLUGIN_PATH = "${pkgs.ycm}";
+    FZF_DEFAULT_OPTS = "--reverse";
   };
 
   environment.extraInit = ''
