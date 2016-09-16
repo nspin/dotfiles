@@ -1,0 +1,36 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+    printf "$0: usage: $0 [START NODE] [FIND OPTIONS...]\n" >&2
+    exit 1
+elif [ -d "$1" ]; then
+    start_node="$1"
+elif [ -f "$1" ]; then
+    printf "$1\n"
+    exit
+else
+    printf "$0: $1 does not exist\n" >&2
+    exit 1
+fi
+shift
+
+cd "$start_node"
+find_args="$@"
+
+find . $find_args \
+    | sed 's#^\./##' \
+    | fzf $FZF_DEFAULT_OPTS --reverse --header="$(pwd)" --expect ctrl-f \
+    | ( case $(head -n 1) in
+            ctrl-f)
+                exec select-node .. "$@"
+                ;;
+            *)
+                next="$(cat)"
+                if [ -n "$next" ]; then
+                    exec select-node "$next" "$@"
+                else
+                    exit
+                fi
+                ;;
+        esac
+      )
