@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ -n "$1" ]; then
+    start_node="$1"
+else
+    start_node=.
+fi
+
+# xtermdo "select-file-vardepth 3 $start_node -not -path '*/\.*' -a '(' -type d -o -name '*.pdf' -o -name '*.djvu' ')'"
+# select-file-vardepth 3 $start_node -not -path '*/\.*' -a '(' -type d -o -name '*.pdf' -o -name '*.djvu' ')'
+select-file-vardepth 3 $start_node -type d -o -name '*.pdf' -o -name '*.djvu'

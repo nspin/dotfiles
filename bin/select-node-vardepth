@@ -8,26 +8,25 @@ function check_arg() {
 }
 
 check_arg "$1"
-if [ -d "$1" ]; then
-    start_node="$1"
-elif [ -f "$1" ]; then
-    start_node="$(dirname "$1")"
-else
-    printf "$0: $1 does not exist\n" >&2
-    exit 1
-fi
-shift
-
-check_arg "$1"
-if [ "$(expr "$1" '<' 1)" == 1 ]; then
+if [ "$(expr $1 '<' 1)" == 1 ]; then
     start_depth=1
 else
     start_depth="$1"
 fi
 shift
 
+check_arg "$1"
+if [ -d "$1" ]; then
+    start_node="$1"
+elif [ -f "$1" ]; then
+    start_node="$(dirname $1)"
+else
+    printf "$0: $1 does not exist\n" >&2
+    exit 1
+fi
+shift
+
 cd "$start_node"
-pwd
 find_args="$@"
 
 find . -maxdepth "$start_depth" $find_args \
@@ -35,23 +34,21 @@ find . -maxdepth "$start_depth" $find_args \
     | fzf $FZF_DEFAULT_OPTS --reverse --header="$(pwd)" --expect ctrl-f,ctrl-g,ctrl-s,ctrl-a \
     | ( case $(head -n 1) in
             ctrl-f)
-                exec select-node .. "$start_depth" "$@"
+                exec select-node-vardepth "$start_depth" .. "$@"
                 ;;
             ctrl-g)
                 next="$(cat)"
                 if [ -n "$next" ]; then
-                    exec select-node-vardepth "$next" "$start_depth" "$@"
+                    exec select-node-vardepth "$start_depth" "$next" "$@"
                 else
                     exit
                 fi
                 ;;
             ctrl-s)
-                echo 'hi'
-                exec select-node-vardepth "$(pwd)" "$(expr "$start_depth" + 1)" "$@"
+                exec select-node-vardepth "$(expr $start_depth + 1)" "$(pwd)" "$@"
                 ;;
             ctrl-a)
-                echo 'ho'
-                exec select-node-vardepth "$(pwd)" "$(expr "$start_depth" - 1)" "$@"
+                exec select-node-vardepth "$(expr $start_depth - 1)" "$(pwd)" "$@"
                 ;;
             *) cat
                 ;;

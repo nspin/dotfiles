@@ -1,0 +1,58 @@
+#!/bin/sh
+
+function check_arg() {
+    if [ -z "$1" ]; then
+        printf "$0: usage: $0 [START NODE] [START DEPTH] [FIND OPTIONS...]\n" >&2
+        exit 1
+    fi
+}
+
+check_arg "$1"
+if [ "$(expr $1 '<' 1)" == 1 ]; then
+    start_depth=1
+else
+    start_depth="$1"
+fi
+shift
+
+check_arg "$1"
+if [ -d "$1" ]; then
+    start_node="$1"
+elif [ -f "$1" ]; then
+    printf "$1\n"
+    exit
+else
+    printf "$0: $1 does not exist\n" >&2
+    exit 1
+fi
+shift
+
+cd "$start_node"
+find_args="$@"
+
+# echo "find . -maxdepth $start_depth $find_args"
+# printf %s "$find_args" | sed 's/(/\\(/g' | sed 's/)/\\)/g' | sed 's/\*/\\\*/g' | sed "s/'/\\'/g"
+find . $(printf %s "$find_args" | sed 's/(/\\(/g' | sed 's/)/\\)/g' | sed 's/\*/\\\*/g' | sed "s/'/\\'/g")
+find . -maxdepth "$start_depth" $(printf %s "$find_args" | sed 's/(/\\(') \
+    | sed 's#^\./##' \
+    | fzf $FZF_DEFAULT_OPTS --reverse --header="$(pwd)" --expect ctrl-f,ctrl-s,ctrl-a \
+    | ( case $(head -n 1) in
+            ctrl-f)
+                exec select-file-vardepth "$start_depth" .. "$@"
+                ;;
+            ctrl-s)
+                exec select-file-vardepth "$(expr $start_depth + 1)" "$(pwd)" "$@"
+                ;;
+            ctrl-a)
+                exec select-file-vardepth "$(expr $start_depth - 1)" "$(pwd)" "$@"
+                ;;
+            *)
+                next="$(cat)"
+                if [ -n "$next" ]; then
+                    exec select-file-vardepth "$start_depth" "$next" "$@"
+                else
+                    exit
+                fi
+                ;;
+        esac
+      )

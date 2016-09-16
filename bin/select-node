@@ -6,7 +6,7 @@ if [ -z "$1" ]; then
 elif [ -d "$1" ]; then
     start_node="$1"
 elif [ -f "$1" ]; then
-    start_node="$(dirname "$1")"
+    start_node="$(dirname $1)"
 else
     printf "$0: $1 does not exist\n" >&2
     exit 1

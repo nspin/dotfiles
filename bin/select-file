@@ -22,12 +22,12 @@ find . $find_args \
     | fzf $FZF_DEFAULT_OPTS --reverse --header="$(pwd)" --expect ctrl-f \
     | ( case $(head -n 1) in
             ctrl-f)
-                exec select-node .. "$@"
+                exec select-file .. "$@"
                 ;;
             *)
                 next="$(cat)"
                 if [ -n "$next" ]; then
-                    exec select-node "$next" "$@"
+                    exec select-file "$next" "$@"
                 else
                     exit
                 fi
