@@ -17,8 +17,7 @@ def get_args():
     parser.add_argument('start_node', metavar='START_NODE')
     parser.add_argument('-f', '--file-only', action='store_true')
     parser.add_argument('-v', '--var-depth')
-    parser.add_argument('--find', nargs='+', default=[])
-    parser.add_argument('--fzf', nargs='+', default=[])
+    parser.add_argument('-e', '--extra', dest='find_args', nargs=REMAINDER, default=[])
     return parser.parse_args()
 
 
@@ -61,11 +60,17 @@ def choose(args):
             'fzf',
             '--header=' + os.path.abspath(curr),
             '--expect=' + ','.join(expects_of(args)),
-            ] + args.fzf
+            ]
 
-        find_cmd = ['find', curr] \
-                 + ([] if args.var_depth is None else ['-maxdepth', args.var_depth]) \
-                 + args.find
+        find_cmd = sum([
+                ['find', curr],
+                ([] if args.var_depth is None else ['-maxdepth', args.var_depth]),
+                # ['!', '-readable', '-prune'],
+                ['!', '-readable', '-prune', '-o', '('],
+                # ! -readable -prune -o <other conditions like -name> -print
+                args.find_args,
+                [')', '-print'],
+            ], [])
 
         find_proc = Popen(find_cmd, stdout=PIPE)
         fzf_proc = Popen(fzf_cmd, stdin=PIPE, stdout=PIPE)

@@ -6,6 +6,5 @@ else
     start_node=.
 fi
 
-# xtermdo "select-file-vardepth 3 $start_node -not -path '*/\.*' -a '(' -type d -o -name '*.pdf' -o -name '*.djvu' ')'"
-# select-file-vardepth 3 $start_node -not -path '*/\.*' -a '(' -type d -o -name '*.pdf' -o -name '*.djvu' ')'
-select-file-vardepth 3 $start_node -type d -o -name '*.pdf' -o -name '*.djvu'
+printf '%s\n' "fznode $start_node -f -v 3 --extra -type d -o -name '*.pdf' -o -name '*.djvu'"
+xtermdo "fznode $start_node -f -v 3 --extra -type d -o -name '*.pdf' -o -name '*.djvu'"
