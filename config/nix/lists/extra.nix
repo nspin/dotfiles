@@ -16,4 +16,6 @@ beets
 
 sqlite
 
+jmtpfs
+
 ]
