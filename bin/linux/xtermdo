@@ -18,14 +18,14 @@ mkfifo -m o+w $fifo_0
 mkfifo -m o+w $fifo_1
 mkfifo -m o+w $fifo_r
 
+cmd_a="$prefix-ca-$suffix"
+cmd_b="$prefix-cb-$suffix"
+
 cleanup() {
-  rm -f $fifo_0 $fifo_1 $fifo_r
+  rm -f $fifo_0 $fifo_1 $fifo_r $cmd_a $cmd_b
 }
 
 trap cleanup EXIT SIGINT SIGTERM
-
-cmd_a="$prefix-ca-$suffix"
-cmd_b="$prefix-cb-$suffix"
 
 printf '%s\n' "$1" > $cmd_a
 printf '%s\n' "sh $cmd_a < $fifo_0 > $fifo_1; echo \$? > $fifo_r" > $cmd_b

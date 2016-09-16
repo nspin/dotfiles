@@ -6,5 +6,4 @@ else
     start_node=.
 fi
 
-printf '%s\n' "fznode $start_node -f -v 3 --extra -type d -o -name '*.pdf' -o -name '*.djvu'"
-xtermdo "fznode $start_node -f -v 3 --extra -type d -o -name '*.pdf' -o -name '*.djvu'"
+xtermdo "fznode $start_node -f -v 3 --extra -type d -o -name '*.pdf' -o -name '*.djvu'" -title popup | xargs zathura

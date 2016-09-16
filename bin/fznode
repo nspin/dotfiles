@@ -66,9 +66,16 @@ def choose(args):
         find_cmd = sum([
                 ['find', curr],
                 [] if args.var_depth is None else ['-maxdepth', args.var_depth],
-                ['!', '-readable', '-prune', '-o'],
-                [] if args.find_args is None else ['-o' '('] + args.find_args + [')'],
-                ['-print'],
+                # --
+                # args.find_args,
+                # OR
+                # ['!', '-readable', '-prune', '-o'],
+                # [] if args.find_args is None else ['-o', '('] + args.find_args + [')'],
+                # ['-print'],
+                # OR
+                ['!', '-readable', '-prune'],
+                # --
+                [] if args.find_args is None else ['-o', '('] + args.find_args + [')'],
             ], [])
 
         find_proc = Popen(find_cmd, stdout=PIPE)
