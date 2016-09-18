@@ -74,7 +74,7 @@
 
   environment.systemPackages = with pkgs; [
     transmission_remote_gtk
-    haskellPackages.vimus
+    # haskellPackages.vimus
     ario
     gmpc
     mpc_cli

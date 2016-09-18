@@ -40,6 +40,20 @@ let
       };
 
 
+      hypothesis1 = pythonPackages.buildPythonPackage rec {
+        name = "hypothesis-1.14.0";
+
+        buildInputs = with pythonPackages; [fake_factory django numpy pytz flake8 pytest ];
+
+        doCheck = false;  # no tests in source
+
+        src = pkgs.fetchurl {
+          url = "mirror://pypi/h/hypothesis/${name}.tar.gz";
+          sha256 = "12dxrvn108q2j20brrk6zcb8w00kn3af1c07c0fv572nf2ngyaxy";
+        };
+
+      };
+
       cryptography_1_3_2 = pythonPackages.buildPythonPackage rec {
         name = "cryptography-${version}";
         version = "1.3.2";

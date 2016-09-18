@@ -18,4 +18,9 @@ sqlite
 
 jmtpfs
 
+chromaprint
+
+google-chrome
+kde4.krusader
+
 ]
