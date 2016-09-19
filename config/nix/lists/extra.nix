@@ -9,6 +9,7 @@ gimp
 libreoffice
 mitmproxy
 
+python34Packages.mpd2
 python34Packages.mutagen # for mid3v2
 id3v2
 picard
@@ -23,4 +24,9 @@ chromaprint
 google-chrome
 kde4.krusader
 
+spaceFM
+pcmanfm
+ranger
+mc
+vifm
 ]
