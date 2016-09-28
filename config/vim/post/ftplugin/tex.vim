@@ -7,4 +7,3 @@ inoremap <c-x> <esc>:LtxMain<cr>
 
 nnoremap <leader>p :LtxMain<cr>
 nnoremap <leader>v :ViewMain<cr>
-

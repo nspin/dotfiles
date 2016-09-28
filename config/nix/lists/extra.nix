@@ -21,6 +21,7 @@ jmtpfs
 
 chromaprint
 
+chromium
 google-chrome
 kde4.krusader
 
