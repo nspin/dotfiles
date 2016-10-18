@@ -33,6 +33,11 @@ function clone() {
     git clone $URL
 }
 
+function cloneto() {
+    URL="https://nickspinale@github.com/$1/$2.git"
+    git clone $URL $3
+}
+
 function cloneb() {
     URL="https://nickspinale@bitbucket.org/$1/$2.git"
     git clone $URL
@@ -46,6 +51,7 @@ function module() {
 alias enolc='clone nickspinale'
 alias enolcb='cloneb nickspinale'
 alias edulom='module nickspinale'
+alias enolcto='cloneto nickspinale'
 
 alias ga='git add -A :/'
 alias gs='git status'

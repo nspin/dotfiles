@@ -1,9 +1,15 @@
-command! LtxMain w | !pdflatex main.tex
-command! ViewMain !zathura main.pdf &> /dev/null &
-" command! LtxMain w | !pdflatex %
-" command! ViewMain !zathura $(echo % | sed 's/tex$/pdf/') &> /dev/null &
+if !exists('g:tex_special')
 
-inoremap <c-x> <esc>:LtxMain<cr>
+  let g:tex_main = get(g:, 'tex_main', 'main')
 
-nnoremap <leader>p :LtxMain<cr>
-nnoremap <leader>v :ViewMain<cr>
+  exe 'command! LtxMain w | !xelatex '.g:tex_main.'.tex'
+  exe 'command! ViewMain !zathura '.g:tex_main.'.pdf &> /dev/null &'
+  " command! LtxMain w | !pdflatex %
+  " command! ViewMain !zathura $(echo % | sed 's/tex$/pdf/') &> /dev/null &
+
+  inoremap <c-x> <esc>:LtxMain<cr>
+
+  nnoremap <leader>p :LtxMain<cr>
+  nnoremap <leader>v :ViewMain<cr>
+
+endif

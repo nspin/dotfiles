@@ -5,6 +5,7 @@ pkgs: with pkgs; [
     scheme-small
     collection-latexextra
     collection-fontsrecommended
+    fontawesome
     # pbox
     # csquotes
     # beamerposter

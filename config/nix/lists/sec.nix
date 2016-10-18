@@ -2,7 +2,7 @@ pkgs: with pkgs; [
 
 # apktool
 # androidsdk
-zap
-mitmproxy
+# zap
+# mitmproxy
 
 ]

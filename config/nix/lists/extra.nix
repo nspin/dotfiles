@@ -7,7 +7,7 @@ soundfont-fluid
 geeqie
 gimp
 libreoffice
-mitmproxy
+# mitmproxy
 
 python34Packages.mpd2
 python34Packages.mutagen # for mid3v2
@@ -30,4 +30,6 @@ pcmanfm
 ranger
 mc
 vifm
+
+adobe-reader
 ]

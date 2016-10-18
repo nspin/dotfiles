@@ -7,6 +7,7 @@
     fontconfig.enable = true;
     fonts = [
       pkgs.dejavu_fonts
+      pkgs.font-awesome-ttf
     ];
   };
 
