@@ -32,4 +32,6 @@ mc
 vifm
 
 adobe-reader
+
+lessc
 ]
