@@ -20,6 +20,8 @@
 
     hakyll = dontCheck (self.callPackage ./local/hackage-packages/hakyll.nix {});
 
+    http-client-tls_0_3_3 = super.http-client-tls_0_3_3.override { http-client = self.http-client_0_5_3_3; };
+
     xhb = appendPatch super.xhb ./local/hackage-packages/xhb.patch;
     # xhb = super.xhb.override { binary = self.binary_0_8_3_0; };
     # binary_0_8_3_0 = self.callPackage ./local/hackage-packages/binary_0_8_3_0.nix {};

@@ -34,4 +34,16 @@ vifm
 adobe-reader
 
 lessc
+pcsx2
+p7zip
+
+slack
+
+flpsed
+xpdf
+# evince
+# kde4.okular
+# shared_mime_info
+
+ngrok
 ]
