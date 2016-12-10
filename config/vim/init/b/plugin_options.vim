@@ -35,7 +35,9 @@ endfun
 
 let g:NERDTreeHijackNetrw = 0
 
-let g:tex_indent_and=0
-let g:tex_indent_brace=0
-let g:tex_indent_items=0
-let g:tex_indent_parentheses=0
+let g:tex_indent_and = 0
+let g:tex_indent_brace = 0
+let g:tex_indent_items = 0
+let g:tex_indent_parentheses = 0
+
+let g:ycm_global_ycm_extra_conf = $VIM.'/ycm_extra_conf.py'
