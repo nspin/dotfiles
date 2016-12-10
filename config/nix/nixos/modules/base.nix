@@ -86,12 +86,11 @@
   environment.variables = rec {
     VISUAL = "vim";
     EDITOR = "vim";
+    BROWSER = "chromium";
     CFGDIR = "/cfg";
     VIM = CFGDIR + "/dotfiles/config/vim";
-    # VIMRUNTIME = CFGDIR + "/vim-runtime/runtime";
     VIMRUNTIME = "${pkgs.vimHugeX}/share/vim/vim74";
     VIMBUNDLE = CFGDIR + "/vim-bundle/bundle";
-    # VIM_PLUGIN_PATH = "${pkgs.ycm}";
     VIM_PLUGIN_PATH = "${pkgs.vimPlugins.youcompleteme}/share/vim-plugins/youcompleteme";
     FZF_DEFAULT_OPTS = "--reverse";
   };
