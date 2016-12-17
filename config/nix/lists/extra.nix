@@ -7,7 +7,6 @@ soundfont-fluid
 geeqie
 gimp
 libreoffice
-# mitmproxy
 
 python34Packages.mpd2
 python34Packages.mutagen # for mid3v2
@@ -46,4 +45,7 @@ xpdf
 # shared_mime_info
 
 ngrok
+sublime3
+
+virtualbox
 ]

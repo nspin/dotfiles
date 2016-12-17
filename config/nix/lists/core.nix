@@ -15,6 +15,7 @@ which
 zip
 unzip
 rsync
+file
 
 # dev
 tmux

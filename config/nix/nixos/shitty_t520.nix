@@ -6,6 +6,7 @@
     ./modules/base.nix
     ./modules/graphical
     ./modules/t520.nix
+    ./modules/virtualbox.nix
   ];
 
   environment.systemPackages = pkgs.mylib.gatherLists pkgs [
