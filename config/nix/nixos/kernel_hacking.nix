@@ -7,8 +7,6 @@
     ./modules/graphical
   ];
 
-  system.stateVersion = "16.03";
-
   boot.loader.grub.devices = [ "/dev/sda" ];
 
   environment.systemPackages = with pkgs; [
