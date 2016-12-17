@@ -2,6 +2,9 @@
 , process, stdenv, stm, terminal-size, text, unix, X11, xmonad
 , xmonad-contrib, bytestring, transformers
 }:
+
+isLaptop:
+
 mkDerivation {
   pname = "xmonad-config";
   version = "0.1.0.0";
@@ -15,4 +18,5 @@ mkDerivation {
   ];
   executableHaskellDepends = [ base ];
   license = stdenv.lib.licenses.mit;
+  configureFlags = if isLaptop then [ "-f laptop" ] else [];
 }

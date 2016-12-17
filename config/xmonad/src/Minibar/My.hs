@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 {-# LANGUAGE OverloadedStrings #-}
 
 module Minibar.My
@@ -45,8 +46,17 @@ parsed onErr parser =
 plain :: [Chunk] -> (String -> [Chunk]) -> VVar (Maybe (Maybe String)) -> Component
 plain onErr format = fmap (maybe onErr format) . Compose
 
+
 myMinibar :: VVar (Int -> [Chunk])
-myMinibar = (fmap (fromMaybe waiting)) . getCompose $ f
+#if LAPTOP
+myMinibar = laptop
+#else
+myMinibar = nonLaptop
+#endif
+
+
+laptop :: VVar (Int -> [Chunk])
+laptop = (fmap (fromMaybe waiting)) . getCompose $ f
     <$> date
     <*> cpu
     <*> mem
@@ -64,6 +74,19 @@ myMinibar = (fmap (fromMaybe waiting)) . getCompose $ f
             <> wifi
             <> raw " | "
             <> bat
+
+
+nonLaptop :: VVar (Int -> [Chunk])
+nonLaptop = (fmap (fromMaybe waiting)) . getCompose $ f
+    <$> date
+    <*> cpu
+    <*> mem
+  where
+    waiting width = raw "waiting"
+    f date cpu mem width = stradle width left right
+      where
+        right = date
+        left = cpu <> raw " | " <> mem
 
 
 date :: Component

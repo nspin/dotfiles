@@ -8,6 +8,12 @@ build-type:          Simple
 extra-source-files:  README.md
 cabal-version:       >=1.10
 
+
+Flag laptop
+  Description:  Build status-bar with wifi and battery info
+  Default:      False
+
+
 executable xmonad
   main-is:             Main.hs
   ghc-options:         -threaded
@@ -18,6 +24,9 @@ library
 
   hs-source-dirs:      src
   default-language:    Haskell2010
+
+  if flag(laptop)
+    cpp-options: -DLAPTOP
 
   exposed-modules:     XMonad.Config.Uration
 

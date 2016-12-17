@@ -126,10 +126,10 @@ myKeys (XConfig {..}) = M.fromList $ meta ++ interWorkspace ++ intraWorkspace
     interWorkspace =
 
         -- movement between workspaces adjascent in the config tag list or in time
-        [ ((mod1Mask, xK_p), toggleWS) -- Quick move to last viewed workspace
-        , ((modMask, xK_q), toggleWS) -- Move to last viewed workspace
-        , ((modMask, xK_n), nextWS  ) -- Move to next workspace in stack
-        , ((modMask, xK_p), prevWS  ) -- Move to previous workspace in stack
+        [ ((mod1Mask, xK_p  ), toggleWS) -- Move to last viewed workspace
+        , ((mod1Mask, xK_Tab), toggleWS) -- Move to last viewed workspace
+        , ((modMask, xK_n   ), nextWS  ) -- Move to next workspace in stack
+        , ((modMask, xK_p   ), prevWS  ) -- Move to previous workspace in stack
         ] ++
 
         -- mod-N: Switch to workspace N

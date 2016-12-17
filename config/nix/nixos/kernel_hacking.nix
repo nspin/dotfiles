@@ -21,6 +21,7 @@
     gnumake
     which
     file
+    sysstat
 
     gcc
     vimHugeX

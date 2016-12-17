@@ -50,7 +50,7 @@
         name = "xmonad";
         start =
           let
-            my-xmonad = pkgs.haskellPackages.callPackage <dotfig/xmonad> {};
+            my-xmonad = (pkgs.haskellPackages.callPackage <dotfig/xmonad> {}) false;
           in ''
             # logdir=/var/log/wmdev
             # mkdir -p $logdir
