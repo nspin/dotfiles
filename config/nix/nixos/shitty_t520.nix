@@ -3,6 +3,7 @@
 {
 
   imports = [
+    ./modules/core.nix
     ./modules/base.nix
     ./modules/graphical
     ./modules/t520.nix
