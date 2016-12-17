@@ -12,7 +12,6 @@
     allowedTCPPorts = [ 8080 ];
   };
 
-
   users.extraUsers = {
     nick = {
       isNormalUser = true;
@@ -20,6 +19,7 @@
       extraGroups = [ "wheel" "networkmanager" "transmission" ];
     };
   };
+
   security.sudo = {
     wheelNeedsPassword = false;
     extraConfig = ''
@@ -40,7 +40,6 @@
     BROWSER = "chromium";
     CFGDIR = "/cfg";
     VIM = CFGDIR + "/dotfiles/config/vim";
-    VIMRUNTIME = "${pkgs.vimHugeX}/share/vim/vim74";
     VIMBUNDLE = CFGDIR + "/vim-bundle/bundle";
     VIM_PLUGIN_PATH = "${pkgs.vimPlugins.youcompleteme}/share/vim-plugins/youcompleteme";
     FZF_DEFAULT_OPTS = "--reverse";
@@ -49,6 +48,7 @@
   environment.extraInit = ''
     export PATH="$PATH:$CFGDIR/dotfiles/bin:$CFGDIR/dotfiles/bin/linux:$CFGDIR/local/bin"
     export NIX_PATH="$NIX_PATH:dotfig=$CFGDIR/dotfiles/config"
+    export VIMRUNTIME="${pkgs.vimHugeX}/share/vim/vim[0-9][0-9]";
   '';
 
   # environment.etc = {
