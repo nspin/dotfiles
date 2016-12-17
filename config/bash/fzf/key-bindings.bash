@@ -1,11 +1,11 @@
 # Key bindings
 # ------------
 __fzf_select__() {
-  local cmd="${FZF_CTRL_T_COMMAND:-"command find -L . \\( -path '*/\\.*' -o -fstype 'dev' -o -fstype 'proc' \\) -prune \
+  local cmd="${FZF_CTRL_T_COMMAND:-"command find -L . \\( -path '*/\\.*' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
     -o -type f -print \
     -o -type d -print \
     -o -type l -print 2> /dev/null | sed 1d | cut -b3-"}"
-  eval "$cmd" | fzf -m | while read -r item; do
+  eval "$cmd | fzf -m $FZF_CTRL_T_OPTS" | while read -r item; do
     printf '%q ' "$item"
   done
   echo
@@ -26,7 +26,7 @@ __fzf_select_tmux__() {
     height="-l $height"
   fi
 
-  tmux split-window $height "cd $(printf %q "$PWD"); FZF_DEFAULT_OPTS=$(printf %q "$FZF_DEFAULT_OPTS") PATH=$(printf %q "$PATH") FZF_CTRL_T_COMMAND=$(printf %q "$FZF_CTRL_T_COMMAND") bash -c 'source \"${BASH_SOURCE[0]}\"; tmux send-keys -t $TMUX_PANE \"\$(__fzf_select__)\"'"
+  tmux split-window $height "cd $(printf %q "$PWD"); FZF_DEFAULT_OPTS=$(printf %q "$FZF_DEFAULT_OPTS") PATH=$(printf %q "$PATH") FZF_CTRL_T_COMMAND=$(printf %q "$FZF_CTRL_T_COMMAND") FZF_CTRL_T_OPTS=$(printf %q "$FZF_CTRL_T_OPTS") bash -c 'source \"${BASH_SOURCE[0]}\"; RESULT=\"\$(__fzf_select__)\"; tmux setb -b fzf \"\$RESULT\" \\; pasteb -b fzf -t $TMUX_PANE \\; deleteb -b fzf || tmux send-keys -t $TMUX_PANE \"\$RESULT\"'"
 }
 
 fzf-file-widget() {
@@ -41,9 +41,9 @@ fzf-file-widget() {
 
 __fzf_cd__() {
   local cmd dir
-  cmd="${FZF_ALT_C_COMMAND:-"command find -L . \\( -path '*/\\.*' -o -fstype 'dev' -o -fstype 'proc' \\) -prune \
+  cmd="${FZF_ALT_C_COMMAND:-"command find -L . \\( -path '*/\\.*' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
     -o -type d -print 2> /dev/null | sed 1d | cut -b3-"}"
-  dir=$(eval "$cmd" | $(__fzfcmd) +m) && printf 'cd %q' "$dir"
+  dir=$(eval "$cmd | $(__fzfcmd) +m $FZF_ALT_C_OPTS") && printf 'cd %q' "$dir"
 }
 
 __fzf_history__() (
@@ -51,8 +51,8 @@ __fzf_history__() (
   shopt -u nocaseglob nocasematch
   line=$(
     HISTTIMEFORMAT= history |
-    $(__fzfcmd) +s --tac +m -n2..,.. --tiebreak=index --toggle-sort=ctrl-r $FZF_CTRL_R_OPTS |
-    \grep '^ *[0-9]') &&
+    eval "$(__fzfcmd) +s --tac +m -n2..,.. --tiebreak=index --toggle-sort=ctrl-r $FZF_CTRL_R_OPTS" |
+    command grep '^ *[0-9]') &&
     if [[ $- =~ H ]]; then
       sed 's/^ *\([0-9]*\)\** .*/!\1/' <<< "$line"
     else
@@ -67,7 +67,7 @@ __fzf_use_tmux__() {
 [ $BASH_VERSINFO -gt 3 ] && __use_bind_x=1 || __use_bind_x=0
 __fzf_use_tmux__ && __use_tmux=1 || __use_tmux=0
 
-if [[ $'\n'$(set -o) != *$'\n'vi*on* ]]; then
+if [[ ! -o vi ]]; then
   # Required to refresh the prompt after fzf
   bind '"\er": redraw-current-line'
   bind '"\e^": history-expand-line'
@@ -82,10 +82,10 @@ if [[ $'\n'$(set -o) != *$'\n'vi*on* ]]; then
   fi
 
   # CTRL-R - Paste the selected command from history into the command line
-  bind '"\C-r": " \C-e\C-u$(__fzf_history__)\e\C-e\e^\er"'
+  bind '"\C-r": " \C-e\C-u`__fzf_history__`\e\C-e\e^\er"'
 
   # ALT-C - cd into the selected directory
-  bind '"\ec": " \C-e\C-u$(__fzf_cd__)\e\C-e\er\C-m"'
+  bind '"\ec": " \C-e\C-u`__fzf_cd__`\e\C-e\er\C-m"'
 else
   # We'd usually use "\e" to enter vi-movement-mode so we can do our magic,
   # but this incurs a very noticeable delay of a half second or so,
