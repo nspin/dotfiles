@@ -14,7 +14,6 @@ nnoremap Y y$
 
 noremap <cr> :
 
-noremap <space>m "m
 noremap <space>h "_
 noremap <space>f @q
 

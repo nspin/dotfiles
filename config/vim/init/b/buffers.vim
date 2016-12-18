@@ -40,6 +40,9 @@ nnoremap <space>j :bprev<cr>
 nnoremap <space>k :bnext<cr>
 nnoremap <space>d :Wipeout<cr>
 
+nnoremap <space>n gT
+nnoremap <space>m gt
+
 nnoremap <space>q :quit<cr>
 nnoremap <space>w :write<cr>
 nnoremap <space>e :e 
@@ -62,6 +65,7 @@ au BufLeave * let s:last_buf = bufnr('%')
 
 " TODO: use # here
 nnoremap <tab> :call <sid>last_buf()<cr>
+nnoremap <space>, :call <sid>last_tab()<cr>
 
 fun s:buflist()
   redir => ls
