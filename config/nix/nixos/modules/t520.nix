@@ -19,15 +19,15 @@
     handlers = {
       mute = {
         event = "button/mute.*";
-        action = "${pkgs.alsaUtils}/bin/amixer set Master toggle";
+        action = "${pkgs.alsaUtils}/bin/amixer sset Master toggle";
       };
       vup = {
         event = "button/volumeup.*";
-        action = "${pkgs.alsaUtils}/bin/amixer set Master 5%+";
+        action = "${pkgs.alsaUtils}/bin/amixer sset Master 2%+";
       };
       vdown = {
         event = "button/volumedown.*";
-        action = "${pkgs.alsaUtils}/bin/amixer set Master 5%-";
+        action = "${pkgs.alsaUtils}/bin/amixer sset Master 2%-";
       };
       play = {
         event = "cd/play.*";

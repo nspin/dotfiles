@@ -14,9 +14,9 @@
     nix-repl
     nix-prefetch-scripts
     patchelf
-    
+
     rlwrap
-    
+
     coreutils
     gnumake
     which
@@ -25,7 +25,7 @@
 
     gcc
     vimHugeX
-    
+
     tmux
     git
 
@@ -35,9 +35,9 @@
     xorg.xkill
     xlibs.xmodmap
     xlibs.xmessage
-    
+
     chromium
-    
+
     dejavu_fonts
 
   ];

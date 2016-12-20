@@ -2,12 +2,13 @@
 
 {
 
+  system.stateVersion = "16.03";
+
   imports = [
     ./modules/core.nix
-    ./modules/base.nix
     ./modules/graphical
+    ./modules/media.nix
     ./modules/t520.nix
-    ./modules/virtualbox.nix
   ];
 
   environment.systemPackages = pkgs.mylib.gatherLists pkgs [
@@ -31,6 +32,9 @@
     driver = "wext";
   };
 
-  system.stateVersion = "16.03";
-
+  my.graphical.isLaptop = true;
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.systemWide = true;
+  users.extraGroups.pulse-access.members = [ "nick" "other" "guest" "root" ];
+  users.extraGroups.audio.members = [ "nick" "other" "guest" "root" ];
 }

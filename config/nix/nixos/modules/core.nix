@@ -6,17 +6,13 @@
 
   networking.hostName = "nixos";
   networking.hostId = "c890f48c";
-
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 8080 ];
-  };
+  networking.firewall.enable = true;
 
   users.extraUsers = {
     nick = {
       isNormalUser = true;
       uid = 1000;
-      extraGroups = [ "wheel" "networkmanager" "transmission" ];
+      extraGroups = [ "wheel" ];
     };
   };
 
@@ -59,5 +55,15 @@
   #     source = <dotfig/line-editors/inputrc>;
   #   };
   # };
+
+  services.physlock = {
+    enable = true;
+    user = "nick";
+    lockOn.suspend = true;
+    lockOn.hibernate = true;
+  };
+
+  services.openssh.enable = true;
+  networking.firewall.allowedTCPPorts = [ 22 ];
 
 }

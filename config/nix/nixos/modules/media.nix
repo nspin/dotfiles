@@ -5,13 +5,6 @@
   # time.timeZone = "America/New_York";
   time.timeZone = "Europe/Budapest";
 
-  services.physlock = {
-    enable = true;
-    user = "nick";
-    lockOn.suspend = true;
-    lockOn.hibernate = true;
-  };
-
   users.extraUsers = {
     guest = {
       isNormalUser = true;
@@ -20,23 +13,20 @@
     other = {
       isNormalUser = true;
       uid = 1002;
-      extraGroups = [ "wheel" "networkmanager" "transmission" ];
+      extraGroups = [ "wheel" ];
     };
-  };
-
-  services.openssh = {
-    enable = true;
   };
 
   services.transmission = {
     enable = true;
     settings = {
-      # TODO
       download-dir = "/var/lib/transmission/Downloads";
       incomplete-dir = "/var/lib/transmission/Downloads";
       incomplete-dir-enabled = true;
     };
   };
+
+  users.extraGroups.transmission.members = [ "nick" "other" ];
 
   services.mpd = {
     enable = true;
@@ -48,7 +38,6 @@
 
   environment.systemPackages = with pkgs; [
     transmission_remote_gtk
-    # haskellPackages.vimus
     ario
     gmpc
     mpc_cli
