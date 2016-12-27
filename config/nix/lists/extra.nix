@@ -44,7 +44,6 @@ xpdf
 # kde4.okular
 # shared_mime_info
 
-ngrok
 sublime3
 
 virtualbox
