@@ -37,4 +37,6 @@
   hardware.pulseaudio.systemWide = true;
   users.extraGroups.pulse-access.members = [ "nick" "other" "guest" "root" ];
   users.extraGroups.audio.members = [ "nick" "other" "guest" "root" ];
+
+  networking.firewall.allowedTCPPorts = [ 8080 ];
 }

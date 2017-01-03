@@ -2,8 +2,8 @@
 
 {
 
-  # time.timeZone = "America/New_York";
-  time.timeZone = "Europe/Budapest";
+  time.timeZone = "America/New_York";
+  # time.timeZone = "Europe/Budapest";
 
   users.extraUsers = {
     guest = {

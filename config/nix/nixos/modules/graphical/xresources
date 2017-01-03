@@ -18,11 +18,13 @@
 
 Xcursor.theme: dot
 
-xterm*faceName: DejaVu Sans Mono:antialias=True:pixelsize=18
+! xterm*selectToClipboard: true
 
 ! for correct meta stuff
 xterm*eightBitInput:  false
 xterm*eightBitOutput: true
+
+xterm*faceName: DejaVu Sans Mono:antialias=True:pixelsize=18
 
 xterm*background:  S_base03
 xterm*foreground:  S_base0
