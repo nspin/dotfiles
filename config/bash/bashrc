@@ -1,9 +1,14 @@
 # ~/.bashrc
 
+# PROVISIONAL
+case "$(uname -s)" in
+    Darwin) . $HOME/dotfiles/config/darwin/env.sh
+esac
+
 # POSIX
 
 for file in $DOTFILES/config/sh/*.sh; do
-    source $file
+    . $file
 done
 
 # HACK TO MAKE COLORS IN SCREEN OK IN X11/OSX
@@ -36,9 +41,9 @@ HISTFILESIZE=10000
 # IMPORTS
 
 for file in $DOTFILES/config/bash/fzf/*.bash; do
-    source $file
+    . $file
 done
 
 if [ -e $HOME/.local.sh ]; then
-    source $HOME/.local.sh
+    . $HOME/.local.sh
 fi
