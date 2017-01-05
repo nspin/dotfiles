@@ -26,7 +26,6 @@
     layout = "us";
 
     windowManager.wmdev.enable = true;
-    # windowManager.my-xmonad.enable = true;
     desktopManager.xterm.enable = false;
 
     displayManager.slim.enable = true;
@@ -52,6 +51,7 @@
     gnumake
     which
     file
+    sysstat
 
     gcc
     vimHugeX
