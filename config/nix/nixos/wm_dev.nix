@@ -5,6 +5,7 @@
   imports = [
     ./modules/core.nix
     ./modules/graphical/wmdev.nix
+    ./modules/graphical/my-xmonad.nix
   ];
 
   boot.loader.grub.devices = [ "/dev/sda" ];
@@ -25,31 +26,16 @@
     layout = "us";
 
     windowManager.wmdev.enable = true;
+    # windowManager.my-xmonad.enable = true;
     desktopManager.xterm.enable = false;
 
     displayManager.slim.enable = true;
-    displayManager.slim.theme = ./slim-theme;
+    displayManager.slim.theme = ./modules/graphical/slim-theme;
 
     displayManager.sessionCommands = ''
-        xrdb -merge ${./xresources}
-        xmodmap ${./Xmodmap}
+        xrdb -merge ${./modules/graphical/xresources}
+        xmodmap ${./modules/graphical/Xmodmap}
         xset r rate 300 50
-        xsetroot -cursor_name left_ptr&
-        if [ -x "~/.fehbg" ]; then
-          ~/.fehbg
-        else
-          pape=""
-          for img in ~/.wallpaper.{png,jpg}; do
-              if [ -f "$img" ]; then
-                  pape="$img"
-              fi
-          done
-          if [ -n "$pape" ]; then
-              feh --no-fehbg --bg-max "$pape"
-          else
-            xsetroot -solid '#000000'
-          fi
-        fi
     '';
 
   };
