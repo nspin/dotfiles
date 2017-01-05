@@ -52,7 +52,12 @@
     ghc-pkg-db = callPackage ./aux/ghc-pkg-db {};
 
     spotify-ripper = callPackage ./local/spotify-ripper {};
-    ycm = callPackage ./local/ycm {};
+
+    # ycm = recurseIntoAttrs (callPackage ./local/ycm {
+    #   inherit (darwin.apple_sdk.frameworks) Cocoa;
+    #   llvmPackages = llvmPackages_39;
+    # });
+
     wicd = callPackage ./local/wicd {};
     mitmproxy = callPackage ./local/mitmproxy {};
     apktool = callPackage ./local/apktool {

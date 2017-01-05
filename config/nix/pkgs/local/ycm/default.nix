@@ -1,44 +1,45 @@
-{ stdenv, fetchgit, bash, cmake, python27, llvmPackages }:
+{ stdenv, fetchgit, bash, cmake, python, go, Cocoa, rustracerd, llvmPackages, ycmd }:
 
 stdenv.mkDerivation {
 
-  name = "ycm";
-  src = fetchgit {
-    url = "git://github.com/valloric/youcompleteme";
-    rev = "f94b342989deb1a20b5f87ef2a7d30b16a9ff733";
-    sha256 = "0a4d7e30a3ecdb22cb8ffa9bafae8b3bdb160c92ab5e2ce57413f2177e28eedc";
-  };
-  dependencies = [];
-  buildInputs = [
-    python27 cmake
-    (if stdenv.isDarwin then llvmPackages.clang else llvmPackages.clang-unwrapped)
-    llvmPackages.llvm
-  ];
+    name = "youcompleteme-2016-11-04";
+    src = fetchgit {
+      url = "git://github.com/valloric/youcompleteme";
+      rev = "4f2494e87ebd5a6e9b5dc10a436d4d943f137fe6";
+      sha256 = "03fl5ccql6v6da27wns0fiqcyhn0rmwx5vz7l3xqq1xg3x44m5n2";
+    };
+    dependencies = [];
+    buildInputs = [
+      python go cmake
+      (if stdenv.isDarwin then llvmPackages.clang else llvmPackages.clang-unwrapped)
+      llvmPackages.llvm
+    ] ++ stdenv.lib.optional stdenv.isDarwin Cocoa;
 
-  configurePhase = ":";
+    propagatedBuildInputs = stdenv.lib.optional (!stdenv.isDarwin) rustracerd;
 
-  buildPhase = ''
-    patchShebangs .
+    patches = [
+      ./1-top-cmake.patch
+      ./2-ycm-cmake.patch
+    ];
 
-    mkdir -p $out
-    cp -a ./ $out
+    buildPhase = ''
+      patchShebangs .
+      substituteInPlace plugin/youcompleteme.vim \
+        --replace "'ycm_path_to_python_interpreter', '''" "'ycm_path_to_python_interpreter', '${python}/bin/python'"
 
-    mkdir $out/build
-    cd $out/build
-    cmake -G "Unix Makefiles" . $out/third_party/ycmd/cpp -DPYTHON_LIBRARIES:PATH=${python27}/lib/libpython2.7.so -DPYTHON_INCLUDE_DIR:PATH=${python27}/include/python2.7 -DUSE_CLANG_COMPLETER=ON -DUSE_SYSTEM_LIBCLANG=ON
-    make ycm_support_libs -j''${NIX_BUILD_CORES} -l''${NIX_BUILD_CORES}}
-    ${python27}/bin/python $out/third_party/ycmd/build.py --clang-completer --system-libclang
-  '';
+      mkdir build
+      pushd build
+      cmake -G "Unix Makefiles" . ../third_party/ycmd/cpp -DPYTHON_LIBRARIES:PATH=${python}/lib/libpython2.7.so -DPYTHON_INCLUDE_DIR:PATH=${python}/include/python2.7 -DUSE_CLANG_COMPLETER=ON -DUSE_SYSTEM_LIBCLANG=ON
+      make ycm_core -j''${NIX_BUILD_CORES} -l''${NIX_BUILD_CORES}}
+      ${python}/bin/python ../third_party/ycmd/build.py --gocode-completer --clang-completer --system-libclang
+      popd
+    '';
 
-  # TODO: implement proper install phase rather than keeping everything in store
-  # TODO: support llvm based C completion, See README of git repository
-  installPhase = ":";
-
-  meta = {
-    description = "Fastest non utf-8 aware word and C completion engine for Vim";
-    homepage = http://github.com/Valloric/YouCompleteMe;
-    license = stdenv.lib.licenses.gpl3;
-    maintainers = with stdenv.lib.maintainers; [marcweber jagajaga];
-    platforms = stdenv.lib.platforms.linux;
-  };
-}
+    meta = {
+      description = "Fastest non utf-8 aware word and C completion engine for Vim";
+      homepage = http://github.com/Valloric/YouCompleteMe;
+      license = stdenv.lib.licenses.gpl3;
+      maintainers = with stdenv.lib.maintainers; [marcweber jagajaga];
+      platforms = stdenv.lib.platforms.unix;
+    };
+  }

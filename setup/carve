@@ -2,6 +2,7 @@ line-editors/inputrc           .inputrc
 line-editors/editrc            .editrc
 line-editors/haskeline         .haskeline
 git/gitconfig                  .gitconfig
+git/gitignore_global           .gitignore_global
 multiplexers/tmux.conf         .tmux.conf
 bash/bashrc                    .bashrc
 bash/bash_profile              .bash_profile
