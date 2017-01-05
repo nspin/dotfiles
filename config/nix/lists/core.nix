@@ -18,6 +18,7 @@ rsync
 file
 
 # dev
+vimHugeX
 tmux
 git
 mercurial

@@ -10,6 +10,10 @@ else
     export VIMRUNTIME=$fall_back/vim$version
 fi
 
+if [ -f $MY_LOCAL/vim_plugin_path ]; then
+    export VIM_PLUGIN_PATH=$(cat $MY_LOCAL/vim_plugin_path | tr '\n' ':')
+fi
+
 export PATH=$MY_LOCAL/bin:$DOTFILES/bin/darwin:$DOTFILES/bin:$PATH
 if [ -d $HOME/bin ]; then
     export PATH=$HOME/bin:$PATH

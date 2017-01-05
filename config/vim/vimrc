@@ -15,9 +15,9 @@ let s:bundle_ignore =
 
 let s:plugin_path = split($VIM_PLUGIN_PATH, ':')
 
-for plugin in split(system('ls $VIMBUNDLE'), '\n', 0)
+for plugin in split(system('ls $VIM_BUNDLE'), '\n', 0)
   if index(s:bundle_ignore, plugin) < 0
-    call add(s:plugin_path, $VIMBUNDLE.'/'.plugin)
+    call add(s:plugin_path, $VIM_BUNDLE.'/'.plugin)
   endif
 endfor
 
