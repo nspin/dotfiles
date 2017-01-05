@@ -19,31 +19,41 @@
   security.sudo = {
     wheelNeedsPassword = false;
     extraConfig = ''
-      Defaults env_keep += "NIX_PATH"
-      Defaults env_keep += "VISUAL"
       Defaults env_keep += "EDITOR"
-      Defaults env_keep += "CFGDIR"
+      Defaults env_keep += "VISUAL"
+
       Defaults env_keep += "VIM"
       Defaults env_keep += "VIMRUNTIME"
-      Defaults env_keep += "VIMBUNDLE"
+      Defaults env_keep += "FZF_DEFAULT_OPTS"
+
+      Defaults env_keep += "DOTFILES"
+      Defaults env_keep += "VIM_BUNDLE"
       Defaults env_keep += "VIM_PLUGIN_PATH"
+      Defaults env_keep += "MY_LOCAL"
+
+      Defaults env_keep += "NIX_PATH"
     '';
   };
 
   environment.variables = rec {
-    VISUAL = "vim";
+
     EDITOR = "vim";
+    VISUAL = "vim";
     BROWSER = "chromium";
-    CFGDIR = "/cfg";
-    VIM = CFGDIR + "/dotfiles/config/vim";
-    VIMBUNDLE = CFGDIR + "/vim-bundle/bundle";
-    VIM_PLUGIN_PATH = "${pkgs.vimPlugins.youcompleteme}/share/vim-plugins/youcompleteme";
+
+    VIM = DOTFILES + "/config/vim";
     FZF_DEFAULT_OPTS = "--reverse";
+
+    DOTFILES = "/cfg/dotfiles";
+    VIM_BUNDLE = "/cfg/vim-bundle/bundle";
+    VIM_PLUGIN_PATH = "${pkgs.vimPlugins.youcompleteme}/share/vim-plugins/youcompleteme";
+    MY_LOCAL = "/cfg/local";
+
   };
 
   environment.extraInit = ''
-    export PATH="$PATH:$CFGDIR/dotfiles/bin:$CFGDIR/dotfiles/bin/linux:$CFGDIR/local/bin"
-    export NIX_PATH="$NIX_PATH:dotfig=$CFGDIR/dotfiles/config"
+    export PATH="$PATH:$DOTFILES/bin:$DOTFILES/bin/linux:$MY_LOCAL/bin"
+    export NIX_PATH="$NIX_PATH:dotfig=$DOTFILES/config"
     export VIMRUNTIME="${pkgs.vimHugeX}/share/vim/vim[0-9][0-9]";
   '';
 

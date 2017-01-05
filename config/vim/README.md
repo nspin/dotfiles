@@ -1,7 +1,7 @@
 # Vim Configuration
 
 As a project, vim is well documented, stable, portable, etc.,
-However, imho, the different components are jumbled together.
+However, IMHO, the different components are jumbled together.
 The best way to deal with this that I know of is to have
 as much control as possible over the environment in which vim runs.
 
@@ -12,9 +12,9 @@ plugins that annoy me (e.g. netrw - it's over 11k lines of vimscript),
 and more.
 
 I've chosen those of these files that I do/may find useful,
-and put them into `$CFGDIR/vim-runtime/`
-By setting `$VIM` to `.` and `$VIMRUNTIME` and to `$CFGDIR/vim-runtime` in my `.bashrc` (see `:h initialization`),
-vim never sees anything in `/usr/share/vim`,
+and put them into a seperate repository.
+I set `$VIM` to this directory and `$VIMRUNTIME` to wherever that repo lives
+so that vim never sees anything in `/usr/share/vim`,
 and I have full control over everything.
 
 **Details**

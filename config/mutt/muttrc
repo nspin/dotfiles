@@ -1,4 +1,4 @@
-source $CFGDIR/dotfiles/config/mutt/solarized.muttrc
+source $DOTFILES/config/mutt/solarized.muttrc
 set pager="(cat > tmp.txt; vim --servername MUTT --remote tmp.txt)"
 set editor="vim --servername MUTT --remote"
 
