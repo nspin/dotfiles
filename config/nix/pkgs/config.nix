@@ -40,7 +40,7 @@
       name = "darwinEnv";
       paths = pkgs.lib.concatMap (x: import x pkgs) [
         ../lists/core.nix
-        ../lists/hs.nix
+        # ../lists/hs.nix
         ../lists/darwin/core.nix
       ];
     };
