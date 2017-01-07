@@ -1,5 +1,7 @@
 # TODO
 
+.bashrc.local
+
 show volume on volume change
 
 tws

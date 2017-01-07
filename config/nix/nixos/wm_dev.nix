@@ -5,7 +5,6 @@
   imports = [
     ./modules/core.nix
     ./modules/graphical/wmdev.nix
-    ./modules/graphical/my-xmonad.nix
   ];
 
   boot.loader.grub.devices = [ "/dev/sda" ];
