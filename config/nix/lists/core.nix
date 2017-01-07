@@ -18,7 +18,7 @@ rsync
 file
 
 # dev
-vimHugeX
+my-vim
 tmux
 git
 mercurial
@@ -31,5 +31,7 @@ python34
 jre
 jdk
 openssl
+
+python27Packages.pycrypto
 
 ]
