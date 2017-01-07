@@ -29,7 +29,9 @@ in with lib; {
         start = ''
             mkdir -p ${cfg.logdir}
             ${cfg.exe} > ${cfg.logdir}/out.log 2> ${cfg.logdir}/err.log &
-            waitPID=$!
+            pid=$!
+            xterm &
+            waitPID=$pid
         '';
       }];
     };
