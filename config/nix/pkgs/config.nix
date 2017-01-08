@@ -36,8 +36,8 @@
           paths = pkgs.lib.concatMap (x: import x all) [
             ../lists/core.nix
             ../lists/math.nix
-            # ../lists/hs.nix
             ../lists/darwin/core.nix
+            ../lists/darwin/extra.nix
           ];
         };
 
