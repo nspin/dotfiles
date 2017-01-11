@@ -38,6 +38,7 @@
             ../lists/math.nix
             ../lists/darwin/core.nix
             ../lists/darwin/extra.nix
+            ../lists/carve_mac.nix
           ];
         };
 
@@ -54,6 +55,8 @@
         };
 
         gophish = callPackage ./local/gophish {};
+
+        readme_preview = callPackage ./local/grip {};
 
         # vim-rtp = callPackage ./aux/vim-rtp {};
         # hscript = callPackage ./aux/hscript {};
