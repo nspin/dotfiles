@@ -1,6 +1,6 @@
 line-editors/inputrc           .inputrc
 line-editors/editrc            .editrc
 git/gitconfig                  .gitconfig
-multiplexers/screenrs          .screenrc
+multiplexers/screenrc          .screenrc
 bash/bashrc                    .bashrc
 bash/bash_profile              .bash_profile
