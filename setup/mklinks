@@ -1,12 +1,13 @@
 #!/bin/sh
 
-BS_CFGDIR="$(dirname $(dirname $(dirname $(readlink -m $0))))"
-echo $BS_CFGDIR
+# becuase readlink -m is nonstandard.
+# dotfiles="$(python -c "from os.path import dirname, abspath; print dirname(dirname(abspath('$0')))")"
+dotfiles="$(dirname "$(cd "$(dirname "$0")" && pwd)")"
 
 (while read line; do
     read link target <<< $(echo $line | awk '{ print $1; print $2; }')
     mkdir -p $HOME/$(dirname $target)
-    cmd="ln -sfnv $BS_CFGDIR/dotfiles/config/$link $HOME/$target"
+    cmd="ln -sfnv $dotfiles/config/$link $HOME/$target"
     echo "$cmd"
     $cmd
 done) < $(dirname $0)/$1
