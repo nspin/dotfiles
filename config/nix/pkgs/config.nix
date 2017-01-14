@@ -24,73 +24,65 @@
 
   };
 
-  packageOverrides = pkgs: 
-    let
-      
-      all = pkgs // new;
+  packageOverrides = super: let self = super.pkgs; in with self; {
 
-      new = with pkgs; {
+    darwinEnv = buildEnv {
+      name = "darwinEnv";
+      paths = lib.concatMap (x: import x self) [
+        ../lists/core.nix
+        ../lists/math.nix
+        ../lists/darwin/core.nix
+        ../lists/darwin/extra.nix
+        ../lists/carve_mac.nix
+      ];
+    };
 
-        darwinEnv = pkgs.buildEnv {
-          name = "darwinEnv";
-          paths = pkgs.lib.concatMap (x: import x all) [
-            ../lists/core.nix
-            ../lists/math.nix
-            ../lists/darwin/core.nix
-            ../lists/darwin/extra.nix
-            ../lists/carve_mac.nix
-          ];
-        };
+    mylib = callPackage ./lib {};
 
-        hi = 0;
-        mylib = callPackage ./lib {};
+    ghc-pkg-db = callPackage ./aux/ghc-pkg-db {};
 
-        ghc-pkg-db = callPackage ./aux/ghc-pkg-db {};
+    spotify-ripper = callPackage ./local/spotify-ripper {};
 
-        spotify-ripper = callPackage ./local/spotify-ripper {};
+    mitmproxy = callPackage ./local/mitmproxy {};
+    apktool = callPackage ./local/apktool {
+      buildTools = androidenv.buildTools;
+    };
 
-        mitmproxy = callPackage ./local/mitmproxy {};
-        apktool = callPackage ./local/apktool {
-          buildTools = androidenv.buildTools;
-        };
+    gophish = callPackage ./local/gophish {};
 
-        gophish = callPackage ./local/gophish {};
+    readme_preview = callPackage ./local/grip {};
 
-        readme_preview = callPackage ./local/grip {};
+    # vim-rtp = callPackage ./aux/vim-rtp {};
+    # hscript = callPackage ./aux/hscript {};
 
-        # vim-rtp = callPackage ./aux/vim-rtp {};
-        # hscript = callPackage ./aux/hscript {};
+    # ycm = recurseIntoAttrs (callPackage ./local/ycm {
+    #   inherit (darwin.apple_sdk.frameworks) Cocoa;
+    #   llvmPackages = llvmPackages_39;
+    # });
 
-        # ycm = recurseIntoAttrs (callPackage ./local/ycm {
-        #   inherit (darwin.apple_sdk.frameworks) Cocoa;
-        #   llvmPackages = llvmPackages_39;
-        # });
+    # wicd = callPackage ./local/wicd {};
 
-        # wicd = callPackage ./local/wicd {};
+    # opencvBloated = callPackage <nixpkgs/pkgs/development/libraries/opencv> {
+    #   enableBloat = true;
+    # };
 
-        # opencvBloated = callPackage <nixpkgs/pkgs/development/libraries/opencv> {
-        #   enableBloat = true;
-        # };
+    my-vim = vimUtils.makeCustomizable (callPackage <nixpkgs/pkgs/applications/editors/vim/configurable.nix> {
+      inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;
+      inherit (darwin) libobjc cf-private;
 
-        my-vim = vimUtils.makeCustomizable (callPackage <nixpkgs/pkgs/applications/editors/vim/configurable.nix> {
-          inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;
-          inherit (darwin) libobjc cf-private;
+      features = "huge"; # one of  tiny, small, normal, big or huge
+      lua = lua5_1;
+      gui = config.vim.gui or "auto";
 
-          features = "huge"; # one of  tiny, small, normal, big or huge
-          lua = pkgs.lua5_1;
-          gui = config.vim.gui or "auto";
+      # optional features by flags
+      flags = [ "python" "X11" ]; # only flag "X11" by now
 
-          # optional features by flags
-          flags = [ "python" "X11" ]; # only flag "X11" by now
-
-          python = python.buildEnv.override {
-            extraLibs = [ pythonPackages.pycrypto ];
-          };
-
-        });
-
+      python = python.buildEnv.override {
+        extraLibs = [ pythonPackages.pycrypto ];
       };
 
-    in new;
+    });
+
+  };
 
 }
