@@ -1,2 +1,2 @@
-vnoremap <space>c :w !pbcopy<cr><cr>
-noremap <space>0 :r !pbpaste<cr>
+vnoremap <space>c :w !copy<cr><cr>
+noremap <space>0 :r !ypoc<cr>

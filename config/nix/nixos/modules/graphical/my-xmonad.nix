@@ -1,11 +1,11 @@
-{pkgs, lib, config, ...}:
+{ pkgs, lib, config, ... }:
 
-with lib;
 let
-  inherit (lib) mkOption mkIf;
+
   cfg = config.services.xserver.windowManager.my-xmonad;
-in
-{
+
+in with lib; {
+
   options = {
     services.xserver.windowManager.my-xmonad = {
       enable = mkEnableOption "my-xmonad";
@@ -17,6 +17,7 @@ in
       };
     };
   };
+
   config = mkIf cfg.enable {
     services.xserver.windowManager = {
       session = [{
@@ -34,4 +35,5 @@ in
       }];
     };
   };
+
 }

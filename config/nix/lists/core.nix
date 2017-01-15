@@ -18,7 +18,7 @@ rsync
 file
 
 # dev
-vimHugeX
+my-vim
 tmux
 git
 mercurial
@@ -26,10 +26,15 @@ subversion
 fzf
 
 python27
-python34
+
+(python34.buildEnv.override {
+  extraLibs = import ../lists/pp.nix python34Packages;
+})
 
 jre
 jdk
 openssl
+
+python27Packages.pycrypto
 
 ]

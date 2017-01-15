@@ -1,6 +1,8 @@
 line-editors/inputrc           .inputrc
 line-editors/editrc            .editrc
 git/gitconfig                  .gitconfig
+git/gitignore_global           .gitignore_global
+multiplexers/screenrc          .screenrc
 multiplexers/tmux.conf         .tmux.conf
 bash/bashrc                    .bashrc
 bash/bash_profile              .bash_profile

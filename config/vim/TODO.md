@@ -1,5 +1,6 @@
 # TODO
 
+*   trusted vimrc.local loader plugin
 *   replace buffer
 
 *   WRITE GENERALIZED FZF PLUGIN

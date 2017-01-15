@@ -8,57 +8,29 @@
   firefox.enableAdobeFlash = true;
 
   haskellPackageOverrides = self: super: with pkgs.haskell.lib; {
-
-    # hakyll =
-    #   let deps = with super; [
-    #       snap-core
-    #       snap-server
-    #       fsnotify
-    #       system-filepath
-    #     ];
-    #   in appendConfigureFlag (pkgs.lib.foldl' addBuildDepend super.hakyll deps) "-f previewServer -f watchServer";
-
     hakyll = dontCheck (self.callPackage ./local/hackage-packages/hakyll.nix {});
-
     http-client-tls_0_3_3 = super.http-client-tls_0_3_3.override { http-client = self.http-client_0_5_3_3; };
-
-    xhb = appendPatch super.xhb ./local/hackage-packages/xhb.patch;
-    # xhb = super.xhb.override { binary = self.binary_0_8_3_0; };
-    # binary_0_8_3_0 = self.callPackage ./local/hackage-packages/binary_0_8_3_0.nix {};
-    # binary = self.callPackage ./local/hackage-packages/binary_0_8_3_0.nix {};
-
-    xhb-requests = (import ~/xhb/xhb-requests { inherit pkgs; }).xhb-requests;
-    xhb-keysyms = (import ~/xhb/xhb-keysyms { inherit pkgs; }).xhb-keysyms;
-    xhb-monad = self.callPackage ~/xhb/xhb-monad {};
-    xhb-mapping-state = self.callPackage ~/xhb/xhb-mapping-state {};
-
   };
 
-  packageOverrides = pkgs: with pkgs; {
+  packageOverrides = super: let self = super.pkgs; in with self; {
 
-    darwinEnv = pkgs.buildEnv {
+    darwinEnv = buildEnv {
       name = "darwinEnv";
-      paths = pkgs.lib.concatMap (x: import x pkgs) [
+      paths = lib.concatMap (x: import x self) [
         ../lists/core.nix
-        # ../lists/hs.nix
+        ../lists/math.nix
         ../lists/darwin/core.nix
+        ../lists/darwin/extra.nix
+        ../lists/carve_mac.nix
       ];
     };
 
     mylib = callPackage ./lib {};
 
-    vim-rtp = callPackage ./aux/vim-rtp {};
-    # hscript = callPackage ./aux/hscript {};
     ghc-pkg-db = callPackage ./aux/ghc-pkg-db {};
 
     spotify-ripper = callPackage ./local/spotify-ripper {};
 
-    # ycm = recurseIntoAttrs (callPackage ./local/ycm {
-    #   inherit (darwin.apple_sdk.frameworks) Cocoa;
-    #   llvmPackages = llvmPackages_39;
-    # });
-
-    wicd = callPackage ./local/wicd {};
     mitmproxy = callPackage ./local/mitmproxy {};
     apktool = callPackage ./local/apktool {
       buildTools = androidenv.buildTools;
@@ -66,9 +38,19 @@
 
     gophish = callPackage ./local/gophish {};
 
-    opencvBloated = callPackage <nixpkgs/pkgs/development/libraries/opencv> {
-      enableBloat = true;
-    };
+    readme_preview = callPackage ./local/grip {};
+
+    my-vim = vimUtils.makeCustomizable (callPackage <nixpkgs/pkgs/applications/editors/vim/configurable.nix> {
+      inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;
+      inherit (darwin) libobjc cf-private;
+      features = "huge";
+      lua = lua5_1;
+      gui = config.vim.gui or "auto";
+      flags = [ "python" "X11" ];
+      python = python.buildEnv.override {
+        extraLibs = [ pythonPackages.pycrypto ];
+      };
+    });
 
   };
 
