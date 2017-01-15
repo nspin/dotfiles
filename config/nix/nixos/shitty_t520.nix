@@ -13,10 +13,10 @@
 
   environment.systemPackages = pkgs.mylib.gatherLists pkgs [
     ../lists/core.nix
-    ../lists/extra.nix
-    ../lists/math.nix
-    ../lists/sec.nix
-    ../lists/hs.nix
+#    ../lists/extra.nix
+#    ../lists/math.nix
+#    ../lists/sec.nix
+#    ../lists/hs.nix
     ../lists/linux/core.nix
     ../lists/linux/graphical.nix
     ../lists/linux/hardware.nix

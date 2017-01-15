@@ -14,4 +14,6 @@ iw
 pmtools
 pmutils
 
+jmtpfs
+
 ]

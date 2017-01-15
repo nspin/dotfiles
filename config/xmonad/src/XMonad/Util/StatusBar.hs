@@ -80,4 +80,3 @@ doStatusBar border dir units = Query (ReaderT go) <+> doIgnore
                         tileWindow w statusBarRect
                         sid <- currentScreen
                         return $ Endo . W.mapLayout $ \(Layout a) -> Layout (FakeStrut sid dir fullDim a)
-
