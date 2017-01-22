@@ -69,6 +69,11 @@
 
     dejavu_fonts
 
+    haskellPackages.ghc
+    haskellPackages.cabal-install
+
+    readme_preview
+
   ];
 
 }
