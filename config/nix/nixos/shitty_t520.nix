@@ -20,6 +20,7 @@
     ../lists/linux/core.nix
     ../lists/linux/graphical.nix
     ../lists/linux/hardware.nix
+   ../lists/t520.nix
   ];
  
   boot.loader.efi.canTouchEfiVariables = true;

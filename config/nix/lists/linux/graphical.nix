@@ -25,4 +25,5 @@ vlc
 zathura
 
 hexchat
+libreoffice
 ]

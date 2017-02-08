@@ -15,5 +15,6 @@ pmtools
 pmutils
 
 jmtpfs
+sshfsFuse
 
 ]
