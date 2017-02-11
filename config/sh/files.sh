@@ -15,7 +15,7 @@ function efd() {
 }
 
 function nder() {
-    echo $NIX_PATH | sed -rn 's/^.*nixpkgs=([^:]+):.*$/\1/p'
+    readlink $(echo $NIX_PATH | sed -rn 's/^.*nixpkgs=([^:]+):.*$/\1/p')
 }
 
 function nde() {
