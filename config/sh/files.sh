@@ -15,7 +15,7 @@ function efd() {
 }
 
 function nder() {
-    readlink $(readlink $HOME/.nix-defexpr/channels)/nixpkgs
+    echo $NIX_PATH | sed -rn 's/^.*nixpkgs=([^:]+):.*$/\1/p'
 }
 
 function nde() {

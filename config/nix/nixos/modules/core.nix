@@ -4,6 +4,14 @@
 
   nixpkgs.config = import <dotfig/nix/pkgs/config.nix>;
 
+  nix.nixPath = [
+    "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixpkgs"
+    "nixos-config=/etc/nixos/configuration.nix"
+    "dotfig=/cfg/dotfiles/config"
+    "/nix/var/nix/profiles/per-user/root/channels"
+  ];
+
+
   networking.hostName = "nixos";
   networking.hostId = "c890f48c";
   networking.firewall.enable = true;
@@ -53,7 +61,6 @@
 
   environment.extraInit = ''
     export PATH="$PATH:$DOTFILES/bin:$DOTFILES/bin/linux:$MY_LOCAL/bin"
-    export NIX_PATH="$NIX_PATH:dotfig=$DOTFILES/config"
     export VIMRUNTIME="${pkgs.vimHugeX}/share/vim/vim[0-9][0-9]";
   '';
 

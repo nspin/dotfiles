@@ -32,6 +32,7 @@
     spotify-ripper = callPackage ./local/spotify-ripper {};
 
     mitmproxy = callPackage ./local/mitmproxy {};
+
     apktool = callPackage ./local/apktool {
       buildTools = androidenv.buildTools;
     };
