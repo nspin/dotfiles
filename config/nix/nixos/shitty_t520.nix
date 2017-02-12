@@ -40,4 +40,18 @@
   users.extraGroups.audio.members = [ "nick" "other" "guest" "root" ];
 
   networking.firewall.allowedTCPPorts = [ 8080 ];
+
+  security.setuidOwners = [
+    { program = "dumpcap";
+      source = "${pkgs.wireshark}/bin/dumpcap";
+      owner = "root";
+      group = "wireshark";
+      setuid = true;
+      setgid = false;
+      permissions = "u+rx,g+x";
+    }
+  ];
+
+  users.extraGroups.wireshark.gid = 500;
+
 }
