@@ -25,10 +25,8 @@ mercurial
 subversion
 fzf
 
-python27
-
-(python34.buildEnv.override {
-  extraLibs = import ../lists/pp.nix python34Packages;
+(python35.buildEnv.override {
+  extraLibs = import ../lists/pp.nix python35Packages;
 })
 
 jre
