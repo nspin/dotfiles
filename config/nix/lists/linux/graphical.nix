@@ -7,11 +7,10 @@ xlibs.xmodmap
 xlibs.xmessage
 
 # x applications
-# firefox
-# google-chrome
+google-chrome
 opera
 firefox
-# chromium
+chromium
 
 # fonts
 dejavu_fonts
