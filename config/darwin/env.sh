@@ -18,6 +18,7 @@ export PATH=$MY_LOCAL/bin:$DOTFILES/bin/darwin:$DOTFILES/bin:$PATH
 if [ -d $HOME/bin ]; then
     export PATH=$HOME/bin:$PATH
 fi
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 export EDITOR=vim
 export VISUAL=vim
