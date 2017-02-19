@@ -4,6 +4,15 @@
 
   services.upower.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    upower
+    pmtools
+    pmutils
+    jmtpfs
+    usbutils
+    sysstat
+  ];
+ 
   services.xserver.synaptics = {
     enable = true;
     vertTwoFingerScroll = true;

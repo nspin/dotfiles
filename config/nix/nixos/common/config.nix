@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{ pkgs, ... }: {
 
   nixpkgs.config = import <dotfig/nix/pkgs/config.nix>;
 
@@ -11,37 +9,21 @@
     "/nix/var/nix/profiles/per-user/root/channels"
   ];
 
+  security.sudo.extraConfig = ''
+    Defaults env_keep += "EDITOR"
+    Defaults env_keep += "VISUAL"
 
-  networking.hostName = "nixos";
-  networking.hostId = "c890f48c";
-  networking.firewall.enable = true;
+    Defaults env_keep += "VIM"
+    Defaults env_keep += "VIMRUNTIME"
+    Defaults env_keep += "FZF_DEFAULT_OPTS"
 
-  users.extraUsers = {
-    nick = {
-      isNormalUser = true;
-      uid = 1000;
-      extraGroups = [ "wheel" "wireshark" ];
-    };
-  };
+    Defaults env_keep += "DOTFILES"
+    Defaults env_keep += "VIM_BUNDLE"
+    Defaults env_keep += "VIM_PLUGIN_PATH"
+    Defaults env_keep += "MY_LOCAL"
 
-  security.sudo = {
-    wheelNeedsPassword = false;
-    extraConfig = ''
-      Defaults env_keep += "EDITOR"
-      Defaults env_keep += "VISUAL"
-
-      Defaults env_keep += "VIM"
-      Defaults env_keep += "VIMRUNTIME"
-      Defaults env_keep += "FZF_DEFAULT_OPTS"
-
-      Defaults env_keep += "DOTFILES"
-      Defaults env_keep += "VIM_BUNDLE"
-      Defaults env_keep += "VIM_PLUGIN_PATH"
-      Defaults env_keep += "MY_LOCAL"
-
-      Defaults env_keep += "NIX_PATH"
-    '';
-  };
+    Defaults env_keep += "NIX_PATH"
+  '';
 
   environment.variables = rec {
 
@@ -72,15 +54,5 @@
   #     source = <dotfig/line-editors/inputrc>;
   #   };
   # };
-
-  services.physlock = {
-    enable = true;
-    user = "nick";
-    lockOn.suspend = true;
-    lockOn.hibernate = true;
-  };
-
-  services.openssh.enable = true;
-  networking.firewall.allowedTCPPorts = [ 22 ];
 
 }

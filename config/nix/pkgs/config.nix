@@ -16,12 +16,8 @@
 
     darwinEnv = buildEnv {
       name = "darwinEnv";
-      paths = lib.concatMap (x: import x self) [
-        ../lists/core.nix
-        ../lists/math.nix
-        ../lists/darwin/core.nix
-        ../lists/darwin/extra.nix
-        ../lists/carve_mac.nix
+      paths = with self; [
+        reattach-to-user-namespace
       ];
     };
 

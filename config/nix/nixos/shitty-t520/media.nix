@@ -2,20 +2,9 @@
 
 {
 
-  time.timeZone = "America/New_York";
+  # time.timeZone = "America/New_York";
+  time.timeZone = "America/Minneapolis";
   # time.timeZone = "Europe/Budapest";
-
-  users.extraUsers = {
-    guest = {
-      isNormalUser = true;
-      uid = 1001;
-    };
-    other = {
-      isNormalUser = true;
-      uid = 1002;
-      extraGroups = [ "wheel" ];
-    };
-  };
 
   services.transmission = {
     enable = true;
@@ -35,6 +24,11 @@
       mixer_type "software"
     '';
   };
+
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.systemWide = true;
+  users.extraGroups.pulse-access.members = [ "nick" "other" "guest" "root" ];
+  users.extraGroups.audio.members = [ "nick" "other" "guest" "root" ];
 
   environment.systemPackages = with pkgs; [
     transmission_remote_gtk
