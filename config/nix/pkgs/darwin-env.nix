@@ -1,5 +1,9 @@
 pkgs: with pkgs; [
 
+  gnused
+  gnugrep
+  bash
+
   reattach-to-user-namespace
 
   # nix
