@@ -27,7 +27,7 @@ pkgs: with pkgs; [
   R jre jdk
 
   (python35.buildEnv.override { extraLibs = with python35Packages; [ requests2 ]; })
-  # (python27.buildEnv.override { extraLibs = with python35Packages; [ requests2 ]; })
+  (python27.buildEnv.override { extraLibs = with python27Packages; [ requests2 ]; })
 
   cabal2nix
   haskellPackages.cabal-install
