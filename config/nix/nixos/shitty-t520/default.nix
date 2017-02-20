@@ -3,6 +3,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
 
+  time.timeZone = "America/Chicago";
+
   services.xserver.windowManager.my-xmonad.enable = true;
   services.xserver.windowManager.my-xmonad.isLaptop = true;
   services.xserver.desktopManager.xterm.enable = false;

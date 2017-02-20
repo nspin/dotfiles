@@ -2,10 +2,6 @@
 
 {
 
-  # time.timeZone = "America/New_York";
-  time.timeZone = "America/Minneapolis";
-  # time.timeZone = "Europe/Budapest";
-
   services.transmission = {
     enable = true;
     settings = {
