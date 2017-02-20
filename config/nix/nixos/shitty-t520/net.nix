@@ -28,6 +28,7 @@
     sshfsFuse
     rsync
     telnet
+    wireshark
   ];
  
   users.extraGroups.wireshark.gid = 500;
