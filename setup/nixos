@@ -11,3 +11,4 @@ bash/bash_profile              .bash_profile
 multiplexers/tmux.conf         .tmux.conf
 mitmproxy/common.conf          .mitmproxy/common.conf
 nix/pkgs/config.nix            .nixpkgs/config.nix
+xdg/zathura/zathurarc          .config/zathura/zathurarc
