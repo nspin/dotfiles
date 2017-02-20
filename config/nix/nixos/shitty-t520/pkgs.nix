@@ -59,8 +59,8 @@
     # misc
 
     openssl
-
     mitmproxy
+    readme-preview
 
   ];
 }
