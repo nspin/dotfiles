@@ -16,6 +16,8 @@
     jdk
     R
 
+    python27
+
     (python35.buildEnv.override {
       extraLibs = with python35Packages; [
         requests2

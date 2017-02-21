@@ -15,7 +15,7 @@
     slack
     libreoffice
 
-    readme_preview
+    readme-preview
 
   ];
 }
