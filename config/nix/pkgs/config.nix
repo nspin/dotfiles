@@ -1,6 +1,4 @@
-{ pkgs }:
-
-{
+{ pkgs }: {
 
   allowUnfree = true;
   allowBroken = true;
@@ -14,14 +12,12 @@
 
   packageOverrides = super: let self = super.pkgs; in with self; {
 
-    darwinEnv = buildEnv {
-      name = "darwinEnv";
-      paths = with self; [
-        reattach-to-user-namespace
-      ];
+    darwin-env = buildEnv {
+      name = "darwin-env";
+      paths = import ./darwin-env.nix self;
     };
 
-    mylib = callPackage ./lib {};
+    my-lib = callPackage ./lib {};
 
     ghc-pkg-db = callPackage ./aux/ghc-pkg-db {};
 
@@ -33,9 +29,7 @@
       buildTools = androidenv.buildTools;
     };
 
-    gophish = callPackage ./local/gophish {};
-
-    readme_preview = callPackage ./local/grip {};
+    readme-preview = callPackage ./local/grip {};
 
     my-vim = vimUtils.makeCustomizable (callPackage <nixpkgs/pkgs/applications/editors/vim/configurable.nix> {
       inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;

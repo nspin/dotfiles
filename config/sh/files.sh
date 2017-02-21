@@ -14,14 +14,6 @@ function efd() {
     vim $(echo $files | tr '\n' ' ')
 }
 
-function nder() {
-    readlink $(echo $NIX_PATH | sed -rn 's/^.*nixpkgs=([^:]+):.*$/\1/p')
-}
-
-function nde() {
-    efd $(nder)
-}
-
 alias v='vim'
 alias vi='vim'
 alias vf='vim $(fzf)'
