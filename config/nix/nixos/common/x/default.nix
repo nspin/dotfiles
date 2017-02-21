@@ -27,6 +27,10 @@
 
     displayManager.slim.enable = true;
     displayManager.slim.theme = ./slim-theme;
+    displayManager.slim.extraConfig = ''
+      sessionstart_cmd ${pkgs.xorg.sessreg}/bin/sessreg -a -l tty$(${pkgs.kbd}/bin/fgconsole) %user
+      sessionstop_cmd  ${pkgs.xorg.sessreg}/bin/sessreg -d -l tty$(${pkgs.kbd}/bin/fgconsole) %user
+    '';
 
     displayManager.sessionCommands = ''
         xrdb -merge ${./xresources}

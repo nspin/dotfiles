@@ -46,7 +46,7 @@
 
   services.physlock = {
     enable = true;
-    user = "nick";
+    # user = "nick";
     lockOn.suspend = true;
     lockOn.hibernate = true;
   };
