@@ -9,9 +9,11 @@ function fzfd() {
 }
 
 function efd() {
-    files=$(fzfd $1)
-    echo $files
-    vim $(echo $files | tr '\n' ' ')
+    files="$(fzfd $1)"
+    if [ -n "$files" ]; then
+        echo "$files"
+        vim $(echo $files | tr '\n' ' ')
+    fi
 }
 
 alias v='vim'
