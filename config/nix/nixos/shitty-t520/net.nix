@@ -1,6 +1,6 @@
 { pkgs, ... }: {
 
-  imports = [ ../common/pia.nix ];
+  imports = [ ../common/pia ];
 
   networking.hostName = "nixos";
   networking.hostId = "c890f48c";
@@ -11,7 +11,12 @@
   services.openssh.enable = true;
 
   my.pia.enable = true;
-  my.pia.server = "sweden";
+  my.pia.servers = {
+    sw = "sweden";
+    mw = "us-midwest";
+  };
+  # my.pia.server = "sweden";
+  # my.pia.server = "us-midwest";
 
   networking.wireless = {
     enable = true;
