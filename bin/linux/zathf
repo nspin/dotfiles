@@ -6,4 +6,7 @@ else
     start_node=.
 fi
 
-xtermdo "fznode $start_node -f -v 3 --extra -type d -o -name '*.pdf' -o -name '*.djvu'" -title popup | xargs zathura
+file="$(xtermdo "fznode $start_node -f -v 3 --extra \\( -type d -o -name '*.pdf' -o -name '*.djvu' \\) -a ! -path '*/\.*'" -title popup)"
+if [ -n "$file" ]; then
+    zathura "$file"
+fi
