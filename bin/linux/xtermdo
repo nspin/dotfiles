@@ -36,4 +36,3 @@ xterm "$@" -e sh "$cmd_b" &
 cat <&0 > $fifo_0 &
 cat $fifo_1
 exit "$(cat $fifo_r)"
-

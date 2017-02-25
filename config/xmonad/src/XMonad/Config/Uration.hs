@@ -57,10 +57,11 @@ main = do
 
     let myLogHook = floatBorderColor myFloatBorderColor
 
-        myManageHooks = statusBar <+> popUp
+        myManageHooks = statusBar <+> popUp <+> float
           where
             statusBar = title =? "statusbar" --> doStatusBar myNormalBorderColor U 0
             popUp     = title =? "popup"     --> doPopUp 40 40
+            float     = title =? "float"     --> doFloat
 
         myConfig = def
             -- simple
