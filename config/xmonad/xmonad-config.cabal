@@ -14,11 +14,11 @@ Flag laptop
   Default:      False
 
 
-executable xmonad
-  main-is:             Main.hs
-  ghc-options:         -threaded
-  build-depends:       base
-                     , xmonad-config
+-- executable xmonad
+  -- main-is:             Main.hs
+  -- ghc-options:         -threaded
+  -- build-depends:       base
+                     -- , xmonad-config
 
 library
 

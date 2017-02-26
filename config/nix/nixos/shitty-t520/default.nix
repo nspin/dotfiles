@@ -5,8 +5,17 @@
 
   time.timeZone = "America/Chicago";
 
-  services.xserver.windowManager.my-xmonad.enable = true;
-  services.xserver.windowManager.my-xmonad.isLaptop = true;
+  # services.xserver.windowManager.my-xmonad.enable = true;
+  # services.xserver.windowManager.my-xmonad.isLaptop = true;
+
+  services.xserver.windowManager.xmonad.enable = true;
+  services.xserver.windowManager.xmonad.extraPackages = hp: [
+    ((hp.callPackage <dotfig/xmonad> {}) {
+      isLaptop = true;
+      isExecutable = false;
+    })
+  ];
+
   services.xserver.desktopManager.xterm.enable = false;
 
   # desktopManager.kde4.enable = true;

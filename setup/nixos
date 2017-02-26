@@ -12,3 +12,4 @@ multiplexers/tmux.conf         .tmux.conf
 mitmproxy/common.conf          .mitmproxy/common.conf
 nix/pkgs/config.nix            .nixpkgs/config.nix
 xdg/zathura/zathurarc          .config/zathura/zathurarc
+xmonad/Main.hs                 .xmonad/xmonad.hs

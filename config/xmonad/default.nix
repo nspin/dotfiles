@@ -3,14 +3,14 @@
 , xmonad-contrib, bytestring, transformers
 }:
 
-isLaptop:
+{ isLaptop ? false, isExecutable ? true }:
 
 mkDerivation {
   pname = "xmonad-config";
   version = "0.1.0.0";
   src = ./.;
   isLibrary = true;
-  isExecutable = true;
+  inherit isExecutable;
   libraryHaskellDepends = [
     ansi-terminal attoparsec base containers mtl process stm
     terminal-size text unix X11 xmonad xmonad-contrib
