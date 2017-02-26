@@ -1,4 +1,4 @@
-module XMonad.Util.Terminal
+module Minibar.Terminal
     ( spawnPty
     , unitsToDimension
     , units2DToDimensions

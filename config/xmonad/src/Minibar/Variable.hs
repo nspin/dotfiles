@@ -2,7 +2,7 @@
 {-# LANGUAGE TupleSections #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Control.Variable
+module Minibar.Variable
     ( VVar
     , Late
     , actor

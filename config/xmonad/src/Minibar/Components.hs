@@ -9,8 +9,8 @@ module Minibar.Components
     ) where
 
 import Minibar
-import Data.LOT
-import Control.Variable
+import Minibar.LOT
+import Minibar.Variable
 import Minibar.Actors
 
 import Control.Applicative

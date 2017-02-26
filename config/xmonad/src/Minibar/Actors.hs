@@ -4,7 +4,7 @@ module Minibar.Actors
     ) where
 
 import XMonad.Util.Run
-import Control.Variable
+import Minibar.Variable
 import Control.Concurrent
 import Control.Monad
 import System.IO

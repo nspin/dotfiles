@@ -3,13 +3,13 @@
 {-# LANGUAGE RecordWildCards #-}
 
 
-module XMonad.Util.StatusBar
+module XMonad.Me.StatusBar
     ( FakeStrut(..)
     , doStatusBar
     ) where
 
 
-import           XMonad.Util.Terminal
+import           Minibar.Terminal
 
 import           XMonad
 import qualified XMonad.StackSet as W
@@ -81,3 +81,4 @@ doStatusBar border dir units = Query (ReaderT go) <+> doIgnore
                         -- mkstrut
                         -- sid <- currentScreen
                         -- return $ Endo . W.mapLayout $ \(Layout a) -> Layout (FakeStrut sid dir fullDim a)
+                        return $ Endo id

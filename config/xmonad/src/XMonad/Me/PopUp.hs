@@ -1,12 +1,12 @@
 {-# LANGUAGE RecordWildCards #-}
 
 
-module XMonad.Util.PopUp
+module XMonad.Me.PopUp
     ( doPopUp
     ) where
 
 
-import           XMonad.Util.Terminal
+import           Minibar.Terminal
 
 import           XMonad
 import qualified XMonad.StackSet as W

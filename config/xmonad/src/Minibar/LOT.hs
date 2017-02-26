@@ -1,4 +1,4 @@
-module Data.LOT
+module Minibar.LOT
     ( render
     , leftpad
     , rightpad

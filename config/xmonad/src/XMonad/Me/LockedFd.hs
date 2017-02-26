@@ -1,4 +1,4 @@
-module System.Posix.LockedFd
+module XMonad.Me.LockedFd
     ( LockedFd
     , newLockedFd
     , withLockedFd

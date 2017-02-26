@@ -6,8 +6,8 @@ module Minibar
     ) where
 
 
-import Control.Variable
-import Data.LOT
+import Minibar.Variable
+import Minibar.LOT
 import XMonad.Util.Run
 
 import Control.Monad

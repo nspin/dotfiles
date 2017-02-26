@@ -30,6 +30,7 @@ import           System.IO
 import           System.Posix.Process (executeFile)
 import           System.Posix.Env (getEnvironment)
 
+
 myNormalBorderColor = black
 myFocusedBorderColor = black
 myFloatBorderColor = base01

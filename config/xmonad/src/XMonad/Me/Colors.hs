@@ -1,4 +1,4 @@
-module Data.Colors where
+module XMonad.Me.Colors where
 
 black = "#000000"
 white = "#ffffff"
