@@ -1,10 +1,12 @@
-{-# LANGUAGE CPP #-}
 {-# LANGUAGE OverloadedStrings #-}
 
-module Minibar.My
-    ( myMinibar
+module Minibar.Components
+    ( date
+    , wifi
+    , cpu
+    , bat
+    , mem
     ) where
-
 
 import Minibar
 import Data.LOT
@@ -24,69 +26,6 @@ import System.IO
 import qualified Data.ByteString.Char8 as C
 
 import XMonad.Util.Run
-
-
-
--- TODO logging
-
-test :: IO ()
-test = minibar stdout myMinibar
-
-type Component = Compose VVar Maybe [Chunk]
-
-parsed :: [Chunk] -> Parser [Chunk] -> VVar (Maybe (Maybe String)) -> Component
-parsed onErr parser =
-    fmap ( fromMaybe onErr
-         . (=<<) ( either (const Nothing) Just
-                 . parseOnly parser
-                 . C.pack
-                 )
-         ) . Compose
-
-plain :: [Chunk] -> (String -> [Chunk]) -> VVar (Maybe (Maybe String)) -> Component
-plain onErr format = fmap (maybe onErr format) . Compose
-
-
-myMinibar :: VVar (Int -> [Chunk])
-#if LAPTOP
-myMinibar = laptop
-#else
-myMinibar = nonLaptop
-#endif
-
-
-laptop :: VVar (Int -> [Chunk])
-laptop = (fmap (fromMaybe waiting)) . getCompose $ f
-    <$> date
-    <*> cpu
-    <*> mem
-    <*> bat
-    <*> wifi
-  where
-    waiting width = raw "waiting"
-    f date cpu mem bat wifi width = stradle width left right
-      where
-        right = date
-        left = cpu
-            <> raw " | "
-            <> mem
-            <> raw " | "
-            <> wifi
-            <> raw " | "
-            <> bat
-
-
-nonLaptop :: VVar (Int -> [Chunk])
-nonLaptop = (fmap (fromMaybe waiting)) . getCompose $ f
-    <$> date
-    <*> cpu
-    <*> mem
-  where
-    waiting width = raw "waiting"
-    f date cpu mem width = stradle width left right
-      where
-        right = date
-        left = cpu <> raw " | " <> mem
 
 
 date :: Component

@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 
-module XMonad.Layout.My
+module XMonad.Layout.Gap
     ( Space(..)
     , Trivial(..)
     ) where
@@ -32,4 +32,3 @@ instance LayoutClass layout a => LayoutClass (Space layout) a where
                                                  (h - fromIntegral gap)
 
     handleMessage (Space gap inner) = fmap (fmap (Space gap)) . handleMessage inner
-    

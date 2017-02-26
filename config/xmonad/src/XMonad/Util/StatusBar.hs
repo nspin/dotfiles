@@ -78,5 +78,6 @@ doStatusBar border dir units = Query (ReaderT go) <+> doIgnore
                         let fullDim = (dim + fromIntegral (2 * bw))
                             (statusBarRect, _) = splitRectangle dir fullDim sr
                         tileWindow w statusBarRect
-                        sid <- currentScreen
-                        return $ Endo . W.mapLayout $ \(Layout a) -> Layout (FakeStrut sid dir fullDim a)
+                        -- mkstrut
+                        -- sid <- currentScreen
+                        -- return $ Endo . W.mapLayout $ \(Layout a) -> Layout (FakeStrut sid dir fullDim a)

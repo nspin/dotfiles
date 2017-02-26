@@ -9,11 +9,9 @@
   # services.xserver.windowManager.my-xmonad.isLaptop = true;
 
   services.xserver.windowManager.xmonad.enable = true;
+  services.xserver.windowManager.xmonad.enableContribAndExtras = true;
   services.xserver.windowManager.xmonad.extraPackages = hp: [
-    ((hp.callPackage <dotfig/xmonad> {}) {
-      isLaptop = true;
-      isExecutable = false;
-    })
+    ((hp.callPackage <dotfig/xmonad> {}) {})
   ];
 
   services.xserver.desktopManager.xterm.enable = false;

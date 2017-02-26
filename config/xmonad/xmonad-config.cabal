@@ -9,34 +9,19 @@ extra-source-files:  README.md
 cabal-version:       >=1.10
 
 
-Flag laptop
-  Description:  Build status-bar with wifi and battery info
-  Default:      False
-
-
--- executable xmonad
-  -- main-is:             Main.hs
-  -- ghc-options:         -threaded
-  -- build-depends:       base
-                     -- , xmonad-config
-
 library
 
   hs-source-dirs:      src
   default-language:    Haskell2010
 
-  if flag(laptop)
-    cpp-options: -DLAPTOP
-
-  exposed-modules:     XMonad.Config.Uration
-
-  other-modules:       XMonad.Util.StatusBar
+  exposed-modules:     XMonad.Util.StatusBar
                      , XMonad.Util.PopUp
                      , XMonad.Util.Terminal
+                     , XMonad.Layout.Gap
                      , Control.Variable
                      , Data.LOT
                      , Minibar
-                     , Minibar.My
+                     , Minibar.Components
                      , Minibar.Actors
                      , System.Posix.LockedFd
                      , Data.Colors

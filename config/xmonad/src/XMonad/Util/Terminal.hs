@@ -49,4 +49,3 @@ units2DToDimensions sh dir units = do
      (minX, minY) <- sh_min_size sh
      (incX, incY) <- sh_resize_inc sh
      return (minX + fromIntegral units * incX, minY + fromIntegral units * incY)
-
