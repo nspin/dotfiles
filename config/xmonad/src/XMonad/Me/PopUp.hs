@@ -6,7 +6,7 @@ module XMonad.Me.PopUp
     ) where
 
 
-import           Minibar.Terminal
+import           XMonad.Me.Terminal
 
 import           XMonad
 import qualified XMonad.StackSet as W

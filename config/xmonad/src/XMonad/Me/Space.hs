@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 
-module XMonad.Me.Gap
+module XMonad.Me.Space
     ( Space(..)
     , Trivial(..)
     ) where

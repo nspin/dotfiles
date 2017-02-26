@@ -16,34 +16,33 @@
 #define S_cyan    #2aa198
 #define S_green   #859900
 
-Xcursor.theme: dot
+! Xcursor.theme: dot
 
-! xterm*selectToClipboard: true
+! URxvt*perl-ext-common: ""
+! URxvt*perl-ext-common: default, -searchable-scrollback
+URxvt*keysym.M-s: builtin:
 
-! for correct meta stuff
-xterm*eightBitInput:  false
-xterm*eightBitOutput: true
+URxvt*scrollBar: false
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=18
 
-xterm*faceName: DejaVu Sans Mono:antialias=True:pixelsize=18
+URxvt*background:  S_base03
+URxvt*foreground:  S_base0
+URxvt*cursorColor: S_base1
 
-xterm*background:  S_base03
-xterm*foreground:  S_base0
-xterm*cursorColor: S_base1
+URxvt*color0:  S_base02
+URxvt*color1:  S_red
+URxvt*color2:  S_green
+URxvt*color3:  S_yellow
+URxvt*color4:  S_blue
+URxvt*color5:  S_magenta
+URxvt*color6:  S_cyan
+URxvt*color7:  S_base2
 
-xterm*color0:  S_base02
-xterm*color1:  S_red
-xterm*color2:  S_green
-xterm*color3:  S_yellow
-xterm*color4:  S_blue
-xterm*color5:  S_magenta
-xterm*color6:  S_cyan
-xterm*color7:  S_base2
-
-xterm*color8:  S_base03
-xterm*color9:  S_orange
-xterm*color10: S_base01
-xterm*color11: S_base00
-xterm*color12: S_base0
-xterm*color13: S_violet
-xterm*color14: S_base1
-xterm*color15: S_base3
+URxvt*color8:  S_base03
+URxvt*color9:  S_orange
+URxvt*color10: S_base01
+URxvt*color11: S_base00
+URxvt*color12: S_base0
+URxvt*color13: S_violet
+URxvt*color14: S_base1
+URxvt*color15: S_base3

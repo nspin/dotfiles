@@ -5,15 +5,17 @@
 module Main where
 
 
-import           XMonad.Util.StatusBar
-import           XMonad.Util.PopUp
-import           XMonad.Util.Terminal
+import           XMonad.Me.StatusBar
+import           XMonad.Me.PopUp
+import           XMonad.Me.Terminal
 
 import           Minibar
-import           Minibar.My
-import           Data.LOT
-import           Data.Colors
-import           Control.Variable
+import           Minibar.LOT
+import           Minibar.Components
+import           XMonad.Me.Colors
+import           Minibar.Variable
+import           Data.Maybe
+import           Data.Functor.Compose
 
 import           XMonad
 import qualified XMonad.StackSet as W
@@ -57,16 +59,12 @@ main = do
 
     let myLogHook = floatBorderColor myFloatBorderColor
 
-        myManageHooks = statusBar <+> popUp <+> float
-          where
-            statusBar = title =? "statusbar" --> doStatusBar myNormalBorderColor U 0
-            popUp     = title =? "popup"     --> doPopUp 40 40
-            float     = title =? "float"     --> doFloat
+        myManageHooks = title =? "statusbar" --> doStatusBar myNormalBorderColor U 0
 
         myConfig = def
             -- simple
             { borderWidth        = 1
-            , terminal           = "xterm"
+            , terminal           = "urxvt"
             , modMask            = mod4Mask
             , startupHook        = return ()
             , manageHook         = myManageHooks
@@ -104,9 +102,6 @@ vbox = tiled ||| Mirror tiled ||| Full
      ratio   = 1/2
      delta   = 3/100
 
-launch :: String
-launch = "xlaunch -title popup"
-
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys (XConfig {..}) = M.fromList $ meta ++ interWorkspace ++ intraWorkspace
 
@@ -116,7 +111,7 @@ myKeys (XConfig {..}) = M.fromList $ meta ++ interWorkspace ++ intraWorkspace
 
         -- launching and killing programs
         [ ((modMask, xK_c), spawn terminal) -- Launch terminal
-        , ((modMask, xK_u), spawn launch) -- Launch hacky launcher
+        , ((modMask, xK_u), spawn "vlaunch") -- Launch hacky launcher
         , ((modMask, xK_x), kill) -- Close the focused window
 
         -- quit, or restart
@@ -187,8 +182,8 @@ myMouseBindings (XConfig {..}) = M.fromList
     ]
 
 
-minibar :: VVar (Int -> [Chunk])
-minibar = (fmap (fromMaybe waiting)) . getCompose $ f
+myMinibar :: VVar (Int -> [Chunk])
+myMinibar = (fmap (fromMaybe waiting)) . getCompose $ f
     <$> date <*> cpu <*> mem <*> bat <*> wifi
   where
     waiting width = raw "waiting"

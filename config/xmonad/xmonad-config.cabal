@@ -14,17 +14,16 @@ library
   hs-source-dirs:      src
   default-language:    Haskell2010
 
-  exposed-modules:     XMonad.Me.StatusBar
+  exposed-modules:     XMonad.Me.Colors
+                     , XMonad.Me.Space
+                     , XMonad.Me.Terminal
+                     , XMonad.Me.StatusBar
                      , XMonad.Me.PopUp
-                     , XMonad.Me.Gap
-                     , XMonad.Me.LockedFd
-                     , XMonad.Me.Colors
                      , Minibar
-                     , Minibar.Terminal
-                     , Minibar.Variable
-                     , Minibar.LOT
-                     , Minibar.Components
                      , Minibar.Actors
+                     , Minibar.Components
+                     , Minibar.LOT
+                     , Minibar.Variable
 
   build-depends:       base
                      , bytestring

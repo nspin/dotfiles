@@ -8,7 +8,7 @@ function term() {
     # y=$(echo $xy | cut -d x -f 2)
     # xterm -geometry $(expr $x '/' 2)x$(expr $y '/' 2)+$(expr $x '/' 4)+$(expr $y '/' 4) "$@"
     # https://bbs.archlinux.org/viewtopic.php?id=44256
-    xterm "$@"
+    urxvt "$@"
 }
 
 set -e
@@ -45,4 +45,3 @@ fi
 
 cat $fifo2
 exit "$(cat $fifo3)"
-

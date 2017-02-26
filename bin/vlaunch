@@ -1,0 +1,2 @@
+#!/bin/sh
+exec $(pathcmds | popup 40 30 fzf)

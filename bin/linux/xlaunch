@@ -1,7 +1,0 @@
-#!/bin/sh
-exec $(pathcmds | xtermdo fzf "$@")
-
-# OR
-# xterm "$@" -e sh -i -c 'cmd=$(pathcmds | fzf); $cmd &> /dev/null &'
-# (TODO wtf)
-

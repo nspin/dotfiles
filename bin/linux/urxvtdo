@@ -1,13 +1,13 @@
 #!/bin/sh
 #
-# usage: xtermdo COMMAND [XTERM_OPTIONS...]
+# usage: urxvtdo COMMAND [URXVTDO_OPTIONS...]
 #
-# runs COMMAND on an xterm, sharing stdin and stdout with it (kind of),
+# runs COMMAND on an urxvt terminal, sharing stdin and stdout with it (kind of),
 # and returning with its exit code
 
 set -e
 
-prefix="/tmp/xtermdo"
+prefix="/tmp/urxvtdo"
 suffix="$RANDOM"
 
 fifo_0="$prefix-0-$suffix"
@@ -32,7 +32,7 @@ printf '%s\n' "sh $cmd_a < $fifo_0 > $fifo_1; echo \$? > $fifo_r" > $cmd_b
 
 shift
 
-xterm "$@" -e sh "$cmd_b" &
+urxvt "$@" -e sh "$cmd_b" &
 cat <&0 > $fifo_0 &
 cat $fifo_1
 exit "$(cat $fifo_r)"

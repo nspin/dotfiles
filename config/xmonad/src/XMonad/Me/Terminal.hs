@@ -1,4 +1,4 @@
-module Minibar.Terminal
+module XMonad.Me.Terminal
     ( spawnPty
     , unitsToDimension
     , units2DToDimensions
@@ -27,7 +27,7 @@ spawnPty args = do
     (master, slave) <- openPseudoTerminal
     slaveName <- getSlaveTerminalName master
     let ptyArg = "-S" ++ slaveName ++ "/" ++ show master
-    spawnProcess "xterm" (ptyArg:args)
+    spawnProcess "urxvt" (ptyArg:args)
     h <- fdToHandle slave
     hSetBuffering h NoBuffering
     return h

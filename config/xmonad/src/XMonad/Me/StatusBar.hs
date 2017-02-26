@@ -9,7 +9,7 @@ module XMonad.Me.StatusBar
     ) where
 
 
-import           Minibar.Terminal
+import           XMonad.Me.Terminal
 
 import           XMonad
 import qualified XMonad.StackSet as W
