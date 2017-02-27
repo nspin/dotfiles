@@ -14,4 +14,4 @@ if [ -z "$x" -o -z "$y" -o -z "$cmd" ]; then
 fi
 
 root=$(xwininfo -root | sed -nE 's/^.*Window id: ([^ ]+).*$/\1/p')
-urxvtdo "$cmd" -geometry "${x}x${y}+9999+9999" -xrm "*transient-for: $root"
+urxvtdo -e "$cmd" -geometry "${x}x${y}+9999+9999" -xrm "*transient-for: $root"
