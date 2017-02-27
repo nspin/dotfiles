@@ -13,5 +13,5 @@ if [ -z "$x" -o -z "$y" -o -z "$cmd" ]; then
     exit 1
 fi
 
-# urxvtdo ${4:--e} "$cmd" -geometry "${x}x${y}+9999+9999" -xrm "*transient-for: $(getroot)"
-withpty ${4:--e} "urxvt -pty-fd \$0 -xrm '*transient-for: $root' -geometry ${x}x${y}+9999+9999" "$cmd"
+# '*transient-for: 0' seems to work for now, but is undocumented
+withpty ${4:--e} "urxvt -pty-fd \$0 -xrm '*transient-for: 0' -geometry ${x}x${y}+9999+9999" "$cmd"

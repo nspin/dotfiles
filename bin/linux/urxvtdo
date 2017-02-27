@@ -1,3 +1,0 @@
-#!/bin/sh
-root=$(xwininfo -root | sed -nE 's/^.*Window id: ([^ ]+).*$/\1/p')
-withpty "urxvt -pty-fd \$0 -rxm '*transient-for: $root' -geometry"
