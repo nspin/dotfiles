@@ -5,84 +5,26 @@
 module Main where
 
 
-import           XMonad.Me.StatusBar
-import           XMonad.Me.PopUp
-import           XMonad.Me.Terminal
-
-import           Minibar
-import           Minibar.LOT
-import           Minibar.Components
 import           XMonad.Me.Colors
-import           Minibar.Variable
-import           Data.Maybe
-import           Data.Functor.Compose
 
 import           XMonad
-import qualified XMonad.StackSet as W
-
 import           XMonad.Actions.CycleWS
+import           XMonad.Hooks.ManageDocks
+import qualified XMonad.StackSet as W
+import qualified XMonad.Util.ExtensibleState as XS
 
 import           Control.Concurrent
 import           Control.Exception
-import           Data.Monoid
-import qualified Data.Map as M
 import           Control.Monad
+import           Data.Functor.Compose
+import           Data.List
+import qualified Data.Map as M
+import           Data.Maybe
+import           Data.Monoid
 import           System.Exit
 import           System.IO
-import           System.Posix.Process (executeFile)
 import           System.Posix.Env (getEnvironment)
-
-
-myNormalBorderColor = black
-myFocusedBorderColor = black
-myFloatBorderColor = base01
-
-
-floatBorderColor :: String -> X ()
-floatBorderColor color = do
-    keys <- gets $ M.keys . W.floating . windowset
-    withDisplay $ \d -> io $ do
-        mpix <- initColor d color
-        case mpix of
-            Nothing -> error "XMonad.Config.Uration.floatBorderColor"
-            Just pix -> let go w = setWindowBorder d w pix
-                        in mapM_ go keys
-
-
-main :: IO ()
-main = do
-
-    hSetBuffering stdout NoBuffering
-    hSetBuffering stderr NoBuffering
-
-    forkIO $ spawnPty ["-title", "statusbar"] >>= flip minibar myMinibar
-
-    let myLogHook = floatBorderColor myFloatBorderColor
-
-        myManageHooks = title =? "statusbar" --> doStatusBar myNormalBorderColor U 0
-
-        myConfig = def
-            -- simple
-            { borderWidth        = 1
-            , terminal           = "urxvt"
-            , modMask            = mod4Mask
-            , startupHook        = return ()
-            , manageHook         = myManageHooks
-            , handleEventHook    = const $ return (All True)
-            , focusFollowsMouse  = True
-            , clickJustFocuses   = True
-            , normalBorderColor  = myNormalBorderColor
-            , focusedBorderColor = myFocusedBorderColor
-
-            -- more complex
-            , workspaces         = map fst tagKeys
-            , layoutHook         = vbox
-            , logHook            = myLogHook
-            , keys               = myKeys
-            , mouseBindings      = myMouseBindings
-            }
-
-    xmonad myConfig
+import           System.Posix.Process (executeFile)
 
 
 tagKeys :: [(WorkspaceId, KeySym)]
@@ -94,13 +36,88 @@ tagKeys = [ ("G", xK_g)
           ]
 
 
-vbox :: Choose Tall (Choose (Mirror Tall) Full) a
-vbox = tiled ||| Mirror tiled ||| Full
+myNormalBorderColor = black
+myFocusedBorderColor = black
+myFloatBorderColor = base01
+
+
+main :: IO ()
+main = do
+    hSetBuffering stdout NoBuffering
+    hSetBuffering stderr NoBuffering
+    xmonad myConfig
+
+
+myConfig = def
+    { borderWidth        = 1
+    , terminal           = "urxvt"
+    , modMask            = mod4Mask
+    , startupHook        = return ()
+    , handleEventHook    = docksEventHook
+    , focusFollowsMouse  = True
+    , clickJustFocuses   = True
+    , normalBorderColor  = myNormalBorderColor
+    , focusedBorderColor = myFocusedBorderColor
+    , workspaces         = map fst tagKeys
+    , layoutHook         = avoidStruts myLayoutHook
+    , logHook            = myLogHook
+    , manageHook         = manageDocks
+    , keys               = myKeys
+    , mouseBindings      = myMouseBindings
+    }
+
+
+myLogHook = fixFloatBorderColor myFloatBorderColor -- <+> fancyWSChange
+
+
+newtype CurrentWS = CurrentWS (Maybe String)
+
+instance ExtensionClass CurrentWS where
+    initialValue = CurrentWS Nothing
+
+fancyWSChange :: X ()
+fancyWSChange = do
+    CurrentWS cws <- XS.get
+    actual <- gets $ W.tag . W.workspace . W.current . windowset
+    case cws of
+        Nothing -> XS.put (CurrentWS (Just actual))
+        Just last -> when (last /= actual) $ do
+            XS.put (CurrentWS (Just actual))
+            let f a = flip concatMap tagKeys $ \(name, _) -> if name == a then "[" ++ name ++ "]" else " " ++ name ++ " "
+                cmd = unlines [ "printf \"" ++ f last ++ "\""
+                              , "sleep .3"
+                              , "clear"
+                              , "printf \"" ++ f actual ++ "\""
+                              , "sleep .3"
+                              ]
+            spawn $ intercalate " "
+                [ "urxvtdo"
+                , "-o"
+                , "'" ++ cmd ++ "'"
+                , "-geometry " ++ show (length (f last)) ++ "x1-0+0"
+                , "-xrm \"*transient-for: $(getroot)\""
+                ]
+
+
+fixFloatBorderColor :: String -> X ()
+fixFloatBorderColor color = do
+    keys <- gets $ M.keys . W.floating . windowset
+    withDisplay $ \d -> io $ do
+        mpix <- initColor d color
+        case mpix of
+            Nothing -> error "Main.fixFloatBorderColor"
+            Just pix -> let go w = setWindowBorder d w pix
+                        in mapM_ go keys
+
+
+myLayoutHook :: Choose Tall (Choose (Mirror Tall) Full) a
+myLayoutHook = tiled ||| Mirror tiled ||| Full
   where
      tiled   = Tall nmaster delta ratio
      nmaster = 1
      ratio   = 1/2
      delta   = 3/100
+
 
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys (XConfig {..}) = M.fromList $ meta ++ interWorkspace ++ intraWorkspace
@@ -180,14 +197,3 @@ myMouseBindings (XConfig {..}) = M.fromList
     -- Set the window to floating mode and resize by dragging
     , ((modMask, button3), \w -> focus w >> mouseResizeWindow w >> windows W.shiftMaster)
     ]
-
-
-myMinibar :: VVar (Int -> [Chunk])
-myMinibar = (fmap (fromMaybe waiting)) . getCompose $ f
-    <$> date <*> cpu <*> mem <*> bat <*> wifi
-  where
-    waiting width = raw "waiting"
-    f date cpu mem bat wifi width = stradle width left right
-      where
-        right = date
-        left = cpu <> raw " | " <> mem <> raw " | " <> wifi <> raw " | " <> bat

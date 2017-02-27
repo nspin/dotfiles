@@ -1,0 +1,2 @@
+#!/bin/sh
+xwininfo -root | sed -nE 's/^.*Window id: ([^ ]+).*$/\1/p'

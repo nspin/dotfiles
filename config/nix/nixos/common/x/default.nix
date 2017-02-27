@@ -52,6 +52,7 @@
             xsetroot -solid '#000000'
           fi
         fi
+        ${pkgs.haskellPackages.xmobar}/bin/xmobar &
     '';
 
   };
