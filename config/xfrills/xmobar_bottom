@@ -1,5 +1,5 @@
 Config
-    { position = Bottom
+    { position = BottomW L 85
     , persistent = True
 
     , hideOnStart = False
