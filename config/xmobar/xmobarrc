@@ -28,7 +28,7 @@ Config
         , Run StdinReader
         ]
 
-    , template = "%cpu%  %memory%  %swap%  %disku% <fc=#002b36>|</fc> %wifi%}{<fc=#002b36>|</fc> %date% "
+    , template = "%cpu%  %memory%  %swap%  %disku% <fc=#002b36>|</fc> %barrery% <fc=#002b36>|</fc> %wifi%}{<fc=#002b36>|</fc> %date% "
     -- , template = "}{%cpu%  %memory%  %swap%  %disku% <fc=#002b36>|</fc> %date% "
     -- , template = "%date%  |  %battery%  |  %cpu%  %memory%  %swap%  %wifi%}{%StdinReader%"
     }
