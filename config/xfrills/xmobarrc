@@ -24,11 +24,11 @@ Config
         , Run BatteryP ["Bat0"] [] 600
         , Run Com "/bin/sh" ["-c", "$DOTFILES/config/xfrills/wifi"] "wifi" 30
         -- , Run Com "wifi-status" [] "wifi" 30
-        , Run Date "%a %b %-d %Y %-H:%M" "date" 10
+        , Run Date "%a %b %-d %-H:%M" "date" 10
         , Run StdinReader
         ]
 
-    , template = "%cpu%  %memory%  %swap%  %disku% <fc=#002b36>|</fc> %battery% <fc=#002b36>|</fc> %wifi%}{<fc=#002b36>|</fc> %date% "
+    , template = "%cpu%  %memory%  %swap%  %disku% <fc=#002b36>|</fc> %battery% <fc=#002b36>|</fc> %wifi%}{%StdinReader% <fc=#002b36>|</fc> %date% "
     -- , template = "}{%cpu%  %memory%  %swap%  %disku% <fc=#002b36>|</fc> %date% "
     -- , template = "%date%  |  %battery%  |  %cpu%  %memory%  %swap%  %wifi%}{%StdinReader%"
     }

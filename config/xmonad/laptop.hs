@@ -48,16 +48,16 @@ main = do
     hSetBuffering stdout NoBuffering
     hSetBuffering stderr NoBuffering
 
-    xmobar <- spawnPipe "xmobar $DOTFILES/config/xfrills/xmobar_bottom"
+    xmobar <- spawnPipe "xmobar"
 
     let pp = PP
-            { ppCurrent = xmobarColor base00 base03 . squiggles
-            , ppVisible = lines
-            , ppHidden = lines
-            , ppHiddenNoWindows = pad . pad
-            , ppUrgent = xmobarColor red "" . lines
+            { ppCurrent = xmobarColor orange base03
+            , ppVisible = xmobarColor green base03
+            , ppHidden = xmobarColor green ""
+            , ppHiddenNoWindows = id
+            , ppUrgent = xmobarColor green red
             , ppSep = ""
-            , ppWsSep = ""
+            , ppWsSep = " "
             , ppTitle = const ""
             , ppTitleSanitize = const ""
             , ppLayout = const ""
@@ -66,10 +66,6 @@ main = do
             , ppExtras = []
             , ppOutput = hPutStrLn xmobar
             }
-
-        lines     = (" -" ++) . (++ "- ")
-        squiggles = (" ~" ++) . (++ "~ ")
-        nothing   = ("  " ++) . (++ "  ")
 
         myConfig = def
             { borderWidth        = 1
