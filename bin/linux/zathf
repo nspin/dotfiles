@@ -1,5 +1,6 @@
 #!/bin/sh
-start_node=${1:-.}
+start_node=${1:-~}
 cmd="fznode $start_node -f -v 3 --extra ( -type d -o -name '*.pdf' -o -name '*.djvu' ) -a ! -path '*/\.*'"
-file="$(popup -e -- 40 30 $cmd)"
+urxvt="urxvt -pty-fd \$0 -xrm '*transient-for: 0' -geometry 40x30+9999+9999"
+file="$(parpty -e -- "$urxvt" $cmd)"
 [ -n "$file" ] && zathura "$file"
