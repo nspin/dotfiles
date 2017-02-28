@@ -21,14 +21,14 @@ Config
         , Run Memory ["-t","Mem: <usedratio>%" ,"-H","75","--normal","#657b83","--high","#dc322f"] 10
         , Run Swap   ["-t","Swap: <usedratio>%","-H","75","--normal","#657b83","--high","#dc322f"] 10
         , Run DiskU [("/", "Disk: <used>/<size>")] [] 20
-        -- , Run Com "/bin/sh" ["-c", "sh $HOME/dotfiles/config/xmobar/wifi.sh"] "wifi" 30
         , Run BatteryP ["Bat0"] [] 600
-        , Run Com "wifi-status" [] "wifi" 30
+        , Run Com "/bin/sh" ["-c", "$DOTFILES/config/xfrills/wifi"] "wifi" 30
+        -- , Run Com "wifi-status" [] "wifi" 30
         , Run Date "%a %b %-d %Y %-H:%M" "date" 10
         , Run StdinReader
         ]
 
-    , template = "%cpu%  %memory%  %swap%  %disku% <fc=#002b36>|</fc> %barrery% <fc=#002b36>|</fc> %wifi%}{<fc=#002b36>|</fc> %date% "
+    , template = "%cpu%  %memory%  %swap%  %disku% <fc=#002b36>|</fc> %battery% <fc=#002b36>|</fc> %wifi%}{<fc=#002b36>|</fc> %date% "
     -- , template = "}{%cpu%  %memory%  %swap%  %disku% <fc=#002b36>|</fc> %date% "
     -- , template = "%date%  |  %battery%  |  %cpu%  %memory%  %swap%  %wifi%}{%StdinReader%"
     }

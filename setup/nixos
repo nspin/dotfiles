@@ -13,4 +13,5 @@ mitmproxy/common.conf          .mitmproxy/common.conf
 nix/pkgs/config.nix            .nixpkgs/config.nix
 xdg/zathura/zathurarc          .config/zathura/zathurarc
 xmonad/laptop.hs               .xmonad/xmonad.hs
-xmobar/xmobarrc                .xmobarrc
+xfrills/xmobarrc               .xmobarrc
+xfrills/stalonetrayrc          .stalonetrayrc
