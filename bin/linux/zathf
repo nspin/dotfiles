@@ -8,7 +8,7 @@ fi
 
 cmd="fznode $start_node -f -v 3 --extra \\( -type d -o -name '*.pdf' -o -name '*.djvu' \\) -a ! -path '*/\.*'"
 
-file="$(popup 40 30 "$cmd")"
+file="$(popup -e 40 30 "$cmd")"
 
 if [ -n "$file" ]; then
     zathura "$file"
