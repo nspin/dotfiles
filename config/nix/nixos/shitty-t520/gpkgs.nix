@@ -3,6 +3,7 @@
   environment.systemPackages = with pkgs; [
 
     rxvt_unicode
+    scrot
 
     chromium
     google-chrome

@@ -63,6 +63,7 @@
     openssl
     mitmproxy
     readme-preview
+    uptyl
 
   ];
 }

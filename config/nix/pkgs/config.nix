@@ -18,18 +18,18 @@
     };
 
     my-lib = callPackage ./lib {};
-
     ghc-pkg-db = callPackage ./aux/ghc-pkg-db {};
 
-    spotify-ripper = callPackage ./local/spotify-ripper {};
+    # spotify-ripper = callPackage ./local/spotify-ripper {};
+    # apktool = callPackage ./local/apktool {
+    #   buildTools = androidenv.buildTools;
+    # };
 
     mitmproxy = callPackage ./local/mitmproxy {};
-
-    apktool = callPackage ./local/apktool {
-      buildTools = androidenv.buildTools;
-    };
-
     readme-preview = callPackage ./local/grip {};
+
+    uptyl = callPackage <dotfig/../../uptyl> {};
+    fznode = callPackage <dotfig/../../fznode> {};
 
     my-vim = vimUtils.makeCustomizable (callPackage <nixpkgs/pkgs/applications/editors/vim/configurable.nix> {
       inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;
