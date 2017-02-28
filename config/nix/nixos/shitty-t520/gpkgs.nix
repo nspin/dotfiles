@@ -2,6 +2,9 @@
 
   environment.systemPackages = with pkgs; [
 
+    stalonetray
+    haskellPackages.xmobar
+
     rxvt_unicode
     scrot
 

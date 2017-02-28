@@ -1,3 +1,8 @@
-transparent true
 window_type dock
 window_layer bottom
+window_strut none
+geometry 10x1-0-0
+background "#073642"
+icon_gravity SE
+grow_gravity SE
+kludges fix_window_pos,force_icons_size,use_icons_hints

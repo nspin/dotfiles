@@ -52,7 +52,8 @@
             xsetroot -solid '#000000'
           fi
         fi
-        ${pkgs.haskellPackages.xmobar}/bin/xmobar &
+        ${pkgs.haskellPackages.xmobar}/bin/xmobar $DOTFILES/config/xfrills/xmobar_top &
+        ${pkgs.stalonetray}/bin/stalonetray -c $DOTFILES/config/xfrills/stalonetrayrc &
     '';
 
   };

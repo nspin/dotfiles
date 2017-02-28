@@ -1,5 +1,7 @@
 # TODO
 
+stalonetray volume and stuff
+
 .bashrc.local
 
 show volume on volume change

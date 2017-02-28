@@ -1,0 +1,24 @@
+Config
+    { position = Bottom
+    , persistent = True
+
+    , hideOnStart = False
+    , lowerOnStart = False
+
+    , font = "xft:DejaVu Sans Mono:antialias=True:pixelsize=14"
+
+    , alpha = 255
+    , bgColor = "#073642"
+    , fgColor = "#657b83"
+    , border = NoBorder
+    , borderColor = "#002b36"
+    , borderWidth = 0
+    , sepChar = "%"
+    , alignSep = "}{"
+
+    , commands =
+        [ Run StdinReader
+        ]
+
+    , template = "%StdinReader%}{"
+    }
