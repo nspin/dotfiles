@@ -1,15 +1,5 @@
 #!/bin/sh
-
-if [ -n "$1" ]; then
-    start_node="$1"
-else
-    start_node=.
-fi
-
-cmd="fznode $start_node -f -v 3 --extra \\( -type d -o -name '*.pdf' -o -name '*.djvu' \\) -a ! -path '*/\.*'"
-
-file="$(popup -e 40 30 "$cmd")"
-
-if [ -n "$file" ]; then
-    zathura "$file"
-fi
+start_node=${1:-.}
+cmd="fznode $start_node -f -v 3 --extra ( -type d -o -name '*.pdf' -o -name '*.djvu' ) -a ! -path '*/\.*'"
+file="$(popup -e -- 40 30 $cmd)"
+[ -n "$file" ] && zathura "$file"

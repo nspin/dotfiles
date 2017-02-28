@@ -21,4 +21,4 @@ if [ -z "$x" -o -z "$y" -o -z "$1" ]; then
     exit 1
 fi
 
-parpty $fd_dups "urxvt -pty-fd \$0 -xrm '*transient-for: 0' -geometry ${x}x${y}+9999+9999" $@
+parpty $fd_dups -- "urxvt -pty-fd \$0 -xrm '*transient-for: 0' -geometry ${x}x${y}+9999+9999" $@
