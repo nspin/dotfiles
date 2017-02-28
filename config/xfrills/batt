@@ -1,0 +1,4 @@
+#!/bin/sh
+state=$(upower --dump | sed -n '/Device.*BAT/,/^$/p' | sed -nE 's/^.*state:\s+([^\s]+)/\1/p')
+amnt=$(upower --dump | sed -n '/Device.*BAT/,/^$/p' | sed -nE 's/^.*percentage:\s+([^\s]+)/\1/p')
+printf 'Batt: %s %s\n' "$state" "$amnt"
