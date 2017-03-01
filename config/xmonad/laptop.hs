@@ -51,13 +51,13 @@ main = do
     xmobar <- spawnPipe "xmobar"
 
     let pp = PP
-            { ppCurrent = xmobarColor orange base03
-            , ppVisible = xmobarColor green base03
-            , ppHidden = xmobarColor green ""
-            , ppHiddenNoWindows = id
-            , ppUrgent = xmobarColor green red
+            { ppCurrent = xmobarColor orange base03 . pad
+            , ppVisible = xmobarColor green base03 . pad
+            , ppHidden = xmobarColor green "" . pad
+            , ppHiddenNoWindows = pad
+            , ppUrgent = xmobarColor green red . pad
             , ppSep = ""
-            , ppWsSep = " "
+            , ppWsSep = ""
             , ppTitle = const ""
             , ppTitleSanitize = const ""
             , ppLayout = const ""
