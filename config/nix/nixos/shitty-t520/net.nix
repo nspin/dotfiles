@@ -8,6 +8,10 @@
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [ 22 8080 ];
 
+  networking.enableIPv6 = false;
+  networking.networkmanager.enable = true;
+  users.extraGroups.networkmanager.members = [ "nick" ];
+
   services.openssh.enable = true;
 
   my.pia.enable = true;
@@ -15,15 +19,16 @@
     sw = "sweden";
     mw = "us-midwest";
   };
+
   # my.pia.server = "sweden";
   # my.pia.server = "us-midwest";
 
-  networking.wireless = {
-    enable = true;
-    userControlled.enable = true;
-    interfaces = [ "wlp3s0" ];
-    driver = "wext";
-  };
+  # networking.wireless = {
+  #   enable = true;
+  #   userControlled.enable = true;
+  #   interfaces = [ "wlp3s0" ];
+  #   driver = "wext";
+  # };
 
   environment.systemPackages = with pkgs; [
     wpa_supplicant

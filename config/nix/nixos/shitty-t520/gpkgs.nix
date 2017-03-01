@@ -2,6 +2,7 @@
 
   environment.systemPackages = with pkgs; [
 
+    trayer
     stalonetray
     haskellPackages.xmobar
 

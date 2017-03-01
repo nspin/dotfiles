@@ -52,8 +52,8 @@
             xsetroot -solid '#000000'
           fi
         fi
-        # ${pkgs.haskellPackages.xmobar}/bin/xmobar $DOTFILES/config/xfrills/xmobar_top &
-        # ${pkgs.stalonetray}/bin/stalonetray -c $DOTFILES/config/xfrills/stalonetrayrc &
+        ${pkgs.trayer}/bin/trayer --align right --height 25 --widthtype request --transparent true --tint 0x073642 &
+        ${pkgs.networkmanagerapplet}/bin/nm-applet &
     '';
 
   };
