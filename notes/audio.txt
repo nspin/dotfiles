@@ -1,2 +1,2 @@
-if pa-applet goes crazy:
-    alsactl restore -P
+DO: alsa-info.sh [https://www.alsa-project.org/main/index.php/Help_To_Debug]
+DO NOT: alsactl restore -P
