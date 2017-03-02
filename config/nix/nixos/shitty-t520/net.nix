@@ -44,15 +44,16 @@
   users.extraGroups.wireshark.gid = 500;
   users.extraGroups.wireshark.members = [ "nick" ];
 
-  security.setuidOwners = [
-    { program = "dumpcap";
+  security.wrappers = {
+    dumpcap = {
+      program = "dumpcap";
       source = "${pkgs.wireshark}/bin/dumpcap";
       owner = "root";
       group = "wireshark";
       setuid = true;
       setgid = false;
       permissions = "u+rx,g+x";
-    }
-  ];
+    };
+  };
 
 }

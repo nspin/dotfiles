@@ -54,6 +54,8 @@
         fi
         ${pkgs.trayer}/bin/trayer --align right --height 25 --widthtype request --transparent true --tint 0x073642 &
         ${pkgs.networkmanagerapplet}/bin/nm-applet &
+        ${pkgs.pnmixer}/bin/pnmixer &
+        ${pkgs.pasystray}/bin/pasystray &
     '';
 
   };

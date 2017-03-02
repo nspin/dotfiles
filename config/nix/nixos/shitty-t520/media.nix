@@ -29,6 +29,7 @@
     ario
     gmpc
     mpc_cli
+    pavucontrol
   ];
 
 }

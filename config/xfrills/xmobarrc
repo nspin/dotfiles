@@ -26,5 +26,5 @@ Config
         , Run StdinReader
         ]
 
-    , template = " %date% <fc=#002b36>|</fc>%StdinReader%<fc=#002b36>|</fc> %cpu% <fc=#002b36>|</fc> %memory% <fc=#002b36>|</fc> %swap% <fc=#002b36>|</fc> %disku% <fc=#002b36>|</fc> %batt% <fc=#002b36>|</fc>"
+    , template = " %date% <fc=#002b36>|</fc>%StdinReader%<fc=#002b36>|</fc> %batt% <fc=#002b36>|</fc> %cpu% <fc=#002b36>|</fc> %memory% <fc=#002b36>|</fc> %swap% <fc=#002b36>|</fc> %disku% <fc=#002b36>|</fc>"
     }
