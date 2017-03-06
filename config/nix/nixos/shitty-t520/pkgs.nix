@@ -63,7 +63,9 @@
     openssl
     mitmproxy
     readme-preview
+
     uptyl
+    fznode
 
   ];
 }
