@@ -2,7 +2,7 @@ pkgs: with pkgs; [
 
   gnused
   gnugrep
-  bash
+  # bash
 
   reattach-to-user-namespace
 
