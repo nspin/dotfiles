@@ -1,6 +1,6 @@
 #!/bin/sh
-urxvt="urxvt -pty-fd \$0 -xrm '*transient-for: 0' -geometry 40x30+9999+9999"
-album="$(mpc list album | parpty -e -- "$urxvt" fzf)"
+aa="$(mpc list albumartist | urxvtdo -e -g 60x25+9999+9999 fzf)"
+album="$(mpc list album albumartist "$aa" | urxvtdo -e -g 60x25+9999+9999 fzf)"
 echo $album
 if [ -n "$album" ]; then
     mpc clear
