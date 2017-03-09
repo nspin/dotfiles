@@ -28,7 +28,7 @@
     mitmproxy = callPackage ./local/mitmproxy {};
     readme-preview = callPackage ./local/grip {};
 
-    uptyl = callPackage <dotfig/../../uptyl> {};
+    uttyl = callPackage <dotfig/../../uttyl> {};
     fznode = callPackage <dotfig/../../fznode> {};
 
     my-vim = vimUtils.makeCustomizable (callPackage <nixpkgs/pkgs/applications/editors/vim/configurable.nix> {

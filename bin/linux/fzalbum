@@ -1,0 +1,9 @@
+#!/bin/sh
+urxvt="urxvt -pty-fd \$0 -xrm '*transient-for: 0' -geometry 40x30+9999+9999"
+album="$(mpc list album | parpty -e -- "$urxvt" fzf)"
+echo $album
+if [ -n "$album" ]; then
+    mpc clear
+    mpc findadd album "$album"
+    mpc play
+fi

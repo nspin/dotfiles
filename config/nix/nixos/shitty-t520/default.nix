@@ -1,12 +1,13 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
 
-  time.timeZone = "America/Chicago";
+  boot.kernel.sysctl = {
+    "kernel.yama.ptrace_scope" = lib.mkDefault "0";
+  };
 
-  # services.xserver.windowManager.my-xmonad.enable = true;
-  # services.xserver.windowManager.my-xmonad.isLaptop = true;
+  time.timeZone = "America/Chicago";
 
   services.xserver.windowManager.xmonad.enable = true;
   services.xserver.windowManager.xmonad.enableContribAndExtras = true;

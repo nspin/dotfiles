@@ -64,7 +64,7 @@
     mitmproxy
     readme-preview
 
-    uptyl
+    uttyl
     fznode
 
   ];
