@@ -2,23 +2,14 @@
 
 set -e
 
-usage='usage: popup [-ioe] X Y CMD [ARGS...]'
+usage='usage: popup X Y CMD [ARGS...]'
 
-fd_dups=""
-while getopts 'ioe' optchar; do
-    fd_dups="$fd_dups -$optchar"
-done
-
-shift $(expr $OPTIND - 1)
-
-x="$1"
-shift
-y="$1"
-shift
+x="$1"; shift
+y="$1"; shift
 
 if [ -z "$x" -o -z "$y" -o -z "$1" ]; then
     echo "$usage" >&2
     exit 1
 fi
 
-parpty $fd_dups -- "urxvt -pty-fd \$0 -xrm '*transient-for: 0' -geometry ${x}x${y}+9999+9999" $@
+urxvtdo -eg "${x}x${y}+9999+9999" -- $@

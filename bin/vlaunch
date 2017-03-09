@@ -1,2 +1,2 @@
 #!/bin/sh
-exec $(pathcmds | popup -e 40 30 fzf)
+exec $(pathcmds | popup 40 30 fzf)

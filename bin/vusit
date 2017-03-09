@@ -1,7 +1,7 @@
 #!/bin/sh
 tmp=/tmp/visit-$(xxd -p -l 4 /dev/urandom)
 cp ~/.config/chromium/Default/History $tmp
-url="$(sqlite3 $tmp "select url from urls order by last_visit_time desc;" | sed 's/\?.*$//' | sort | uniq | popup 40 30 fzf)"
+url="$(sqlite3 $tmp "select url from urls order by last_visit_time desc;" | sed 's/\?.*$//' | sort | uniq | popup 70 30 fzf)"
 if [ -n "$url" ]; then
     chromium --new-window "$url"
 fi

@@ -1,4 +1,3 @@
 #!/bin/sh
-# TODO use exec? disown? nohup?
-cmd=$(pathcmds | fzf)
-$cmd &> /dev/null &
+cmd="$(pathcmds | fzf)"
+[ -n "$cmd" ] && "$cmd" &> /dev/null &

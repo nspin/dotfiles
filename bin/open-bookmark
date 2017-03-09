@@ -1,2 +1,8 @@
 #!/bin/sh
-sqlite3 ~/.mozilla/firefox/*.[dD]efault/places.sqlite "SELECT url FROM moz_places, moz_bookmarks WHERE moz_places.id = moz_bookmarks.fk ORDER BY dateAdded;" | popup 40 20 fzf | xargs firefox
+
+bookmarks() {
+    sqlite3 ~/.mozilla/firefox/*.[dD]efault/places.sqlite "SELECT url FROM moz_places, moz_bookmarks WHERE moz_places.id = moz_bookmarks.fk ORDER BY dateAdded;"
+}
+
+url="$(bookmarks | popup 70 25 fzf)"
+[ -n "$url" ] && firefox "$url"
