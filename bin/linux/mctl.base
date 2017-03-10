@@ -5,8 +5,8 @@ echo
 stty -echo
 while read -n 1 c; do
     case "$c" in
-        a) fzalbum; exit ;;
-        s) fzsong; exit ;;
+        a) exec fzalbum ;;
+        s) exec fzsong ;;
         *) echo "Command '$c' not recognized. Try again." ;;
     esac
 done
