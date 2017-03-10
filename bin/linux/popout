@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+usage='usage: popout X Y CMD [ARGS...]'
+
+if [ -z "$1" -o -z "$2" -o -z "$3" ]; then
+    echo "$usage" >&2
+    exit 1
+fi
+
+x="$1"; shift
+y="$1"; shift
+
+urxvt -geometry "${x}x${y}+9999+9999" -xrm '*transient-for: 0' -e $@

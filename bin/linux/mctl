@@ -1,0 +1,2 @@
+#!/bin/sh
+popout 60 30 mctl.base

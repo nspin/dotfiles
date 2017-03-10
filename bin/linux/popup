@@ -4,12 +4,12 @@ set -e
 
 usage='usage: popup X Y CMD [ARGS...]'
 
-x="$1"; shift
-y="$1"; shift
-
-if [ -z "$x" -o -z "$y" -o -z "$1" ]; then
+if [ -z "$1" -o -z "$2" -o -z "$1" ]; then
     echo "$usage" >&2
     exit 1
 fi
+
+x="$1"; shift
+y="$1"; shift
 
 urxvtdo -eg "${x}x${y}+9999+9999" -- $@

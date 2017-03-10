@@ -1,0 +1,12 @@
+#!/bin/sh
+echo "[a] choose album"
+echo "[s] choose song from current album"
+echo
+stty -echo
+while read -n 1 c; do
+    case "$c" in
+        a) fzalbum; exit ;;
+        s) fzsong; exit ;;
+        *) echo "Command '$c' not recognized. Try again." ;;
+    esac
+done

@@ -1,0 +1,5 @@
+#!/bin/sh
+songix="$(mpc playlist | nl -s '/' - | sed 's/^ *//' | popup 60 30 fzf -d '/' --with-nth=2 | cut -d '/' -f 1)"
+if [ -n "$songix" ]; then
+    mpc play "$songix"
+fi
