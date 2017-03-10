@@ -1,5 +1,5 @@
 #!/bin/sh
 node0=${1:-~}
 cmd="fznode $node0 -f -d 3 -p -type d -o -name *.pdf -o -name *.djvu"
-file="$(popup 50 30 -- $cmd)"
+file="$(popup 50 30 $cmd)"
 [ -n "$file" ] && zathura "$file"
