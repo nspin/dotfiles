@@ -1,6 +1,10 @@
 #!/bin/sh
-aa="$(mpc list albumartist | popup 60 30 fzf)"
-album="$(mpc list album albumartist "$aa" | popup 60 30 fzf)"
+artist="$(mpc list albumartist | fzf -q ^)"
+if [ -n "$artist" ]; then
+    album="$(mpc list album albumartist "$artist" | fzf -q ^)"
+else
+    album="$(mpc list album | fzf -q ^)"
+fi
 if [ -n "$album" ]; then
     mpc clear
     mpc findadd album "$album"

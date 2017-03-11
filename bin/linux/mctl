@@ -1,2 +1,14 @@
 #!/bin/sh
-popout 60 30 mctl.base
+echo "[a] choose album"
+echo "[s] choose song from current album"
+echo "[q] quit"
+echo
+while read -n 1 c; do
+    echo
+    case "$c" in
+        a) exec fzalbum ;;
+        s) exec fzsong ;;
+        q) exit ;;
+        *) echo "Command not recognized. Try again." ;;
+    esac
+done
