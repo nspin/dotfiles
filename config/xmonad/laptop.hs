@@ -150,7 +150,8 @@ myKeys (XConfig {..}) = M.fromList $ meta ++ interWorkspace ++ intraWorkspace
         -- launching and killing programs
         [ ((modMask, xK_c), spawn terminal) -- Launch terminal
         , ((modMask, xK_u), spawn "vlaunch") -- Launch hacky launcher
-        , ((modMask, xK_minus), spawn "vmctl") -- Launch hacky launcher
+        , ((modMask, xK_minus), spawn "vmctl") -- Launch hacky music chooser
+        , ((modMask, xK_equal), spawn "popout 110 30") -- Launch floating urxvt
         , ((modMask, xK_x), kill) -- Close the focused window
 
         -- quit, or restart

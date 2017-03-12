@@ -1,3 +1,0 @@
-#!/bin/sh
-cmd="$(pathcmds | fzf)"
-[ -n "$cmd" ] && "$cmd" &> /dev/null &
