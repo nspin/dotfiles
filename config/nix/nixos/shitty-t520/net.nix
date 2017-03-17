@@ -10,7 +10,7 @@
 
   networking.enableIPv6 = false;
   networking.networkmanager.enable = true;
-  users.extraGroups.networkmanager.members = [ "nick" ];
+  users.extraGroups.networkmanager.members = [ "nick" "other" ];
 
   services.openssh.enable = true;
 
