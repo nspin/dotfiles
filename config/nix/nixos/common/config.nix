@@ -43,7 +43,7 @@
 
   environment.extraInit = ''
     export PATH="$PATH:$DOTFILES/bin:$DOTFILES/bin/linux:$MY_LOCAL/bin"
-    export VIMRUNTIME="${pkgs.vimHugeX}/share/vim/vim[0-9][0-9]";
+    export VIMRUNTIME="${pkgs.my-vim}/share/vim/vim[0-9][0-9]";
   '';
 
   # environment.etc = {

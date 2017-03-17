@@ -31,17 +31,17 @@
     uttyl = callPackage <dotfig/../../uttyl> {};
     fznode = callPackage <dotfig/../../fznode> {};
 
-    my-vim = vimUtils.makeCustomizable (callPackage <nixpkgs/pkgs/applications/editors/vim/configurable.nix> {
+    my-vim = callPackage <nixpkgs/pkgs/applications/editors/vim/configurable.nix> {
       inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;
       inherit (darwin) libobjc cf-private;
       features = "huge";
+      gui = "no";
       lua = lua5_1;
-      gui = config.vim.gui or "auto";
-      flags = [ "python" "X11" ];
+      flags = [ "python" ];
       python = python.buildEnv.override {
         extraLibs = [ pythonPackages.pycrypto ];
       };
-    });
+    };
 
   };
 
