@@ -1,22 +1,18 @@
 { pkgs, lib, ... }: {
 
-  boot.kernel.sysctl = {
-    "kernel.yama.ptrace_scope" = lib.mkDefault "0";
-  };
-
-  time.timeZone = "America/Chicago";
-
   imports = [
     <dotfig/nix/nixos/common/config.nix>
   ];
 
-  services.openssh.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    my-vim
-    git
-    tmux
-  ];
+  time.timeZone = "America/Chicago";
+
+  security.sudo.wheelNeedsPassword = false;
+  services.openssh.enable = true;
+  networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
+
+  boot.kernel.sysctl."kernel.yama.ptrace_scope" = lib.mkDefault "0";
 
   users.extraUsers = {
     nick = {
@@ -26,6 +22,22 @@
     };
   };
 
-  security.sudo.wheelNeedsPassword = false;
+  environment.systemPackages = with pkgs; [
+    my-vim
+    git
+    tmux
+    nix-repl
+    nix-prefetch-scripts
+    python35
+    coreutils
+    zip
+    unzip
+    file
+    which
+    fzf
+    rlwrap
+    uttyl
+    fznode
+  ];
 
 }
