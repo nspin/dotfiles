@@ -27,21 +27,21 @@ for dir in s:plugin_path
 endfor
 
 " This order is based on :h initialization
-let s:rtp = [ $VIM.'/pre' ]
+let s:rtp = [ $DOTFILES.'/config/vim/pre' ]
         \ + s:plugin_path
         \ + [ $VIMRUNTIME ]
         \ + s:plugin_after_path
-        \ + [ $VIM.'/post' ]
+        \ + [ $DOTFILES.'/config/vim/post' ]
 
 let &rtp = join(s:rtp, ',')
 
 " Source actual configuration
 
-for f in split(system("find $VIM/lib -name '*.vim' | sort"))
+for f in split(system("find $DOTFILES/config/vim/lib -name '*.vim' | sort"))
   exec 'source' f
 endfor
 
-for f in split(system("find $VIM/init -name '*.vim' | sort"))
+for f in split(system("find $DOTFILES/config/vim/init -name '*.vim' | sort"))
   exec 'source' f
 endfor
 

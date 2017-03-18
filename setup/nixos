@@ -14,3 +14,4 @@ nix/pkgs/config.nix            .nixpkgs/config.nix
 xdg/zathura/zathurarc          .config/zathura/zathurarc
 xmonad/laptop.hs               .xmonad/xmonad.hs
 xfrills/xmobarrc               .xmobarrc
+vim/vimrc                      .vimrc

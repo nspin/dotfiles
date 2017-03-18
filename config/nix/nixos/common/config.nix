@@ -13,8 +13,6 @@
     Defaults env_keep += "EDITOR"
     Defaults env_keep += "VISUAL"
 
-    Defaults env_keep += "VIM"
-    Defaults env_keep += "VIMRUNTIME"
     Defaults env_keep += "FZF_DEFAULT_OPTS"
 
     Defaults env_keep += "DOTFILES"
@@ -31,7 +29,6 @@
     VISUAL = "vim";
     BROWSER = "chromium";
 
-    VIM = DOTFILES + "/config/vim";
     FZF_DEFAULT_OPTS = "--reverse";
 
     DOTFILES = "/cfg/dotfiles";
@@ -43,16 +40,6 @@
 
   environment.extraInit = ''
     export PATH="$PATH:$DOTFILES/bin:$DOTFILES/bin/linux:$MY_LOCAL/bin"
-    export VIMRUNTIME="${pkgs.vimHugeX}/share/vim/vim[0-9][0-9]";
   '';
-
-  # environment.etc = {
-  #   "tmux.conf" = {
-  #     source = <dotfig/multiplexers/tmux.conf>;
-  #   };
-  #   "inputrc" = { # or INPUTRC
-  #     source = <dotfig/line-editors/inputrc>;
-  #   };
-  # };
 
 }
