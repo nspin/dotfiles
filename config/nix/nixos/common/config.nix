@@ -3,7 +3,7 @@
   nixpkgs.config = import <dotfig/nix/pkgs/config.nix>;
 
   nix.nixPath = [
-    "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixpkgs"
+    "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
     "nixos-config=/etc/nixos/configuration.nix"
     "dotfig=/cfg/dotfiles/config"
     "/nix/var/nix/profiles/per-user/root/channels"
