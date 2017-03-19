@@ -1,7 +1,7 @@
 { pkgs, lib, ... }: {
 
   imports = [
-    <dotfig/nix/nixos/common/config.nix>
+    <dotfiles/nix/nixos/common/config.nix>
   ];
 
   time.timeZone = "America/Chicago";

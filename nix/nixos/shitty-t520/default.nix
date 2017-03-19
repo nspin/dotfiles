@@ -11,10 +11,6 @@
 
   services.xserver.windowManager.xmonad.enable = true;
   services.xserver.windowManager.xmonad.enableContribAndExtras = true;
-  # services.xserver.windowManager.xmonad.extraPackages = hp: [
-  #   ((hp.callPackage <dotfig/xmonad> {}) {})
-  # ];
-
   services.xserver.desktopManager.xterm.enable = false;
 
   # desktopManager.kde4.enable = true;
@@ -54,7 +50,6 @@
 
   services.physlock = {
     enable = true;
-    # user = "nick";
     lockOn.suspend = true;
     lockOn.hibernate = true;
   };

@@ -24,7 +24,7 @@ in with lib; {
         name = "xmonad";
         start =
           let
-            my-xmonad = (pkgs.haskellPackages.callPackage <dotfig/xmonad> {}) cfg.isLaptop;
+            my-xmonad = (pkgs.haskellPackages.callPackage <dotfiles/config/xmonad> {}) cfg.isLaptop;
           in ''
             # logdir=/var/log/wmdev
             # mkdir -p $logdir

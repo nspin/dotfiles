@@ -28,8 +28,8 @@
     mitmproxy = callPackage ./local/mitmproxy {};
     readme-preview = callPackage ./local/grip {};
 
-    uttyl = callPackage <dotfig/../../uttyl> {};
-    fznode = callPackage <dotfig/../../fznode> {};
+    uttyl = callPackage <dotfiles/../uttyl> {};
+    fznode = callPackage <dotfiles/../fznode> {};
 
     my-vim = callPackage <nixpkgs/pkgs/applications/editors/vim/configurable.nix> {
       inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;

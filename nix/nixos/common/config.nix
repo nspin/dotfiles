@@ -1,11 +1,11 @@
 { pkgs, ... }: {
 
-  nixpkgs.config = import <dotfig/nix/pkgs/config.nix>;
+  nixpkgs.config = import <dotfiles/nix/pkgs/config.nix>;
 
   nix.nixPath = [
     "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
     "nixos-config=/etc/nixos/configuration.nix"
-    "dotfig=/cfg/dotfiles/config"
+    "dotfiles=/cfg/dotfiles"
     "/nix/var/nix/profiles/per-user/root/channels"
   ];
 
@@ -24,7 +24,6 @@
   '';
 
   environment.variables = rec {
-
     EDITOR = "vim";
     VISUAL = "vim";
     BROWSER = "chromium";
@@ -35,7 +34,6 @@
     VIM_BUNDLE = "/cfg/vim-bundle/bundle";
     VIM_PLUGIN_PATH = "${pkgs.vimPlugins.youcompleteme}/share/vim-plugins/youcompleteme";
     MY_LOCAL = "/cfg/local";
-
   };
 
   environment.extraInit = ''

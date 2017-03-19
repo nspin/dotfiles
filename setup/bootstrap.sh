@@ -1,4 +1,4 @@
-BS_CFGDIR=/cfg
+CFG=/cfg
 
-export PATH="$PATH:$BS_CFGDIR/dotfiles/bin:$BS_CFGDIR/dotfiles/bin/linux:$BS_CFGDIR/local/bin"
-export NIX_PATH="$NIX_PATH:dotfig=$BS_CFGDIR/dotfiles/config"
+export PATH="$PATH:$CFG/dotfiles/bin:$CFG/dotfiles/bin/linux:$CFG/local/bin"
+export NIX_PATH="$NIX_PATH:dotfiles=$CFG/dotfiles"
