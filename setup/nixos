@@ -10,7 +10,7 @@ bash/bashrc                    .bashrc
 bash/bash_profile              .bash_profile
 multiplexers/tmux.conf         .tmux.conf
 mitmproxy/common.conf          .mitmproxy/common.conf
-nix/pkgs/config.nix            .nixpkgs/config.nix
+../nix/pkgs/config.nix         .nixpkgs/config.nix
 xdg/zathura/zathurarc          .config/zathura/zathurarc
 xmonad/laptop.hs               .xmonad/xmonad.hs
 xfrills/xmobarrc               .xmobarrc

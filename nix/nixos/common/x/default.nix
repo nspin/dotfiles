@@ -33,11 +33,14 @@
     '';
 
     displayManager.sessionCommands = ''
+        if [ -x ~/.screenlayout/go.sh ]; then
+          ~/.screenlayout/go.sh
+        fi
         xrdb -merge ${./xresources}
         xmodmap ${./Xmodmap}
         xset r rate 300 50
         xsetroot -cursor_name left_ptr&
-        if [ -x "~/.fehbg" ]; then
+        if [ -x ~/.fehbg ]; then
           ~/.fehbg
         else
           pape=""
@@ -52,7 +55,7 @@
             xsetroot -solid '#000000'
           fi
         fi
-        ${pkgs.trayer}/bin/trayer --align right --height 25 --widthtype request --transparent true --tint 0x073642 &
+        ${pkgs.trayer}/bin/trayer --monitor primary --align right --height 25 --widthtype request --transparent true --tint 0x073642 &
         ${pkgs.networkmanagerapplet}/bin/nm-applet &
         ${pkgs.pnmixer}/bin/pnmixer &
         ${pkgs.pasystray}/bin/pasystray &
