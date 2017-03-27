@@ -13,6 +13,7 @@
     google-chrome
     firefox
     opera
+    torbrowser
 
     vlc
     zathura
@@ -21,6 +22,13 @@
     libreoffice
 
     readme-preview
+
+    arandr
+    geeqie
+    keepassx2
+    gparted
+    picard
+
 
   ];
 }

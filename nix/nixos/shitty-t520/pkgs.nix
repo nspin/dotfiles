@@ -45,6 +45,7 @@
     coreutils
     zip
     unzip
+    p7zip
     file
     which
     fzf
@@ -54,6 +55,7 @@
     git
     mercurial
     subversion
+    wget
 
     rlwrap
     bind
@@ -66,6 +68,7 @@
 
     uttyl
     fznode
+    reptyr
 
   ];
 }
