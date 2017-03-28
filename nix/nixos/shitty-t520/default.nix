@@ -27,7 +27,7 @@
     ../common/config.nix
     ../common/x
     ../common/my-xmonad.nix
-  ];
+  ] ++ (lib.optional (builtins.pathExists <dotfiles/../local>) <dotfiles/../local>);
 
   users.extraUsers = {
     nick = {
