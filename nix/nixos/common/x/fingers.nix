@@ -11,7 +11,10 @@
     windowManager.xmonad.enableContribAndExtras = true;
 
     displayManager.sddm.enable = true;
-    displayManager.sddm.theme = "maldives";
+    displayManager.sddm.theme = "absdark";
+    displayManager.sddm.package = pkgs.sddm.override {
+      themes = [ (pkgs.callPackages ./sddm-themes/absdark.nix {}) ];
+    };
     displayManager.sessionCommands = ''
         ${pkgs.xscreensaver}/bin/xscreensaver -nosplash &
         if [ -x ~/.screenlayout/go.sh ]; then
