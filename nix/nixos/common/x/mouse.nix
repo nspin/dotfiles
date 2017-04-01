@@ -4,40 +4,11 @@
 
   services.xserver = {
 
-    # desktopManager.lxqt.enable = true;
-
-    desktopManager.default = "none";
-    windowManager.default = "openbox";
-    windowManager.openbox.enable = true;
+    desktopManager.xfce.enable = true;
 
     displayManager.sessionCommands = ''
-        ${pkgs.xscreensaver}/bin/xscreensaver -nosplash &
-        if [ -x ~/.screenlayout/go.sh ]; then
-          ~/.screenlayout/go.sh
-        fi
-        xrdb -merge ${./xresources}
-        xmodmap ${./Xmodmap}
-        xset r rate 300 50
-        xsetroot -cursor_name left_ptr&
-        if [ -x ~/.fehbg ]; then
-          ~/.fehbg
-        else
-          pape=""
-          for img in ~/.wallpaper.{png,jpg}; do
-            if [ -f "$img" ]; then
-                pape="$img"
-            fi
-          done
-          if [ -n "$pape" ]; then
-            ${pkgs.feh}/bin/feh --no-fehbg --bg-max "$pape"
-          else
-            xsetroot -solid '#000000'
-          fi
-        fi
-        ${pkgs.tint2}/bin/tint2 &
-        ${pkgs.networkmanagerapplet}/bin/nm-applet &
-        ${pkgs.pnmixer}/bin/pnmixer &
-        ${pkgs.pasystray}/bin/pasystray &
+      xrdb -merge ${./xresources}
+      xmodmap ${./Xmodmap}
     '';
 
   };
