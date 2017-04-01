@@ -2,16 +2,6 @@
 
   imports = [ ./common.nix ];
 
-  # systemd.services."my-pre-suspend" = {
-  #   description = "Pre-Suspend Actions";
-  #   wantedBy = [ "suspend.target" ];
-  #   before = [ "systemd-suspend.service" ];
-  #   script = ''
-  #     ${pkgs.xscreensaver}/bin/xscreensaver-command -lock
-  #   '';
-  #   serviceConfig.Type = "simple";
-  # };
-
   services.xserver = {
 
     desktopManager.xterm.enable = false;
@@ -26,6 +16,7 @@
     '';
 
     displayManager.sessionCommands = ''
+        ${pkgs.xscreensaver}/bin/xscreensaver -nosplash &
         if [ -x ~/.screenlayout/go.sh ]; then
           ~/.screenlayout/go.sh
         fi
@@ -48,10 +39,10 @@
             xsetroot -solid '#000000'
           fi
         fi
-        # ${pkgs.trayer}/bin/trayer --monitor primary --align right --height 25 --widthtype request --transparent true --tint 0x073642 &
-        # ${pkgs.networkmanagerapplet}/bin/nm-applet &
-        # ${pkgs.pnmixer}/bin/pnmixer &
-        # ${pkgs.pasystray}/bin/pasystray &
+        ${pkgs.trayer}/bin/trayer --monitor primary --align right --height 25 --widthtype request --transparent true --tint 0x073642 &
+        ${pkgs.networkmanagerapplet}/bin/nm-applet &
+        ${pkgs.pnmixer}/bin/pnmixer &
+        ${pkgs.pasystray}/bin/pasystray &
     '';
 
   };

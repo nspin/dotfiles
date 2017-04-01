@@ -1,5 +1,7 @@
 { pkgs, lib, ... }: {
 
+  system.stateVersion = "17.03";
+
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
 
@@ -7,11 +9,9 @@
   #   "kernel.yama.ptrace_scope" = lib.mkDefault "0";
   # };
 
-  security.sudo.wheelNeedsPassword = false;
-
   time.timeZone = "America/Chicago";
-
-  system.stateVersion = "17.03";
+  services.physlock.enable = true;
+  security.sudo.wheelNeedsPassword = false;
 
   imports = [
     ./net.nix
@@ -20,7 +20,8 @@
     ./pkgs.nix
     ./gpkgs.nix
     ../common/config.nix
-    ../common/x/mouse.nix
+    # ../common/x/mouse.nix
+    ../common/x/fingers.nix
   ] ++ (lib.optional (builtins.pathExists <dotfiles/../local>) <dotfiles/../local>);
 
   users.extraUsers = {
