@@ -31,6 +31,11 @@
     uttyl = callPackage <dotfiles/../uttyl> {};
     fznode = callPackage <dotfiles/../fznode> {};
 
+    lxqt = recurseIntoAttrs (import ./local/lxqt {
+      inherit pkgs libsForQt5 fetchFromGitHub;
+      inherit (lib) makeScope;
+    });
+
     my-vim = callPackage <nixpkgs/pkgs/applications/editors/vim/configurable.nix> {
       inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;
       inherit (darwin) libobjc cf-private;

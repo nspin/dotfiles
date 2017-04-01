@@ -29,6 +29,5 @@
     gparted
     picard
 
-
   ];
 }

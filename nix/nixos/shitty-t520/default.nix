@@ -3,20 +3,15 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
 
-  boot.kernel.sysctl = {
-    "kernel.yama.ptrace_scope" = lib.mkDefault "0";
-  };
+  # boot.kernel.sysctl = {
+  #   "kernel.yama.ptrace_scope" = lib.mkDefault "0";
+  # };
+
+  security.sudo.wheelNeedsPassword = false;
 
   time.timeZone = "America/Chicago";
 
-  services.xserver.windowManager.xmonad.enable = true;
-  services.xserver.windowManager.xmonad.enableContribAndExtras = true;
-  services.xserver.desktopManager.xterm.enable = false;
-
-  # desktopManager.kde4.enable = true;
-  # displayManager.kdm.enable = true;
-
-  system.stateVersion = "16.03";
+  system.stateVersion = "17.03";
 
   imports = [
     ./net.nix
@@ -25,8 +20,7 @@
     ./pkgs.nix
     ./gpkgs.nix
     ../common/config.nix
-    ../common/x
-    ../common/my-xmonad.nix
+    ../common/x/mouse.nix
   ] ++ (lib.optional (builtins.pathExists <dotfiles/../local>) <dotfiles/../local>);
 
   users.extraUsers = {
@@ -44,14 +38,6 @@
       uid = 1002;
       extraGroups = [ "wheel" ];
     };
-  };
-
-  security.sudo.wheelNeedsPassword = false;
-
-  services.physlock = {
-    enable = true;
-    lockOn.suspend = true;
-    lockOn.hibernate = true;
   };
 
 }

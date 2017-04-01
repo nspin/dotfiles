@@ -1,29 +1,22 @@
 { pkgs, ... }: {
 
-  fonts = {
-    enableFontDir = true;
-    fontconfig.enable = true;
-    fonts = [
-      pkgs.dejavu_fonts
-      pkgs.font-awesome-ttf
-    ];
-  };
+  imports = [ ./common.nix ];
 
-  environment.systemPackages = with pkgs; [
-    xclip
-    xorg.xkill
-    xorg.xwininfo
-    xlibs.xmodmap
-    xlibs.xmessage
-    xlibs.xev
-    dejavu_fonts
-  ];
+  # systemd.services."my-pre-suspend" = {
+  #   description = "Pre-Suspend Actions";
+  #   wantedBy = [ "suspend.target" ];
+  #   before = [ "systemd-suspend.service" ];
+  #   script = ''
+  #     ${pkgs.xscreensaver}/bin/xscreensaver-command -lock
+  #   '';
+  #   serviceConfig.Type = "simple";
+  # };
 
   services.xserver = {
 
-    enable = true;
-    autorun = true;
-    layout = "us";
+    desktopManager.xterm.enable = false;
+    windowManager.xmonad.enable = true;
+    windowManager.xmonad.enableContribAndExtras = true;
 
     displayManager.slim.enable = true;
     displayManager.slim.theme = ./slim-theme;
@@ -55,10 +48,10 @@
             xsetroot -solid '#000000'
           fi
         fi
-        ${pkgs.trayer}/bin/trayer --monitor primary --align right --height 25 --widthtype request --transparent true --tint 0x073642 &
-        ${pkgs.networkmanagerapplet}/bin/nm-applet &
-        ${pkgs.pnmixer}/bin/pnmixer &
-        ${pkgs.pasystray}/bin/pasystray &
+        # ${pkgs.trayer}/bin/trayer --monitor primary --align right --height 25 --widthtype request --transparent true --tint 0x073642 &
+        # ${pkgs.networkmanagerapplet}/bin/nm-applet &
+        # ${pkgs.pnmixer}/bin/pnmixer &
+        # ${pkgs.pasystray}/bin/pasystray &
     '';
 
   };
