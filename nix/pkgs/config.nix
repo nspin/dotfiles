@@ -36,6 +36,8 @@
       inherit (lib) makeScope;
     });
 
+    chicago95-theme = callPackage ./local/chicago95-theme {};
+
     my-vim = callPackage <nixpkgs/pkgs/applications/editors/vim/configurable.nix> {
       inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;
       inherit (darwin) libobjc cf-private;
