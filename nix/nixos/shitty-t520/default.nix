@@ -20,8 +20,8 @@
     ./pkgs.nix
     ./gpkgs.nix
     ../common/config.nix
-    # ../common/x/mouse.nix
-    ../common/x/fingers.nix
+    ../common/x/mouse.nix
+    # ../common/x/fingers.nix
   ] ++ (lib.optional (builtins.pathExists <dotfiles/../local>) <dotfiles/../local>);
 
   users.extraUsers = {

@@ -20,9 +20,19 @@
   ];
 
   services.xserver = {
+
     enable = true;
     autorun = true;
     layout = "us";
+
+    desktopManager.xterm.enable = false;
+
+    displayManager.sddm.enable = true;
+    displayManager.sddm.theme = "absdark";
+    displayManager.sddm.package = pkgs.sddm.override {
+      themes = [ (pkgs.callPackages ./sddm-themes/absdark.nix {}) ];
+    };
+
   };
 
 }
