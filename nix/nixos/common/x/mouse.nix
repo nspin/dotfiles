@@ -34,7 +34,7 @@
             xsetroot -solid '#000000'
           fi
         fi
-        ${pkgs.trayer}/bin/trayer --monitor primary --align right --height 25 --widthtype request --transparent true --tint 0x073642 &
+        ${pkgs.tint2}/bin/tint2 &
         ${pkgs.networkmanagerapplet}/bin/nm-applet &
         ${pkgs.pnmixer}/bin/pnmixer &
         ${pkgs.pasystray}/bin/pasystray &

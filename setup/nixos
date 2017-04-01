@@ -15,4 +15,5 @@ xdg/zathura/zathurarc          .config/zathura/zathurarc
 xmonad/laptop.hs               .xmonad/xmonad.hs
 xfrills/xmobarrc               .xmobarrc
 vim/vimrc                      .vimrc
-openbox                        .config/openbox
+openbox/rc.xml                 .config/openbox/rc.xml
+tint2/tint2rc                  .config/tint2/tint2rc
