@@ -3,6 +3,7 @@
   allowUnfree = true;
   allowBroken = true;
 
+  pulseaudio = true;
   firefox.enableAdobeFlash = true;
 
   haskellPackageOverrides = self: super: with pkgs.haskell.lib; {
@@ -20,35 +21,35 @@
     my-lib = callPackage ./lib {};
     ghc-pkg-db = callPackage ./aux/ghc-pkg-db {};
 
-    # spotify-ripper = callPackage ./local/spotify-ripper {};
-    # apktool = callPackage ./local/apktool {
-    #   buildTools = androidenv.buildTools;
-    # };
-
-    mitmproxy = callPackage ./local/mitmproxy {};
     readme-preview = callPackage ./local/grip {};
+    chicago95-theme = callPackage ./local/chicago95-theme {};
 
     uttyl = callPackage <dotfiles/../uttyl> {};
     fznode = callPackage <dotfiles/../fznode> {};
-
-    lxqt = recurseIntoAttrs (import ./local/lxqt {
-      inherit pkgs libsForQt5 fetchFromGitHub;
-      inherit (lib) makeScope;
-    });
-
-    chicago95-theme = callPackage ./local/chicago95-theme {};
 
     my-vim = callPackage <nixpkgs/pkgs/applications/editors/vim/configurable.nix> {
       inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;
       inherit (darwin) libobjc cf-private;
       features = "huge";
-      gui = "no";
+      gui = "auto";
       lua = lua5_1;
       flags = [ "python" ];
       python = python.buildEnv.override {
         extraLibs = [ pythonPackages.pycrypto ];
       };
     };
+
+    # patched
+
+    mitmproxy = callPackage ./local/mitmproxy {};
+    spotify-ripper = callPackage ./local/spotify-ripper {};
+    apktool = callPackage ./local/apktool {
+      buildTools = androidenv.buildTools;
+    };
+    lxqt = recurseIntoAttrs (import ./local/lxqt {
+      inherit pkgs libsForQt5 fetchFromGitHub;
+      inherit (lib) makeScope;
+    });
 
   };
 

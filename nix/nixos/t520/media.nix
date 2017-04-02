@@ -25,7 +25,6 @@
   users.extraGroups.audio.members = [ "nick" "other" "guest" "root" ];
 
   environment.systemPackages = with pkgs; [
-    transmission_remote_gtk
     ario
     gmpc
     mpc_cli

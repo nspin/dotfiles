@@ -2,13 +2,7 @@
 
   environment.systemPackages = with pkgs; [
 
-    trayer
-    stalonetray
-    haskellPackages.xmobar
-
     rxvt_unicode
-    scrot
-
     chromium
     google-chrome
     firefox
@@ -18,16 +12,15 @@
     vlc
     zathura
 
-    slack
-    libreoffice
-
     readme-preview
-
     arandr
     geeqie
     keepassx2
     gparted
     picard
+
+    slack
+    libreoffice
 
   ];
 }

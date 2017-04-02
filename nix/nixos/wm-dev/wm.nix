@@ -27,11 +27,11 @@ in with lib; {
       session = [{
         name = "wmdev";
         start = ''
-            mkdir -p ${cfg.logdir}
-            ${cfg.exe} > ${cfg.logdir}/out.log 2> ${cfg.logdir}/err.log &
-            pid=$!
-            xterm &
-            waitPID=$pid
+          mkdir -p ${cfg.logdir}
+          ${cfg.exe} > ${cfg.logdir}/out.log 2> ${cfg.logdir}/err.log &
+          pid=$!
+          xterm &
+          waitPID=$pid
         '';
       }];
     };

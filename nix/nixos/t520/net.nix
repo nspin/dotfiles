@@ -1,6 +1,6 @@
 { pkgs, ... }: {
 
-  imports = [ ../common/pia ];
+  imports = [ ../pia ];
 
   networking.hostName = "nixos";
   networking.hostId = "c890f48c";
@@ -20,19 +20,7 @@
     mw = "us-midwest";
   };
 
-  # my.pia.server = "sweden";
-  # my.pia.server = "us-midwest";
-
-  # networking.wireless = {
-  #   enable = true;
-  #   userControlled.enable = true;
-  #   interfaces = [ "wlp3s0" ];
-  #   driver = "wext";
-  # };
-
   environment.systemPackages = with pkgs; [
-    wpa_supplicant
-    wpa_supplicant_gui
     wirelesstools
     iw
     sshfsFuse
@@ -55,5 +43,12 @@
       permissions = "u+rx,g+x";
     };
   };
+
+  # networking.wireless = {
+  #   enable = true;
+  #   userControlled.enable = true;
+  #   interfaces = [ "wlp3s0" ];
+  #   driver = "wext";
+  # };
 
 }
