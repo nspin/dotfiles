@@ -12,9 +12,11 @@ stdenv.mkDerivation {
     mkdir -p $out/share/themes
     mkdir -p $out/share/icons
     mkdir -p $out/share/fonts/truetype
+    mkdir -p $out/share/plymouth/themes
     cp -r $src/Theme/Chicago95 $out/share/themes
     cp -r $src/Icons/Chicago95 $out/share/icons
     cp -r $src/Cursors/* $out/share/icons
     cp -r $src/Fonts/vga_font $out/share/fonts/truetype
+    cp -r $src/Plymouth/Chicago95 $out/share/plymouth/themes
   '';
 }
