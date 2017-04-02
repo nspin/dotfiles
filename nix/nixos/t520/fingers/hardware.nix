@@ -2,15 +2,6 @@
 
   services.upower.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    upower
-    pmtools
-    pmutils
-    jmtpfs
-    usbutils
-    sysstat
-  ];
- 
   # TODO pass %e to scripts in nixpkgs
   services.acpid = {
     enable = true;

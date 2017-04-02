@@ -1,8 +1,8 @@
 { pkgs, lib, ... }: {
 
   imports = [
+    ./pkgs.nix
     ./hardware.nix
-    ./xfce-pkgs.nix
   ];
 
   boot.plymouth.enable = true;

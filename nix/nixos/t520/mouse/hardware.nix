@@ -1,13 +1,5 @@
 { pkgs, ... }: {
 
-  environment.systemPackages = with pkgs; [
-    pmtools
-    pmutils
-    jmtpfs
-    usbutils
-    sysstat
-  ];
- 
   services.acpid = {
     enable = true;
     handlers = {

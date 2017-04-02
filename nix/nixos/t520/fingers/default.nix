@@ -1,14 +1,8 @@
 { pkgs, lib, ... }: {
 
   imports = [
+    ./pkgs.nix
     ./hardware.nix
-  ];
-
-  environment.systemPackages = with pkgs; [
-    trayer
-    stalonetray
-    haskellPackages.xmobar
-    scrot
   ];
 
   services.xserver = {

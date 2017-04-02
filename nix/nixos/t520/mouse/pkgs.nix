@@ -2,6 +2,12 @@
 
   environment.systemPackages = with pkgs.xfce; [
 
+    pmtools
+    pmutils
+    jmtpfs
+    usbutils
+    sysstat
+
     xfce4_battery_plugin
     xfce4_clipman_plugin
     xfce4_cpufreq_plugin
