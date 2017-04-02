@@ -23,7 +23,7 @@ reset="\[$(tput sgr0)\]"
 symbol="\[$(tput setaf 2)\]"
 text="\[$(tput setaf 6)\]"
 
-if [[ $LANG == *"UTF-8"* ]]; then
+if printf '%s' "$LANG" | grep -qiE 'utf-?8'; then
     lambda="λ"
     arrow="→"
 else
