@@ -1,6 +1,6 @@
 { pkgs, ... }: {
 
-  environment.systemPackages = with pkgs.xfce; [
+  environment.systemPackages = with pkgs; with pkgs.xfce; [
 
     pmtools
     pmutils
