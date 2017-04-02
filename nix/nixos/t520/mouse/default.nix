@@ -2,6 +2,7 @@
 
   imports = [
     ./hardware.nix
+    ./xfce-pkgs.nix
   ];
 
   boot.plymouth.enable = true;
