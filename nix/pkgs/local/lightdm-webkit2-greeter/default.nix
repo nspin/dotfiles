@@ -1,14 +1,10 @@
 { stdenv, fetchgit, lightdm, dbus_glib, gtk3, webkitgtk, ninja, pkgconfig
-, gobjectIntrospection
-, gettext
-, meson
-, glib
-, lib
+, gobjectIntrospection , gettext , meson , glib , lib
 }:
 
 stdenv.mkDerivation rec {
 
-  name = "foo";
+  name = "lightdm-webkit2-greeter-2.2.3";
 
   src = fetchgit {
     url = "https://github.com/Antergos/lightdm-webkit2-greeter.git";
@@ -21,16 +17,16 @@ stdenv.mkDerivation rec {
     pkgconfig
     gobjectIntrospection
     gettext
+    glib
   ];
 
-  # rpath = lib.concatMapStringsSep ":" (inp: inp + "/lib") buildInputs;
+  rpath = lib.concatMapStringsSep ":" (inp: inp + "/lib") buildInputs;
 
-  # fixupOutput = ''
-  #   echo $rpath
-  #   patchelf --set-rpath "$rpath":$out/lib $prefix/bin/lightdm-webkit2-greeter
-  # '';
+  fixupOutput = ''
+    patchelf --set-rpath "$rpath":$out/lib $prefix/bin/lightdm-webkit2-greeter
+  '';
 
-  patches = [ ./foo.patch ];
+  patches = [ ./lang.patch ];
 
   configurePhase = ''
     patchShebangs .
@@ -43,7 +39,6 @@ stdenv.mkDerivation rec {
       -Dwith-locale-dir=$out/share/locale \
       ..
   '';
-
 
   buildPhase = ''
     ninja
