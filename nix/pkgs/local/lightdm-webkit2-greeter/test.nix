@@ -1,2 +1,2 @@
 with import <nixpkgs> {};
-callPackage ./whither.nix
+callPackage ./default.nix

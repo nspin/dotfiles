@@ -42,6 +42,8 @@
 
     # patched
 
+    # meson_39_1 = callPackage ./local/meson {};
+
     mitmproxy = callPackage ./local/mitmproxy {};
     spotify-ripper = callPackage ./local/spotify-ripper {};
     apktool = callPackage ./local/apktool {
@@ -50,26 +52,26 @@
 
     #
 
-    lxqt = recurseIntoAttrs (import ./local/lxqt {
-      inherit pkgs libsForQt5 fetchFromGitHub;
-      inherit (lib) makeScope;
-    });
+    # lxqt = recurseIntoAttrs (import ./local/lxqt {
+    #   inherit pkgs libsForQt5 fetchFromGitHub;
+    #   inherit (lib) makeScope;
+    # });
 
-    lightdm_1_18_2 = libsForQt5.callPackage ./local/lightdm/lightdm_1_18_2.nix {
-      qt4 = null;
-      withQt5 = false;
-    };
+    # lightdm_1_18_2 = libsForQt5.callPackage ./local/lightdm/lightdm_1_18_2.nix {
+    #   qt4 = null;
+    #   withQt5 = false;
+    # };
 
-    webkit2gtk = callPackage <nixpkgs/pkgs/development/libraries/webkitgtk/2.4.nix> {
-      withGtk2 = false;
-      harfbuzz = harfbuzz-icu;
-      gst-plugins-base = gst_all_1.gst-plugins-base;
-      inherit (darwin) libobjc;
-    };
+    # webkit2gtk = callPackage <nixpkgs/pkgs/development/libraries/webkitgtk/2.4.nix> {
+    #   # withGtk2 = false;
+    #   harfbuzz = harfbuzz-icu;
+    #   gst-plugins-base = gst_all_1.gst-plugins-base;
+    #   inherit (darwin) libobjc;
+    # };
 
-    lightdm_webkit_greeter = callPackage ./local/lightdm/webkit_greeter.nix {
-      lightdm = lightdm_1_18_2;
-    };
+    # lightdm_webkit_greeter = callPackage ./local/lightdm/webkit_greeter.nix {
+    #   lightdm = lightdm_1_18_2;
+    # };
 
     # lightdm_webkit2_greeter = callPackage ./local/lightdm-webkit2-greeter {
     #   webkit2gtk = 

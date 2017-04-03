@@ -5,7 +5,7 @@
     ./hardware.nix
   ];
 
-  boot.plymouth.enable = true;
+  # boot.plymouth.enable = true;
 
   services.xserver = {
 
