@@ -1,8 +1,8 @@
-{ stdenv, fetchgit, lightdm, dbus_glib, gtk3, webkitgtk, ninja, pkgconfig
-, gobjectIntrospection , gettext , meson , glib , lib
-}:
+{ stdenv, fetchgit, lightdm, dbus_glib, gtk3, webkitgtk, ninja, pkgconfig, gettext, meson, glib, lib, makeWrapper, xorg }:
 
-stdenv.mkDerivation rec {
+let inherit (xorg) libX11;
+
+in stdenv.mkDerivation rec {
 
   name = "lightdm-webkit2-greeter-2.2.3";
 
@@ -14,17 +14,11 @@ stdenv.mkDerivation rec {
 
   buildInputs = [
     lightdm dbus_glib gtk3 webkitgtk meson ninja
-    pkgconfig
-    gobjectIntrospection
-    gettext
-    glib
+    pkgconfig xorg.libX11 glib
+    gettext makeWrapper
   ];
 
-  rpath = lib.concatMapStringsSep ":" (inp: inp + "/lib") buildInputs;
-
-  fixupOutput = ''
-    patchelf --set-rpath "$rpath":$out/lib $prefix/bin/lightdm-webkit2-greeter
-  '';
+  libPath = stdenv.lib.makeLibraryPath buildInputs;
 
   patches = [ ./lang.patch ];
 
@@ -46,6 +40,8 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     ninja install
+    wrapProgram $out/bin/lightdm-webkit2-greeter \
+      --prefix LD_LIBRARY_PATH : ${libPath} \
   '';
 
 }
