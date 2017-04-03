@@ -6,21 +6,20 @@ let
 
   dmcfg = config.services.xserver.displayManager;
   ldmcfg = dmcfg.lightdm;
-  cfg = ldmcfg.greeters.gtk;
 
   inherit (pkgs) stdenv lightdm writeScript writeText;
 
-  theme = cfg.theme.package;
-  icons = cfg.iconTheme.package;
+  theme = pkgs.lightdm_webkit_greeter;
+  icons = pkgs.lightdm_webkit_greeter;
 
   # The default greeter provided with this expression is the GTK greeter.
   # Again, we need a few things in the environment for the greeter to run with
   # fonts/icons.
-  wrappedGtkGreeter = pkgs.runCommand "lightdm-gtk-greeter"
+  wrappedWebkitGreeter = pkgs.runCommand "lightdm-webkit-greeter"
     { buildInputs = [ pkgs.makeWrapper ]; }
     ''
       # This wrapper ensures that we actually get themes
-      makeWrapper ${pkgs.lightdm_gtk_greeter}/sbin/lightdm-gtk-greeter \
+      makeWrapper ${pkgs.lightdm_webkit_greeter}/bin/lightdm-webkit-greeter \
         $out/greeter \
         --prefix PATH : "${pkgs.glibc.bin}/bin" \
         --set GDK_PIXBUF_MODULE_FILE "${pkgs.gdk_pixbuf.out}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache" \
@@ -30,7 +29,7 @@ let
         --set XDG_DATA_DIRS "${theme}/share:${icons}/share" \
         --set XDG_CONFIG_HOME "${theme}/share"
 
-      cat - > $out/lightdm-gtk-greeter.desktop << EOF
+      cat - > $out/lightdm-webkit-greeter.desktop << EOF
       [Desktop Entry]
       Name=LightDM Greeter
       Comment=This runs the LightDM Greeter
@@ -39,82 +38,22 @@ let
       EOF
     '';
 
-  gtkGreeterConf = writeText "lightdm-gtk-greeter.conf"
+  webkitGreeterConf = writeText "lightdm-webkit-greeter.conf"
     ''
     [greeter]
-    theme-name = ${cfg.theme.name}
-    icon-theme-name = ${cfg.iconTheme.name}
-    background = ${ldmcfg.background}
+    webkit-theme=simple
     '';
 
 in
 {
-  options = {
 
-    services.xserver.displayManager.lightdm.greeters.gtk = {
+  environment.etc."foobar".source = wrappedWebkitGreeter;
 
-      enable = mkOption {
-        type = types.bool;
-        default = true;
-        description = ''
-          Whether to enable lightdm-gtk-greeter as the lightdm greeter.
-        '';
-      };
-
-      theme = {
-
-        package = mkOption {
-          type = types.package;
-          default = pkgs.gnome3.gnome_themes_standard;
-          defaultText = "pkgs.gnome3.gnome_themes_standard";
-          description = ''
-            The package path that contains the theme given in the name option.
-          '';
-        };
-
-        name = mkOption {
-          type = types.str;
-          default = "Adwaita";
-          description = ''
-            Name of the theme to use for the lightdm-gtk-greeter.
-          '';
-        };
-
-      };
-
-      iconTheme = {
-
-        package = mkOption {
-          type = types.package;
-          default = pkgs.gnome3.defaultIconTheme;
-          defaultText = "pkgs.gnome3.defaultIconTheme";
-          description = ''
-            The package path that contains the icon theme given in the name option.
-          '';
-        };
-
-        name = mkOption {
-          type = types.str;
-          default = "Adwaita";
-          description = ''
-            Name of the icon theme to use for the lightdm-gtk-greeter.
-          '';
-        };
-
-      };
-
-    };
-
+  services.xserver.displayManager.lightdm.greeter = mkDefault {
+    package = wrappedWebkitGreeter;
+    name = "lightdm-webkit-greeter";
   };
 
-  config = mkIf (ldmcfg.enable && cfg.enable) {
+  environment.etc."lightdm/lightdm-webkit-greeter.conf".source = webkitGreeterConf;
 
-    services.xserver.displayManager.lightdm.greeter = mkDefault {
-      package = wrappedGtkGreeter;
-      name = "lightdm-gtk-greeter";
-    };
-
-    environment.etc."lightdm/lightdm-gtk-greeter.conf".source = gtkGreeterConf;
-
-  };
 }

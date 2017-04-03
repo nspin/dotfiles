@@ -53,7 +53,7 @@
       inherit (lib) makeScope;
     });
 
-    lightdm = lightdm_1_18_2;
+    # lightdm = lightdm_1_18_2;
     lightdm_1_18_2 = libsForQt5.callPackage ./local/lightdm/lightdm_1_18_2.nix {
       qt4 = null;
       withQt5 = false;
@@ -61,6 +61,16 @@
 
     lightdm_webkit_greeter = callPackage ./local/lightdm/webkit_greeter.nix {
       # lightdm = lightdm_1_18_2;
+    };
+
+    webkit2gtk = callPackage <nixpkgs/pkgs/development/libraries/webkitgtk/2.14.nix> {
+      withGtk2 = false;
+      harfbuzz = harfbuzz-icu;
+      gst-plugins-base = gst_all_1.gst-plugins-base;
+    };
+
+    lightdm_webkit2_greeter = callPackage ./local/lightdm-webkit2-greeter {
+      webkit2gtk = 
     };
 
   };
