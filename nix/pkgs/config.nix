@@ -50,7 +50,7 @@
       buildTools = androidenv.buildTools;
     };
 
-    #
+    lightdm_webkit2_greeter = callPackage ./local/lightdm-webkit2-greeter {};
 
     # lxqt = recurseIntoAttrs (import ./local/lxqt {
     #   inherit pkgs libsForQt5 fetchFromGitHub;
@@ -71,10 +71,6 @@
 
     # lightdm_webkit_greeter = callPackage ./local/lightdm/webkit_greeter.nix {
     #   lightdm = lightdm_1_18_2;
-    # };
-
-    # lightdm_webkit2_greeter = callPackage ./local/lightdm-webkit2-greeter {
-    #   webkit2gtk = 
     # };
 
   };
