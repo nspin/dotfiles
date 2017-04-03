@@ -47,10 +47,21 @@
     apktool = callPackage ./local/apktool {
       buildTools = androidenv.buildTools;
     };
+
     lxqt = recurseIntoAttrs (import ./local/lxqt {
       inherit pkgs libsForQt5 fetchFromGitHub;
       inherit (lib) makeScope;
     });
+
+    lightdm = lightdm_1_18_2;
+    lightdm_1_18_2 = libsForQt5.callPackage ./local/lightdm/lightdm_1_18_2.nix {
+      qt4 = null;
+      withQt5 = false;
+    };
+
+    lightdm_webkit_greeter = callPackage ./local/lightdm/webkit_greeter.nix {
+      # lightdm = lightdm_1_18_2;
+    };
 
   };
 

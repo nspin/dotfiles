@@ -60,6 +60,8 @@
     rlwrap
     bind
 
+    htop
+
     # misc
 
     openssl
