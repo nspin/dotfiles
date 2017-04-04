@@ -3,6 +3,7 @@
   imports = [
     ./pkgs.nix
     ./hardware.nix
+    # ./wkg.nix
   ];
 
   # boot.plymouth.enable = true;
@@ -13,7 +14,7 @@
     desktopManager.xfce.enable = true;
 
     # displayManager.lightdm.enable = true;
-    # displayManager.lightdm.greeters.gtk.enable = true;
+    # displayManager.lightdm.greeters.gtk.enable = false;
 
     displayManager.sddm.enable = true;
     displayManager.sddm.theme = "absdark";
