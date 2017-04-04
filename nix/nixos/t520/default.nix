@@ -15,8 +15,9 @@
     ./config.nix
     ./tpkgs.nix
     ./gpkgs.nix
-    # ./fingers
-    ./mouse
+    # ./l33t
+    # ./xfce
+    ./gnome
   ];
 
   users.extraUsers = {

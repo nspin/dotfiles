@@ -2,6 +2,8 @@
 
   environment.systemPackages = with pkgs; [
 
+    atom
+
     rxvt_unicode
     chromium
     google-chrome
