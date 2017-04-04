@@ -9,9 +9,11 @@
   # boot.plymouth.enable = true;
 
   services.xserver = {
+    synaptics.enable = false;
 
     desktopManager.xterm.enable = false;
     desktopManager.xfce.enable = true;
+    # desktopManager.gnome3.enable = true;
 
     # displayManager.lightdm.enable = true;
     # displayManager.lightdm.greeters.gtk.enable = false;
