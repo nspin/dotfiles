@@ -10,7 +10,6 @@
   security.sudo.wheelNeedsPassword = false;
 
   imports = [
-    ../thinkpad.nix
     ./net.nix
     ./media.nix
     ./config.nix

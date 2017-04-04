@@ -9,7 +9,7 @@
   # boot.plymouth.enable = true;
 
   services.xserver = {
-    synaptics.enable = false;
+    # synaptics.enable = false;
 
     desktopManager.xterm.enable = false;
     desktopManager.xfce.enable = true;
