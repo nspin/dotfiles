@@ -39,7 +39,7 @@
   };
 
   environment.extraInit = ''
-    export PATH="$PATH:$DOTFILES/bin:$DOTFILES/bin/linux:$MY_LOCAL/bin"
+    export PATH="$DOTFILES/bin/linux:$DOTFILES/bin:$MY_LOCAL/bin:$PATH"
     export XDG_DATA_DIRS="/cfg/local/share:$XDG_DATA_DIRS"
   '';
 

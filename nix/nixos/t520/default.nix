@@ -16,8 +16,8 @@
     ./tpkgs.nix
     ./gpkgs.nix
     # ./l33t
-    ./xfce
-    # ./gnome
+    # ./xfce
+    ./gnome
     # ./kde
   ];
 
