@@ -12,6 +12,7 @@
   security.sudo.extraConfig = ''
     Defaults env_keep += "EDITOR"
     Defaults env_keep += "VISUAL"
+    Defaults env_keep += "TERMINAL"
 
     Defaults env_keep += "FZF_DEFAULT_OPTS"
 
@@ -26,6 +27,7 @@
   environment.variables = rec {
     EDITOR = "vim";
     VISUAL = "vim";
+    TERMINAL = "urxvt";
     BROWSER = "chromium";
 
     FZF_DEFAULT_OPTS = "--reverse";
