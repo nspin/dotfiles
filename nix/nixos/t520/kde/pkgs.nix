@@ -2,9 +2,9 @@
 
   environment.systemPackages = with pkgs; [
 
-    moka-icon-theme
-    arc-theme
-    theme-vertex
+    # moka-icon-theme
+    # arc-theme
+    # theme-vertex
 
     pmtools
     pmutils
