@@ -2,18 +2,38 @@
 
   environment.systemPackages = with pkgs; [
 
-    # nix
+    nix-repl nix-prefetch-scripts patchelf
 
-    nix-repl
-    nix-prefetch-scripts
-    patchelf
+    coreutils which file
+    zip unzip p7zip
+    fzf
+
+    my-vim tmux
+    git mercurial subversion
+
+    wget
+
+    rlwrap bind
+
+    htop
+
+    pmtools pmutils
+    jmtpfs
+    usbutils
+    sysstat
+
+    # misc
+
+    openssl
+    mitmproxy
+    readme-preview
+
+    uttyl fznode reptyr
 
     # lang
 
-    gcc
-    gnumake
-    jre
-    jdk
+    gcc gnumake
+    jre jdk
     R
 
     python27
@@ -39,38 +59,6 @@
       unix
       process
     ]))
-
-    # tools
-
-    coreutils
-    zip
-    unzip
-    p7zip
-    file
-    which
-    fzf
-
-    my-vim
-    tmux
-    git
-    mercurial
-    subversion
-    wget
-
-    rlwrap
-    bind
-
-    htop
-
-    # misc
-
-    openssl
-    mitmproxy
-    readme-preview
-
-    uttyl
-    fznode
-    reptyr
 
   ];
 

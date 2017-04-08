@@ -1,5 +1,10 @@
 { pkgs, ... }: {
 
+  environment.systemPackages = with pkgs; [
+    mpc_cli
+    pavucontrol
+  ];
+
   services.transmission = {
     enable = true;
     settings = {
@@ -23,12 +28,5 @@
   hardware.pulseaudio.systemWide = true;
   users.extraGroups.pulse-access.members = [ "nick" "other" "guest" "root" ];
   users.extraGroups.audio.members = [ "nick" "other" "guest" "root" ];
-
-  environment.systemPackages = with pkgs; [
-    ario
-    gmpc
-    mpc_cli
-    pavucontrol
-  ];
 
 }

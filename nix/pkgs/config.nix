@@ -6,6 +6,7 @@
 
   pulseaudio = true;
   firefox.enableAdobeFlash = true;
+  chromium.enablePepperFlash = true;
 
   haskellPackageOverrides = self: super: with pkgs.haskell.lib; {
     hakyll = dontCheck (self.callPackage ./local/hackage-packages/hakyll.nix {});

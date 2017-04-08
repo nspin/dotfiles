@@ -5,17 +5,16 @@
     ./hardware.nix
   ];
 
-  services.xserver = {
+  environment.systemPackages = with pkgs; [
+    (callPackage ./xstuff {})
+  ];
 
+  services.xserver = {
     desktopManager.gnome3.enable = true;
     displayManager.gdm.enable = true;
-
     displayManager.sessionCommands = ''
       xrdb -merge ${./xresources}
-      xmodmap ${./Xmodmap}
-      xset r rate 300 50
     '';
-
   };
 
 }

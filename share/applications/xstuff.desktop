@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=xstuff
+GenericName=xstuff
+Comment=xstuff
+Exec=xstuff
+Terminal=false
+Type=Application
+X-GNOME-Autostart-enabled=true

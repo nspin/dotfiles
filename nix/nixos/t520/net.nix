@@ -13,6 +13,7 @@
   users.extraGroups.networkmanager.members = [ "nick" "other" ];
 
   services.openssh.enable = true;
+  services.samba.enable = true;
 
   my.pia.enable = true;
   my.pia.servers = {
@@ -27,6 +28,8 @@
     rsync
     telnet
     wireshark
+
+    samba
   ];
  
   users.extraGroups.wireshark.gid = 500;
