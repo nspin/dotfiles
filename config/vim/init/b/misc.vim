@@ -1,3 +1,5 @@
+set completeopt-=preview
+
 set foldmethod=marker
 
 set spelllang=en_us

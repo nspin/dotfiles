@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Useful way to visually preview a binary file
+# From scanlime: https://www.youtube.com/watch?v=UTUYl-2g-r4
+
+(echo "P5 512 4096 255"; cat "$1") > "$1.pgm"
+convert "$1.pgm" "$1.png"
+xdg-open "$1.png"
