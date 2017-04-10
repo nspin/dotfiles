@@ -44,8 +44,17 @@
       ];
     })
 
+    (texlive.combine {
+      inherit (texlive)
+        scheme-small
+        collection-latexextra
+        # blkarray
+      ;
+    })
+
     cabal2nix
     haskellPackages.cabal-install
+    haskellPackages.pandoc
     (haskellPackages.ghcWithPackages (hp: with hp; [
       random
       bytestring
