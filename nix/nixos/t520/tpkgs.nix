@@ -34,7 +34,7 @@
 
     gcc gnumake
     jre jdk
-    R
+    rEnv
 
     python27
 

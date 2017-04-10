@@ -23,5 +23,7 @@
     slack
     libreoffice
 
+    rstudioEnv
+
   ];
 }

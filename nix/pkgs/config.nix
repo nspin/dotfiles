@@ -74,6 +74,15 @@
     #   lightdm = lightdm_1_18_2;
     # };
 
+    rEnv = super.rWrapper.override {
+      packages = import ./cmc-r-installed.nix self.rPackages;
+    };
+
+    rstudioEnv = super.rstudio.override {
+      R = rEnv;
+      useRPackages = true;
+    };
+
   };
 
 }
