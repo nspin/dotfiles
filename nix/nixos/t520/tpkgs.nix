@@ -41,6 +41,8 @@
     (python35.buildEnv.override {
       extraLibs = with python35Packages; [
         requests2
+        numpy
+        scipy
       ];
     })
 

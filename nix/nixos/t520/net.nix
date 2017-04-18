@@ -6,7 +6,7 @@
   networking.hostId = "c890f48c";
 
   networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 22 8080 ];
+  networking.firewall.allowedTCPPorts = [ 22 8000 8080 ];
 
   networking.enableIPv6 = false;
   networking.networkmanager.enable = true;
