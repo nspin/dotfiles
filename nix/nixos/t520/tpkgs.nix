@@ -33,7 +33,10 @@
     # lang
 
     gcc gnumake
-    jre jdk
+    # jre jdk
+    oraclejdk8 oraclejre8
+    # (oraclejdk8distro true true)
+    (callPackage <nixpkgs/pkgs/development/tools/build-managers/apache-maven> { jdk = oraclejdk8; } )
     rEnv
 
     python27
@@ -43,6 +46,10 @@
         requests2
         numpy
         scipy
+        matplotlib
+        pyqt5
+        sympy
+        pillow
       ];
     })
 

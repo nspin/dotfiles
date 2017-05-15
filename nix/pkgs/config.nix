@@ -41,6 +41,9 @@
       };
     };
 
+    # jdk = oraclejdk;
+    # jre = oraclejre;
+
     # patched
 
     # meson_39_1 = callPackage ./local/meson {};
