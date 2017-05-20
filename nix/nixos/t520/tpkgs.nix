@@ -37,6 +37,7 @@
     oraclejdk8 oraclejre8
     # (oraclejdk8distro true true)
     (callPackage <nixpkgs/pkgs/development/tools/build-managers/apache-maven> { jdk = oraclejdk8; } )
+    (callPackage <nixpkgs/pkgs/development/tools/build-managers/gradle> { jdk = oraclejdk8; }).gradle_latest
     rEnv
 
     python27

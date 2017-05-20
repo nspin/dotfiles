@@ -86,6 +86,10 @@
       useRPackages = true;
     };
 
+    my-idea = super.idea.idea-community.override {
+      jdk = oraclejdk;
+    };
+
   };
 
 }
