@@ -45,6 +45,8 @@
     (python35.buildEnv.override {
       extraLibs = with python35Packages; [
         requests2
+        # gevent
+        beautifulsoup4
         numpy
         scipy
         matplotlib
