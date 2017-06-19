@@ -2,7 +2,9 @@
 
 # PROVISIONAL
 case "$(uname -s)" in
-    Darwin) . $HOME/dotfiles/config/darwin/env.sh
+    Darwin)
+        . $HOME/dotfiles/darwin/env.sh
+        ;;
 esac
 
 # POSIX
