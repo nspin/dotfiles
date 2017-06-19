@@ -1,2 +1,2 @@
 #!/bin/sh
-exec pbcopy
+exec reattach-to-user-namespace pbcopy
