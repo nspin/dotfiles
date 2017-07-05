@@ -18,9 +18,9 @@
 
 ! Xcursor.theme: dot
 
-! URxvt*perl-ext-common: ""
+URxvt*perl-ext-common: ""
 ! URxvt*perl-ext-common: default, -searchable-scrollback
-URxvt*keysym.M-s: builtin:
+! URxvt*keysym.M-s: builtin:
 
 URxvt*scrollBar: false
 ! URxvt*scrollBar_right: true

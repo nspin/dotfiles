@@ -1,0 +1,6 @@
+line-editors/inputrc           .inputrc
+line-editors/editrc            .editrc
+git/gitconfig                  .gitconfig
+git/gitignore_global           .gitignore_global
+multiplexers/tmux.conf         .tmux.conf
+../nix/nixos/t520/gnome/xresources .Xresources
