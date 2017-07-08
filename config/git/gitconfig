@@ -1,6 +1,6 @@
 [user]
     name = Nick Spinale
-    email = spinalen@carleton.edu
+    email = nspin@google.com
 
 [core]
     editor = vim
@@ -11,9 +11,6 @@
 
 [github]
     user = nickspinale
-
-[url "https://nickspinale@github.com"]
-    insteadOf = https://github.com
 
 [credential]
     helper = cache --timeout=28800
