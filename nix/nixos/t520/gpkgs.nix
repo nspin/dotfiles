@@ -6,7 +6,10 @@
 
     rxvt_unicode
 
-    chromium google-chrome firefox opera torbrowser
+    chromium
+    # google-chrome
+    # firefox opera
+    torbrowser
 
     ario
     vlc
@@ -23,7 +26,7 @@
     slack
     libreoffice
 
-    rstudioEnv
+    # rstudioEnv
 
   ];
 }

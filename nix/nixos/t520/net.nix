@@ -2,6 +2,9 @@
 
   imports = [ ../pia ];
 
+  # eudroam, https://askubuntu.com/questions/464597/14-04-wifi-cant-connect-warn-connection-disconnected-reason-3
+  boot.extraModprobeConfig = "options iwlwifi 11n_disable=1";
+
   networking.hostName = "nixos";
   networking.hostId = "c890f48c";
 
@@ -19,6 +22,7 @@
   my.pia.servers = {
     sw = "sweden";
     mw = "us-midwest";
+    ca = "us-california";
   };
 
   environment.systemPackages = with pkgs; [

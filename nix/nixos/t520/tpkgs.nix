@@ -1,5 +1,9 @@
 { pkgs, ... }: {
 
+  programs.adb.enable = true;
+  users.extraUsers.nick.extraGroups = ["adbusers"];
+
+
   environment.systemPackages = with pkgs; [
 
     nix-repl nix-prefetch-scripts patchelf
@@ -8,7 +12,7 @@
     zip unzip p7zip
     fzf
 
-    my-vim tmux
+    my-vim tmux screen
     git mercurial subversion
 
     wget
@@ -33,12 +37,12 @@
     # lang
 
     gcc gnumake
-    # jre jdk
-    oraclejdk8 oraclejre8
+    jre jdk
+    # oraclejdk8 oraclejre8
     # (oraclejdk8distro true true)
-    (callPackage <nixpkgs/pkgs/development/tools/build-managers/apache-maven> { jdk = oraclejdk8; } )
-    (callPackage <nixpkgs/pkgs/development/tools/build-managers/gradle> { jdk = oraclejdk8; }).gradle_latest
-    rEnv
+    # (callPackage <nixpkgs/pkgs/development/tools/build-managers/apache-maven> { jdk = oraclejdk8; } )
+    # (callPackage <nixpkgs/pkgs/development/tools/build-managers/gradle> { jdk = oraclejdk8; }).gradle_latest
+    # rEnv
 
     python27
 
@@ -60,6 +64,11 @@
       inherit (texlive)
         scheme-small
         collection-latexextra
+        collection-fontsrecommended
+        fontawesome
+        biblatex
+        logreq
+        doublestroke
         # blkarray
       ;
     })
@@ -79,6 +88,7 @@
       attoparsec
       unix
       process
+      arithmoi
     ]))
 
   ];

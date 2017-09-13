@@ -8,12 +8,16 @@
   firefox.enableAdobeFlash = true;
   chromium.enablePepperFlash = true;
 
-  haskellPackageOverrides = self: super: with pkgs.haskell.lib; {
-    hakyll = dontCheck (self.callPackage ./local/hackage-packages/hakyll.nix {});
-    http-client-tls_0_3_3 = super.http-client-tls_0_3_3.override { http-client = self.http-client_0_5_3_3; };
-  };
+  # haskellPackageOverrides = self: super: with pkgs.haskell.lib; {
+  #   hakyll = dontCheck (self.callPackage ./local/hackage-packages/hakyll.nix {});
+  #   http-client-tls_0_3_3 = super.http-client-tls_0_3_3.override { http-client = self.http-client_0_5_3_3; };
+  # };
 
   packageOverrides = super: let self = super.pkgs; in with self; {
+
+    unstable = import <nixos-unstable> {
+      # config = config.pkgs.config;
+    };
 
     darwin-env = buildEnv {
       name = "darwin-env";
@@ -50,9 +54,9 @@
 
     mitmproxy = callPackage ./local/mitmproxy {};
     spotify-ripper = callPackage ./local/spotify-ripper {};
-    apktool = callPackage ./local/apktool {
-      buildTools = androidenv.buildTools;
-    };
+    # apktool = callPackage ./local/apktool {
+    #   buildTools = androidenv.buildTools;
+    # };
 
     lightdm_webkit2_greeter = callPackage ./local/lightdm-webkit2-greeter {};
 
@@ -86,9 +90,9 @@
       useRPackages = true;
     };
 
-    my-idea = super.idea.idea-community.override {
-      jdk = oraclejdk;
-    };
+    # my-idea = super.idea.idea-community.override {
+    #   jdk = oraclejdk;
+    # };
 
   };
 

@@ -25,7 +25,7 @@
     nick = {
       isNormalUser = true;
       uid = 1000;
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" "dialout" ];
     };
     guest = {
       isNormalUser = true;
@@ -36,6 +36,15 @@
       uid = 1002;
       extraGroups = [ "wheel" ];
     };
+    iso = {
+      isNormalUser = true;
+      uid = 1003;
+      extraGroups = [ "wheel" ];
+    };
+  };
+
+  users.groups = {
+    dialout = {};
   };
 
   services.xserver = {
@@ -61,6 +70,10 @@
     xlibs.xmessage
     xlibs.xev
     dejavu_fonts
+
+    virtualbox
   ];
+
+  virtualisation.virtualbox.host.enable = true;
 
 }
