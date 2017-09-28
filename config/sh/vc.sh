@@ -29,12 +29,12 @@ function pulls() {
 }
 
 function clone() {
-    URL="https://nickspinale@github.com/$1/$2.git"
+    URL="https://nspin@github.com/$1/$2.git"
     git clone $URL
 }
 
 function cloneto() {
-    URL="https://nickspinale@github.com/$1/$2.git"
+    URL="https://nspin@github.com/$1/$2.git"
     git clone $URL $3
 }
 
@@ -48,10 +48,10 @@ function module() {
     git submodule add $URL $3
 }
 
-alias enolc='clone nickspinale'
+alias enolc='clone nspin'
 alias enolcb='cloneb nickspinale'
-alias edulom='module nickspinale'
-alias enolcto='cloneto nickspinale'
+alias edulom='module nspin'
+alias enolcto='cloneto nspin'
 
 alias ga='git add -A :/'
 alias gs='git status'

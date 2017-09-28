@@ -8,9 +8,7 @@ filetype off
 " Runtimepath initialization
 
 let s:bundle_ignore =
-  \ [ 'vim-sexp'
-  \ , 'vim-sexp-mappings-for-regular-people'
-  \ , 'cscope_macros.vim'
+  \ [ 'cscope_macros.vim'
   \ ]
 
 let s:plugin_path = split($VIM_PLUGIN_PATH, ':')

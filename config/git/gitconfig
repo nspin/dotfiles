@@ -10,9 +10,9 @@
     default = simple
 
 [github]
-    user = nickspinale
+    user = nspin
 
-[url "https://nickspinale@github.com"]
+[url "https://nspin@github.com"]
     insteadOf = https://github.com
 
 [credential]

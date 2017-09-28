@@ -5,7 +5,7 @@
   permittedInsecurePackages = [ "webkitgtk-2.4.11" ];
 
   pulseaudio = true;
-  firefox.enableAdobeFlash = true;
+  # firefox.enableAdobeFlash = true;
   chromium.enablePepperFlash = true;
 
   # haskellPackageOverrides = self: super: with pkgs.haskell.lib; {
