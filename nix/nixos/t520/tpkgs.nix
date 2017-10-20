@@ -48,15 +48,19 @@
 
     (python35.buildEnv.override {
       extraLibs = with python35Packages; [
+        cffi
         requests2
-        # gevent
         beautifulsoup4
+        lxml
         numpy
         scipy
+        sympy
         matplotlib
         pyqt5
-        sympy
         pillow
+        jupyter
+        ipython
+        # gevent
       ];
     })
 

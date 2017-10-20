@@ -25,7 +25,7 @@
     nick = {
       isNormalUser = true;
       uid = 1000;
-      extraGroups = [ "wheel" "dialout" ];
+      extraGroups = [ "wheel" "dialout" "docker" ];
     };
     guest = {
       isNormalUser = true;
@@ -75,5 +75,11 @@
   ];
 
   virtualisation.virtualbox.host.enable = true;
+  virtualisation.docker.enable = true;
+
+  services.mysql = {
+    enable = true;
+    package = pkgs.mysql;
+  };
 
 }
