@@ -2,14 +2,6 @@ export DOTFILES=$HOME/dotfiles
 export VIM_BUNDLE=$HOME/vim-bundle/bundle
 export MY_LOCAL=$HOME/local
 
-if [ -d $HOME/vim-runtime ]; then
-    export VIMRUNTIME=$HOME/vim-runtime/runtime
-else
-    version=$(vim --version | head -n 1 | sed -E 's/^[^0-9]*([0-9]+)\.([0-9]+).*/\1\2/')
-    fall_back=$(vim --version | grep fall-back | cut -d '"' -f 2)
-    export VIMRUNTIME=$fall_back/vim$version
-fi
-
 if [ -f $MY_LOCAL/vim_plugin_path ]; then
     export VIM_PLUGIN_PATH=$(cat $MY_LOCAL/vim_plugin_path | tr '\n' ':')
 fi
@@ -23,8 +15,6 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export EDITOR=vim
 export VISUAL=vim
 
-export VIM=$DOTFILES/config/vim
-export VIMRUNTIME=$VIMRUNTIME # TODO
 export FZF_DEFAULT_OPTS='--reverse'
 export GIT_SSL_NO_VERIFY=true
 

@@ -43,6 +43,10 @@ for f in split(system("find $DOTFILES/config/vim/init -name '*.vim' | sort"))
   exec 'source' f
 endfor
 
+for f in split(system("find $DOTFILES/config/vim/init-rehaul -name '*.vim' | sort"))
+  exec 'source' f
+endfor
+
 " Allow for project-specific options/mappings
 
 set exrc
