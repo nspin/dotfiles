@@ -18,4 +18,5 @@ export VISUAL=vim
 export FZF_DEFAULT_OPTS='--reverse'
 export GIT_SSL_NO_VERIFY=true
 
-export NIX_PATH=$NIX_PATH:dotfig=$DOTFILES/config
+# export NIX_PATH=$NIX_PATH:dotfig=$DOTFILES/config
+export NIX_PATH=nixpkgs=$HOME/nixpkgs:dotfig=$DOTFILES/config

@@ -38,7 +38,7 @@ in buildPythonPackage {
     pyspotify
     colorama_3_3
     mutagen_1_30
-    requests2
+    requests
     schedule
     
     lame

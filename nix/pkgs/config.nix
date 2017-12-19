@@ -60,6 +60,11 @@
 
     lightdm_webkit2_greeter = callPackage ./local/lightdm-webkit2-greeter {};
 
+    binutils-all = callPackage ./local/binutils-all {
+      noSysDirs = true;
+      targetPlatform = platforms.aarch64-multiplatform;
+    };
+
     # lxqt = recurseIntoAttrs (import ./local/lxqt {
     #   inherit pkgs libsForQt5 fetchFromGitHub;
     #   inherit (lib) makeScope;
@@ -81,14 +86,14 @@
     #   lightdm = lightdm_1_18_2;
     # };
 
-    rEnv = super.rWrapper.override {
-      packages = import ./cmc-r-installed.nix self.rPackages;
-    };
+    # rEnv = super.rWrapper.override {
+    #   packages = import ./cmc-r-installed.nix self.rPackages;
+    # };
 
-    rstudioEnv = super.rstudio.override {
-      R = rEnv;
-      useRPackages = true;
-    };
+    # rstudioEnv = super.rstudio.override {
+    #   R = rEnv;
+    #   useRPackages = true;
+    # };
 
     # my-idea = super.idea.idea-community.override {
     #   jdk = oraclejdk;

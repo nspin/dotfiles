@@ -22,6 +22,7 @@ nspinpriv
 ._*
 
 **/result
+**/result-*
 
 dist
 cabal.sandbox.config

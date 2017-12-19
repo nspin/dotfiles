@@ -16,9 +16,13 @@ function efd() {
     fi
 }
 
-alias v='vim'
-alias vi='vim'
+alias v=vim
+alias vi=vim
 alias vf='vim $(fzf)'
 alias tod='efd $HOME/todo'
 alias dot='efd $DOTFILES'
 alias cdd='cd $DOTFILES'
+
+alias s=subl
+
+alias p=python3

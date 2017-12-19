@@ -8,4 +8,4 @@ path () {
     done
 }
 
-path | sed 's#.*/##' | grep -v '^\.' | sort
+path | sed 's#.*/##' | grep -v '^\.' | sort | uniq

@@ -1,6 +1,6 @@
 # source .bashrc if interactive
 if [ -n $(echo $- | grep i) ]; then
-  . $HOME/.bashrc
+    . $HOME/.bashrc
 fi
 
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then

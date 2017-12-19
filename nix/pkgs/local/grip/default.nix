@@ -13,7 +13,7 @@ with python27Packages; buildPythonPackage {
     markdown
     path-and-address
     pygments
-    requests2
+    requests
   ];
 
 }

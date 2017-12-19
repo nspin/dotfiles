@@ -32,7 +32,7 @@ in python3Packages.buildPythonPackage rec {
 
     propagatedBuildInputs = with python3Packages; [
       pyopenssl pyasn1 urwid pillow flask_ click pyperclip blinker
-      construct pyparsing html2text tornado brotlipy requests2
+      construct pyparsing html2text tornado brotlipy requests
       sortedcontainers passlib cssutils h2 ruamel_yaml jsbeautifier
       watchdog editorconfig
     ];

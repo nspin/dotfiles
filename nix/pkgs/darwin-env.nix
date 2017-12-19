@@ -2,7 +2,8 @@ pkgs: with pkgs; [
 
   gnused
   gnugrep
-  # bash
+  findutils
+  bashInteractive
 
   reattach-to-user-namespace
 
@@ -18,6 +19,7 @@ pkgs: with pkgs; [
   unzip
   rsync
   file
+  # sublime3
 
   my-vim
   tmux
@@ -28,40 +30,61 @@ pkgs: with pkgs; [
 
   openssl
 
-  R jre jdk
+  jre jdk
 
-  (python35.buildEnv.override { extraLibs = with python35Packages; [ requests2 ]; })
-  (python27.buildEnv.override { extraLibs = with python27Packages; [ requests2 ]; })
+  (python35.buildEnv.override {
+    extraLibs = with python35Packages; [
+      cffi
+      requests
+      beautifulsoup4
+      lxml
+      numpy
+      # scipy
+      sympy
+
+      # matplotlib
+      # pyqt5
+      # pillow
+      # gevent
+    ];
+  })
+
+  python27
 
   cabal2nix
   haskellPackages.cabal-install
+  haskellPackages.alex
+  haskellPackages.happy
+  haskellPackages.pandoc
   (haskellPackages.ghcWithPackages (hp: with hp; [
-    random
+    # random
     bytestring
-    stm
-    vector
-    containers
-    mtl
-    network
-    async
-    attoparsec
-    unix
-    process
+    # stm
+    # vector
+    # containers
+    # mtl
+    # network
+    # async
+    # attoparsec
+    # unix
+    # process
   ]))
 
   readme-preview
 
-  (texlive.combine {
-    inherit (texlive)
-      scheme-small
-      collection-latexextra
-      collection-fontsrecommended
-      fontawesome
-      # pbox
-      # csquotes
-      # beamerposter
-      # type1cm
-    ;
-  })
+  # (texlive.combine {
+  #   inherit (texlive)
+  #     scheme-small
+  #     collection-latexextra
+  #     collection-fontsrecommended
+  #     fontawesome
+  #     pbox
+  #     csquotes
+  #     beamerposter
+  #     type1cm
+  #   ;
+  # })
 
+  nodejs
+  maven
 ]
