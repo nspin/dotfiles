@@ -70,7 +70,7 @@ pkgs: with pkgs; [
     # process
   ]))
 
-  readme-preview
+  # readme-preview
 
   # (texlive.combine {
   #   inherit (texlive)
@@ -87,4 +87,15 @@ pkgs: with pkgs; [
 
   nodejs
   maven
+
+
+  nmap
+  wget
+  # vagrant
+  go
+  gcc
+  cmake
+
+  qemu
+
 ]

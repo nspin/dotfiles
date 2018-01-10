@@ -2,3 +2,5 @@
 :def hoogle \s -> return $ ":! hoogle --count=15 \"" ++ s ++ "\""
 
 :set -XOverloadedStrings
+:set -XDataKinds
+:set -XFlexibleContexts
