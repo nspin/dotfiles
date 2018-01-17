@@ -32,8 +32,8 @@ pkgs: with pkgs; [
 
   jre jdk
 
-  (python35.buildEnv.override {
-    extraLibs = with python35Packages; [
+  (python3.buildEnv.override {
+    extraLibs = with python3Packages; [
       cffi
       requests
       beautifulsoup4
@@ -42,10 +42,18 @@ pkgs: with pkgs; [
       # scipy
       sympy
 
+      pygments
+
       # matplotlib
       # pyqt5
       # pillow
       # gevent
+
+      notebook
+      jupyter_console
+      nbconvert
+      ipykernel
+      ipywidgets
     ];
   })
 
@@ -72,18 +80,15 @@ pkgs: with pkgs; [
 
   # readme-preview
 
-  # (texlive.combine {
-  #   inherit (texlive)
-  #     scheme-small
-  #     collection-latexextra
-  #     collection-fontsrecommended
-  #     fontawesome
-  #     pbox
-  #     csquotes
-  #     beamerposter
-  #     type1cm
-  #   ;
-  # })
+  (texlive.combine {
+    inherit (texlive)
+      luatex
+      scheme-small
+      collection-latexextra
+      collection-fontsrecommended
+      fontawesome
+    ;
+  })
 
   nodejs
   maven
@@ -97,5 +102,9 @@ pkgs: with pkgs; [
   cmake
 
   qemu
+
+  (lowPrio ihaskell)
+  clojure
+  leiningen
 
 ]

@@ -5,15 +5,28 @@
   permittedInsecurePackages = [ "webkitgtk-2.4.11" ];
 
   pulseaudio = true;
-  # firefox.enableAdobeFlash = true;
+  firefox.enableAdobeFlash = true;
   chromium.enablePepperFlash = true;
 
-  # haskellPackageOverrides = self: super: with pkgs.haskell.lib; {
-  #   hakyll = dontCheck (self.callPackage ./local/hackage-packages/hakyll.nix {});
-  #   http-client-tls_0_3_3 = super.http-client-tls_0_3_3.override { http-client = self.http-client_0_5_3_3; };
-  # };
+  haskellPackageOverrides = self: super: with pkgs.haskell.lib; {
+    shelly = dontCheck super.shelly;
+    # http-client-tls_0_3_3 = super.http-client-tls_0_3_3.override { http-client = self.http-client_0_5_3_3; };
+  };
 
   packageOverrides = super: let self = super.pkgs; in with self; {
+
+    ihaskell = callPackage <nixpkgs/pkgs/development/tools/haskell/ihaskell/wrapper.nix> {
+      inherit (haskellPackages) ghcWithPackages;
+
+      jupyter = python3.withPackages (ps: with ps; [
+        notebook
+        jupyter_console
+        nbconvert
+        ipykernel
+        ipywidgets
+      ]);
+      packages = self: with self; [ pandoc ];
+    };
 
     unstable = import <nixos-unstable> {
       # config = config.pkgs.config;
