@@ -21,10 +21,10 @@ and I have full control over everything.
 
 *   `vimrc`...
     *   Carefully sets `rtp` with
-        *   `pre`
+        *   `pre/`
         *   External plugins (found in the directory specified by `$VIMBUNDLE`
-            and as a list in `$VIM_PLUGIN_PATH`)
+            and as a list in `$MY_VIM_PLUGIN_PATH`)
         *   The stripped down runtime files
-        *   External plugins `/after` directories
-        *   `post`
-    *   Sources stuff from `lib` and `init` in alphabetical order
+        *   External plugins' `after/` directories
+        *   `post/`
+    *   Sources additional configuration files from `lib/` and `init/` in alphabetical order
