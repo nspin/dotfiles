@@ -1,6 +1,6 @@
 with import <nixpkgs> {}; stdenv.mkDerivation {
   name = "env";
   buildInputs = [
-    python
+    python3
   ];
 }
