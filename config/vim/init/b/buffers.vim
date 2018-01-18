@@ -64,7 +64,7 @@ endfun
 au BufLeave * let s:last_buf = bufnr('%')
 
 " TODO: use # here
-nnoremap <tab> :call <sid>last_buf()<cr>
+nnoremap <space>h :call <sid>last_buf()<cr>
 nnoremap <space>, :call <sid>last_tab()<cr>
 
 fun s:buflist()

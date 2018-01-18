@@ -18,6 +18,7 @@
 
 ! Xcursor.theme: dot
 
+! swap 1 and 3
 ! URxvt*perl-ext-common: ""
 ! URxvt*perl-ext-common: default, -searchable-scrollback
 URxvt*keysym.M-s: builtin:
