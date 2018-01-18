@@ -16,10 +16,10 @@
 
     Defaults env_keep += "FZF_DEFAULT_OPTS"
 
-    Defaults env_keep += "DOTFILES"
-    Defaults env_keep += "VIM_BUNDLE"
-    Defaults env_keep += "VIM_PLUGIN_PATH"
+    Defaults env_keep += "MY_DOTFILES"
     Defaults env_keep += "MY_LOCAL"
+    Defaults env_keep += "MY_VIM_BUNDLE"
+    Defaults env_keep += "MY_VIM_PLUGIN_PATH"
 
     Defaults env_keep += "NIX_PATH"
   '';
@@ -32,14 +32,14 @@
 
     FZF_DEFAULT_OPTS = "--reverse";
 
-    DOTFILES = "/cfg/dotfiles";
-    VIM_BUNDLE = "/cfg/vim-bundle/bundle";
-    VIM_PLUGIN_PATH = "${pkgs.vimPlugins.youcompleteme}/share/vim-plugins/youcompleteme";
+    MY_DOTFILES = "/cfg/dotfiles";
     MY_LOCAL = "/cfg/local";
+    MY_VIM_BUNDLE = "/cfg/vim-bundle/bundle";
+    MY_VIM_PLUGIN_PATH = "${pkgs.vimPlugins.youcompleteme}/share/vim-plugins/youcompleteme";
   };
 
   environment.extraInit = ''
-    export PATH="$DOTFILES/bin/linux:$DOTFILES/bin:$MY_LOCAL/bin:$PATH"
+    export PATH="$MY_DOTFILES/bin/linux:$MY_DOTFILES/bin:$MY_LOCAL/bin:$PATH"
     export XDG_DATA_DIRS="/cfg/local/share:$XDG_DATA_DIRS"
   '';
 

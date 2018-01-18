@@ -1,6 +1,6 @@
 #!/bin/sh
 
-bpdir=$DOTFILES/boilerplate
+bpdir=$MY_DOTFILES/boilerplate
 
 if test -z $1; then
     echo 'INPUT ERROR. READ ME:'

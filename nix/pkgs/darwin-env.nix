@@ -7,7 +7,6 @@ pkgs: with pkgs; [
 
   reattach-to-user-namespace
 
-  # nix
   nix-repl nix-prefetch-scripts patchelf
 
   rlwrap
@@ -19,7 +18,6 @@ pkgs: with pkgs; [
   unzip
   rsync
   file
-  # sublime3
 
   my-vim
   tmux
@@ -31,6 +29,8 @@ pkgs: with pkgs; [
   openssl
 
   jre jdk
+
+  python27
 
   (python3.buildEnv.override {
     extraLibs = with python3Packages; [
@@ -44,10 +44,7 @@ pkgs: with pkgs; [
 
       pygments
 
-      # matplotlib
-      # pyqt5
-      # pillow
-      # gevent
+      pillow
 
       notebook
       jupyter_console
@@ -57,28 +54,24 @@ pkgs: with pkgs; [
     ];
   })
 
-  python27
-
   cabal2nix
   haskellPackages.cabal-install
   haskellPackages.alex
   haskellPackages.happy
   haskellPackages.pandoc
   (haskellPackages.ghcWithPackages (hp: with hp; [
-    # random
+    random
     bytestring
-    # stm
-    # vector
-    # containers
-    # mtl
-    # network
-    # async
-    # attoparsec
-    # unix
-    # process
+    stm
+    vector
+    containers
+    mtl
+    network
+    async
+    attoparsec
+    unix
+    process
   ]))
-
-  # readme-preview
 
   (texlive.combine {
     inherit (texlive)
@@ -90,21 +83,25 @@ pkgs: with pkgs; [
     ;
   })
 
-  nodejs
-  maven
+  readme-preview
 
+  nodejs
+  clojure
+  leiningen
+  go
+  gcc
+
+  cmake
+  maven
 
   nmap
   wget
-  # vagrant
-  go
-  gcc
-  cmake
-
+  gdb
+  nasm
+  radare2
+  mitmproxy
   qemu
 
   (lowPrio ihaskell)
-  clojure
-  leiningen
 
 ]

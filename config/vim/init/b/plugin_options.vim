@@ -19,7 +19,7 @@ let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 imap <c-l> <tab><c-j>
 
 let g:UltiSnipsEdit = 'vertical'
-let g:UltiSnipsSnippetsDir = $DOTFILES.'/config/vim/TODO/UltiSnips'
+let g:UltiSnipsSnippetsDir = $MY_DOTFILES.'/config/vim/ultisnips'
 
 let g:dirvish_relative_paths = 1
 
@@ -40,4 +40,4 @@ let g:tex_indent_brace = 0
 let g:tex_indent_items = 0
 let g:tex_indent_parentheses = 0
 
-let g:ycm_global_ycm_extra_conf = $DOTFILES.'/config/vim/ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = $MY_DOTFILES.'/config/vim/ycm_extra_conf.py'

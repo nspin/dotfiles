@@ -28,23 +28,21 @@
       packages = self: with self; [ pandoc ];
     };
 
-    unstable = import <nixos-unstable> {
-      # config = config.pkgs.config;
-    };
-
     darwin-env = buildEnv {
       name = "darwin-env";
-      paths = import ./darwin-env.nix self;
+      paths = import ./darwin-env.nix self ++ (
+        let local = <local> + "darwin-env.nix";
+        in if lib.pathExists local then import local self else []
+      );
     };
 
     my-lib = callPackage ./lib {};
     ghc-pkg-db = callPackage ./aux/ghc-pkg-db {};
 
-    readme-preview = callPackage ./local/grip {};
-    chicago95-theme = callPackage ./local/chicago95-theme {};
-
     uttyl = callPackage <dotfiles/../uttyl> {};
     fznode = callPackage <dotfiles/../fznode> {};
+
+    readme-preview = callPackage ./local/grip {};
 
     my-vim = callPackage <nixpkgs/pkgs/applications/editors/vim/configurable.nix> {
       inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;
@@ -58,15 +56,14 @@
       };
     };
 
-    # jdk = oraclejdk;
-    # jre = oraclejre;
+    chicago95-theme = callPackage ./local/chicago95-theme {};
 
     # patched
 
     # meson_39_1 = callPackage ./local/meson {};
 
-    mitmproxy = callPackage ./local/mitmproxy {};
-    spotify-ripper = callPackage ./local/spotify-ripper {};
+    # mitmproxy = callPackage ./local/mitmproxy {};
+    # spotify-ripper = callPackage ./local/spotify-ripper {};
     # apktool = callPackage ./local/apktool {
     #   buildTools = androidenv.buildTools;
     # };

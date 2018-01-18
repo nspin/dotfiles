@@ -21,7 +21,7 @@ Config
         , Run Memory ["-t","Mem <usedratio>%" ,"-H","75","--normal","#657b83","--high","#dc322f"] 10
         , Run Swap   ["-t","Swap <usedratio>%","-H","75","--normal","#657b83","--high","#dc322f"] 10
         , Run DiskU [("/", "Disk <used>/<size>")] [] 20
-        , Run Com "/bin/sh" ["-c", "$DOTFILES/config/xfrills/batt"] "batt" 100
+        , Run Com "/bin/sh" ["-c", "$MY_DOTFILES/config/xfrills/batt"] "batt" 100
         , Run Date "%a %b %-d %-H:%M" "date" 10
         , Run StdinReader
         ]

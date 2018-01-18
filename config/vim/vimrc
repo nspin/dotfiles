@@ -1,7 +1,3 @@
-" +-------+
-" | vimrc |
-" +-------+
-
 set nocompatible
 filetype off
 
@@ -11,11 +7,11 @@ let s:bundle_ignore =
   \ [ 'cscope_macros.vim'
   \ ]
 
-let s:plugin_path = split($VIM_PLUGIN_PATH, ':')
+let s:plugin_path = split($MY_VIM_PLUGIN_PATH, ':')
 
-for plugin in split(system('ls $VIM_BUNDLE'), '\n', 0)
+for plugin in split(system('ls $MY_VIM_BUNDLE'), '\n', 0)
   if index(s:bundle_ignore, plugin) < 0
-    call add(s:plugin_path, $VIM_BUNDLE.'/'.plugin)
+    call add(s:plugin_path, $MY_VIM_BUNDLE.'/'.plugin)
   endif
 endfor
 
@@ -25,25 +21,25 @@ for dir in s:plugin_path
 endfor
 
 " This order is based on :h initialization
-let s:rtp = [ $DOTFILES.'/config/vim/pre' ]
+let s:rtp = [ $MY_DOTFILES.'/config/vim/pre' ]
         \ + s:plugin_path
         \ + [ $VIMRUNTIME ]
         \ + s:plugin_after_path
-        \ + [ $DOTFILES.'/config/vim/post' ]
+        \ + [ $MY_DOTFILES.'/config/vim/post' ]
 
 let &rtp = join(s:rtp, ',')
 
 " Source actual configuration
 
-for f in split(system("find $DOTFILES/config/vim/lib -name '*.vim' | sort"))
+for f in split(system("find $MY_DOTFILES/config/vim/lib -name '*.vim' | sort"))
   exec 'source' f
 endfor
 
-for f in split(system("find $DOTFILES/config/vim/init -name '*.vim' | sort"))
+for f in split(system("find $MY_DOTFILES/config/vim/init -name '*.vim' | sort"))
   exec 'source' f
 endfor
 
-for f in split(system("find $DOTFILES/config/vim/init-rehaul -name '*.vim' | sort"))
+for f in split(system("find $MY_DOTFILES/config/vim/init-rehaul -name '*.vim' | sort"))
   exec 'source' f
 endfor
 

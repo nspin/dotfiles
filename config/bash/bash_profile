@@ -1,5 +1,4 @@
-# source .bashrc if interactive
-if [ -n $(echo $- | grep i) ]; then
+if echo $- | grep -q i; then
     . $HOME/.bashrc
 fi
 

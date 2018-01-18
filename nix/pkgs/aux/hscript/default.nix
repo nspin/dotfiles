@@ -1,8 +1,5 @@
 { stdenv, ghcPkgDb }:
 
-/* Build a simple Haskell program using ghc-pkgs-db
- */
-
 { name, src, cpp ? {}, hp ? haskellPackages, f }:
 
 stdenv.mkDerivation {

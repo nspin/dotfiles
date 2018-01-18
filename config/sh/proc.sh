@@ -2,4 +2,4 @@ function orphan() {
     "$@" &> /dev/null &
 }
 
-alias osxterm='open $DOTFILES/config/darwin/solarized.terminal'
+alias osxterm='open $MY_DOTFILES/config/darwin/solarized.terminal'
