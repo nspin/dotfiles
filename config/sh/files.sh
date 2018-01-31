@@ -2,10 +2,10 @@
 function fzfd() {
     dir=$(echo $1 | sed 's:/$::')
     find $dir -type f \
-      | sed 's:^'$dir'/::' \
+      | sed 's:^'"$dir"'/::' \
       | grep -v '^\.\|/\.' \
       | fzf-tmux -m \
-      | sed 's:^:'$dir'/:'
+      | sed 's:^:'"$dir"'/:'
 }
 
 function efd() {
@@ -23,6 +23,5 @@ alias tod='efd $HOME/todo'
 alias dot='efd $MY_DOTFILES'
 alias cdd='cd $MY_DOTFILES'
 
-alias s=subl
-
+alias s=sublime3
 alias p=python3
