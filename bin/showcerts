@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+
+import re
+import sys
+from subprocess import Popen, PIPE
+
+r = re.compile('^-[^\n]*$[^-]*^-[^\n]*$', re.M)
+pem = sys.stdin.read()
+certs = []
+for cert in r.finditer(pem):
+    p = Popen(
+        ('openssl', 'x509', '-text', '-noout'),
+        stdin=PIPE, stderr=PIPE, stdout=PIPE,
+        )
+    out, err = p.communicate(cert.group(0).encode('ascii'))
+    certs.append(out.decode('ascii'))
+    sys.stderr.buffer.write(err)
+    assert not p.wait()
+sys.stdout.write('\n'.join(certs))

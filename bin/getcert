@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ -z $1 ]; then
+    exec 1>&2
+    echo !
+    cat $0
+    exit 1
+fi
+
+dn="$1"
+
+openssl s_client -showcerts -servername "$dn" -connect "$dn":443 \
+    < /dev/null \
+    | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p'

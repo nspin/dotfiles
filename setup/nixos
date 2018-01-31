@@ -9,7 +9,7 @@ multiplexers/tmux.conf         .tmux.conf
 bash/bashrc                    .bashrc
 bash/bash_profile              .bash_profile
 multiplexers/tmux.conf         .tmux.conf
-mitmproxy/common.conf          .mitmproxy/common.conf
+mitmproxy/config.yaml          .mitmproxy/config.yaml
 ../nix/pkgs/config.nix         .nixpkgs/config.nix
 xdg/zathura/zathurarc          .config/zathura/zathurarc
 xmonad/laptop.hs               .xmonad/xmonad.hs

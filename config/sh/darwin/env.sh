@@ -6,7 +6,7 @@ if [ -e $MY_LOCAL/vim_plugin_path ]; then
     export MY_VIM_PLUGIN_PATH="$(cat $MY_LOCAL/vim_plugin_path | tr '\n' ':')"
 fi
 
-export PATH="$MY_LOCAL/bin:$MY_DOTFILES/bin/darwin:$MY_DOTFILES/bin$PATH"
+export PATH="$MY_LOCAL/bin:$MY_DOTFILES/bin/darwin:$MY_DOTFILES/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 

@@ -1,3 +1,4 @@
+../nix/pkgs/config.nix         .nixpkgs/config.nix
 line-editors/inputrc           .inputrc
 line-editors/editrc            .editrc
 line-editors/haskeline         .haskeline
@@ -6,5 +7,5 @@ git/gitignore_global           .gitignore_global
 multiplexers/tmux.conf         .tmux.conf
 bash/bashrc                    .bashrc
 bash/bash_profile              .bash_profile
-../nix/pkgs/config.nix         .nixpkgs/config.nix
 vim/vimrc                      .vimrc
+mitmproxy/config.yaml          .mitmproxy/config.yaml
