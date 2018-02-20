@@ -1,3 +1,5 @@
+export PATH=/usr/fds/fdafs:$PATH
+
 # Determine system
 # TODO add more detail (linux distro)
 
