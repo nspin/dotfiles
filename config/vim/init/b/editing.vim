@@ -10,6 +10,8 @@ set backspace=indent,eol,start
 set formatoptions=c,q
 set textwidth=80
 
+set nofoldenable
+
 nnoremap Y y$
 
 noremap <cr> :
