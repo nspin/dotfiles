@@ -15,7 +15,7 @@
     nick = {
       isNormalUser = true;
       uid = 1000;
-      extraGroups = [ "wheel" "dialout" "docker" ];
+      extraGroups = [ "wheel" "vboxsf" ];
     };
   };
 
