@@ -2,38 +2,31 @@
 
   environment.systemPackages = with pkgs; [
 
-    xclip
-    dejavu_fonts
-    rsync
-
     nix-repl nix-prefetch-scripts patchelf
 
-    coreutils which file
-    zip unzip p7zip
-    fzf
+    git mercurial subversion wget
+    coreutils which file zip unzip p7zip
+    rsync
 
-    gnumake
+    my-vim tmux fzf
 
-    my-vim tmux
-    git mercurial subversion
-
-    wget
+    gcc gnumake
+    python3
 
     rlwrap bind
 
     htop
 
     openssl
-    readme-preview
 
-    python3
-
-    sublime3
+    xclip
+    dejavu_fonts
     rxvt_unicode
+    sublime3
     chromium
+
     readme-preview
 
-    gcc
   ];
 
 }

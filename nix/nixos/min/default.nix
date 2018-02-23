@@ -3,7 +3,8 @@
   imports = [
     ./config.nix
     ./pkgs.nix
-    ./gnome
+    ./xmonad
+    # ./gnome
   ];
 
   virtualisation.virtualbox.guest.enable = true;
