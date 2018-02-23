@@ -3,10 +3,9 @@
   nixpkgs.config = import <dotfiles/nix/pkgs/config.nix>;
 
   nix.nixPath = [
-    "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
+    "nixpkgs=/cfg/nixpkgs"
     "nixos-config=/etc/nixos/configuration.nix"
     "dotfiles=/cfg/dotfiles"
-    "/nix/var/nix/profiles/per-user/root/channels"
   ];
 
   security.sudo.extraConfig = ''

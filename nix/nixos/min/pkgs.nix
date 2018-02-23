@@ -4,7 +4,6 @@
 
     xclip
     dejavu_fonts
-    sshfsFuse
     rsync
 
     nix-repl nix-prefetch-scripts patchelf
@@ -12,6 +11,8 @@
     coreutils which file
     zip unzip p7zip
     fzf
+
+    gnumake
 
     my-vim tmux
     git mercurial subversion
@@ -31,6 +32,8 @@
     rxvt_unicode
     chromium
     readme-preview
+
+    gcc
   ];
 
 }
