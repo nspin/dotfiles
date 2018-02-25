@@ -1,11 +1,13 @@
 { pkgs, lib, ... }: {
 
+  boot.kernel.sysctl."kernel.yama.ptrace_scope" = lib.mkDefault "0";
+
   imports = [
     ./config.nix
     ./pkgs.nix
     ./xmonad
     # ./gnome
-  ];
+  ] ++ lib.optional (lib.pathExists <local>) <local>;
 
   virtualisation.virtualbox.guest.enable = true;
   security.sudo.wheelNeedsPassword = false;

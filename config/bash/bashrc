@@ -1,5 +1,5 @@
 # Determine system
-# TODO add more detail (linux distro)
+# TODO add more detail (e.g. linux distro)
 
 case "$(uname -s)" in
     Darwin)

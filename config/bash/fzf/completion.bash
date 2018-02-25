@@ -5,7 +5,7 @@
 #  / __/ / /_/ __/
 # /_/   /___/_/-completion.bash
 #
-# - $FZF_TMUX               (default: 1)
+# - $FZF_TMUX               (default: 0)
 # - $FZF_TMUX_HEIGHT        (default: '40%')
 # - $FZF_COMPLETION_TRIGGER (default: '**')
 # - $FZF_COMPLETION_OPTS    (default: empty)
@@ -30,9 +30,17 @@ fi
 
 ###########################################################
 
-_fzf_orig_completion_filter() {
-  sed 's/^\(.*-F\) *\([^ ]*\).* \([^ ]*\)$/export _fzf_orig_completion_\3="\1 %s \3 #\2";/' |
-  awk -F= '{gsub(/[^A-Za-z0-9_= ;]/, "_", $1); print $1"="$2}'
+# To redraw line after fzf closes (printf '\e[5n')
+bind '"\e[0n": redraw-current-line'
+
+__fzfcmd_complete() {
+  [ -n "$TMUX_PANE" ] && [ "${FZF_TMUX:-0}" != 0 ] && [ ${LINES:-40} -gt 15 ] &&
+    echo "fzf-tmux -d${FZF_TMUX_HEIGHT:-40%}" || echo "fzf"
+}
+
+__fzf_orig_completion_filter() {
+  sed 's/^\(.*-F\) *\([^ ]*\).* \([^ ]*\)$/export _fzf_orig_completion_\3="\1 %s \3 #\2"; [[ "\1" = *" -o nospace "* ]] \&\& [[ ! "$__fzf_nospace_commands" = *" \3 "* ]] \&\& __fzf_nospace_commands="$__fzf_nospace_commands \3 ";/' |
+  awk -F= '{gsub(/[^A-Za-z0-9_= ;]/, "_", $1);}1'
 }
 
 _fzf_opts_completion() {
@@ -43,35 +51,43 @@ _fzf_opts_completion() {
   opts="
     -x --extended
     -e --exact
+    --algo
     -i +i
     -n --nth
+    --with-nth
     -d --delimiter
     +s --no-sort
     --tac
     --tiebreak
-    --bind
     -m --multi
     --no-mouse
-    --color
-    --black
-    --reverse
+    --bind
+    --cycle
     --no-hscroll
+    --jump-labels
+    --height
+    --literal
+    --reverse
+    --margin
     --inline-info
     --prompt
+    --header
+    --header-lines
+    --ansi
+    --tabstop
+    --color
+    --no-bold
+    --history
+    --history-size
+    --preview
+    --preview-window
     -q --query
     -1 --select-1
     -0 --exit-0
     -f --filter
     --print-query
     --expect
-    --toggle-sort
-    --sync
-    --cycle
-    --history
-    --history-size
-    --header
-    --header-lines
-    --margin"
+    --sync"
 
   case "${prev}" in
   --tiebreak)
@@ -97,7 +113,7 @@ _fzf_opts_completion() {
 }
 
 _fzf_handle_dynamic_completion() {
-  local cmd orig_var orig ret orig_cmd
+  local cmd orig_var orig ret orig_cmd orig_complete
   cmd="$1"
   shift
   orig_cmd="$1"
@@ -106,17 +122,25 @@ _fzf_handle_dynamic_completion() {
   if [ -n "$orig" ] && type "$orig" > /dev/null 2>&1; then
     $orig "$@"
   elif [ -n "$_fzf_completion_loader" ]; then
+    orig_complete=$(complete -p "$cmd")
     _completion_loader "$@"
     ret=$?
-    eval "$(complete | command grep "\-F.* $orig_cmd$" | _fzf_orig_completion_filter)"
-    source "${BASH_SOURCE[0]}"
+    # _completion_loader may not have updated completion for the command
+    if [ "$(complete -p "$cmd")" != "$orig_complete" ]; then
+      eval "$(complete | command grep " -F.* $orig_cmd$" | __fzf_orig_completion_filter)"
+      if [[ "$__fzf_nospace_commands" = *" $orig_cmd "* ]]; then
+        eval "${orig_complete/ -F / -o nospace -F }"
+      else
+        eval "$orig_complete"
+      fi
+    fi
     return $ret
   fi
 }
 
 __fzf_generic_path_completion() {
   local cur base dir leftover matches trigger cmd fzf
-  [ "${FZF_TMUX:-1}" != 0 ] && fzf="fzf-tmux -d ${FZF_TMUX_HEIGHT:-40%}" || fzf="fzf"
+  fzf="$(__fzfcmd_complete)"
   cmd="${COMP_WORDS[0]//[^A-Za-z0-9_=]/_}"
   COMPREPLY=()
   trigger=${FZF_COMPLETION_TRIGGER-'**'}
@@ -132,17 +156,17 @@ __fzf_generic_path_completion() {
         leftover=${leftover/#\/}
         [ -z "$dir" ] && dir='.'
         [ "$dir" != "/" ] && dir="${dir/%\//}"
-        tput sc
-        matches=$(eval "$1 $(printf %q "$dir")" | $fzf $FZF_COMPLETION_OPTS $2 -q "$leftover" | while read -r item; do
+        matches=$(eval "$1 $(printf %q "$dir")" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_COMPLETION_OPTS" $fzf $2 -q "$leftover" | while read -r item; do
           printf "%q$3 " "$item"
         done)
         matches=${matches% }
+        [[ -z "$3" ]] && [[ "$__fzf_nospace_commands" = *" ${COMP_WORDS[0]} "* ]] && matches="$matches "
         if [ -n "$matches" ]; then
           COMPREPLY=( "$matches" )
         else
           COMPREPLY=( "$cur" )
         fi
-        tput rc
+        printf '\e[5n'
         return 0
       fi
       dir=$(dirname "$dir")
@@ -160,7 +184,7 @@ _fzf_complete() {
   local cur selected trigger cmd fzf post
   post="$(caller 0 | awk '{print $2}')_post"
   type -t "$post" > /dev/null 2>&1 || post=cat
-  [ "${FZF_TMUX:-1}" != 0 ] && fzf="fzf-tmux -d ${FZF_TMUX_HEIGHT:-40%}" || fzf="fzf"
+  fzf="$(__fzfcmd_complete)"
 
   cmd="${COMP_WORDS[0]//[^A-Za-z0-9_=]/_}"
   trigger=${FZF_COMPLETION_TRIGGER-'**'}
@@ -168,10 +192,9 @@ _fzf_complete() {
   if [[ "$cur" == *"$trigger" ]]; then
     cur=${cur:0:${#cur}-${#trigger}}
 
-    tput sc
-    selected=$(cat | $fzf $FZF_COMPLETION_OPTS $1 -q "$cur" | $post | tr '\n' ' ')
+    selected=$(cat | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_COMPLETION_OPTS" $fzf $1 -q "$cur" | $post | tr '\n' ' ')
     selected=${selected% } # Strip trailing space not to repeat "-o nospace"
-    tput rc
+    printf '\e[5n'
 
     if [ -n "$selected" ]; then
       COMPREPLY=("$selected")
@@ -200,10 +223,9 @@ _fzf_complete_kill() {
   [ -n "${COMP_WORDS[COMP_CWORD]}" ] && return 1
 
   local selected fzf
-  [ "${FZF_TMUX:-1}" != 0 ] && fzf="fzf-tmux -d ${FZF_TMUX_HEIGHT:-40%}" || fzf="fzf"
-  tput sc
-  selected=$(ps -ef | sed 1d | $fzf -m $FZF_COMPLETION_OPTS | awk '{print $2}' | tr '\n' ' ')
-  tput rc
+  fzf="$(__fzfcmd_complete)"
+  selected=$(command ps -ef | sed 1d | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-50%} --min-height 15 --reverse $FZF_DEFAULT_OPTS --preview 'echo {}' --preview-window down:3:wrap $FZF_COMPLETION_OPTS" $fzf -m | awk '{print $2}' | tr '\n' ' ')
+  printf '\e[5n'
 
   if [ -n "$selected" ]; then
     COMPREPLY=( "$selected" )
@@ -220,8 +242,8 @@ _fzf_complete_telnet() {
 
 _fzf_complete_ssh() {
   _fzf_complete '+m' "$@" < <(
-    cat <(cat ~/.ssh/config /etc/ssh/ssh_config 2> /dev/null | command grep -i '^host' | command grep -v '*') \
-        <(command grep -oE '^[^ ]+' ~/.ssh/known_hosts | tr ',' '\n' | awk '{ print $1 " " $1 }') \
+    cat <(cat ~/.ssh/config /etc/ssh/ssh_config 2> /dev/null | command grep -i '^host' | command grep -v '*' | awk '{for (i = 2; i <= NF; i++) print $1 " " $i}') \
+        <(command grep -oE '^[[a-z0-9.,:-]+' ~/.ssh/known_hosts | tr ',' '\n' | tr -d '[' | awk '{ print $1 " " $1 }') \
         <(command grep -v '^\s*\(#\|$\)' /etc/hosts | command grep -Fv '0.0.0.0') |
         awk '{if (length($2) > 0) {print $2}}' | sort -u
   )
@@ -261,12 +283,9 @@ a_cmds="
 x_cmds="kill ssh telnet unset unalias export"
 
 # Preserve existing completion
-if [ "$_fzf_completion_loaded" != '0.11.3' ]; then
-  # Really wish I could use associative array but OSX comes with bash 3.2 :(
-  eval $(complete | command grep '\-F' | command grep -v _fzf_ |
-    command grep -E " ($(echo $d_cmds $a_cmds $x_cmds | sed 's/ /|/g' | sed 's/+/\\+/g'))$" | _fzf_orig_completion_filter)
-  export _fzf_completion_loaded=0.11.3
-fi
+eval "$(complete |
+  sed -E '/-F/!d; / _fzf/d; '"/ ($(echo $d_cmds $a_cmds $x_cmds | sed 's/ /|/g; s/+/\\+/g'))$/"'!d' |
+  __fzf_orig_completion_filter)"
 
 if type _completion_loader > /dev/null 2>&1; then
   _fzf_completion_loader=1
@@ -294,7 +313,7 @@ done
 
 # Directory
 for cmd in $d_cmds; do
-  _fzf_defc "$cmd" _fzf_dir_completion "-o nospace -o plusdirs"
+  _fzf_defc "$cmd" _fzf_dir_completion "-o nospace -o dirnames"
 done
 
 unset _fzf_defc

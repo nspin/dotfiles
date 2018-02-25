@@ -2,7 +2,6 @@
 
   allowUnfree = true;
   allowBroken = true;
-  permittedInsecurePackages = [ "webkitgtk-2.4.11" ];
 
   pulseaudio = true;
   firefox.enableAdobeFlash = true;
@@ -58,16 +57,12 @@
     #   useRPackages = true;
     # };
 
+    # patched
+
     binutils-all = callPackage ./patched/binutils-all {
       noSysDirs = true;
       targetPlatform = platforms.aarch64-multiplatform;
     };
-
-    # patched
-
-    lightdm_webkit2_greeter = callPackage ./patched/lightdm-webkit2-greeter {};
-
-    # spotify-ripper = callPackage ./patched/spotify-ripper {};
 
     # apktool = callPackage ./patched/apktool {
     #   buildTools = androidenv.buildTools;
