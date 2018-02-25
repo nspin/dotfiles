@@ -33,8 +33,9 @@ in {
         xrdb -merge ${./xresources}
         xmodmap ${./Xmodmap}
         xset r rate 300 50
-        xsetroot -cursor_name left_ptr &
-        ${pkgs.feh}/bin/feh --no-fehbg --bg-max ${bg}
+        xsetroot -cursor_name left_ptr
+        # ${pkgs.feh}/bin/feh --no-fehbg --bg-max ${bg}
+        ${pkgs.feh}/bin/feh --bg-max ${bg}
     '';
 
   };

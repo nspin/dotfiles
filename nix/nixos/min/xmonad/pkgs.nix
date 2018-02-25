@@ -4,6 +4,8 @@
 
     haskellPackages.xmobar
     scrot
+    urxvtdo
+    fznode
 
   ];
 
