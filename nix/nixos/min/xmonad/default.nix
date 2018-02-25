@@ -22,21 +22,22 @@ in {
     windowManager.xmonad.enable = true;
     windowManager.xmonad.enableContribAndExtras = true;
 
-    displayManager.slim.enable = true;
-    displayManager.slim.theme = ./slim-theme;
-    displayManager.slim.extraConfig = ''
-      sessionstart_cmd ${pkgs.xorg.sessreg}/bin/sessreg -a -l tty$(${pkgs.kbd}/bin/fgconsole) %user
-      sessionstop_cmd  ${pkgs.xorg.sessreg}/bin/sessreg -d -l tty$(${pkgs.kbd}/bin/fgconsole) %user
-    '';
-
+    displayManager.auto.enable = true;
+    displayManager.auto.user = "nick";
     displayManager.sessionCommands = ''
         xrdb -merge ${./xresources}
         xmodmap ${./Xmodmap}
         xset r rate 300 50
         xsetroot -cursor_name left_ptr
-        # ${pkgs.feh}/bin/feh --no-fehbg --bg-max ${bg}
-        ${pkgs.feh}/bin/feh --bg-max ${bg}
+        ${pkgs.feh}/bin/feh --no-fehbg --bg-max ${bg}
     '';
+
+    # displayManager.slim.enable = true;
+    # displayManager.slim.theme = ./slim-theme;
+    # displayManager.slim.extraConfig = ''
+    #   sessionstart_cmd ${pkgs.xorg.sessreg}/bin/sessreg -a -l tty$(${pkgs.kbd}/bin/fgconsole) %user
+    #   sessionstop_cmd  ${pkgs.xorg.sessreg}/bin/sessreg -d -l tty$(${pkgs.kbd}/bin/fgconsole) %user
+    # '';
 
   };
 

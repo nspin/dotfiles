@@ -1,7 +1,5 @@
 { pkgs, lib, ... }: {
 
-  boot.kernel.sysctl."kernel.yama.ptrace_scope" = lib.mkDefault "0";
-
   imports = [
     ./config.nix
     ./pkgs.nix
