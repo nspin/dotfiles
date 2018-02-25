@@ -15,13 +15,6 @@ in {
 
   services.xserver = {
 
-    desktopManager.default = "none";
-    desktopManager.xterm.enable = false;
-
-    windowManager.default = "xmonad";
-    windowManager.xmonad.enable = true;
-    windowManager.xmonad.enableContribAndExtras = true;
-
     displayManager.auto.enable = true;
     displayManager.auto.user = "nick";
     displayManager.sessionCommands = ''
@@ -31,6 +24,18 @@ in {
         xsetroot -cursor_name left_ptr
         ${pkgs.feh}/bin/feh --no-fehbg --bg-max ${bg}
     '';
+
+    desktopManager.default = "mine";
+    desktopManager.xterm.enable = false;
+    desktopManager.session = [ {
+      name = "mine";
+      bgSupport = true;
+      start = "";
+    } ];
+
+    windowManager.default = "xmonad";
+    windowManager.xmonad.enable = true;
+    windowManager.xmonad.enableContribAndExtras = true;
 
     # displayManager.slim.enable = true;
     # displayManager.slim.theme = ./slim-theme;
