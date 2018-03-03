@@ -1,3 +1,4 @@
+export MY_SYSTEM="darwin"
 export MY_DOTFILES="$HOME/dotfiles"
 export MY_LOCAL="$HOME/local"
 export MY_VIM_BUNDLE="$HOME/vim-bundle/bundle"

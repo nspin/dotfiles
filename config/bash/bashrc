@@ -1,20 +1,15 @@
 # Determine system
 # TODO add more detail (e.g. linux distro)
 
-case "$(uname -s)" in
-    Darwin)
-        MY_SYSTEM=darwin
-        ;;
-    Linux)
-        MY_SYSTEM=linux
-        ;;
-esac
-
 # Bootstrap environment if necessary
 
-if [ $MY_SYSTEM = darwin ]; then
-    . $HOME/dotfiles/config/sh/darwin/*.sh
-fi
+case "$(uname -s)" in
+    Darwin)
+        . $HOME/dotfiles/config/sh/darwin/*.sh
+        ;;
+    Linux)
+        ;;
+esac
 
 # In scope:
 #   MY_SYSTEM

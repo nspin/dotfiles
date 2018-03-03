@@ -1,5 +1,11 @@
 # TODO
 
+tmux:
+    xclip binding for vm
+    cwd
+
+--------------
+
 stalonetray volume and stuff
 
 .bashrc.local

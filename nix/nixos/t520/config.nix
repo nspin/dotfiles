@@ -3,10 +3,10 @@
   nixpkgs.config = import <dotfiles/nix/pkgs/config.nix>;
 
   nix.nixPath = [
-    "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
+    "nixpkgs=/cfg/nixpkgs"
     "nixos-config=/etc/nixos/configuration.nix"
     "dotfiles=/cfg/dotfiles"
-    "/nix/var/nix/profiles/per-user/root/channels"
+    "local=/cfg/local"
   ];
 
   security.sudo.extraConfig = ''
@@ -16,6 +16,7 @@
 
     Defaults env_keep += "FZF_DEFAULT_OPTS"
 
+    Defaults env_keep += "MY_SYSTEM"
     Defaults env_keep += "MY_DOTFILES"
     Defaults env_keep += "MY_LOCAL"
     Defaults env_keep += "MY_VIM_BUNDLE"
@@ -32,6 +33,7 @@
 
     FZF_DEFAULT_OPTS = "--reverse";
 
+    MY_SYSTEM = "linux";
     MY_DOTFILES = "/cfg/dotfiles";
     MY_LOCAL = "/cfg/local";
     MY_VIM_BUNDLE = "/cfg/vim-bundle/bundle";

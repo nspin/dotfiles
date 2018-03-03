@@ -16,6 +16,7 @@
 
     Defaults env_keep += "FZF_DEFAULT_OPTS"
 
+    Defaults env_keep += "MY_SYSTEM"
     Defaults env_keep += "MY_DOTFILES"
     Defaults env_keep += "MY_LOCAL"
     Defaults env_keep += "MY_VIM_BUNDLE"
@@ -32,6 +33,7 @@
 
     FZF_DEFAULT_OPTS = "--reverse";
 
+    MY_SYSTEM = "linux";
     MY_DOTFILES = "/cfg/dotfiles";
     MY_LOCAL = "/cfg/local";
     MY_VIM_BUNDLE = "/cfg/vim-bundle/bundle";
