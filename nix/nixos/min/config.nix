@@ -9,22 +9,6 @@
     "local=/cfg/local"
   ];
 
-  security.sudo.extraConfig = ''
-    Defaults env_keep += "EDITOR"
-    Defaults env_keep += "VISUAL"
-    Defaults env_keep += "TERMINAL"
-
-    Defaults env_keep += "FZF_DEFAULT_OPTS"
-
-    Defaults env_keep += "MY_SYSTEM"
-    Defaults env_keep += "MY_DOTFILES"
-    Defaults env_keep += "MY_LOCAL"
-    Defaults env_keep += "MY_VIM_BUNDLE"
-    Defaults env_keep += "MY_VIM_PLUGIN_PATH"
-
-    Defaults env_keep += "NIX_PATH"
-  '';
-
   environment.variables = rec {
     EDITOR = "vim";
     VISUAL = "vim";
@@ -43,6 +27,22 @@
   environment.extraInit = ''
     export PATH="$MY_DOTFILES/bin/linux:$MY_DOTFILES/bin:$MY_LOCAL/bin:$PATH"
     export XDG_DATA_DIRS="/cfg/local/share:$XDG_DATA_DIRS"
+  '';
+
+  security.sudo.extraConfig = ''
+    Defaults env_keep += "EDITOR"
+    Defaults env_keep += "VISUAL"
+    Defaults env_keep += "TERMINAL"
+
+    Defaults env_keep += "FZF_DEFAULT_OPTS"
+
+    Defaults env_keep += "MY_SYSTEM"
+    Defaults env_keep += "MY_DOTFILES"
+    Defaults env_keep += "MY_LOCAL"
+    Defaults env_keep += "MY_VIM_BUNDLE"
+    Defaults env_keep += "MY_VIM_PLUGIN_PATH"
+
+    Defaults env_keep += "NIX_PATH"
   '';
 
 }

@@ -40,4 +40,3 @@ fi
 
 cat $fifo2
 exit "$(cat $fifo3)"
-

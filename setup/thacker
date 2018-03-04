@@ -1,7 +1,0 @@
-line-editors/inputrc           .inputrc
-line-editors/editrc            .editrc
-git/gitconfig                  .gitconfig
-multiplexers/tmux.conf         .tmux.conf
-bash/bashrc                    .bashrc
-bash/bash_profile              .bash_profile
-vim/vimrc                      .vimrc
