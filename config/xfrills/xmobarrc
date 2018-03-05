@@ -20,11 +20,10 @@ Config
         [ Run Cpu    ["-t","Cpu <total>%"     ,"-H","75","--normal","#657b83","--high","#dc322f"] 10
         , Run Memory ["-t","Mem <usedratio>%" ,"-H","75","--normal","#657b83","--high","#dc322f"] 10
         , Run Swap   ["-t","Swap <usedratio>%","-H","75","--normal","#657b83","--high","#dc322f"] 10
-        , Run DiskU [("/", "Disk <used>/<size>")] [] 20
-        , Run Com "/bin/sh" ["-c", "$MY_DOTFILES/config/xfrills/batt"] "batt" 100
+        , Run DiskU  [("/", "Disk <used>/<size>")] [] 20
         , Run Date "%a %b %-d %-H:%M" "date" 10
         , Run StdinReader
         ]
 
-    , template = " %date% <fc=#002b36>|</fc>%StdinReader%<fc=#002b36>|</fc> %batt% <fc=#002b36>|</fc> %cpu% <fc=#002b36>|</fc> %memory% <fc=#002b36>|</fc> %swap% <fc=#002b36>|</fc> %disku% <fc=#002b36>|</fc>"
+    , template = " %date% <fc=#002b36>|</fc>%StdinReader%<fc=#002b36>|</fc> %cpu% <fc=#002b36>|</fc> %memory% <fc=#002b36>|</fc> %swap% <fc=#002b36>|</fc> %disku% <fc=#002b36>|</fc>"
     }

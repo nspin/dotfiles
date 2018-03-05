@@ -1,9 +1,9 @@
+{ isLaptop ? false, isExecutable ? true }:
+
 { mkDerivation, ansi-terminal, attoparsec, base, containers, mtl
 , process, stdenv, stm, terminal-size, text, unix, X11, xmonad
 , xmonad-contrib, bytestring, transformers
 }:
-
-{ isLaptop ? false, isExecutable ? true }:
 
 mkDerivation {
   pname = "xmonad-config";

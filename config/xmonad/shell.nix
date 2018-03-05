@@ -1,1 +1,10 @@
-((import <nixpkgs> {}).haskellPackages.callPackage (import ./default.nix) {} {}).env
+with import <nixpkgs> {}; stdenv.mkDerivation {
+  name = "env";
+  buildInputs = [
+    (haskellPackages.ghcWithPackages (hp: with hp; [
+      xmonad
+      xmonad-contrib
+      xmonad-extras
+    ]))
+  ];
+}

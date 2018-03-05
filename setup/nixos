@@ -14,4 +14,4 @@ vim/gvimrc                     .gvimrc
 vim/vimrc                      .vimrc
 xdg/zathura/zathurarc          .config/zathura/zathurarc
 xfrills/xmobarrc               .xmobarrc
-xmonad/laptop.hs               .xmonad/xmonad.hs
+xmonad/little.hs               .xmonad/xmonad.hs
