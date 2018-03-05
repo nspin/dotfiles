@@ -4,7 +4,7 @@
 
   nix.nixPath = [
     "nixpkgs=/cfg/nixpkgs"
-    "nixos-config=/etc/nixos/configuration.nix"
+    "nixos-config=/cfg/local/configuration.nix"
     "dotfiles=/cfg/dotfiles"
     "local=/cfg/local"
   ];
@@ -25,7 +25,7 @@
   };
 
   environment.extraInit = ''
-    export PATH="$MY_DOTFILES/bin/linux:$MY_DOTFILES/bin:$MY_LOCAL/bin:$PATH"
+    export PATH="$MY_LOCAL/bin:$(find $MY_DOTFILES/bin/linux -type d -printf ":%p"):$MY_DOTFILES/bin:$PATH"
     export XDG_DATA_DIRS="/cfg/local/share:$XDG_DATA_DIRS"
   '';
 

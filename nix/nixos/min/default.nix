@@ -4,10 +4,8 @@
     ./config.nix
     ./pkgs.nix
     ./xmonad
-    # ./gnome
-  ] ++ lib.optional (lib.pathExists <local>) <local>;
+  ];
 
-  virtualisation.virtualbox.guest.enable = true;
   security.sudo.wheelNeedsPassword = false;
   services.openssh.enable = true;
   time.timeZone = "America/Chicago";

@@ -7,8 +7,8 @@ if [ -z $1 ]; then
     exit 1
 fi
 
-dn="$1"
+host="$1"
 
-openssl s_client -showcerts -servername "$dn" -connect "$dn":443 \
+openssl s_client -showcerts -servername "$host" -connect "$host":443 \
     < /dev/null \
     | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p'

@@ -38,3 +38,5 @@ in with lib; {
   };
 
 }
+
+# services.xserver.windowManager.wmdev.enable = true;
