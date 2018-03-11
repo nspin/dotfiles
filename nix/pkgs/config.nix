@@ -44,9 +44,39 @@
     readme-preview = callPackage ./pkgs/grip {};
     uttyl = callPackage ./pkgs/uttyl {};
     fznode = callPackage ./pkgs/fznode {};
+    gcc-aarch64-elf = callPackage ./pkgs/gcc-aarch64-elf {};
 
     ncslib = callPackage ./lib {};
     ghc-pkg-db = callPackage ./plib/ghc-pkg-db {};
+
+    qemuRpi3 = lib.overrideDerivation qemu (self: {
+      patches = [
+        <nixpkgs/pkgs/applications/virtualization/qemu/no-etc-install.patch>
+        <nixpkgs/pkgs/applications/virtualization/qemu/statfs-flags.patch>
+        ./patched/qemu-rpi3.patch
+        <nixpkgs/pkgs/applications/virtualization/qemu/fix-hda-recording.patch>
+      ];
+    });
+
+    qemuSmall = lib.overrideDerivation
+      (callPackage <nixpkgs/pkgs/applications/virtualization/qemu> {
+        numaSupport = false;
+        seccompSupport = false;
+        pulseSupport = false;
+        sdlSupport = false;
+        vncSupport = false;
+        spiceSupport = false;
+        usbredirSupport = false;
+        inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa;
+        inherit (darwin.stubs) rez setfile;
+      })
+      (self: {
+        patches = [
+          <nixpkgs/pkgs/applications/virtualization/qemu/no-etc-install.patch>
+          <nixpkgs/pkgs/applications/virtualization/qemu/statfs-flags.patch>
+          ./patched/qemu-rpi3.patch
+        ];
+      });
 
     # rEnv = super.rWrapper.override {
     #   packages = import ./cmc-r-installed.nix self.rPackages;
