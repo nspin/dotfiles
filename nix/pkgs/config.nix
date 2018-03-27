@@ -12,7 +12,7 @@
     darwin-env = buildEnv {
       name = "darwin-env";
       paths = import ./darwin-env.nix self ++ (
-        let local = <local> + "darwin-env.nix";
+        let local = <local/darwin-env.nix>;
         in if lib.pathExists local then import local self else []
       );
     };

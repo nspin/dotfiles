@@ -28,7 +28,7 @@ pkgs: with pkgs; [
 
   openssl
 
-  jre jdk
+  # jre jdk
 
   python27
 
@@ -38,19 +38,19 @@ pkgs: with pkgs; [
       requests
       beautifulsoup4
       lxml
-      numpy
+      # numpy
       # scipy
-      sympy
+      # sympy
 
-      pygments
+      # pygments
 
-      pillow
+      # pillow
 
-      notebook
-      jupyter_console
-      nbconvert
-      ipykernel
-      ipywidgets
+      # notebook
+      # jupyter_console
+      # nbconvert
+      # ipykernel
+      # ipywidgets
     ];
   })
 
@@ -58,7 +58,7 @@ pkgs: with pkgs; [
   haskellPackages.cabal-install
   haskellPackages.alex
   haskellPackages.happy
-  haskellPackages.pandoc
+  # haskellPackages.pandoc
   (haskellPackages.ghcWithPackages (hp: with hp; [
     random
     bytestring
@@ -73,35 +73,35 @@ pkgs: with pkgs; [
     process
   ]))
 
-  (texlive.combine {
-    inherit (texlive)
-      luatex
-      scheme-small
-      collection-latexextra
-      collection-fontsrecommended
-      fontawesome
-    ;
-  })
+  # (texlive.combine {
+  #   inherit (texlive)
+  #     luatex
+  #     scheme-small
+  #     collection-latexextra
+  #     collection-fontsrecommended
+  #     fontawesome
+  #   ;
+  # })
 
   readme-preview
 
   nodejs
-  clojure
-  leiningen
-  go
+  # clojure
+  # leiningen
+  # go
   gcc
 
   cmake
-  maven
+  # maven
 
-  nmap
+  # nmap
   wget
-  gdb
-  nasm
-  radare2
+  # gdb
+  # nasm
+  # radare2
   mitmproxy
-  qemu
+  # qemu
 
-  (lowPrio ihaskell)
+  # (lowPrio ihaskell)
 
 ]
