@@ -4,8 +4,9 @@
 
     nix-repl nix-prefetch-scripts patchelf
 
-    coreutils which file
-    git mercurial subversion wget rsync zip unzip p7zip
+    binutils coreutils which file
+    # mercurial subversion wget rsync zip unzip p7zip
+    git
 
     my-vim tmux fzf
 
@@ -14,18 +15,18 @@
 
     rxvt_unicode
     sublime3
-    chromium
+    # chromium
     dejavu_fonts
 
-    rlwrap bind
+    # rlwrap bind
     xclip
     reptyr
     uttyl fznode
 
-    htop
-    openssl
+    # htop
+    # openssl
 
-    readme-preview
+    # readme-preview
 
   ];
 
