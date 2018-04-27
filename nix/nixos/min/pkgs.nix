@@ -13,13 +13,7 @@
     gcc gnumake
     python3
 
-    rxvt_unicode
-    sublime3
-    # chromium
-    dejavu_fonts
-
     # rlwrap bind
-    xclip
     reptyr
     uttyl fznode
 

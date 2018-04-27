@@ -3,7 +3,6 @@
   imports = [
     ./config.nix
     ./pkgs.nix
-    ./xmonad
   ];
 
   security.sudo.wheelNeedsPassword = false;
@@ -16,20 +15,6 @@
       uid = 1000;
       extraGroups = [ "wheel" "vboxsf" "docker" ];
     };
-  };
-
-  services.xserver = {
-    enable = true;
-    autorun = true;
-    layout = "us";
-  };
-  
-  fonts = {
-    enableFontDir = true;
-    fontconfig.enable = true;
-    fonts = [
-      pkgs.dejavu_fonts
-    ];
   };
 
 }
