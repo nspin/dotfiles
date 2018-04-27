@@ -8,7 +8,7 @@
     # mercurial subversion wget rsync zip unzip p7zip
     git
 
-    my-vim tmux fzf
+    tmux fzf
 
     gcc gnumake
     python3

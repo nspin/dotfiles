@@ -8,6 +8,8 @@
 
     xclip
 
+    my-vim
+
     # chromium
 
   ];
