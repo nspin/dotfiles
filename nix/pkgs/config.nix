@@ -24,9 +24,15 @@
       gui = "auto";
       lua = lua5_1;
       flags = [ "python" ];
-      python = python.buildEnv.override {
-        extraLibs = [ pythonPackages.pycrypto ];
-      };
+    };
+
+    my-vim-no-gui = callPackage <nixpkgs/pkgs/applications/editors/vim/configurable.nix> {
+      inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;
+      inherit (darwin) libobjc cf-private;
+      features = "huge";
+      gui = "no";
+      lua = lua5_1;
+      flags = [ "python" ];
     };
 
     ihaskell = callPackage <nixpkgs/pkgs/development/tools/haskell/ihaskell/wrapper.nix> {

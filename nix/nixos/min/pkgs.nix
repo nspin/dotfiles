@@ -8,18 +8,13 @@
     # mercurial subversion wget rsync zip unzip p7zip
     git
 
-    my-vim tmux fzf
+    my-vim-no-gui
+    tmux fzf
 
     gcc gnumake
     python3
 
-    rxvt_unicode
-    sublime3
-    # chromium
-    dejavu_fonts
-
     # rlwrap bind
-    xclip
     reptyr
     uttyl fznode
 
