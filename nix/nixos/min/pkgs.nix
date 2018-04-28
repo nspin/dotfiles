@@ -8,6 +8,7 @@
     # mercurial subversion wget rsync zip unzip p7zip
     git
 
+    my-vim-no-gui
     tmux fzf
 
     gcc gnumake

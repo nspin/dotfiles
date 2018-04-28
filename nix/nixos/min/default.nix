@@ -7,6 +7,7 @@
 
   security.sudo.wheelNeedsPassword = false;
   services.openssh.enable = true;
+  services.openssh.openFirewall = true;
   time.timeZone = "America/Chicago";
 
   users.extraUsers = {
