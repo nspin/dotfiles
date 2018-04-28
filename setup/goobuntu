@@ -1,10 +1,9 @@
-bash/bash_profile              .bash_profile
+vim/vimrc                      .vimrc
+vim/gvimrc                     .gvimrc
 bash/bashrc                    .bashrc
+bash/bash_profile              .bash_profile
+multiplexers/tmux.conf         .tmux.conf
 git/gitconfig                  .gitconfig
 git/gitignore_global           .gitignore_global
 line-editors/editrc            .editrc
 line-editors/inputrc           .inputrc
-multiplexers/tmux.conf         .tmux.conf
-multiplexers/tmux.conf         .tmux.conf
-vim/gvimrc                     .gvimrc
-vim/vimrc                      .vimrc

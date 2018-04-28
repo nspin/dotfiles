@@ -26,7 +26,7 @@
       flags = [ "python" ];
     };
 
-    my-vim-small = callPackage <nixpkgs/pkgs/applications/editors/vim/configurable.nix> {
+    my-vim-no-gui = callPackage <nixpkgs/pkgs/applications/editors/vim/configurable.nix> {
       inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;
       inherit (darwin) libobjc cf-private;
       features = "huge";
