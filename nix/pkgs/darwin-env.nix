@@ -7,7 +7,9 @@ pkgs: with pkgs; [
 
   reattach-to-user-namespace
 
-  nix-repl nix-prefetch-scripts patchelf
+  # nix-repl
+  # nix-prefetch-scripts
+  patchelf
 
   rlwrap
 
@@ -42,7 +44,7 @@ pkgs: with pkgs; [
       # scipy
       # sympy
 
-      # pygments
+      pygments
 
       # pillow
 
@@ -54,34 +56,35 @@ pkgs: with pkgs; [
     ];
   })
 
-  cabal2nix
-  haskellPackages.cabal-install
-  haskellPackages.alex
-  haskellPackages.happy
+  # cabal2nix
+  # haskellPackages.cabal-install
+  # haskellPackages.alex
+  # haskellPackages.happy
   # haskellPackages.pandoc
   (haskellPackages.ghcWithPackages (hp: with hp; [
-    random
-    bytestring
-    stm
-    vector
-    containers
-    mtl
-    network
-    async
-    attoparsec
-    unix
-    process
+    # random
+    # bytestring
+    # stm
+    # vector
+    # containers
+    # mtl
+    # network
+    # async
+    # attoparsec
+    # unix
+    # process
   ]))
 
-  # (texlive.combine {
-  #   inherit (texlive)
-  #     luatex
-  #     scheme-small
-  #     collection-latexextra
-  #     collection-fontsrecommended
-  #     fontawesome
-  #   ;
-  # })
+  (texlive.combine {
+    inherit (texlive)
+      # luatex
+      scheme-small
+      collection-latexextra
+      collection-fontsrecommended
+      fontawesome
+      physics
+    ;
+  })
 
   readme-preview
 
@@ -103,5 +106,7 @@ pkgs: with pkgs; [
   # qemu
 
   # (lowPrio ihaskell)
+
+  gnupg
 
 ]
