@@ -1,3 +1,16 @@
+alias enolc='clone nspin'
+alias enolcb='cloneb nickspinale'
+alias edulom='module nspin'
+alias enolcto='cloneto nspin'
+
+alias ga='git add -A :/'
+alias gs='git status'
+alias gc='git commit'
+alias gca='git commit --amend'
+alias gl='git pull'
+alias gm='git submodule update --init'
+alias gu='git submodule foreach git pull origin master'
+
 # Status of git repos in current directory
 function statuses() {
     currdir=$(pwd)
@@ -13,7 +26,7 @@ function statuses() {
     echo ""
 }
 
-# Status of git repos in current directory
+# Pull into git repos in current directory
 function pulls() {
     currdir=$(pwd)
     for subdir in ./*/ ; do
@@ -47,16 +60,3 @@ function module() {
     URL="https://github.com/$1/$2.git"
     git submodule add $URL $3
 }
-
-alias enolc='clone nspin'
-alias enolcb='cloneb nickspinale'
-alias edulom='module nspin'
-alias enolcto='cloneto nspin'
-
-alias ga='git add -A :/'
-alias gs='git status'
-alias gc='git commit'
-alias gca='git commit --amend'
-alias gl='git pull'
-alias gm='git submodule update --init'
-alias gu='git submodule foreach git pull origin master'

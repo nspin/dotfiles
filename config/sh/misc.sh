@@ -1,3 +1,5 @@
+alias rl='rlwrap'
+
 function extract() {
     if [ -f $1 ] ; then
         case $1 in
@@ -15,8 +17,6 @@ function extract() {
             *)           echo "'$1' cannot be extracted via >extract<" ;;
         esac
     else
-        echo "'$1' is not a valid file!"
+        echo "'$1' is not a valid file"
     fi
 }
-
-alias rl='rlwrap'

@@ -30,12 +30,12 @@ reset="\[$(tput sgr0)\]"
 symbol="\[$(tput setaf 2)\]"
 text="\[$(tput setaf 6)\]"
 
-if printf '%s' "$LANG" | grep -qiE 'utf-?8'; then
-    lambda="λ"
-    arrow="→"
+if printf '%s' "$LANG" | egrep -qi 'utf-?8'; then
+    lambda='λ'
+    arrow='→'
 else
-    lambda="\\"
-    arrow="->"
+    lambda='\'
+    arrow='->'
 fi
 
 PS1="$text \u@\h $symbol$lambda$text \w $symbol$arrow$reset "
