@@ -8,15 +8,14 @@
     # mercurial subversion wget rsync zip unzip p7zip
     git
 
-    vim
+    my-vim
     tmux fzf
 
     gcc gnumake
     python3
 
     # rlwrap bind
-    reptyr
-    uttyl fznode
+    fznode
 
     # htop
     # openssl

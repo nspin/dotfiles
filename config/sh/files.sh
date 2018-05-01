@@ -3,6 +3,7 @@ alias vi=vim
 alias vf='vim $(fzf)'
 alias tod='efd $HOME/todo'
 alias dot='efd $MY_DOTFILES'
+alias loc='efd $MY_LOCAL'
 alias cdd='cd $MY_DOTFILES'
 
 alias s=sublime3
