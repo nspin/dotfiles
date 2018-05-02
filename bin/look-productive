@@ -1,10 +1,10 @@
 #!/bin/sh
 
-read -d '' expr << EOF
+expr='
 (import <nixpkgs> {}).fetchurl {
     url = "https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/plain/crypto/ctr.c?h=v4.9.11";
     sha256 = "0swgyxaaz6qngq2ividcwc6mv96ihy13g7vy3x9ji6j561k69b5y";
 }
-EOF
+'
 file=$(nix-build --no-out-link -E "$expr")
 vim $file -c 'setf c | norm 252G'
