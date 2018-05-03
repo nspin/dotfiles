@@ -24,7 +24,7 @@
     MY_DOTFILES = "/cfg/dotfiles";
     MY_LOCAL = "/cfg/local";
     MY_VIM_BUNDLE = "/cfg/vim-bundle/bundle";
-    # MY_VIM_PLUGIN_PATH = "${pkgs.vimPlugins.youcompleteme}/share/vim-plugins/youcompleteme";
+    MY_VIM_PLUGIN_PATH = "${pkgs.vimPlugins.youcompleteme}/share/vim-plugins/youcompleteme";
   };
 
   environment.extraInit = ''
