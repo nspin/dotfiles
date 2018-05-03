@@ -17,16 +17,25 @@
       );
     };
 
-    my-vim = callPackage ./pkgs/my-vim {};
-
-    my-vim-gui = callPackage <nixpkgs/pkgs/applications/editors/vim/configurable.nix> {
+    my-vim = callPackage ./pkgs/my-vim {
       inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;
       inherit (darwin) libobjc cf-private;
-      features = "huge";
-      gui = "auto";
-      lua = lua5_1;
-      flags = [ "python" ];
     };
+
+    my-vim-gui = callPackage ./pkgs/my-vim {
+      inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;
+      inherit (darwin) libobjc cf-private;
+      gui = "auto";
+    };
+
+    # my-vim-gui = callPackage <nixpkgs/pkgs/applications/editors/vim/configurable.nix> {
+    #   inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;
+    #   inherit (darwin) libobjc cf-private;
+    #   features = "huge";
+    #   gui = "auto";
+    #   lua = lua5_1;
+    #   flags = [ "python" ];
+    # };
 
     ihaskell = callPackage <nixpkgs/pkgs/development/tools/haskell/ihaskell/wrapper.nix> {
       inherit (haskellPackages) ghcWithPackages;

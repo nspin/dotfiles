@@ -1,4 +1,6 @@
-{ stdenv, callPackage
+{ stdenv, lib, callPackage
+
+, gui ? "no"
 
 , gettext, pkgconfig, perl
 , ncurses, python2, python3, ruby, lua
@@ -6,39 +8,32 @@
 , libX11, libXext, libSM, libXpm, libXt, libXaw, libXau, libXmu, glib, libICE
 , gtk3, gtk2
 
-# , CoreServices, CoreData, Cocoa, Foundation, libobjc, cf-private
+, CoreServices, CoreData, Cocoa, Foundation, libobjc, cf-private
 
 }:
 
-# if gui
-#   buildInputs = [
-# 	  libX11 libXext libSM libXpm libXt libXaw libXau libXmu glib libICE
-#   ] ++ (if args.gui == "gtk3" then [gtk3] else [gtk2]);
-
-# if darwin
-#   # default
-#   buildInputs = [ Carbon Cocoa ];
-#   # configurable
-#   buildInputs = [ CoreServices CoreData Cocoa Foundation libobjc cf-private ];
-#   NIX_LDFLAGS = "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation";
-
 let
   common = callPackage <nixpkgs/pkgs/applications/editors/vim/common.nix> {};
-in
-stdenv.mkDerivation rec {
+
+in stdenv.mkDerivation rec {
   name = "my-vim-${version}";
 
   inherit (common) version src postPatch hardeningDisable enableParallelBuilding meta;
 
   nativeBuildInputs = [ gettext pkgconfig perl];
-  buildInputs = [ ncurses python2 python3 ruby lua ];
+  buildInputs = [ ncurses python2 python3 ruby lua ]
+    ++ lib.optionals stdenv.isDarwin
+        [ CoreServices CoreData Cocoa Foundation libobjc cf-private ]
+    ++ lib.optionals (!stdenv.isDarwin && gui != "no")
+	    ([ libX11 libXext libSM libXpm libXt libXaw libXau libXmu glib libICE ]
+          ++ (if gui == "gtk3" then [gtk3] else [gtk2]));
 
   patches = [ <nixpkgs/pkgs/applications/editors/vim/cflags-prune.diff> ];
 
   configureFlags = [
     "--with-features=huge"
 
-    "--enable-gui=no"
+    "--enable-gui=${gui}"
     "--enable-multibyte"
     "--enable-nls"
     "--enable-cscope"
@@ -52,6 +47,9 @@ stdenv.mkDerivation rec {
 	"--with-lua-prefix=${lua}"
     "--with-python3-config-dir=${python3}/lib"
   ];
+
+  NIX_LDFLAGS = lib.optional stdenv.isDarwin
+    "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation";
 
   postInstall = ''
     ln -s $out/bin/vim $out/bin/vi
