@@ -1,0 +1,4 @@
+interpreters/ghci              .ghci
+line-editors/editrc            .editrc
+line-editors/inputrc           .inputrc
+line-editors/haskeline         .haskeline
