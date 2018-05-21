@@ -2,7 +2,6 @@
 
 tmux:
     xclip binding for vm
-    cwd
 
 --------------
 

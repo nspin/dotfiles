@@ -4,19 +4,15 @@
 
 [core]
     editor = vim
-    excludesfile = ~/.gitignore_global
 
-[push]
-    default = simple
+[credential]
+    helper = cache --timeout=28800
 
 [github]
     user = nspin
 
 [url "https://nspin@github.com"]
     insteadOf = https://github.com
-
-[credential]
-    helper = cache --timeout=28800
 
 [url "git://github.com/ghc/packages-"]
 	insteadOf = git://github.com/ghc/packages/
