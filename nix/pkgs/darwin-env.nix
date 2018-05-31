@@ -107,6 +107,6 @@ pkgs: with pkgs; [
 
   # (lowPrio ihaskell)
 
-  gnupg
+  # gnupg
 
 ]
