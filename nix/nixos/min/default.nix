@@ -6,7 +6,7 @@
   ];
 
   security.sudo.wheelNeedsPassword = false;
-  network.firewall.enabe = true;
+  networking.firewall.enable = true;
   services.openssh.enable = true;
   services.openssh.openFirewall = true;
 
