@@ -6,9 +6,11 @@
   ];
 
   security.sudo.wheelNeedsPassword = false;
+  network.firewall.enabe = true;
   services.openssh.enable = true;
   services.openssh.openFirewall = true;
-  time.timeZone = "America/Chicago";
+
+  time.timeZone = "America/Boston";
 
   users.extraUsers = {
     nick = {
