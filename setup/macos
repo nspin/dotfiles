@@ -1,10 +1,10 @@
 vim/vimrc                      .vimrc
 bash/bashrc                    .bashrc
 bash/bash_profile              .bash_profile
-git/gitconfig                  .gitconfig
-git/gitignore_global           .gitignore_global
 multiplexers/tmux.conf         .tmux.conf
 line-editors/editrc            .editrc
 line-editors/haskeline         .haskeline
 line-editors/inputrc           .inputrc
 mitmproxy/config.yaml          .mitmproxy/config.yaml
+git/config                     .config/git/config
+git/ignore                     .config/git/ignore
