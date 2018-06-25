@@ -1,17 +1,17 @@
 { pkgs, lib, ... }: {
 
-  system.stateVersion = "17.03";
+  system.nixos.stateVersion = "17.03";
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
   # boot.kernel.sysctl."kernel.yama.ptrace_scope" = lib.mkDefault "0";
 
-  time.timeZone = "America/Chicago";
+  time.timeZone = "America/Boston";
   security.sudo.wheelNeedsPassword = false;
 
   imports = [
     ./net.nix
-    ./media.nix
+    # ./media.nix
     ./config.nix
     ./tpkgs.nix
     ./gpkgs.nix
@@ -70,16 +70,6 @@
     xlibs.xmessage
     xlibs.xev
     dejavu_fonts
-
-    virtualbox
   ];
-
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.docker.enable = true;
-
-  services.mysql = {
-    enable = true;
-    package = pkgs.mysql;
-  };
 
 }

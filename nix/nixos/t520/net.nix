@@ -16,14 +16,6 @@
   users.extraGroups.networkmanager.members = [ "nick" "other" ];
 
   services.openssh.enable = true;
-  services.samba.enable = true;
-
-  my.pia.enable = true;
-  my.pia.servers = {
-    sw = "sweden";
-    mw = "us-midwest";
-    ca = "us-california";
-  };
 
   environment.systemPackages = with pkgs; [
     wirelesstools
@@ -31,25 +23,10 @@
     sshfsFuse
     rsync
     telnet
-    wireshark
-
-    samba
   ];
  
   users.extraGroups.wireshark.gid = 500;
   users.extraGroups.wireshark.members = [ "nick" ];
-
-  security.wrappers = {
-    dumpcap = {
-      program = "dumpcap";
-      source = "${pkgs.wireshark}/bin/dumpcap";
-      owner = "root";
-      group = "wireshark";
-      setuid = true;
-      setgid = false;
-      permissions = "u+rx,g+x";
-    };
-  };
 
   # networking.wireless = {
   #   enable = true;

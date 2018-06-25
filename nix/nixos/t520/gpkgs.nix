@@ -9,22 +9,22 @@
     chromium
     # google-chrome
     # firefox opera
-    torbrowser
+    # torbrowser
 
     ario
     vlc
     geeqie
     zathura
-    picard
+    # picard
 
-    readme-preview
-    keepassx2
+    # readme-preview
+    # keepassx2
 
-    arandr
+    # arandr
     gparted
 
-    slack
-    libreoffice
+    # slack
+    # libreoffice
 
     # rstudioEnv
 

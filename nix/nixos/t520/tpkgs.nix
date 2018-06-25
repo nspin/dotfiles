@@ -29,71 +29,22 @@
     # misc
 
     openssl
-    mitmproxy
-    readme-preview
 
     uttyl fznode reptyr
 
     # lang
 
     gcc gnumake
-    jre jdk
+    # jre jdk
     # oraclejdk8 oraclejre8
     # (oraclejdk8distro true true)
     # (callPackage <nixpkgs/pkgs/development/tools/build-managers/apache-maven> { jdk = oraclejdk8; } )
     # (callPackage <nixpkgs/pkgs/development/tools/build-managers/gradle> { jdk = oraclejdk8; }).gradle_latest
     # rEnv
 
-    python27
+    python2
 
-    (python35.buildEnv.override {
-      extraLibs = with python35Packages; [
-        cffi
-        requests2
-        beautifulsoup4
-        lxml
-        numpy
-        scipy
-        sympy
-        matplotlib
-        pyqt5
-        pillow
-        jupyter
-        ipython
-        # gevent
-      ];
-    })
-
-    (texlive.combine {
-      inherit (texlive)
-        scheme-small
-        collection-latexextra
-        collection-fontsrecommended
-        fontawesome
-        biblatex
-        logreq
-        doublestroke
-        # blkarray
-      ;
-    })
-
-    cabal2nix
-    haskellPackages.cabal-install
-    haskellPackages.pandoc
-    (haskellPackages.ghcWithPackages (hp: with hp; [
-      random
-      bytestring
-      stm
-      vector
-      containers
-      mtl
-      network
-      async
-      attoparsec
-      unix
-      process
-      arithmoi
-    ]))
+    python3
 
   ];
 
