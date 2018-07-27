@@ -27,6 +27,7 @@ nspinpriv
 dist
 cabal.sandbox.config
 .cabal-sandbox/*
+.stack-work
 
 .local.vim
 local.vim

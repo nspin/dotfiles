@@ -8,7 +8,7 @@ if [ -e $MY_LOCAL/vim_plugin_path ]; then
 fi
 
 export PATH="$MY_LOCAL/bin:$MY_DOTFILES/bin/darwin:$MY_DOTFILES/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 export EDITOR=vim

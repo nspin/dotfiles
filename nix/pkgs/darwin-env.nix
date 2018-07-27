@@ -92,7 +92,7 @@ pkgs: with pkgs; [
   # clojure
   # leiningen
   # go
-  gcc
+  # gcc
 
   cmake
   # maven
@@ -102,7 +102,7 @@ pkgs: with pkgs; [
   # gdb
   # nasm
   # radare2
-  mitmproxy
+  # mitmproxy
   # qemu
 
   # (lowPrio ihaskell)
