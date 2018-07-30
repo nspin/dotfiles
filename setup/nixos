@@ -3,8 +3,8 @@ vim/gvimrc                     .gvimrc
 bash/bashrc                    .bashrc
 bash/bash_profile              .bash_profile
 multiplexers/tmux.conf         .tmux.conf
-git/gitconfig                  .gitconfig
-git/gitignore_global           .gitignore_global
+git/config                     .config/git/config
+git/ignore                     .config/git/ignore
 interpreters/ghci              .ghci
 line-editors/editrc            .editrc
 line-editors/inputrc           .inputrc
