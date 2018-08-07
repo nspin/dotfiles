@@ -8,3 +8,4 @@ line-editors/inputrc           .inputrc
 mitmproxy/config.yaml          .mitmproxy/config.yaml
 git/config                     .config/git/config
 git/ignore                     .config/git/ignore
+interpreters/ghci              .ghci
