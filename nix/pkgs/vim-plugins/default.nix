@@ -11,16 +11,20 @@ let
       d=$out/share/vim-bundle
       mkdir -p $d
       root=$d/${name}
-      cp -r $src $root
-      cd $root
-      $extra
+      cp -r $src src
+      chmod -R u+w -- src
+      pushd src
+        eval "$extra"
+      popd
+      cp -r src $root
     '';
-  # } // (if lib.hasAttr name extra then lib.getAttr name extra else {});
-  } //  lib.getAttr name extra);
+  } // (if lib.hasAttr name extra then lib.getAttr name extra else {}));
 
   mk = lib.mapAttrs (name: value: mkDrv {
     inherit name;
     src = value;
   });
 
-in mk (callPackage ./srcs.nix {})
+in mk (import ./srcs.nix {
+  inherit fetchgit;
+})

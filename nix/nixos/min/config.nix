@@ -37,6 +37,10 @@ in {
       "local=${cfg.local}"
     ];
 
+    environment.pathsToLink = [
+      "/share/vim-bundle"
+    ];
+
     environment.variables = rec {
       NIXPKGS_CONFIG = MY_DOTFILES + "/nix/pkgs/config.nix";
       NIXOS_CONFIG = MY_LOCAL + "/config.nix";
@@ -51,7 +55,7 @@ in {
       MY_DOTFILES = "${cfg.dotfiles}";
       MY_LOCAL = "${cfg.local}";
 
-      MY_VIM_BUNDLE = "${prefix}vim-bundle/bundle";
+      MY_VIM_BUNDLE = "/cfg/vim-bundle/bundle";
     };
 
     environment.extraInit = ''
