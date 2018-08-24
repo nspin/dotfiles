@@ -1,4 +1,4 @@
-{ lib, stdenv }:
+{ lib, stdenv, writeText }:
 
 { target, assocs }:
 
@@ -12,7 +12,7 @@ stdenv.mkDerivation {
     done
   '';
 
-  builder = builtins.toFile "builder.sh" ''
+  builder = writeText "builder.sh" ''
     . $stdenv/setup
 
     mkdir -p $out/bin

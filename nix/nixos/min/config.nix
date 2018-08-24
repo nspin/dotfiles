@@ -7,7 +7,7 @@ let
   cfg = config.my.config;
 
   hdir = pkgs.hdir {
-    target = "/cfg/dotfiles/config";
+    target = cfg.dotfiles + "/config";
     assocs = {
       ".bash_profile"          = "bash/bash_profile";
       ".bashrc"                = "bash/bashrc";
@@ -58,7 +58,34 @@ in {
       "/share/hdir"
     ];
 
-    environment.systemPackages = [ hdir ];
+    environment.systemPackages = [
+      hdir
+    ] ++ (map (k: lib.getAttr k pkgs.vim-plugins) [
+      "vim-repeat"
+      "vim-commentary"
+      "vim-surround"
+      "vim-slime"
+      "vim-dirvish"
+      "vim-bufferline"
+      "vim-rsi"
+      "vim-eunuch"
+      "vim-sexp"
+      "vim-sexp-mappings-for-regular-people"
+      "youcompleteme"
+      "cscope_macros.vim"
+      "vim-snippets"
+      "ultisnips"
+      "tabular"
+      "nerdtree"
+      "vim-nix"
+      "idris-vim"
+      "smali-vim"
+      "vim-markdown"
+      "cryptol.vim"
+      "chuck.vim"
+      "Vim-Jinja2-Syntax"
+      "vim-colors-solarized"
+    ]);
 
     environment.variables = rec {
       NIXPKGS_CONFIG = MY_DOTFILES + "/nix/pkgs/config.nix";
