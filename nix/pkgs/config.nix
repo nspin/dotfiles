@@ -9,7 +9,8 @@
 
   packageOverrides = super: let self = super.pkgs; in with self; {
 
-    vim-plugins = callPackages ./vim-plugins {};
+    vim-plugins = callPackage ./vim-plugins {};
+    hdir = callPackage ./hdir {};
 
     darwin-env = buildEnv {
       name = "darwin-env";

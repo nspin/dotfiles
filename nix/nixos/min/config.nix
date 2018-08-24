@@ -6,6 +6,22 @@ let
 
   cfg = config.my.config;
 
+  hdir = pkgs.hdir {
+    target = "/cfg/dotfiles/config";
+    assocs = {
+      ".bash_profile"          = "bash/bash_profile";
+      ".bashrc"                = "bash/bashrc";
+      ".tmux.conf"             = "multiplexers/tmux.conf";
+      ".vimrc"                 = "vim/vimrc";
+      ".config/git/config"     = "git/config";
+      ".config/git/ignore"     = "git/ignore";
+      ".ghci"                  = "interpreters/ghci";
+      ".editrc"                = "line-editors/editrc";
+      ".haskeline"             = "line-editors/haskeline";
+      ".inputrc"               = "line-editors/inputrc";
+    };
+  };
+
 in {
 
   options = {
@@ -39,7 +55,10 @@ in {
 
     environment.pathsToLink = [
       "/share/vim-bundle"
+      "/share/hdir"
     ];
+
+    environment.systemPackages = [ hdir ];
 
     environment.variables = rec {
       NIXPKGS_CONFIG = MY_DOTFILES + "/nix/pkgs/config.nix";
@@ -54,8 +73,6 @@ in {
       MY_SYSTEM = "linux";
       MY_DOTFILES = "${cfg.dotfiles}";
       MY_LOCAL = "${cfg.local}";
-
-      MY_VIM_BUNDLE = "/cfg/vim-bundle/bundle";
     };
 
     environment.extraInit = ''
