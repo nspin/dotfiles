@@ -1,15 +1,26 @@
-{ lib, stdenv, fetchgit }:
+{ lib, callPackage, stdenv, fetchgit }:
 
 let
-  zipNames = names: values: with lib;
-    listToAttrs (zipListsWith nameValuePair names values);
-  plugins =
-    builtins.map
-      (line: fetchgit (zipNames ["url" "rev"] (lib.splitString " " line)))
-      (builtins.filter
-        (line: builtins.stringLength line != 0 && builtins.substring 0 1 line != "#")
-        (lib.splitString "\n" (builtins.readFile ./refs.txt)));
-in stdenv.mkDerivation {
-  name = "vim-bundle";
-  builder = ./builder.sh;
-}
+
+  extra = callPackage ./extra.nix {};
+
+  mkDrv = { name, src }: stdenv.mkDerivation ({
+    inherit name src;
+    builder = builtins.toFile "builder.sh" ''
+      . $stdenv/setup
+      d=$out/share/vim-bundle
+      mkdir -p $d
+      root=$d/${name}
+      cp -r $src $root
+      cd $root
+      $extra
+    '';
+  # } // (if lib.hasAttr name extra then lib.getAttr name extra else {});
+  } //  lib.getAttr name extra);
+
+  mk = lib.mapAttrs (name: value: mkDrv {
+    inherit name;
+    src = value;
+  });
+
+in mk (callPackage ./srcs.nix {})

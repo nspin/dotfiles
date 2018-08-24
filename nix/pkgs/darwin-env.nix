@@ -8,7 +8,7 @@ pkgs: with pkgs; [
   reattach-to-user-namespace
 
   # nix-repl
-  # nix-prefetch-scripts
+  nix-prefetch-scripts
   patchelf
 
   rlwrap
