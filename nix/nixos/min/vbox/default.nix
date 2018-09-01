@@ -1,15 +1,18 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
 
   imports = [
-    ./config.nix
-    ./pkgs.nix
+    ../config.nix
+    ../pkgs.nix
   ];
 
   networking.firewall.enable = false;
 
   services.openssh.enable = true;
+  services.openssh.hostKeys = [
+    { type = "ecdsa"; bits = "256"; path = "${config.my.config.dotfiles}/nix/nixos/min/vbox/id_ecdsa"; }
+  ];
 
   security.sudo.wheelNeedsPassword = false;
 
@@ -17,8 +20,11 @@
   users.extraUsers.x = {
     uid = 1000;
     isNormalUser = true;
-    password = "";
     extraGroups = [ "wheel" "docker" "vboxsf" ];
+    password = "";
+    openssh.authorizedKeys.keyFiles = [
+      ./id_ecdsa.pub
+    ];
   };
 
   virtualisation.virtualbox.guest.enable = true;
