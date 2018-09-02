@@ -15,8 +15,9 @@
     gnumake
     # python3
 
-    # rlwrap bind
+    rlwrap
     fznode
+    # bind
 
     # htop
     # openssl
