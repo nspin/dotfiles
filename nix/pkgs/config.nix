@@ -17,7 +17,32 @@
       paths = import ./darwin-env.nix self ++ (
         let local = <local/darwin-env.nix>;
         in if lib.pathExists local then import local self else []
-      );
+      ) ++ (map (k: lib.getAttr k pkgs.vim-plugins) [
+        "vim-repeat"
+        "vim-commentary"
+        "vim-surround"
+        "vim-slime"
+        "vim-dirvish"
+        "vim-bufferline"
+        "vim-rsi"
+        "vim-eunuch"
+        "vim-sexp"
+        "vim-sexp-mappings-for-regular-people"
+        "youcompleteme"
+        "cscope_macros.vim"
+        "vim-snippets"
+        "ultisnips"
+        "tabular"
+        "nerdtree"
+        "vim-nix"
+        "idris-vim"
+        "smali-vim"
+        "vim-markdown"
+        "cryptol.vim"
+        "chuck.vim"
+        "Vim-Jinja2-Syntax"
+        "vim-colors-solarized"
+      ]);
     };
 
     my-vim = callPackage ./pkgs/my-vim {
