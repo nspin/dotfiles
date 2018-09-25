@@ -110,7 +110,7 @@ pkgs: with pkgs; [
   # gnupg
 
   (dotfiles {
-    target = "/Users/nick/dotfiles/config";
+    target = "/cfg/dotfiles/config";
     assocs = {
       ".bash_profile"          = "bash/bash_profile";
       ".bashrc"                = "bash/bashrc";
