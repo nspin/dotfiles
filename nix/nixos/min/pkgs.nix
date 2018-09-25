@@ -2,7 +2,7 @@
 
   environment.systemPackages = with pkgs; [
 
-    nix-repl nix-prefetch-scripts patchelf
+    nix-prefetch-scripts patchelf
 
     binutils coreutils which file
 

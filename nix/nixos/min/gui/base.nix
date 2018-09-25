@@ -1,10 +1,5 @@
 { pkgs, lib, ... }: {
 
-  imports = [
-    ./gui-pkgs.nix
-    ./xmonad
-  ];
-
   services.xserver = {
     enable = true;
     autorun = true;

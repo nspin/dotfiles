@@ -6,7 +6,7 @@ let
 
   cfg = config.my.config;
 
-  hdir = pkgs.hdir {
+  dotfiles = pkgs.dotfiles {
     target = cfg.dotfiles + "/config";
     assocs = {
       ".bash_profile"          = "bash/bash_profile";
@@ -55,39 +55,18 @@ in {
 
     environment.pathsToLink = [
       "/share/vim-bundle"
-      "/share/hdir"
+      "/share/dotfiles"
     ];
 
     environment.systemPackages = [
-      hdir
-    ] ++ (map (k: lib.getAttr k pkgs.vim-plugins) [
-      "vim-repeat"
-      "vim-commentary"
-      "vim-surround"
-      "vim-slime"
-      "vim-dirvish"
-      "vim-bufferline"
-      "vim-rsi"
-      "vim-eunuch"
-      "vim-sexp"
-      "vim-sexp-mappings-for-regular-people"
-      "youcompleteme"
-      "cscope_macros.vim"
-      "vim-snippets"
-      "ultisnips"
-      "tabular"
-      "nerdtree"
-      "vim-nix"
-      "idris-vim"
-      "smali-vim"
-      "vim-markdown"
-      "cryptol.vim"
-      "chuck.vim"
-      "Vim-Jinja2-Syntax"
-      "vim-colors-solarized"
-    ]);
+      dotfiles
+    ] ++ pkgs.vim-plugins.all;
 
     environment.variables = rec {
+      MY_SYSTEM = "linux";
+      MY_DOTFILES = "${cfg.dotfiles}";
+      MY_LOCAL = "${cfg.local}";
+
       NIXPKGS_CONFIG = MY_DOTFILES + "/nix/pkgs/config.nix";
       NIXOS_CONFIG = MY_LOCAL + "/config.nix";
 
@@ -96,10 +75,6 @@ in {
       VISUAL = "vim";
 
       FZF_DEFAULT_OPTS = "--reverse";
-
-      MY_SYSTEM = "linux";
-      MY_DOTFILES = "${cfg.dotfiles}";
-      MY_LOCAL = "${cfg.local}";
     };
 
     environment.extraInit = ''
@@ -108,6 +83,12 @@ in {
 
     security.sudo.extraConfig = ''
       Defaults env_keep += "NIX_PATH"
+      Defaults env_keep += "NIX_PROFILES"
+
+      Defaults env_keep += "MY_SYSTEM"
+      Defaults env_keep += "MY_DOTFILES"
+      Defaults env_keep += "MY_LOCAL"
+
       Defaults env_keep += "NIXPKGS_CONFIG"
       Defaults env_keep += "NIXOS_CONFIG"
 
@@ -116,10 +97,6 @@ in {
       Defaults env_keep += "VISUAL"
 
       Defaults env_keep += "FZF_DEFAULT_OPTS"
-
-      Defaults env_keep += "MY_SYSTEM"
-      Defaults env_keep += "MY_DOTFILES"
-      Defaults env_keep += "MY_LOCAL"
     '';
 
   };
