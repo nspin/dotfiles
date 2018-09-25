@@ -17,3 +17,5 @@ export VISUAL=vim
 export FZF_DEFAULT_OPTS='--reverse'
 
 export NIX_PATH="nixpkgs=$HOME/nixpkgs:dotfiles=$MY_DOTFILES:local=$MY_LOCAL"
+
+export NIX_PROFILES="/nix/var/nix/profiles/per-user/$USER/profile /nix/var/nix/profiles/default"

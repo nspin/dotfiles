@@ -1,9 +1,7 @@
-if echo $- | grep -q i; then
-    . $HOME/.bashrc
-fi
-
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
     . $HOME/.nix-profile/etc/profile.d/nix.sh
 fi
 
-export MY_NIX_PROFILES="/nix/var/nix/profiles/per-user/$USER/profile /run/current-system/sw /nix/var/nix/profiles/default"
+if echo $- | grep -q i; then
+    . $HOME/.bashrc
+fi
