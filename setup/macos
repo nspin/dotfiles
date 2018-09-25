@@ -9,3 +9,4 @@ git/config                     .config/git/config
 git/ignore                     .config/git/ignore
 interpreters/ghci              .ghci
 mitmproxy/config.yaml          .mitmproxy/config.yaml
+../nix/pkgs/config.nix         .config/nixpkgs/config.nix
