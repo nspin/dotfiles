@@ -4,7 +4,7 @@ filetype off
 " Runtimepath initialization
 
 let s:plugin_path = []
-for nix_profile in split($NIX_PROFILES, ' ')
+for nix_profile in split($MY_NIX_PROFILES, ' ')
   for plugin in split(system('ls '.nix_profile.'/share/vim-bundle'), '\n', 0)
     call add(s:plugin_path, nix_profile.'/share/vim-bundle/'.plugin)
   endfor
