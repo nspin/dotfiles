@@ -1,7 +1,7 @@
 super: let self = super.pkgs; in with self; {
 
   vim-plugins = callPackage ./vim-plugins {};
-  hdir = callPackage ./hdir {};
+  dotfiles = callPackage ./dotfiles {};
 
   darwin-env = buildEnv {
     name = "darwin-env";
