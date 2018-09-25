@@ -6,7 +6,7 @@
 
   environment.systemPackages = with pkgs; [
 
-    nix-repl nix-prefetch-scripts patchelf
+    nix-prefetch-scripts patchelf
 
     coreutils which file
     zip unzip p7zip

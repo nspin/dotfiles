@@ -14,7 +14,7 @@
     ario
     vlc
     geeqie
-    zathura
+    # zathura
     # picard
 
     # readme-preview
