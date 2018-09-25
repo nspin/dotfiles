@@ -46,6 +46,6 @@
 
     python3
 
-  ];
+  ] ++ vim-plugins.all;
 
 }
