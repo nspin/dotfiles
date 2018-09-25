@@ -109,4 +109,4 @@ pkgs: with pkgs; [
 
   # gnupg
 
-]
+] ++ vim-plugins.all

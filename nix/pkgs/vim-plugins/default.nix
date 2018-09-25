@@ -25,6 +25,13 @@ let
     src = value;
   });
 
-in mk (import ./srcs.nix {
-  inherit fetchgit;
-})
+  attrs = mk (import ./srcs.nix {
+    inherit fetchgit;
+  });
+
+in {
+  inherit attrs;
+  all = lib.attrValues attrs;
+  includeNames = map (k: lib.getAttr k attrs);
+  excludeNames = names: lib.filterAttrs (k: v: !(lib.elem k names)) attrs;
+}
