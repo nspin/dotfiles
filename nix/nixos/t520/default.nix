@@ -1,6 +1,6 @@
 { pkgs, lib, ... }: {
 
-  system.nixos.stateVersion = "17.03";
+  system.stateVersion = "17.03";
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
@@ -10,15 +10,19 @@
   security.sudo.wheelNeedsPassword = false;
 
   imports = [
+
+    ../min/config.nix
+    ../min/gui/base.nix
+
     ./net.nix
     # ./media.nix
-    ./config.nix
     ./tpkgs.nix
     ./gpkgs.nix
     # ./l33t
     # ./xfce
     ./gnome
     # ./kde
+
   ];
 
   users.extraUsers = {
@@ -45,21 +49,6 @@
 
   users.groups = {
     dialout = {};
-  };
-
-  services.xserver = {
-    enable = true;
-    autorun = true;
-    layout = "us";
-  };
-  
-  fonts = {
-    enableFontDir = true;
-    fontconfig.enable = true;
-    fonts = [
-      pkgs.dejavu_fonts
-      pkgs.font-awesome-ttf
-    ];
   };
 
   environment.systemPackages = with pkgs; [
