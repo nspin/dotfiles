@@ -1,0 +1,3 @@
+if echo $- | grep -q i; then
+    . $HOME/.bashrc
+fi

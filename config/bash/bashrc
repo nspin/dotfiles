@@ -1,22 +1,10 @@
 # Determine system
 # TODO add more detail (e.g. linux distro)
 
-# Bootstrap environment if necessary
-
-case "$(uname -s)" in
-    Darwin)
-        . $HOME/dotfiles/config/sh/darwin/*.sh
-        ;;
-    Linux)
-        ;;
-esac
-
 # In scope:
 #   MY_SYSTEM
 #   MY_DOTFILES
 #   MY_LOCAL
-#   MY_VIM_BUNDLE
-#   MY_VIM_PLUGIN_PATH
 
 # Posix shell init
 

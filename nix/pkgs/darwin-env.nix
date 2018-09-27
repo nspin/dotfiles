@@ -110,9 +110,9 @@ pkgs: with pkgs; [
   # gnupg
 
   (dotfiles {
-    target = "/cfg/dotfiles/config";
+    target = "/Users/nick/dotfiles/config";
     assocs = {
-      ".bash_profile"          = "bash/bash_profile";
+      ".bash_profile"          = "bash/bash_profile.macos";
       ".bashrc"                = "bash/bashrc";
       ".tmux.conf"             = "multiplexers/tmux.conf";
       ".vimrc"                 = "vim/vimrc";

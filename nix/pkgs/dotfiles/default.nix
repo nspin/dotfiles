@@ -5,30 +5,16 @@
 stdenv.mkDerivation {
   name = "dotfiles";
 
-  linkDotfiles = writeScript "link-dotfiles" ''
+  update = writeScript "update-dotfile-links" ''
     #!${stdenv.shell}
-    for nix_profile in $NIX_PROFILES; do
-      dotfiles=$nix_profile/share/dotfiles
-      if [ -d  $dotfiles ]; then
-        ln -sfnv $dotfiles $HOME/.dotfiles
-        pushd $dotfiles
-          for dotfile in $(find . -not -type d); do
-            mkdir -p $(dirname $HOME/$dotfile)
-            ln -sfnv $HOME/.dotfiles/$dotfile $HOME/$dotfile
-          done
-        popd
-        exit
-      fi
-    done
-    echo "no profile contains dotfiles" >&2
-    exit 1
+    sh ${./update-dotfile-links.sh}
   '';
 
   builder = writeText "builder.sh" ''
     . $stdenv/setup
 
     mkdir -p $out/bin
-    ln -s $linkDotfiles $out/bin/link-dotfiles
+    ln -s $update $out/bin/update-dotfile-links
 
     mkdir -p $out/share/dotfiles
     ${lib.concatMapStrings
