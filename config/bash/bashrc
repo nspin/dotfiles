@@ -22,7 +22,7 @@ PS1="$text \u@\h $symbol$lambda$text \w $symbol$arrow$reset "
 
 # Fix colors in screen in X11/macos
 
-if [ -n "$DISPLAY" ] || [ $MY_SYSTEM = macos ]; then
+if [ -n "$DISPLAY" ] || [ "$MY_OS" = macos ]; then
     export TERM=xterm-256color
 fi
 
