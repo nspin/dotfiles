@@ -1,14 +1,19 @@
-super: let self = super.pkgs; in with self; {
+self: super: with self; {
 
   vim-plugins = callPackage ./vim-plugins {};
   dotfiles = callPackage ./dotfiles {};
 
   darwin-env = buildEnv {
     name = "darwin-env";
-    paths = import ./darwin-env.nix self ++ (
-      let local = <local/darwin-env.nix>;
-      in if lib.pathExists local then import local self else []
-    );
+    paths =
+      let
+        try = path:
+          if lib.pathExists path
+          then import path self
+          else [];
+      in import ./darwin-env.nix self
+        ++ try (<local> + /env.nix)
+        ++ try (<private> + /env.nix);
   };
 
   my-vim = callPackage ./pkgs/my-vim {

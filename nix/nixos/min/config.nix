@@ -57,6 +57,7 @@ in {
       "dotfiles=${cfg.dotfiles}"
       "local=${cfg.local}"
       "private=${cfg.private}"
+      "nixpkgs-overlays=${cfg.dotfiles}/nix/pkgs/overlays.nix"
     ];
 
     environment.pathsToLink = [
