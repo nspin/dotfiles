@@ -11,8 +11,14 @@
 [github]
     user = nspin
 
+[gitlab]
+    user = nspin
+
 [url "https://nspin@github.com"]
     insteadOf = https://github.com
+
+[url "https://nspin@gitlab.com"]
+    insteadOf = https://gitlab.com
 
 [url "git://github.com/ghc/packages-"]
 	insteadOf = git://github.com/ghc/packages/
