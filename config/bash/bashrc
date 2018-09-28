@@ -1,11 +1,3 @@
-# Determine system
-# TODO add more detail (e.g. linux distro)
-
-# In scope:
-#   MY_SYSTEM
-#   MY_DOTFILES
-#   MY_LOCAL
-
 # Posix shell init
 
 for file in $MY_DOTFILES/config/sh/*.sh; do
@@ -28,9 +20,9 @@ fi
 
 PS1="$text \u@\h $symbol$lambda$text \w $symbol$arrow$reset "
 
-# Fix colors in screen in X11/macOS
+# Fix colors in screen in X11/macos
 
-if [ -n "$DISPLAY" ] || [ $MY_SYSTEM = darwin ]; then
+if [ -n "$DISPLAY" ] || [ $MY_SYSTEM = macos ]; then
     export TERM=xterm-256color
 fi
 

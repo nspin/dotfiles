@@ -9,7 +9,7 @@ let
   dotfiles = pkgs.dotfiles {
     target = cfg.dotfiles + "/config";
     assocs = {
-      ".bash_profile"          = "bash/bash_profile";
+      ".bash_profile"          = "bash/bash_profile.nixos";
       ".bashrc"                = "bash/bashrc";
       ".tmux.conf"             = "multiplexers/tmux.conf";
       ".vimrc"                 = "vim/vimrc";
@@ -26,9 +26,9 @@ in {
 
   options = {
 
-    my.config.local = mkOption {
+    my.config.nixpkgs = mkOption {
       type = types.str;
-      default = "/cfg/local";
+      default = "/cfg/nixpkgs";
     };
 
     my.config.dotfiles = mkOption {
@@ -36,9 +36,9 @@ in {
       default = "/cfg/dotfiles";
     };
 
-    my.config.nixpkgs = mkOption {
+    my.config.local = mkOption {
       type = types.str;
-      default = "/cfg/nixpkgs";
+      default = "/cfg/local";
     };
 
   };
@@ -63,7 +63,10 @@ in {
     ] ++ pkgs.vim-plugins.all;
 
     environment.variables = rec {
-      MY_SYSTEM = "linux";
+      MY_OS = "nixos";
+      MY_KERNEL = "linux";
+
+      MY_NIXPKGS = "${cfg.nixpkgs}";
       MY_DOTFILES = "${cfg.dotfiles}";
       MY_LOCAL = "${cfg.local}";
 
@@ -81,23 +84,28 @@ in {
       export PATH="$MY_LOCAL/bin:$(find $MY_DOTFILES/bin/linux -type d -printf ":%p"):$MY_DOTFILES/bin:$PATH"
     '';
 
-    security.sudo.extraConfig = ''
-      Defaults env_keep += "NIX_PATH"
-      Defaults env_keep += "NIX_PROFILES"
+    # security.sudo.extraConfig = ''
 
-      Defaults env_keep += "MY_SYSTEM"
-      Defaults env_keep += "MY_DOTFILES"
-      Defaults env_keep += "MY_LOCAL"
+    #   Defaults env_keep += "MY_OS"
+    #   Defaults env_keep += "MY_KERNEL"
 
-      Defaults env_keep += "NIXPKGS_CONFIG"
-      Defaults env_keep += "NIXOS_CONFIG"
+    #   Defaults env_keep += "MY_NIXPKGS"
+    #   Defaults env_keep += "MY_DOTFILES"
+    #   Defaults env_keep += "MY_LOCAL"
 
-      Defaults env_keep += "PAGER"
-      Defaults env_keep += "EDITOR"
-      Defaults env_keep += "VISUAL"
+    #   Defaults env_keep += "NIXPKGS_CONFIG"
+    #   Defaults env_keep += "NIXOS_CONFIG"
 
-      Defaults env_keep += "FZF_DEFAULT_OPTS"
-    '';
+    #   Defaults env_keep += "PAGER"
+    #   Defaults env_keep += "EDITOR"
+    #   Defaults env_keep += "VISUAL"
+
+    #   Defaults env_keep += "FZF_DEFAULT_OPTS"
+
+    #   Defaults env_keep += "NIX_PATH"
+    #   Defaults env_keep += "NIX_PROFILES"
+
+    # '';
 
   };
 
