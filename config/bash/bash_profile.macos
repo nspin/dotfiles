@@ -8,15 +8,17 @@ export MY_KERNEL=darwin
 export MY_NIXPKGS="$HOME/nixpkgs"
 export MY_DOTFILES="$HOME/dotfiles"
 export MY_LOCAL="$HOME/local"
+export MY_PRIVATE="$HOME/private"
 
 export NIXPKGS_CONFIG="$MY_DOTFILES/nix/pkgs/config.nix"
-export NIX_PATH="nixpkgs=$MY_NIXPKGS:dotfiles=$MY_DOTFILES:local=$MY_LOCAL"
+export NIX_PATH="nixpkgs=$MY_NIXPKGS:dotfiles=$MY_DOTFILES:local=$MY_LOCAL:private=$MY_PRIVATE"
 export NIX_PROFILES="/nix/var/nix/profiles/per-user/$USER/profile /nix/var/nix/profiles/default"
 
 export PATH="\
-$HOME/bin:$HOME/.local/bin:\
-$MY_DOTFILES/bin/darwin:$MY_DOTFILES/bin:\
+$MY_PRIVATE/bin:\
 $MY_LOCAL/bin:\
+$(find $MY_DOTFILES/bin/$MY_KERNEL -type d -printf ':%p'):\
+$MY_DOTFILES/bin:\
 $PATH"
 
 export EDITOR=vim

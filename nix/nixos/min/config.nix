@@ -41,6 +41,11 @@ in {
       default = "/cfg/local";
     };
 
+    my.config.private = mkOption {
+      type = types.str;
+      default = "/cfg/private";
+    };
+
   };
 
   config = {
@@ -51,6 +56,7 @@ in {
       "nixpkgs=${cfg.nixpkgs}"
       "dotfiles=${cfg.dotfiles}"
       "local=${cfg.local}"
+      "private=${cfg.private}"
     ];
 
     environment.pathsToLink = [
@@ -69,6 +75,7 @@ in {
       MY_NIXPKGS = "${cfg.nixpkgs}";
       MY_DOTFILES = "${cfg.dotfiles}";
       MY_LOCAL = "${cfg.local}";
+      MY_PRIVATE = "${cfg.private}";
 
       NIXPKGS_CONFIG = MY_DOTFILES + "/nix/pkgs/config.nix";
       NIXOS_CONFIG = MY_LOCAL + "/config.nix";
@@ -81,31 +88,37 @@ in {
     };
 
     environment.extraInit = ''
-      export PATH="$MY_LOCAL/bin:$(find $MY_DOTFILES/bin/linux -type d -printf ":%p"):$MY_DOTFILES/bin:$PATH"
+      export PATH="\
+      $MY_PRIVATE/bin:\
+      $MY_LOCAL/bin:\
+      $(find $MY_DOTFILES/bin/$MY_KERNEL -type d -printf ':%p'):\
+      $MY_DOTFILES/bin:\
+      $PATH"
     '';
 
-    # security.sudo.extraConfig = ''
+    security.sudo.extraConfig = ''
 
-    #   Defaults env_keep += "MY_OS"
-    #   Defaults env_keep += "MY_KERNEL"
+      Defaults env_keep += "MY_OS"
+      Defaults env_keep += "MY_KERNEL"
 
-    #   Defaults env_keep += "MY_NIXPKGS"
-    #   Defaults env_keep += "MY_DOTFILES"
-    #   Defaults env_keep += "MY_LOCAL"
+      Defaults env_keep += "MY_NIXPKGS"
+      Defaults env_keep += "MY_DOTFILES"
+      Defaults env_keep += "MY_LOCAL"
+      Defaults env_keep += "MY_PRIVATE"
 
-    #   Defaults env_keep += "NIXPKGS_CONFIG"
-    #   Defaults env_keep += "NIXOS_CONFIG"
+      Defaults env_keep += "NIXPKGS_CONFIG"
+      Defaults env_keep += "NIXOS_CONFIG"
 
-    #   Defaults env_keep += "PAGER"
-    #   Defaults env_keep += "EDITOR"
-    #   Defaults env_keep += "VISUAL"
+      Defaults env_keep += "PAGER"
+      Defaults env_keep += "EDITOR"
+      Defaults env_keep += "VISUAL"
 
-    #   Defaults env_keep += "FZF_DEFAULT_OPTS"
+      Defaults env_keep += "FZF_DEFAULT_OPTS"
 
-    #   Defaults env_keep += "NIX_PATH"
-    #   Defaults env_keep += "NIX_PROFILES"
+      Defaults env_keep += "NIX_PATH"
+      Defaults env_keep += "NIX_PROFILES"
 
-    # '';
+    '';
 
   };
 

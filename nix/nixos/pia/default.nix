@@ -21,12 +21,12 @@ let
       auth sha1
       tls-client
       remote-cert-tls server
-      auth-user-pass ${/cfg/local/pia/auth}
+      auth-user-pass ${<private/pia/auth>}
       comp-lzo
       verb 1
       reneg-sec 0
-      crl-verify ${/cfg/local/pia/crl.rsa.2048.pem}
-      ca ${/cfg/local/pia/ca.rsa.2048.crt}
+      crl-verify ${<private/pia/crl.rsa.2048.pem>}
+      ca ${<private/pia/ca.rsa.2048.crt>}
       disable-occ
     '';
   };
