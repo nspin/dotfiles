@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /Applications/TorBrowser.app/Contents/MacOS/Tor/tor.real "$@"
