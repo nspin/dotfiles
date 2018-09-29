@@ -3,36 +3,15 @@
   programs.adb.enable = true;
   users.extraUsers.nick.extraGroups = ["adbusers"];
 
-
   environment.systemPackages = with pkgs; [
 
-    nix-prefetch-scripts patchelf
-
-    coreutils which file
-    zip unzip p7zip
-    fzf
-
-    my-vim tmux screen
-    git mercurial subversion
-
-    wget
-
-    rlwrap bind
-
-    htop
 
     pmtools pmutils
     jmtpfs
     usbutils
     sysstat
 
-    # misc
-
-    openssl
-
-    uttyl fznode reptyr
-
-    # lang
+    uttyl reptyr
 
     gcc gnumake
     # jre jdk

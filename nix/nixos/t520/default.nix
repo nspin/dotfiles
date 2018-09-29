@@ -12,6 +12,8 @@
   imports = [
 
     ../min/config.nix
+    ../min/pkgs.nix
+    ../min/extra-pkgs.nix
     ../min/gui/base.nix
 
     ./net.nix

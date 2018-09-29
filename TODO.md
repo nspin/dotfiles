@@ -1,5 +1,8 @@
 # TODO
 
+nixos:
+    nixpkgs.overlays option
+
 tmux:
     xclip binding for vm
 

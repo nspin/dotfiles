@@ -2,27 +2,23 @@
 
   environment.systemPackages = with pkgs; [
 
-    nix-prefetch-scripts patchelf
-
-    binutils coreutils which file
-
-    git
-    # mercurial subversion wget rsync zip unzip p7zip
+    coreutils
+    binutils
+    gnused
+    gnugrep
+    findutils
+    which
+    file
 
     my-vim
-    tmux fzf
-
-    gnumake
-    # python3
-
-    rlwrap
+    tmux
+    git
+    fzf
     fznode
-    # bind
 
-    # htop
-    # openssl
-
-    # readme-preview
+    nix-prefetch-scripts
+    patchelf
+    rlwrap
 
   ];
 

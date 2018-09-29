@@ -51,13 +51,15 @@ in {
   config = {
 
     nixpkgs.config = import <dotfiles/nix/pkgs/config.nix>;
+    nixpkgs.overlays = [
+      (import <dotfiles/nix/pkgs/overlay.nix>)
+    ];
 
     nix.nixPath = [
       "nixpkgs=${cfg.nixpkgs}"
       "dotfiles=${cfg.dotfiles}"
       "local=${cfg.local}"
       "private=${cfg.private}"
-      "nixpkgs-overlays=${cfg.dotfiles}/nix/pkgs/overlays.nix"
     ];
 
     environment.pathsToLink = [
@@ -79,7 +81,7 @@ in {
       MY_PRIVATE = "${cfg.private}";
 
       NIXPKGS_CONFIG = MY_DOTFILES + "/nix/pkgs/config.nix";
-      NIXOS_CONFIG = MY_LOCAL + "/config.nix";
+      NIXOS_CONFIG = MY_DOTFILES + "/nix/nixos/config.nix";
 
       PAGER = "less -R";
       EDITOR = "vim";

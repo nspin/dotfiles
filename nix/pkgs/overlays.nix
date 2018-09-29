@@ -1,3 +1,5 @@
+# only for non-nixos
+
 let
   try = path: self: super:
     if super.lib.pathExists path
