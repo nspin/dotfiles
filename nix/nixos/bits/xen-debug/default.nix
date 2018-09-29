@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
 
@@ -10,10 +10,6 @@ in {
 
   environment.systemPackages = with pkgs; [
     xen-debug
-  ];
-
-  imports = [ 
-    ../vbox
   ];
 
   virtualisation.xen.enable = true;

@@ -5,13 +5,10 @@
 
   environment.systemPackages = with pkgs; [
 
-
     pmtools pmutils
     jmtpfs
     usbutils
     sysstat
-
-    uttyl reptyr
 
     gcc gnumake
     # jre jdk

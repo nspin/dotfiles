@@ -1,7 +1,5 @@
 { pkgs, ... }: {
 
-  imports = [ ../pia ];
-
   my.pia.enable = true;
   # eudroam, https://askubuntu.com/questions/464597/14-04-wifi-cant-connect-warn-connection-disconnected-reason-3
   boot.extraModprobeConfig = "options iwlwifi 11n_disable=1";
@@ -21,9 +19,6 @@
   environment.systemPackages = with pkgs; [
     wirelesstools
     iw
-    sshfsFuse
-    rsync
-    telnet
   ];
  
   users.extraGroups.wireshark.gid = 500;

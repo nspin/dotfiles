@@ -52,7 +52,7 @@ in {
 
     nixpkgs.config = import <dotfiles/nix/pkgs/config.nix>;
     nixpkgs.overlays = [
-      (import <dotfiles/nix/pkgs/overlay.nix>)
+      (import <dotfiles/nix/pkgs/overlay>)
     ];
 
     nix.nixPath = [

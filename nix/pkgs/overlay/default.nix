@@ -3,16 +3,6 @@ self: super: with self; {
   vim-plugins = callPackage ./vim-plugins {};
   dotfiles = callPackage ./dotfiles {};
 
-  darwin-env = buildEnv {
-    name = "darwin-env";
-    paths =
-      let
-        try = path: if lib.pathExists path then import path self else [];
-      in import ./darwin-env.nix self
-        ++ try (<local> + /env.nix)
-        ++ try (<private> + /env.nix);
-  };
-
   my-vim = callPackage ./pkgs/my-vim {
     inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;
     inherit (darwin) libobjc cf-private;

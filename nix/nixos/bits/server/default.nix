@@ -8,11 +8,6 @@ let
 
 in {
 
-  imports = [
-    ./config.nix
-    ./pkgs.nix
-  ];
-
   options = {
 
     my.keyFiles = mkOption {

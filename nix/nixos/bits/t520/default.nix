@@ -1,7 +1,5 @@
 { pkgs, lib, ... }: {
 
-  system.stateVersion = "17.03";
-
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
   # boot.kernel.sysctl."kernel.yama.ptrace_scope" = lib.mkDefault "0";
@@ -11,10 +9,9 @@
 
   imports = [
 
-    ../min/config.nix
-    ../min/pkgs.nix
-    ../min/extra-pkgs.nix
-    ../min/gui/base.nix
+    ../extra-pkgs.nix
+    ../gui
+    ../gui/extra-pkgs.nix
 
     ./net.nix
     # ./media.nix
@@ -52,15 +49,5 @@
   users.groups = {
     dialout = {};
   };
-
-  environment.systemPackages = with pkgs; [
-    xclip
-    xorg.xkill
-    xorg.xwininfo
-    xlibs.xmodmap
-    xlibs.xmessage
-    xlibs.xev
-    dejavu_fonts
-  ];
 
 }

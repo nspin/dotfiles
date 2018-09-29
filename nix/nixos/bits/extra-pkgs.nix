@@ -2,7 +2,13 @@
 
   environment.systemPackages = with pkgs; [
 
-    mercurial subversion wget rsync zip unzip p7zip
+    mercurial subversion wget
+
+    zip unzip p7zip
+
+    rsync 
+    sshfsFuse
+    telnet
 
     gnumake
 

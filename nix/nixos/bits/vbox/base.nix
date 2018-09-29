@@ -2,11 +2,6 @@
 
 {
 
-  imports = [
-    ../config.nix
-    ../pkgs.nix
-  ];
-
   networking.firewall.enable = false;
 
   services.openssh.enable = true;

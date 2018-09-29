@@ -2,13 +2,12 @@
 
   environment.systemPackages = with pkgs; [
 
+    xclip
     rxvt_unicode
     sublime3
     dejavu_fonts
 
-    xclip
-
-    # chromium
+    uttyl reptyr
 
   ];
 

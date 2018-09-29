@@ -3,7 +3,6 @@
   imports = [
     ./base.nix
     ./pkgs.nix
-    ./xmonad.nix
   ];
 
 }
