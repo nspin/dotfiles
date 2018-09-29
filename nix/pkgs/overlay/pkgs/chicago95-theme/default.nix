@@ -4,19 +4,32 @@ stdenv.mkDerivation {
   name = "chicago95-theme";
   src = fetchgit {
     url = "https://github.com/grassmunk/Chicago95";
-    rev = "38b53f266d743aa4f4bce57432dc060e2cbddc45";
-    sha256 = "1pl6r9b9c3gsz8rl6m8a4xb9czjv7wv47n0avpfxjys02hy2kr2c";
+    rev = "2f383092ce96a82ee358fc40a196a7ced53379fb";
+    sha256 = "1pxzra35qhpnf0qwx6qkmyj3fwkwn7mmnl3jsc6aq444nr4mxs8c";
   };
+
   builder = builtins.toFile "builder.sh" ''
     . $stdenv/setup
-    mkdir -p $out/share/themes
-    mkdir -p $out/share/icons
-    mkdir -p $out/share/fonts/truetype
-    mkdir -p $out/share/plymouth/themes
-    cp -r $src/Theme/Chicago95 $out/share/themes
-    cp -r $src/Icons/Chicago95 $out/share/icons
-    cp -r $src/Cursors/* $out/share/icons
-    cp -r $src/Fonts/vga_font $out/share/fonts/truetype
-    cp -r $src/Plymouth/Chicago95 $out/share/plymouth/themes
+
+    unpackPhase
+    cd "$sourceRoot"
+
+    sed -i "s|/usr|$out|" Plymouth/Chicago95/Chicago95.plymouth
+
+    function copy() {
+      mkdir -p $2
+      cp -r $1 $2
+    }
+
+    copy Extras/override/gtk.css $out/etc/gtk-3.0
+    copy Theme/Chicago95         $out/share/themes
+    copy Icons/Chicago95         $out/share/icons
+    copy Fonts/vga_font          $out/share/fonts/truetype
+    copy Plymouth/Chicago95      $out/share/plymouth/themes
+    copy Lightdm/Chicago95       $out/share/lightdm-webkit/themes
+
+    for x in Cursors/*; do
+      copy $x                    $out/share/icons
+    done
   '';
 }

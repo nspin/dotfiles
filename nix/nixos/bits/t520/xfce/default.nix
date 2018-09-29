@@ -6,7 +6,11 @@
     # ./wkg.nix
   ];
 
-  # boot.plymouth.enable = true;
+  boot.plymouth.enable = true;
+  boot.plymouth.theme = "Chicago95";
+  boot.plymouth.themePackages = [
+    pkgs.chicago95-theme
+  ];
 
   environment.systemPackages = [
     pkgs.chicago95-theme
@@ -31,7 +35,7 @@
     displayManager.sessionCommands = ''
       xrdb -merge ${./xresources}
       xmodmap ${./Xmodmap}
-      xset r rate 200 50
+      xset r rate 200 50 # TODO (doesn't have effect)
     '';
 
   };
