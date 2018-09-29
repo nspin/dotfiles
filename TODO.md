@@ -1,12 +1,12 @@
 # TODO
 
 nixos:
-    nixpkgs.overlays option
+    nixpkgs.overlays option for ad hoc
+
+--------------
 
 tmux:
     xclip binding for vm
-
---------------
 
 stalonetray volume and stuff
 

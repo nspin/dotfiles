@@ -18,6 +18,7 @@ self: super: with self; {
   uttyl = callPackage ./pkgs/uttyl {};
   fznode = callPackage ./pkgs/fznode {};
   gcc-aarch64-elf = callPackage ./pkgs/gcc-aarch64-elf {};
+  chicago95-theme = callPackage ./pkgs/chicago95-theme {};
 
   ncslib = callPackage ./lib {};
   ghc-pkg-db = callPackage ./plib/ghc-pkg-db {};

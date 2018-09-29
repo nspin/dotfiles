@@ -1,7 +1,7 @@
 { stdenv, fetchgit }:
 
 stdenv.mkDerivation {
-  name = "Chicago95";
+  name = "chicago95-theme";
   src = fetchgit {
     url = "https://github.com/grassmunk/Chicago95";
     rev = "38b53f266d743aa4f4bce57432dc060e2cbddc45";
