@@ -11,5 +11,5 @@ line-editors/inputrc           .inputrc
 line-editors/haskeline         .haskeline
 mitmproxy/config.yaml          .mitmproxy/config.yaml
 xdg/zathura/zathurarc          .config/zathura/zathurarc
-xmonad/little.hs               .xmonad/xmonad.hs
+xmonad/xmonad.hs               .xmonad/xmonad.hs
 xmobar/xmobarrc                .xmobarrc
