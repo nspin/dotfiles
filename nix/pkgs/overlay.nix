@@ -7,10 +7,7 @@ self: super: with self; {
     name = "darwin-env";
     paths =
       let
-        try = path:
-          if lib.pathExists path
-          then import path self
-          else [];
+        try = path: if lib.pathExists path then import path self else [];
       in import ./darwin-env.nix self
         ++ try (<local> + /env.nix)
         ++ try (<private> + /env.nix);
@@ -27,27 +24,6 @@ self: super: with self; {
     gui = "auto";
   };
 
-  # my-vim-gui = callPackage <nixpkgs/pkgs/applications/editors/vim/configurable.nix> {
-  #   inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;
-  #   inherit (darwin) libobjc cf-private;
-  #   features = "huge";
-  #   gui = "auto";
-  #   lua = lua5_1;
-  #   flags = [ "python" ];
-  # };
-
-  ihaskell = callPackage <nixpkgs/pkgs/development/tools/haskell/ihaskell/wrapper.nix> {
-    inherit (haskellPackages) ghcWithPackages;
-    jupyter = python3.withPackages (ps: with ps; [
-      notebook
-      jupyter_console
-      nbconvert
-      ipykernel
-      ipywidgets
-    ]);
-    packages = self: with self; [ pandoc ];
-  };
-
   readme-preview = callPackage ./pkgs/grip {};
   uttyl = callPackage ./pkgs/uttyl {};
   fznode = callPackage ./pkgs/fznode {};
@@ -55,6 +31,13 @@ self: super: with self; {
 
   ncslib = callPackage ./lib {};
   ghc-pkg-db = callPackage ./plib/ghc-pkg-db {};
+
+  binutils-all = callPackage ./patched/binutils-all {
+    noSysDirs = true;
+    targetPlatform = platforms.aarch64-multiplatform;
+  };
+
+  # patched
 
   qemuRpi3 = lib.overrideDerivation qemu (self: {
     patches = [
@@ -85,6 +68,18 @@ self: super: with self; {
       ];
     });
 
+  ihaskell = callPackage <nixpkgs/pkgs/development/tools/haskell/ihaskell/wrapper.nix> {
+    inherit (haskellPackages) ghcWithPackages;
+    jupyter = python3.withPackages (ps: with ps; [
+      notebook
+      jupyter_console
+      nbconvert
+      ipykernel
+      ipywidgets
+    ]);
+    packages = self: with self; [ pandoc ];
+  };
+
   # rEnv = super.rWrapper.override {
   #   packages = import ./misc/cmc-r-installed.nix self.rPackages;
   # };
@@ -93,16 +88,4 @@ self: super: with self; {
   #   R = rEnv;
   #   useRPackages = true;
   # };
-
-  # patched
-
-  binutils-all = callPackage ./patched/binutils-all {
-    noSysDirs = true;
-    targetPlatform = platforms.aarch64-multiplatform;
-  };
-
-  # apktool = callPackage ./patched/apktool {
-  #   buildTools = androidenv.buildTools;
-  # };
-
 }
