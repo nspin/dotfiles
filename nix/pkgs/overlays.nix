@@ -8,11 +8,11 @@ let
     else {};
 
   darwinEnvOverlay = self: super: {
-    darwin-env = buildEnv {
+    darwin-env = self.buildEnv {
       name = "darwin-env";
       paths =
         let
-          try = path: if lib.pathExists path then import path self else [];
+          try = path: if self.lib.pathExists path then import path self else [];
         in import ./darwin-env.nix self
           ++ try (<local> + /env.nix)
           ++ try (<private> + /env.nix);
