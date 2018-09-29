@@ -14,13 +14,9 @@
     ../gui/extra-pkgs.nix
 
     ./net.nix
-    # ./media.nix
+    ./media.nix
     ./tpkgs.nix
     ./gpkgs.nix
-    # ./l33t
-    # ./xfce
-    ./gnome
-    # ./kde
 
   ];
 
