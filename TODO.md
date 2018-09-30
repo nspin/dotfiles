@@ -1,7 +1,7 @@
 # TODO
 
 nixos:
-    nixpkgs.overlays option for ad hoc
+    nixpkgs.overlays option for ad hoc, using NIX_PATH="np=$MY_DOTFILES/nix/pkgs/np.nixos.nix"
 
 --------------
 
