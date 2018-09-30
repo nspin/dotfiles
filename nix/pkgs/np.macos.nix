@@ -19,9 +19,12 @@ let
     };
   };
 
-in [
-  (import ./overlay)
-  darwinEnvOverlay
-  (tryOverlay (<local> + /overlay.nix))
-  (tryOverlay (<private> + /overlay.nix))
-]
+in import <nixpkgs> {
+  config = ./config.nix;
+  overlays = [
+    (import ./overlay)
+    darwinEnvOverlay
+    (tryOverlay (<local> + /overlay.nix))
+    (tryOverlay (<private> + /overlay.nix))
+  ];
+}

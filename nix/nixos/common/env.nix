@@ -60,6 +60,8 @@ in {
       "dotfiles=${cfg.dotfiles}"
       "local=${cfg.local}"
       "private=${cfg.private}"
+      "np=${cfg.dotfiles}/nix/pkgs/np.nixos.nix"
+      "nixos-config=${cfg.dotfiles}/nix/nixos/config.nix"
     ];
 
     environment.pathsToLink = [
@@ -80,8 +82,7 @@ in {
       MY_LOCAL = "${cfg.local}";
       MY_PRIVATE = "${cfg.private}";
 
-      NIXPKGS_CONFIG = MY_DOTFILES + "/nix/pkgs/config.nix";
-      NIXOS_CONFIG = MY_DOTFILES + "/nix/nixos/config.nix";
+      # NIXPKGS_CONFIG = "${cfg.dotfiles}/nix/pkgs/config.nix";
 
       PAGER = "less -R";
       EDITOR = "vim";
@@ -108,9 +109,6 @@ in {
       Defaults env_keep += "MY_DOTFILES"
       Defaults env_keep += "MY_LOCAL"
       Defaults env_keep += "MY_PRIVATE"
-
-      Defaults env_keep += "NIXPKGS_CONFIG"
-      Defaults env_keep += "NIXOS_CONFIG"
 
       Defaults env_keep += "PAGER"
       Defaults env_keep += "EDITOR"

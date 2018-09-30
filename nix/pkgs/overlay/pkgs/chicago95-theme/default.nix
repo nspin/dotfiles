@@ -2,6 +2,7 @@
 
 stdenv.mkDerivation {
   name = "chicago95-theme";
+  # src = /cfg/j/Chicago95;
   src = fetchgit {
     url = "https://github.com/grassmunk/Chicago95";
     rev = "2f383092ce96a82ee358fc40a196a7ced53379fb";
