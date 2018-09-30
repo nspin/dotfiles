@@ -26,7 +26,8 @@ stdenv.mkDerivation {
     copy Icons/Chicago95         $out/share/icons
     copy Fonts/vga_font          $out/share/fonts/truetype
     copy Plymouth/Chicago95      $out/share/plymouth/themes
-    copy Lightdm/Chicago95       $out/share/lightdm-webkit/themes
+    # copy Lightdm/Chicago95       $out/share/lightdm-webkit/themes
+    copy Lightdm/Chicago95       $out/share/web-greeter/themes
 
     for x in Cursors/*; do
       copy $x                    $out/share/icons
