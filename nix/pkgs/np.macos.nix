@@ -20,7 +20,7 @@ let
   };
 
 in import <nixpkgs> {
-  config = ./config.nix;
+  config = import ./config.nix;
   overlays = [
     (import ./overlay)
     darwinEnvOverlay
