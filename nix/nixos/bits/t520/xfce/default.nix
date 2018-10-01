@@ -23,6 +23,9 @@
 
     desktopManager.xterm.enable = false;
     desktopManager.xfce.enable = true;
+    desktopManager.xfce.extraSessionCommands = ''
+      xset r rate 200 50 # TODO (doesn't have effect)
+    '';
 
     # displayManager.lightdm.enable = true;
     # displayManager.lightdm.greeters.gtk.enable = false;
@@ -49,7 +52,6 @@
     displayManager.sessionCommands = ''
       xrdb -merge ${./xresources}
       xmodmap ${./Xmodmap}
-      xset r rate 200 50 # TODO (doesn't have effect)
     '';
 
   };
