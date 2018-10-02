@@ -5,9 +5,12 @@
     # ./hardware.nix
   ];
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
     (callPackage ./xstuff {})
-  ];
+  ]) ++ (with pkgs.gnomeExtensions; [
+    dash-to-dock
+    dash-to-panel
+  ]);
 
   services.xserver = {
     desktopManager.gnome3.enable = true;
