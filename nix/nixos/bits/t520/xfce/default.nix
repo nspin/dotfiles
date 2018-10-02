@@ -12,10 +12,20 @@
     pkgs.chicago95-theme
   ];
 
-  environment.systemPackages = [
-    pkgs.chicago95-theme
-    pkgs.lightdm-web-greeter
-    (pkgs.callPackages ./sddm-themes/absdark.nix {})
+  environment.systemPackages = with pkgs; [
+    chicago95-theme
+    lightdm-web-greeter
+    (callPackages ./sddm-themes/absdark.nix {})
+    xarchiver
+    # tumbler
+    ffmpegthumbnailer
+    gstreamer
+    kdeApplications.ark
+    gnome3.file-roller
+  ];
+
+  environment.pathsToLink = [
+    "/libexec/thunar-archive-plugin"
   ];
 
   services.xserver = {
@@ -23,12 +33,11 @@
 
     desktopManager.xterm.enable = false;
     desktopManager.xfce.enable = true;
-    desktopManager.xfce.extraSessionCommands = ''
-      xset r rate 200 50 # TODO (doesn't have effect)
-    '';
     desktopManager.xfce.thunarPlugins = [
       pkgs.xfce.thunar-archive-plugin
+      pkgs.xfce.thunar-dropbox-plugin
     ];
+
     # displayManager.lightdm.enable = true;
     # displayManager.lightdm.greeters.gtk.enable = false;
     # displayManager.lightdm.greeters.web.enable = true;

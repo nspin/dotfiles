@@ -5,6 +5,7 @@ alias tod='efd $HOME/todo'
 alias dot='efd $MY_DOTFILES'
 alias loc='efd $MY_LOCAL'
 alias cdd='cd $MY_DOTFILES'
+alias cds='cd $HOME/scratch'
 
 alias s=sublime3
 alias p=python3
