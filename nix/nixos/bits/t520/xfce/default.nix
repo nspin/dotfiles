@@ -26,7 +26,9 @@
     desktopManager.xfce.extraSessionCommands = ''
       xset r rate 200 50 # TODO (doesn't have effect)
     '';
-
+    desktopManager.xfce.thunarPlugins = [
+      pkgs.xfce.thunar-archive-plugin
+    ];
     # displayManager.lightdm.enable = true;
     # displayManager.lightdm.greeters.gtk.enable = false;
     # displayManager.lightdm.greeters.web.enable = true;
