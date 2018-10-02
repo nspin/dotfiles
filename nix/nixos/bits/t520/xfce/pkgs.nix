@@ -12,24 +12,24 @@
     usbutils
     sysstat
 
-    xfce4_battery_plugin
-    xfce4_clipman_plugin
-    xfce4_cpufreq_plugin
-    xfce4_cpugraph_plugin
-    xfce4_datetime_plugin
-    xfce4_embed_plugin
-    xfce4_eyes_plugin
-    xfce4_fsguard_plugin
-    xfce4_genmon_plugin
+    xfce4-battery-plugin
+    xfce4-clipman-plugin
+    xfce4-cpufreq-plugin
+    xfce4-cpugraph-plugin
+    xfce4-datetime-plugin
+    xfce4-embed-plugin
+    xfce4-eyes-plugin
+    xfce4-fsguard-plugin
+    xfce4-genmon-plugin
     xfce4-hardware-monitor-plugin
-    xfce4_netload_plugin
-    xfce4_mpc_plugin
+    xfce4-netload-plugin
+    xfce4-mpc-plugin
     xfce4-sensors-plugin
-    xfce4_systemload_plugin
-    xfce4_verve_plugin
-    xfce4_whiskermenu_plugin
-    xfce4_windowck_plugin
-    xfce4_pulseaudio_plugin
+    xfce4-systemload-plugin
+    xfce4-verve-plugin
+    xfce4-whiskermenu-plugin
+    xfce4-windowck-plugin
+    xfce4-pulseaudio-plugin
 
   ];
 

@@ -19,6 +19,7 @@ self: super: with self; {
   fznode = callPackage ./pkgs/fznode {};
   gcc-aarch64-elf = callPackage ./pkgs/gcc-aarch64-elf {};
   chicago95-theme = callPackage ./pkgs/chicago95-theme {};
+  sddm-theme-abstractdark = callPackage ./pkgs/sddm-themes/abstractdark.nix {};
 
   ncslib = callPackage ./lib {};
   ghc-pkg-db = callPackage ./plib/ghc-pkg-db {};

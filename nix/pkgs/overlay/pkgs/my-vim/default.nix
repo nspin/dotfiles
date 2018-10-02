@@ -1,14 +1,16 @@
-{ stdenv, lib, callPackage
-
-, gui ? "no"
+{ stdenv, lib, callPackage, config
 
 , gettext, pkgconfig, perl
-, ncurses, python2, python3, ruby, lua
+, ncurses, python3, ruby, lua
 
 , libX11, libXext, libSM, libXpm, libXt, libXaw, libXau, libXmu, glib, libICE
 , gtk3, gtk2
 
 , CoreServices, CoreData, Cocoa, Foundation, libobjc, cf-private
+
+, guiSupport        ? config.vim.gui or "no"
+, netbeansSupport   ? config.netbeans or true
+, darwinSupport     ? config.vim.darwin or false
 
 }:
 
@@ -21,19 +23,19 @@ in stdenv.mkDerivation rec {
   inherit (common) version src postPatch hardeningDisable enableParallelBuilding meta;
 
   nativeBuildInputs = [ gettext pkgconfig perl];
-  buildInputs = [ ncurses python2 python3 ruby lua ]
+  buildInputs = [ ncurses python3 ruby lua ]
     ++ lib.optionals stdenv.isDarwin
         [ CoreServices CoreData Cocoa Foundation libobjc cf-private ]
-    ++ lib.optionals (!stdenv.isDarwin && gui != "no")
+    ++ lib.optionals (!stdenv.isDarwin && guiSupport != "no")
 	    ([ libX11 libXext libSM libXpm libXt libXaw libXau libXmu glib libICE ]
-          ++ (if gui == "gtk3" then [gtk3] else [gtk2]));
+          ++ (if guiSupport == "gtk3" then [gtk3] else [gtk2]));
 
   patches = [ <nixpkgs/pkgs/applications/editors/vim/cflags-prune.diff> ];
 
   configureFlags = [
     "--with-features=huge"
 
-    "--enable-gui=${gui}"
+    "--enable-gui=${guiSupport}"
     "--enable-multibyte"
     "--enable-nls"
     "--enable-cscope"
@@ -46,7 +48,9 @@ in stdenv.mkDerivation rec {
 
 	"--with-lua-prefix=${lua}"
     "--with-python3-config-dir=${python3}/lib"
-  ];
+  ] ++ stdenv.lib.optional stdenv.isDarwin (if darwinSupport then "--enable-darwin" else "--disable-darwin")
+    ++ stdenv.lib.optional netbeansSupport "--enable-netbeans"
+  ;
 
   NIX_LDFLAGS = lib.optional stdenv.isDarwin
     "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation";

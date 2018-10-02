@@ -1,7 +1,7 @@
 { stdenv, fetchgit }:
 
 stdenv.mkDerivation {
-  name = "sddm-theme-absdark";
+  name = "sddm-theme-abstractdark";
   src = fetchgit {
     url = "https://github.com/3ximus/abstractdark-sddm-theme.git";
     rev = "e817d4b27981080cd3b398fe928619ffa16c52e7";
@@ -11,6 +11,6 @@ stdenv.mkDerivation {
   builder = builtins.toFile "builder.sh" ''
     . $stdenv/setup
     mkdir -p $out/share/sddm/themes
-    cp -r $src $out/share/sddm/themes/absdark
+    cp -r $src $out/share/sddm/themes/abstractdark
   '';
 }

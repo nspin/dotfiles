@@ -3,39 +3,34 @@
   imports = [
     ./pkgs.nix
     ./hardware.nix
-    # ./wkg.nix
-  ];
-
-  boot.plymouth.enable = true;
-  boot.plymouth.theme = "Chicago95";
-  boot.plymouth.themePackages = [
-    pkgs.chicago95-theme
   ];
 
   environment.systemPackages = with pkgs; [
     chicago95-theme
-    lightdm-web-greeter
-    (callPackages ./sddm-themes/absdark.nix {})
-    xarchiver
-    # tumbler
+    sddm-theme-abstractdark
+    xfce.tumbler
     ffmpegthumbnailer
     gstreamer
-    kdeApplications.ark
     gnome3.file-roller
-  ];
-
-  environment.pathsToLink = [
-    "/libexec/thunar-archive-plugin"
+    # xarchiver
+    # kdeApplications.ark
+    # lightdm-web-greeter
   ];
 
   services.xserver = {
-    # synaptics.enable = false;
+
+    displayManager.sddm.enable = true;
+    displayManager.sddm.theme = "abstractdark";
+
+    displayManager.sessionCommands = ''
+      xrdb -merge ${./xresources}
+      xmodmap ${./Xmodmap}
+    '';
 
     desktopManager.xterm.enable = false;
     desktopManager.xfce.enable = true;
     desktopManager.xfce.thunarPlugins = [
       pkgs.xfce.thunar-archive-plugin
-      pkgs.xfce.thunar-dropbox-plugin
     ];
 
     # displayManager.lightdm.enable = true;
@@ -54,17 +49,16 @@
     #   '';
     # };
 
-    displayManager.sddm.enable = true;
-    displayManager.sddm.theme = "absdark";
-    # displayManager.sddm.package = pkgs.sddm.override {
-    #   themes = [ (pkgs.callPackages ./sddm-themes/absdark.nix {}) ];
-    # };
-
-    displayManager.sessionCommands = ''
-      xrdb -merge ${./xresources}
-      xmodmap ${./Xmodmap}
-    '';
-
   };
+
+  # boot.plymouth.enable = true;
+  # boot.plymouth.theme = "Chicago95";
+  # boot.plymouth.themePackages = [
+  #   pkgs.chicago95-theme
+  # ];
+
+  environment.pathsToLink = [
+    "/libexec/thunar-archive-plugin"
+  ];
 
 }
