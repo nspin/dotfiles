@@ -1,4 +1,4 @@
-{ pkgs, stdenv, haskellPackages }:
+{ pkgs, lib, stdenv, haskellPackages }:
 
 let
 
@@ -20,5 +20,11 @@ in rec {
       (pkgs.lib.splitString "\n" (builtins.readFile file));
 
   flip = f: a: b: f b a;
+
+  nixPathAt = prefix: lib.getAttr prefix
+    (lib.listToAttrs
+      (builtins.map
+        ({ prefix, path }: { name = prefix; value = path; })
+        builtins.nixPath));
 
 }

@@ -19,7 +19,7 @@ pkgs: with pkgs; [
   rlwrap
 
   (dotfiles {
-    target = "/Users/nick/dotfiles/config";
+    target = "${ncslib.nixPathAt "dotfiles"}/config";
     assocs = {
       ".bash_profile"          = "bash/bash_profile.macos";
       ".bashrc"                = "bash/bashrc";
