@@ -1,6 +1,4 @@
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
-    . $HOME/.nix-profile/etc/profile.d/nix.sh
-fi
+. $HOME/.nix-profile/etc/profile.d/nix.sh
 
 export MY_NIXPKGS=$HOME/nixpkgs
 export MY_DOTFILES=$HOME/dotfiles
