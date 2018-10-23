@@ -6,7 +6,7 @@
 
   services.openssh.enable = true;
   services.openssh.hostKeys = [
-    { type = "ecdsa"; bits = "256"; path = "${config.my.config.dotfiles}/nix/nixos/min/vbox/id_ecdsa"; }
+    { type = "ecdsa"; bits = "256"; path = "${config.my.config.dotfiles}/nix/nixos/bits/vbox/id_ecdsa"; }
   ];
 
   security.sudo.wheelNeedsPassword = false;
