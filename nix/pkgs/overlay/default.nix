@@ -11,7 +11,7 @@ self: super: with self; {
   my-vim-gui = callPackage ./pkgs/my-vim {
     inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;
     inherit (darwin) libobjc cf-private;
-    gui = "auto";
+    guiSupport = "auto";
   };
 
   readme-preview = callPackage ./pkgs/grip {};

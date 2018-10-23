@@ -1,0 +1,38 @@
+NIX_LINK="/nix/var/nix/profiles/unpriv-$USER"
+export NIX_PROFILES="/nix/var/nix/profiles/default $NIX_LINK"
+
+if [ -e "$NIX_LINK/etc/ssl/certs/ca-bundle.crt" ]; then
+    export NIX_SSL_CERT_FILE="$NIX_LINK/etc/ssl/certs/ca-bundle.crt"
+elif [ -e "$NIX_LINK/etc/ca-bundle.crt" ]; then
+    export NIX_SSL_CERT_FILE="$NIX_LINK/etc/ca-bundle.crt"
+fi
+
+if [ -n "${MANPATH}" ]; then
+    export MANPATH="$NIX_LINK/share/man:$MANPATH"
+fi
+
+export PATH="$NIX_LINK/bin:$PATH"
+
+export MY_OS=macos
+export MY_KERNEL=darwin
+
+export MY_NIXPKGS="$HOME/nixpkgs"
+export MY_DOTFILES="$HOME/dotfiles"
+export MY_LOCAL="$HOME/local"
+export MY_PRIVATE="$HOME/private"
+
+export PATH="\
+$MY_PRIVATE/bin:\
+$MY_LOCAL/bin:\
+$(find $MY_DOTFILES/bin/$MY_KERNEL -type d -printf ':%p'):\
+$MY_DOTFILES/bin:\
+$PATH"
+
+export EDITOR=vim
+export VISUAL=vim
+
+export FZF_DEFAULT_OPTS='--reverse'
+
+if echo $- | grep -q i; then
+    . $HOME/.bashrc
+fi
