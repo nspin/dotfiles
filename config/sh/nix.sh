@@ -1,4 +1,4 @@
-alias nb='nix-build "<nixpkgs>" -A'
+alias nb='nix-build "<np>" -A'
 alias nev='nix-env -f "<np>" -iA'
 alias nevd='nix-env -f "<np>" -iA darwin-env'
 alias cabaldef='cabal2nix . > default.nix'
