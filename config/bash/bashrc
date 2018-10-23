@@ -37,6 +37,5 @@ for file in $MY_DOTFILES/config/bash/fzf/*.bash; do
     . $file
 done
 
-if [ -e $MY_LOCAL/bashrc ]; then
-    . $MY_LOCAL/bashrc
-fi
+[ -e $MY_LOCAL/bashrc ] && . $MY_LOCAL/bashrc
+[ -e $MY_PRIVATE/bashrc ] && . $MY_PRIVATE/bashrc
