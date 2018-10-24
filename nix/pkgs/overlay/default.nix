@@ -14,6 +14,8 @@ self: super: with self; {
     guiSupport = "auto";
   };
 
+  armGnuToolchains = callPackage ./pkgs/arm-gnu-toolchains {};
+
   readme-preview = callPackage ./pkgs/grip {};
   uttyl = callPackage ./pkgs/uttyl {};
   fznode = callPackage ./pkgs/fznode {};

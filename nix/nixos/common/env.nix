@@ -95,7 +95,7 @@ in {
       export PATH="\
       $MY_PRIVATE/bin:\
       $MY_LOCAL/bin:\
-      $(find $MY_DOTFILES/bin/$MY_KERNEL -type d -printf ':%p'):\
+      $(find $MY_DOTFILES/bin/$MY_KERNEL -type d -printf '%p:')\
       $MY_DOTFILES/bin:\
       $PATH"
     '';
