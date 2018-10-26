@@ -1,5 +1,7 @@
 # TODO
 
+bad: ~/.config is itself a symlink
+
 nixos:
     nixpkgs.overlays option for ad hoc, using NIX_PATH="np=$MY_DOTFILES/nix/pkgs/np.nixos.nix"
 
