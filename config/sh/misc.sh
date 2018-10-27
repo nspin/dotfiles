@@ -1,3 +1,4 @@
+alias x='ssh x'
 alias rl='rlwrap'
 
 function extract() {
