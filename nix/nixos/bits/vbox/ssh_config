@@ -1,0 +1,4 @@
+Host x
+    HostName 192.168.56.101
+    User x
+    IdentityFile DOTFILES/nix/nixos/bits/vbox/id_ecdsa
