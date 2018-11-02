@@ -15,7 +15,7 @@
   users.extraUsers.x = {
     uid = 1000;
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "vboxsf" ];
+    extraGroups = [ "wheel" "dialout" "vboxsf" "docker" ];
     password = "";
     openssh.authorizedKeys.keyFiles = [
       ./id_ecdsa.pub

@@ -1,3 +1,5 @@
+alias n='nix-build'
+alias na='nix-build -A'
 alias nb='nix-build "<np>" -A'
 alias nev='nix-env -f "<np>" -iA'
 alias nevd='nix-env -f "<np>" -iA darwin-env'
