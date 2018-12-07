@@ -13,3 +13,14 @@ set spelllang=en_us
 command Help help tab
 " cabbrev help tab help
 " cabbrev h tab help
+
+au BufRead,BufNewFile *.thy setfiletype isabelle
+au BufRead,BufNewFile *.thy set conceallevel=2
+
+function! ToggleConceal()
+  if &conceallevel == 0
+    set conceallevel=2
+  else
+    set conceallevel=0
+  endif
+endfunction
