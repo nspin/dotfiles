@@ -10,15 +10,15 @@ alias snrs='sudo nixos-rebuild switch'
 function nixtest() {
     f="$1"
     shift
-    nix-build -E "(import <nixpkgs> {}).callPackage ./$f {}" "$@"
+    nix-build -E "(import <np>).callPackage ./$f {}" "$@"
 }
 
 function nixhest() {
-    nix-build -E "(import <nixpkgs> {}).haskellPackages.callPackage ./$1 {}"
+    nix-build -E "(import <np>).haskellPackages.callPackage ./$1 {}"
 }
 
 function nixshh() {
-    nix-shell -E '((import <nixpkgs> {}).haskellPackages.callPackage ./. {}).env'
+    nix-shell -E '((import <np>).haskellPackages.callPackage ./. {}).env'
 }
 
 function nder() {
