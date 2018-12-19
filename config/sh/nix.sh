@@ -28,3 +28,9 @@ function nder() {
 function nde() {
     efd $(nder)
 }
+
+function nixinstall() {
+    f="$1"
+    shift
+    nix-env -f '<np>' -iE "x: x.callPackage ./$f {}" "$@"
+}
