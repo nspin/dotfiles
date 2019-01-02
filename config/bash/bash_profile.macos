@@ -26,3 +26,5 @@ export FZF_DEFAULT_OPTS='--reverse'
 if echo $- | grep -q i; then
     . $HOME/.bashrc
 fi
+
+export PATH="$HOME/.cargo/bin:$PATH"
