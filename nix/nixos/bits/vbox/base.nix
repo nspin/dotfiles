@@ -2,7 +2,7 @@
 
 {
 
-  networking.firewall.enable = false;
+  networking.firewall.enable = lib.mkDefault false;
 
   services.openssh.enable = true;
   services.openssh.hostKeys = [

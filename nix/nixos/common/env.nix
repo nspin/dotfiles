@@ -12,6 +12,7 @@ let
       ".bash_profile"          = "bash/bash_profile.nixos";
       ".bashrc"                = "bash/bashrc";
       ".tmux.conf"             = "multiplexers/tmux.conf";
+      ".screenrc"              = "multiplexers/screenrc";
       ".vimrc"                 = "vim/vimrc";
       ".config/git/config"     = "git/config";
       ".config/git/ignore"     = "git/ignore";

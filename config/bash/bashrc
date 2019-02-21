@@ -1,7 +1,7 @@
 # Posix shell init
 
-for file in $MY_DOTFILES/config/sh/*.sh; do
-    . $file
+for import in $(find $MY_DOTFILES/config/sh -name '*.sh'); do
+    . $import
 done
 
 # Prompt
@@ -33,8 +33,8 @@ HISTFILESIZE=100000
 
 # Imports
 
-for file in $MY_DOTFILES/config/bash/fzf/*.bash; do
-    . $file
+for import in $(find $MY_DOTFILES/config/bash -name '*.bash'); do
+    . $import
 done
 
 [ -e $MY_LOCAL/bashrc ] && . $MY_LOCAL/bashrc
