@@ -4,7 +4,7 @@ with lib;
 
 let
 
-  cfg = config.my.config;
+  cfg = config.my.env.paths;
 
   dotfiles = pkgs.mkDotfilesIn "${cfg.dotfiles}/config" {
     ".bash_profile"          = "bash/bash_profile.nixos";
@@ -22,24 +22,28 @@ let
 
 in {
 
+  imports = [
+    ./pkgs.nix
+  ];
+
   options = {
 
-    my.config.nixpkgs = mkOption {
+    my.env.paths.nixpkgs = mkOption {
       type = types.str;
       default = "/cfg/nixpkgs";
     };
 
-    my.config.dotfiles = mkOption {
+    my.env.paths.dotfiles = mkOption {
       type = types.str;
       default = "/cfg/dotfiles";
     };
 
-    my.config.local = mkOption {
+    my.env.paths.local = mkOption {
       type = types.str;
       default = "/cfg/local";
     };
 
-    my.config.private = mkOption {
+    my.env.paths.private = mkOption {
       type = types.str;
       default = "/cfg/private";
     };
@@ -71,12 +75,10 @@ in {
       MY_OS = "nixos";
       MY_KERNEL = "linux";
 
-      MY_NIXPKGS = "${cfg.nixpkgs}";
-      MY_DOTFILES = "${cfg.dotfiles}";
-      MY_LOCAL = "${cfg.local}";
-      MY_PRIVATE = "${cfg.private}";
-
-      # NIXPKGS_CONFIG = "${cfg.dotfiles}/nix/pkgs/config.nix";
+      MY_NIXPKGS = cfg.nixpkgs;
+      MY_DOTFILES = cfg.dotfiles;
+      MY_LOCAL = cfg.local;
+      MY_PRIVATE = cfg.private;
 
       PAGER = "less -R";
       EDITOR = "vim";
@@ -86,34 +88,25 @@ in {
     };
 
     environment.extraInit = ''
-      export PATH="\
-      $MY_PRIVATE/bin:\
-      $MY_LOCAL/bin:\
-      $(find $MY_DOTFILES/bin/$MY_KERNEL -type d -printf '%p:')\
-      $MY_DOTFILES/bin:\
-      $PATH"
+      export PATH="${lib.concatStrings [
+        "${cfg.private}/bin:"
+        "${cfg.local}/bin:"
+        "$(find ${cfg.dotfiles}/bin/linux -type d -printf '%p:')"
+        "${cfg.dotfiles}/bin:"
+        "$PATH"
+      ]}"
     '';
 
-    security.sudo.extraConfig = ''
-
-      Defaults env_keep += "MY_OS"
-      Defaults env_keep += "MY_KERNEL"
-
-      Defaults env_keep += "MY_NIXPKGS"
-      Defaults env_keep += "MY_DOTFILES"
-      Defaults env_keep += "MY_LOCAL"
-      Defaults env_keep += "MY_PRIVATE"
-
-      Defaults env_keep += "PAGER"
-      Defaults env_keep += "EDITOR"
-      Defaults env_keep += "VISUAL"
-
-      Defaults env_keep += "FZF_DEFAULT_OPTS"
-
-      Defaults env_keep += "NIX_PATH"
-      Defaults env_keep += "NIX_PROFILES"
-
-    '';
+    security.sudo.extraConfig = lib.concatMapStrings (var: ''
+      Defaults env_keep += "${var}"
+    '') [
+      "MY_OS" "MY_KERNEL"
+      "MY_NIXPKGS" "MY_DOTFILES" "MY_LOCAL" "MY_PRIVATE"
+      "PAGER" "EDITOR" "VISUAL"
+      "FZF_DEFAULT_OPTS"
+      "NIX_PATH"
+      "NIX_PROFILES"
+    ];
 
   };
 
