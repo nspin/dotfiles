@@ -4,32 +4,27 @@ with lib;
 
 let
 
-  cfg = config.my;
+  cfg = config.my.headless.secure;
 
 in {
 
   options = {
 
-    my.keyFiles = mkOption {
+    my.headless.secure.enable = mkEnableOption "secure headless";
+
+    my.headless.secure.keyFiles = mkOption {
       type = types.listOf types.path;
+      default = [];
     };
 
   };
 
-  config = {
+  config = mkIf cfg.enable {
 
-    services.openssh.enable = true;
-    services.openssh.openFirewall = true;
     services.openssh.passwordAuthentication = false;
 
-    security.sudo.wheelNeedsPassword = false;
-
-    users.mutableUsers = false;
     users.extraUsers.x = {
-      uid = 1000;
-      isNormalUser = true;
       initialHashedPassword = "nope";
-      extraGroups = [ "wheel" "docker" ];
       openssh.authorizedKeys.keyFiles = cfg.keyFiles;
     };
 

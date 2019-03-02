@@ -15,6 +15,8 @@ in {
     ./pia
     ./env
     ./gui
+    ./user
+    ./headless
   ] ++ externalModules;
 
   nixpkgs = {
