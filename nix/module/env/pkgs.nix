@@ -81,7 +81,7 @@ in {
 
       firefox
 
-    ] ++ optionals (cfg.gui >= 1) [
+    ] ++ optionals (cfg.gui >= 2) [
 
       gparted
 

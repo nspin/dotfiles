@@ -17,6 +17,7 @@ in {
     ./gui
     ./user
     ./headless
+    ./misc
   ] ++ externalModules;
 
   nixpkgs = {
