@@ -1,4 +1,4 @@
-{ stdenv, lib, callPackage, config
+{ stdenv, lib, fetchFromGitHub
 
 , gettext, pkgconfig, perl
 , ncurses, python3, ruby, lua
@@ -8,29 +8,43 @@
 
 , CoreServices, CoreData, Cocoa, Foundation, libobjc, cf-private
 
-, guiSupport        ? config.vim.gui or "no"
-, netbeansSupport   ? config.netbeans or true
-, darwinSupport     ? config.vim.darwin or false
-
+, guiSupport ? "no"
+, netbeansSupport ? true
+, darwinSupport ? stdenv.isDarwin
 }:
 
-let
-  common = callPackage <nixpkgs/pkgs/applications/editors/vim/common.nix> {};
+stdenv.mkDerivation rec {
+  name = "vim-${version}";
+  version = "8.1.0348";
+  src = fetchFromGitHub {
+    owner = "vim";
+    repo = "vim";
+    rev = "v${version}";
+    sha256 = "0f18kpywnph708mvj1fpi06qb53nbhc26ngjh2kvfxwawn63k8ab";
+  };
 
-in stdenv.mkDerivation rec {
-  name = "my-vim-${version}";
+  enableParallelBuilding = true;
+  hardeningDisable = [ "fortify" ];
 
-  inherit (common) version src postPatch hardeningDisable enableParallelBuilding meta;
+  # Use man from $PATH; escape sequences are still problematic.
+  postPatch = ''
+    substituteInPlace runtime/ftplugin/man.vim \
+      --replace "/usr/bin/man " "man "
+  '';
+
+  patches = [
+    ./cflags-prune.patch
+  ];
 
   nativeBuildInputs = [ gettext pkgconfig perl];
-  buildInputs = [ ncurses python3 ruby lua ]
-    ++ lib.optionals stdenv.isDarwin
-        [ CoreServices CoreData Cocoa Foundation libobjc cf-private ]
-    ++ lib.optionals (!stdenv.isDarwin && guiSupport != "no")
-	    ([ libX11 libXext libSM libXpm libXt libXaw libXau libXmu glib libICE ]
-          ++ (if guiSupport == "gtk3" then [gtk3] else [gtk2]));
-
-  patches = [ <nixpkgs/pkgs/applications/editors/vim/cflags-prune.diff> ];
+  buildInputs = [
+    ncurses python3 ruby lua
+  ] ++ lib.optionals stdenv.isDarwin [
+    CoreServices CoreData Cocoa Foundation libobjc cf-private
+  ] ++ lib.optionals (!stdenv.isDarwin && guiSupport != "no") [
+    libX11 libXext libSM libXpm libXt libXaw libXau libXmu glib libICE
+    (if guiSupport == "gtk3" then gtk3 else gtk2)
+  ];
 
   configureFlags = [
     "--with-features=huge"

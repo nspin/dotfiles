@@ -5,12 +5,12 @@ self: super: with self; {
   vim-plugins = callPackage ./vim-plugins {};
   inherit (callPackage ./dotfiles {}) mkDotfiles mkDotfilesIn update-dotfile-links;
 
-  my-vim = callPackage ./pkgs/my-vim {
+  my-vim = callPackage ./pkgs/vim {
     inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;
     inherit (darwin) libobjc cf-private;
   };
 
-  my-vim-gui = callPackage ./pkgs/my-vim {
+  my-vim-gui = callPackage ./pkgs/vim {
     inherit (darwin.apple_sdk.frameworks) CoreServices Cocoa Foundation CoreData;
     inherit (darwin) libobjc cf-private;
     guiSupport = "auto";
