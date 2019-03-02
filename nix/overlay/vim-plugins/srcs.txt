@@ -24,4 +24,4 @@ https://github.com/victoredwardocallaghan/cryptol.vim HEAD
 https://github.com/wilsaj/chuck.vim HEAD
 https://github.com/Glench/Vim-Jinja2-Syntax HEAD
 
-https://github.com/nickspinale/vim-colors-solarized HEAD
+https://github.com/nspin/vim-colors-solarized HEAD

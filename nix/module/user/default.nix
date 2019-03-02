@@ -11,7 +11,7 @@ with lib;
     users.extraUsers.x = {
       uid = 1000;
       isNormalUser = true;
-      extraGroups = [ "wheel" "dialout" "vboxsf" "docker" ];
+      extraGroups = [ "wheel" "dialout" "vboxsf" "docker" "wireshark" ];
     };
 
   };

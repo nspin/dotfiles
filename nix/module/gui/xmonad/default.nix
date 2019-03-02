@@ -13,7 +13,6 @@ in {
     my.gui.xmonad.enable = mkEnableOption "xmonad";
 
     my.gui.xmonad.background = mkOption {
-      type = types.nullOr types.str;
       default = null;
     };
 
@@ -29,7 +28,7 @@ in {
     services.xserver = {
 
       displayManager.auto.enable = true;
-      displayManager.auto.user = "nick";
+      displayManager.auto.user = "x";
       displayManager.sessionCommands = ''
         xrdb -merge ${./xresources}
         xmodmap ${./Xmodmap}
@@ -39,6 +38,12 @@ in {
         ${pkgs.feh}/bin/feh --no-fehbg --bg-max ${cfg.background}
       '';
 
+      windowManager.default = "xmonad";
+      windowManager.xmonad.enable = true;
+      windowManager.xmonad.extraPackages = hp: with hp; [
+        xmonad-contrib
+      ];
+
       desktopManager.default = "mine";
       desktopManager.xterm.enable = false;
       desktopManager.session = singleton {
@@ -46,10 +51,6 @@ in {
         bgSupport = true;
         start = "";
       };
-
-      windowManager.default = "xmonad";
-      windowManager.xmonad.enable = true;
-      windowManager.xmonad.enableContribAndExtras = true;
 
     };
 

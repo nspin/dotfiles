@@ -141,7 +141,7 @@
   };
 
   "vim-colors-solarized" = fetchgit {
-    url = "https://github.com/nickspinale/vim-colors-solarized";
+    url = "https://github.com/nspin/vim-colors-solarized";
     rev = "3993f5caa7f2b4cb7b190adcb4e6d26c0a1ffc6c";
     sha256 = "1y80awip0q5ihj6b9kxhh48s3d1vc66406sav6ixghv39d8dqvdg";
   };

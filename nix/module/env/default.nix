@@ -18,6 +18,8 @@ let
     ".editrc"                = "line-editors/editrc";
     ".haskeline"             = "line-editors/haskeline";
     ".inputrc"               = "line-editors/inputrc";
+    ".xmonad/xmonad.hs"      = "xmonad/xmonad.hs";
+    ".xmobarrc"              = "xmobar/xmobarrc";
   };
 
 in {
@@ -64,6 +66,9 @@ in {
     environment.pathsToLink = [
       "/share/vim-bundle"
       "/share/dotfiles"
+      "/share/dotfiles/.xmonad"
+      "/share/dotfiles/.config"
+      "/share/dotfiles/.config/git"
     ];
 
     environment.systemPackages = [
