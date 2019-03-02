@@ -6,14 +6,12 @@ let
   envOverlay = self: super: with self; with lib; {
     env = self.buildEnv {
       name = "env";
-      paths =
-        let
-          try = path: optionals (pathExists path) (import path self);
-        in [
-          (try ./darwin-env.nix)
-          (try (<local> + /env.nix))
-          (try (<private> + /env.nix))
-        ];
+      paths = concatMap (path: import path self) ([
+        ./env.nix
+      ] ++ filter pathExists [
+        (<local> + /env.nix)
+        (<private> + /env.nix)
+      ]);
     };
   };
 
