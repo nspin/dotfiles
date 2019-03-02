@@ -1,24 +1,25 @@
 alias n='nix-build'
 alias na='nix-build -A'
-alias nb='nix-build "<np>" -A'
-alias nev='nix-env -f "<np>" -iA'
-alias nevd='nix-env -f "<np>" -iA darwin-env'
+alias nb='nix-build "<pkgs>" -A'
+alias nev='nix-env -f "<pkgs>" -iA'
+alias nevd='nix-env -f "<pkgs>" -iA darwin-env'
 alias cabaldef='cabal2nix . > default.nix'
 alias cabalsh='cp ~/dotfiles/store/shell.nix .'
+# alias snrs='sudo nixos-rebuild switch --fast --no-build-nix'
 alias snrs='sudo nixos-rebuild switch'
 
 function nixtest() {
     f="$1"
     shift
-    nix-build -E "(import <np>).callPackage ./$f {}" "$@"
+    nix-build -E "(import <pkgs>).callPackage ./$f {}" "$@"
 }
 
 function nixhest() {
-    nix-build -E "(import <np>).haskellPackages.callPackage ./$1 {}"
+    nix-build -E "(import <pkgs>).haskellPackages.callPackage ./$1 {}"
 }
 
 function nixshh() {
-    nix-shell -E '((import <np>).haskellPackages.callPackage ./. {}).env'
+    nix-shell -E '((import <pkgs>).haskellPackages.callPackage ./. {}).env'
 }
 
 function nder() {
@@ -32,5 +33,5 @@ function nde() {
 function nixinstall() {
     f="$1"
     shift
-    nix-env -f '<np>' -iE "x: x.callPackage ./$f {}" "$@"
+    nix-env -f '<pkgs>' -iE "x: x.callPackage ./$f {}" "$@"
 }
