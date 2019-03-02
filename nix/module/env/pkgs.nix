@@ -49,20 +49,19 @@ in {
       readme-preview
       ripgrep jq
 
-      # (texlive.combine {
-      #   inherit (texlive)
-      #     luatex
-      #     scheme-small
-      #     collection-latexextra
-      #     collection-fontsrecommended
-      #     fontawesome
-      #   ;
-      # })
-
     ] ++ optionals (cfg.tui >= 2) [
 
-      # jmtpfs
-      # mono 
+      jmtpfs
+
+      (texlive.combine {
+        inherit (texlive)
+          luatex
+          scheme-small
+          collection-latexextra
+          collection-fontsrecommended
+          fontawesome
+        ;
+      })
 
     ] ++ optionals (cfg.gui >= 1) [
 
@@ -86,9 +85,16 @@ in {
 
       gparted
 
-      vlc ario geeqie
+      vlc audacity picard ario geeqie gimp 
+
       slack
       libreoffice
+
+      chromium
+      google-chrome
+      adobe-reader
+
+      virtualbox
 
     ];
 

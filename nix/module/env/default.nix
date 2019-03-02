@@ -57,8 +57,8 @@ in {
       "dotfiles=${cfg.dotfiles}"
       "local=${cfg.local}"
       "private=${cfg.private}"
+      "nixos-config=${cfg.dotfiles}/nix/module"
       "pkgs=${cfg.dotfiles}/nix/nixos-pkgs.nix"
-      "nixos-config=${cfg.dotfiles}/nix/config.nix"
     ];
 
     environment.pathsToLink = [
