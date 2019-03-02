@@ -10,7 +10,6 @@ with lib;
     in import ./modules
       ++ (try (<local> + /config.nix))
       ++ (try (<private> + /config.nix))
-++ [ /cfg/local/config.nix ]
       ;
 
   nixpkgs = {
