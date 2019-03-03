@@ -1,17 +1,34 @@
 pkgs: with pkgs; [
 
-  bashInteractive
-  coreutils
-  gnused
-  gnugrep
-  findutils
-  which
-  file
+  my-vim tmux git fzf
+  file rlwrap
+  fznode
 
-  my-vim
-  tmux
-  git
-  fzf
+  curl wget
+  diffutils
+  gawk gnupatch gnutar xz less procps
+
+  bashInteractive
+
+  coreutils findutils
+  gnused gnugrep
+  which file
+
+  gdb screen
+  gnumake
+  mercurial subversion
+  zip unzip p7zip
+  rsync
+  jre jdk
+
+  openssl telnet
+  gnupg
+
+  cacert
+
+  readme-preview
+  ripgrep jq
+
   reattach-to-user-namespace
 
   nix-prefetch-scripts
