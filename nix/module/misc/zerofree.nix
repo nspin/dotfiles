@@ -32,9 +32,9 @@ in {
           case $o in
               zerofree)
                   cmd="zerofree on /dev/disk/by-label/nixos"
-                  running "$cmd" ...
+                  echo "running '$cmd' ..."
                   zerofree -v /dev/disk/by-label/nixos
-                  ... done
+                  echo "... done"
                   break
                   ;;
           esac
