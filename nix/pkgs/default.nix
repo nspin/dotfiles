@@ -1,6 +1,9 @@
+with import <nixpkgs/lib>;
+
 let
 
-  tryOverlay = path: self: super: with self; with lib;
+  tryOverlay = path: self: super:
+    # with self.lib;
     optionalAttrs (pathExists path) (import path self super);
 
   envOverlay = self: super: with self; with lib; {
@@ -18,7 +21,7 @@ let
 in import <nixpkgs> {
 
   overlays = [
-    (import ./overlay)
+    (import ../overlay)
     (tryOverlay (<local> + /overlay.nix))
     (tryOverlay (<private> + /overlay.nix))
     envOverlay
