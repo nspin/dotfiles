@@ -7,43 +7,11 @@
   time.timeZone = "America/Boston";
   security.sudo.wheelNeedsPassword = false;
 
-  imports = [
-
-    ../extra-pkgs.nix
-    ../gui
-    ../gui/extra-pkgs.nix
-
-    ./net.nix
-    ./media.nix
-    ./tpkgs.nix
-    ./gpkgs.nix
-
-  ];
-
-  users.extraUsers = {
-    nick = {
-      isNormalUser = true;
-      uid = 1000;
-      extraGroups = [ "wheel" "dialout" "docker" ];
-    };
-    guest = {
-      isNormalUser = true;
-      uid = 1001;
-    };
-    other = {
-      isNormalUser = true;
-      uid = 1002;
-      extraGroups = [ "wheel" ];
-    };
-    iso = {
-      isNormalUser = true;
-      uid = 1003;
-      extraGroups = [ "wheel" ];
-    };
-  };
-
   users.groups = {
     dialout = {};
   };
 
 }
+
+  # programs.adb.enable = true;
+  # users.extraUsers.nick.extraGroups = ["adbusers"];
