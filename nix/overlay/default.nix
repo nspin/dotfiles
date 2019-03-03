@@ -2,7 +2,7 @@ self: super: with self; {
 
   lib = super.lib // (removeAttrs (callPackage ./lib {}) [ "override" "overrideDerivation" ]); # dancing with devil
 
-  vim-plugins = callPackage ./vim-plugins {};
+  inherit (callPackage ./vim-plugins {}) vim-plugins vim-plugins-all vim-plugins-excluding;
   inherit (callPackage ./dotfiles {}) mkDotfiles mkDotfilesIn update-dotfile-links;
 
   my-vim = callPackage ./pkgs/vim {

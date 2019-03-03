@@ -22,14 +22,14 @@
 
   "vim-slime" = fetchgit {
     url = "https://github.com/jpalardy/vim-slime";
-    rev = "e58486b791e6e1126ffd46d4ef634b8fef104f7f";
-    sha256 = "1abp1wh10wdvrii1jyzg12a0c5jk2yf88mczxkjwql0r7wcn89qd";
+    rev = "1ff17cc7e8eeaf660daa5efee9e66ef83e00e686";
+    sha256 = "1mrgpkyarc6igd7anzlwpbis6cwsy759ssxapfxmj1q69hyvmdl6";
   };
 
   "vim-dirvish" = fetchgit {
     url = "https://github.com/justinmk/vim-dirvish";
-    rev = "c273c462d774ed2db5f6d382265cf5897e554de0";
-    sha256 = "1fv1kk7y280kx8c0iy9rg43i8gr0h8308al8sm85qvmfx5fcbi9d";
+    rev = "d33796c460229b2cf0dd09fedf1b272da9d13a42";
+    sha256 = "0brhbkj34yxyq5gvjkqakq0m9zwa981rv6ksca07qhw3nzpxhlkd";
   };
 
   "vim-bufferline" = fetchgit {
@@ -46,8 +46,8 @@
 
   "vim-eunuch" = fetchgit {
     url = "https://github.com/tpope/vim-eunuch";
-    rev = "632d92e85d4b6d5413ee4a643ce570efb09c8d6b";
-    sha256 = "0mw2wxr4y5r1j3lj4ilihs83l2afsr0lnxzy73v1hsahs70vayx8";
+    rev = "10da325fb032a1acfa9222d273459f53bad30ba4";
+    sha256 = "125n4amz3vmc83yv76vidsnma5w2braa69dcpj858ahnzhh329qj";
   };
 
   "vim-sexp" = fetchgit {
@@ -64,8 +64,8 @@
 
   "youcompleteme" = fetchgit {
     url = "https://github.com/valloric/youcompleteme";
-    rev = "e018777b38eedaa23b96cfee40382d000e464e31";
-    sha256 = "1j4r6gkjs7kk2nwhmlwzm1nzzwrk96sr8xfbj0vwa847bsq3p591";
+    rev = "443356132eceb391be0654663917e60cd96c51fc";
+    sha256 = "12grpknpxb7d003934l3wpj9jjyzlviid3ibf4935lizmibhy099";
   };
 
   "cscope_macros.vim" = fetchgit {
@@ -76,8 +76,8 @@
 
   "vim-snippets" = fetchgit {
     url = "https://github.com/honza/vim-snippets";
-    rev = "7c7e7d47ecb51813de7573f056af99e1790d5eff";
-    sha256 = "1hm227kzh5g6l8wpxwjhb0kf2packlnqi8v90q8286m6v8c2ca1a";
+    rev = "0d7e7fad36c808b593ca602e00af4aec7516b752";
+    sha256 = "1zz7p48x5vhksmfxjyvr76av8cpa1bj05rd0xf2vlq5hz5wx87bn";
   };
 
   "ultisnips" = fetchgit {
@@ -88,20 +88,20 @@
 
   "tabular" = fetchgit {
     url = "https://github.com/godlygeek/tabular";
-    rev = "00e1e7fcdbc6d753e0bc8043e0d2546fa81bf367";
-    sha256 = "185jpisk9hamcwb6aiavdzjdbbigzdra8f4mgs98r9cm9j448xkz";
+    rev = "339091ac4dd1f17e225fe7d57b48aff55f99b23a";
+    sha256 = "0jq91770wsp2waw7pywxjqx59v0vg54gfzirgcd85pg61w22bfla";
   };
 
   "nerdtree" = fetchgit {
     url = "https://github.com/scrooloose/nerdtree";
-    rev = "e653a682705234e9bffac0c32995f339e66df684";
-    sha256 = "1d99ki7dzv6iw1bs61rv9k9z8kf2bi00dxrvlvs09jbgnjil2r92";
+    rev = "84737f2ebe533ffac9ebc21da8d1f57216962641";
+    sha256 = "0cdzcswbzfjra357jnachnir1zi1l4l2l5vjn16481sf2bn8hkvn";
   };
 
   "vim-nix" = fetchgit {
     url = "https://github.com/LnL7/vim-nix";
-    rev = "d781ccada822c8a42c0d70f548e3b8563ffe0a3d";
-    sha256 = "0lklzbibyf0w5p7k0bri90daa1fj5z9yhj0jxgg9scikk4kkx1f7";
+    rev = "be0c6bb409732b79cc86c177ca378b0b334e1efe";
+    sha256 = "1ivkwlm6lz43xk1m7aii0bgn2p3225dixck0qyhxw4zxhp2xiz06";
   };
 
   "idris-vim" = fetchgit {
@@ -136,8 +136,8 @@
 
   "Vim-Jinja2-Syntax" = fetchgit {
     url = "https://github.com/Glench/Vim-Jinja2-Syntax";
-    rev = "75807e683a48d51416b9bcc7e7ffef96aa130ecd";
-    sha256 = "1zfz8pqj120kbl0v15bvk9b0c6x04zmvlimr6nfka20mrpq7gh36";
+    rev = "ff113baf049525efb94ff32c3d845f817351de11";
+    sha256 = "1c0m6rxqp96fq508xnwg01zna3h3wqg7lb009niy3i9hq7857swq";
   };
 
   "vim-colors-solarized" = fetchgit {

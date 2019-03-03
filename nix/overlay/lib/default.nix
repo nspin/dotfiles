@@ -1,30 +1,9 @@
-{ pkgs, lib, stdenv, haskellPackages }:
+{ lib }:
 
-let
+with lib;
 
-  callPackageWith = autoArgs: fn: args:
-    let
-      f = if builtins.isFunction fn then fn else import fn;
-      auto = builtins.intersectAttrs (builtins.functionArgs f) autoArgs;
-    in f (auto // args);
+rec {
 
-  callPackage = callPackageWith pkgs;
-
-in rec {
-
-  gatherLists = x: ls: builtins.concatLists (map (l: import l x) ls);
-
-  txtToList = file:
-    builtins.filter
-      (str: builtins.stringLength str != 0 && builtins.substring 0 1 str != "#")
-      (pkgs.lib.splitString "\n" (builtins.readFile file));
-
-  flip = f: a: b: f b a;
-
-  nixPathAt = prefix: lib.getAttr prefix
-    (lib.listToAttrs
-      (builtins.map
-        ({ prefix, path }: { name = prefix; value = path; })
-        builtins.nixPath));
+  nixPathAttrs = listToAttrs (map ({ prefix, path }: { name = prefix; value = path; }) builtins.nixPath);
 
 }

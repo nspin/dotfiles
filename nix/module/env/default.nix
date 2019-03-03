@@ -74,7 +74,7 @@ in {
     environment.systemPackages = [
       dotfiles
       pkgs.update-dotfile-links
-    ] ++ pkgs.vim-plugins.all;
+    ] ++ pkgs.vim-plugins-all;
 
     environment.variables = rec {
       MY_OS = "nixos";

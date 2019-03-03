@@ -1,37 +1,33 @@
-{ lib, callPackage, stdenv, fetchgit }:
+{ lib, callPackage, stdenv }:
 
 let
 
   extra = callPackage ./extra.nix {};
 
-  mkDrv = { name, src }: stdenv.mkDerivation ({
+  mk = name: src: stdenv.mkDerivation ({
+
+    phases = [ "unpackPhase" "patchPhase" "installPhase" ];
+
     inherit name src;
-    builder = builtins.toFile "builder.sh" ''
-      . $stdenv/setup
-      d=$out/share/vim-bundle
-      mkdir -p $d
-      root=$d/${name}
-      cp -r $src src
-      chmod -R u+w -- src
-      pushd src
-        eval "$extra"
-      popd
-      cp -r src $root
+
+    installPhase = ''
+      runHook preInstall
+
+      dst=$out/share/vim-bundle/$name
+      mkdir -p $dst
+      cp -r * $dst
+
+      runHook postInstall
     '';
-  } // (if lib.hasAttr name extra then lib.getAttr name extra else {}));
 
-  mk = lib.mapAttrs (name: value: mkDrv {
-    inherit name;
-    src = value;
-  });
+  } // (extra.${name} or {}));
 
-  attrs = mk (import ./srcs.nix {
-    inherit fetchgit;
-  });
 
-in {
-  inherit attrs;
-  all = lib.attrValues attrs;
-  includeNames = map (k: lib.getAttr k attrs);
-  excludeNames = names: lib.filterAttrs (k: v: !(lib.elem k names)) attrs;
+in rec {
+
+  vim-plugins = lib.mapAttrs mk (removeAttrs (callPackage ./srcs.nix {}) [ "override" "overrideDerivation" ]); # dancing with devil
+
+  vim-plugins-all = lib.attrValues vim-plugins;
+
+  vim-plugins-excluding = names: lib.attrValues (lib.filterAttrs (k: v: !(lib.elem k names)) vim-plugins);
 }
