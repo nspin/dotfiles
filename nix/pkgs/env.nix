@@ -36,7 +36,7 @@ pkgs: with pkgs; [
   rlwrap
 
   update-dotfile-links
-  (mkDotfilesIn "${lib.nixPathAt "dotfiles"}/config" {
+  (mkDotfilesIn "${lib.nixPathAttrs.dotfiles}/config" {
     ".bash_profile"          = "bash/bash_profile.macos";
     ".bashrc"                = "bash/bashrc";
     ".tmux.conf"             = "multiplexers/tmux.conf";
@@ -49,4 +49,4 @@ pkgs: with pkgs; [
     ".inputrc"               = "line-editors/inputrc";
   })
 
-] ++ vim-plugins.all
+] ++ vim-plugins-all
