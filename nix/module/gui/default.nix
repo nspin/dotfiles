@@ -10,6 +10,7 @@ in {
 
   imports = [
     ./xmonad
+    ./gnome
   ];
 
   options = {
