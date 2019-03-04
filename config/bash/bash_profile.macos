@@ -1,5 +1,7 @@
 . $HOME/.nix-profile/etc/profile.d/nix.sh
 
+export NIX_PROFILES="/nix/var/nix/profiles/per-user/$USER/profile /nix/var/nix/profiles/default"
+
 export MY_OS=macos
 export MY_KERNEL=darwin
 

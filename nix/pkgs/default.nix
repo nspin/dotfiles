@@ -9,6 +9,10 @@ let
   envOverlay = self: super: with self; with lib; {
     env = self.buildEnv {
       name = "env";
+      pathsToLink = [
+        "/"
+        "/share/dotfiles"
+      ];
       paths = concatMap (path: import path self) ([
         ./env.nix
       ] ++ filter pathExists [

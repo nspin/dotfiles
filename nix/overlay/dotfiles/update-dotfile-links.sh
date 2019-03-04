@@ -4,7 +4,7 @@ for nix_profile in $NIX_PROFILES; do
     src=$tmp
     dst=$nix_profile/share/dotfiles
     if [ -d $dst ]; then
-        for leaf in $(find $dst -not -type d -printf '%P\n'); do
+        for leaf in $(find $dst/ -not -type d -printf '%P\n'); do
             if [ ! -e $src/$leaf ]; then
                 mkdir -p $(dirname $src/$leaf)
                 ln -sn $dst/$leaf $src/$leaf
