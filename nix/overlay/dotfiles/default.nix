@@ -1,10 +1,12 @@
-{ lib, runCommand, writeShellScriptBin }:
+{ lib, runCommand, writeShellScriptBin, coreutils, findutils }:
 
 with lib;
 
 rec {
 
   update-dotfile-links = writeShellScriptBin "update-dotfile-links" ''
+    set -e
+    export PATH=${coreutils}/bin:${findutils}/bin
     . ${./update-dotfile-links.sh}
   '';
 

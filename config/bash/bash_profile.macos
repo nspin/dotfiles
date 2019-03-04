@@ -9,14 +9,13 @@ export MY_LOCAL="$HOME/local"
 export MY_PRIVATE="$HOME/private"
 
 export NIX_PATH="nixpkgs=$MY_NIXPKGS:dotfiles=$MY_DOTFILES:local=$MY_LOCAL:private=$MY_PRIVATE:pkgs=$MY_DOTFILES/nix/pkgs"
-export NIX_PROFILES="/nix/var/nix/profiles/per-user/$USER/profile /nix/var/nix/profiles/default"
 
-export PATH="\
-$MY_PRIVATE/bin:\
-$MY_LOCAL/bin:\
-$(find $MY_DOTFILES/bin/$MY_KERNEL -type d -printf ':%p'):\
-$MY_DOTFILES/bin:\
-$PATH"
+export PATH="$MY_PRIVATE/bin:$PATH"
+export PATH="$MY_LOCAL/bin:$PATH"
+export PATH="$(find $MY_DOTFILES/bin/$MY_KERNEL -type d -printf ':%p'):$PATH"
+export PATH="$MY_DOTFILES/bin:$PATH"
+
+export PATH="$HOME/.cargo/bin:$PATH"
 
 export EDITOR=vim
 export VISUAL=vim
@@ -26,5 +25,3 @@ export FZF_DEFAULT_OPTS='--reverse'
 if echo $- | grep -q i; then
     . $HOME/.bashrc
 fi
-
-export PATH="$HOME/.cargo/bin:$PATH"

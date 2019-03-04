@@ -1,8 +1,8 @@
+export MY_NIXPKGS=/cfg/nixpkgs
 export MY_DOTFILES=/cfg/dotfiles
 export MY_LOCAL=/cfg/local
-export MY_NIXPKGS=/cfg/nixpkgs
-export NIX_PATH="nixpkgs=$MY_NIXPKGS:dotfiles=$MY_DOTFILES:local=$MY_LOCAL:private=$MY_PRIVATE:nixos-config=$MY_DOTFILES/nix/nixos/config.nix"
+export MY_PRIVATE=/cfg/private
 
-nixos-rebuild switch
+export NIX_PATH="nixpkgs=$MY_NIXPKGS:dotfiles=$MY_DOTFILES:local=$MY_LOCAL:private=$MY_PRIVATE:nixos-config=$MY_DOTFILES/nix/module"
 
-# update-dotfile-links
+nixos-rebuild switch && update-dotfile-links

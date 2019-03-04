@@ -1,5 +1,3 @@
-set -e
-
 tmp=$(mktemp -d)
 
 for nix_profile in $NIX_PROFILES; do
