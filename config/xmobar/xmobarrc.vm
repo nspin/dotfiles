@@ -1,0 +1,27 @@
+Config
+    { position = Bottom
+    , persistent = True
+
+    , hideOnStart = False
+    , lowerOnStart = True
+
+    , font = "xft:DejaVu Sans Mono:antialias=True:pixelsize=18"
+
+    , alpha = 255
+    , bgColor = "#073642"
+    , fgColor = "#657b83"
+    , border = NoBorder
+    , borderColor = "#002b36"
+    , borderWidth = 0
+    , sepChar = "%"
+    , alignSep = "}{"
+
+    , commands =
+        [ Run Cpu    ["-t","Cpu <total>%"     ,"-H","75","--normal","#657b83","--high","#dc322f"] 10
+        , Run Memory ["-t","Mem <usedratio>%" ,"-H","75","--normal","#657b83","--high","#dc322f"] 10
+        , Run Swap   ["-t","Swap <usedratio>%","-H","75","--normal","#657b83","--high","#dc322f"] 10
+        , Run StdinReader
+        ]
+
+    , template = "<fc=#002b36>|</fc>%StdinReader%<fc=#002b36>|</fc>}{<fc=#002b36>|</fc> %cpu% <fc=#002b36>|</fc> %memory% <fc=#002b36>|</fc> %swap% <fc=#002b36>|</fc>"
+    }
