@@ -6,6 +6,7 @@ import           XMonad
 import           XMonad.Actions.CycleWS
 import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.ManageDocks
+import           XMonad.Hooks.SetWMName
 import qualified XMonad.StackSet as W
 import           XMonad.Util.Run
 import           XMonad.Util.WorkspaceCompare
@@ -44,7 +45,7 @@ main = do
             { borderWidth        = 1
             , terminal           = "urxvt"
             , modMask            = mod4Mask
-            , startupHook        = return ()
+            , startupHook        = myStartupHook
             , handleEventHook    = docksEventHook
             , focusFollowsMouse  = True
             , clickJustFocuses   = True
@@ -79,6 +80,9 @@ fixFloatBorderColor color = do
             Nothing -> error "Main.fixFloatBorderColor"
             Just pix -> let go w = setWindowBorder d w pix
                         in mapM_ go keys
+
+
+myStartupHook = setWMName "LG3D"
 
 
 myLayoutHook :: Choose Tall (Choose (Mirror Tall) Full) a
