@@ -52,7 +52,7 @@ in with lib; {
 
     servers = mkOption {
       default = {
-        sweden = "pia";
+        sweden = "sweden";
       };
       type = lib.types.attrs;
       description = ''
