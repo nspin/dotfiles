@@ -18,13 +18,24 @@ in {
 
     services.xserver = {
       desktopManager.gnome3.enable = true;
+      displayManager.gdm.enable = true;
+      displayManager.gdm.wayland = false;
       displayManager.sessionCommands = ''
+        touch /tmp/foo.bar
+        xset r rate 200 50
         xrdb -merge ${./xresources}
       '';
+      # displayManager.setupCommands = ''
+      #   xset r rate 200 50
+      #   xmodmap ${./Xmodmap}
+      #   xrdb -merge ${./xresources}
+      # '';
+      # autoRepeatDelay = 200;
+      # autoRepeatInterval = 20;
     };
 
     environment.systemPackages = with pkgs; with gnomeExtensions; [
-      (callPackage ./xstuff {})
+      (callPackage ./xstuff.nix {})
 
       glib.dev
       gnome3.gsettings_desktop_schemas
@@ -33,11 +44,7 @@ in {
       dash-to-dock
       dash-to-panel
 
-      # gptfdisk
-
-      # moka-icon-theme
-      # arc-theme
-      # theme-vertex
+      sierra-gtk-theme
     ];
 
   };

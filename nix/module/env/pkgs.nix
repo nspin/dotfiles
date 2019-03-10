@@ -50,6 +50,8 @@ in {
       readme-preview
       ripgrep jq
 
+      gptfdisk
+
     ] ++ optionals (cfg.tui >= 2) [
 
       jmtpfs

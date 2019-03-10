@@ -3,8 +3,8 @@
 let
   script = writeScript "do-xstuff" ''
     #!${runtimeShell}
-    xmodmap ${./Xmodmap}
     xset r rate 200 50
+    xrdb -merge ${./xresources}
   '';
 
 in writeTextFile {
@@ -18,6 +18,6 @@ in writeTextFile {
     Exec=${script}
     Terminal=false
     Type=Application
-    X-GNOME-Autostart-enabled=true
   '';
+    # X-GNOME-Autostart-enabled=true
 }
