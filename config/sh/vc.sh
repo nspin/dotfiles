@@ -11,6 +11,8 @@ alias gl='git pull'
 alias gm='git submodule update --init'
 alias gu='git submodule foreach git pull origin master'
 
+alias gd='git daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/'
+
 # Status of git repos in current directory
 function statuses() {
     currdir=$(pwd)
