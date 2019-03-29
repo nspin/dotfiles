@@ -1,7 +1,7 @@
 alias x='ssh x'
 alias rl='rlwrap'
 
-function extract() {
+extract() {
     if [ -f $1 ] ; then
         case $1 in
             *.tar.bz2)   tar xvjf $1     ;;

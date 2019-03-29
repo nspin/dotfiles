@@ -11,7 +11,7 @@ alias s=sublime3
 alias p=python3
 
 # TODO ack
-function fzfd() {
+fzfd() {
     dir=$(echo $1 | sed 's:/$::')
     find $dir -type f \
       | sed 's:^'"$dir"'/::' \
@@ -20,7 +20,7 @@ function fzfd() {
       | sed 's:^:'"$dir"'/:'
 }
 
-function efd() {
+efd() {
     files="$(fzfd $1)"
     if [ -n "$files" ]; then
         echo "$files"

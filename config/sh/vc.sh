@@ -14,7 +14,7 @@ alias gu='git submodule foreach git pull origin master'
 alias gd='git daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/'
 
 # Status of git repos in current directory
-function statuses() {
+statuses() {
     currdir=$(pwd)
     for subdir in ./*/ ; do
         cd $subdir
@@ -29,7 +29,7 @@ function statuses() {
 }
 
 # Pull into git repos in current directory
-function pulls() {
+pulls() {
     currdir=$(pwd)
     for subdir in ./*/ ; do
         cd $subdir
@@ -43,22 +43,22 @@ function pulls() {
     echo ""
 }
 
-function clone() {
+clone() {
     URL="https://nspin@github.com/$1/$2.git"
     git clone $URL
 }
 
-function cloneto() {
+cloneto() {
     URL="https://nspin@github.com/$1/$2.git"
     git clone $URL $3
 }
 
-function cloneb() {
+cloneb() {
     URL="https://nickspinale@bitbucket.org/$1/$2.git"
     git clone $URL
 }
 
-function module() {
+module() {
     URL="https://github.com/$1/$2.git"
     git submodule add $URL $3
 }

@@ -8,29 +8,29 @@ alias cabalsh='cp ~/dotfiles/store/shell.nix .'
 # alias snrs='sudo nixos-rebuild switch --fast --no-build-nix'
 alias snrs='sudo nixos-rebuild switch'
 
-function nixtest() {
+nixtest() {
     f="$1"
     shift
     nix-build -E "(import <pkgs>).callPackage ./$f {}" "$@"
 }
 
-function nixhest() {
+nixhest() {
     nix-build -E "(import <pkgs>).haskellPackages.callPackage ./$1 {}"
 }
 
-function nixshh() {
+nixshh() {
     nix-shell -E '((import <pkgs>).haskellPackages.callPackage ./. {}).env'
 }
 
-function nder() {
+nder() {
     echo $NIX_PATH | sed -rn 's/^.*nixpkgs=([^:]+):.*$/\1/p'
 }
 
-function nde() {
+nde() {
     efd $(nder)
 }
 
-function nixinstall() {
+nixinstall() {
     f="$1"
     shift
     nix-env -f '<pkgs>' -iE "x: x.callPackage ./$f {}" "$@"
