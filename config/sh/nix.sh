@@ -1,5 +1,6 @@
 alias n='nix-build'
 alias na='nix-build -A'
+alias ne='nef ./.'
 alias nb='nix-build "<pkgs>" -A'
 alias nev='nix-env -f "<pkgs>" -iA'
 alias nevd='nix-env -f "<pkgs>" -iA env'
@@ -34,4 +35,8 @@ nixinstall() {
     f="$1"
     shift
     nix-env -f '<pkgs>' -iE "x: x.callPackage ./$f {}" "$@"
+}
+
+nef() {
+    nix-instantiate --eval --expr "with import $1; $2"
 }
