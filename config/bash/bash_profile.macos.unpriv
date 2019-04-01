@@ -1,5 +1,4 @@
 NIX_LINK="/nix/var/nix/profiles/unpriv-$USER"
-export NIX_PROFILES="/nix/var/nix/profiles/default $NIX_LINK"
 
 if [ -e "$NIX_LINK/etc/ssl/certs/ca-bundle.crt" ]; then
     export NIX_SSL_CERT_FILE="$NIX_LINK/etc/ssl/certs/ca-bundle.crt"
@@ -7,9 +6,10 @@ elif [ -e "$NIX_LINK/etc/ca-bundle.crt" ]; then
     export NIX_SSL_CERT_FILE="$NIX_LINK/etc/ca-bundle.crt"
 fi
 
+export PATH="$NIX_LINK/bin:$PATH"
 export MANPATH="$NIX_LINK/share/man:$MANPATH"
 
-export PATH="$NIX_LINK/bin:$PATH"
+export NIX_PROFILES="$NIX_LINK /nix/var/nix/profiles/default"
 
 export MY_OS=macos
 export MY_KERNEL=darwin
