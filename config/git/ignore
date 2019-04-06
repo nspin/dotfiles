@@ -24,6 +24,7 @@ nspinpriv
 **/result
 **/result-*
 
+.ghc.*
 dist
 dist-newstyle
 cabal.sandbox.config
