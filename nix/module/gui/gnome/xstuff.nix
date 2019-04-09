@@ -3,7 +3,6 @@
 let
   script = writeScript "do-xstuff" ''
     #!${runtimeShell}
-    xmodmap ${./Xmodmap}
   '';
 
 in writeTextFile {

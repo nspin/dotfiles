@@ -23,6 +23,7 @@ in {
       displayManager.sessionCommands = ''
         xset r rate 200 50
         xrdb -merge ${./xresources}
+        xmodmap ${./Xmodmap}
       '';
       # displayManager.setupCommands = ''
       #   xset r rate 200 50
