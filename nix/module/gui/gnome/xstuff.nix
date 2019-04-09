@@ -3,8 +3,7 @@
 let
   script = writeScript "do-xstuff" ''
     #!${runtimeShell}
-    xset r rate 200 50
-    xrdb -merge ${./xresources}
+    xmodmap ${./Xmodmap}
   '';
 
 in writeTextFile {

@@ -21,7 +21,6 @@ in {
       displayManager.gdm.enable = true;
       displayManager.gdm.wayland = false;
       displayManager.sessionCommands = ''
-        touch /tmp/foo.bar
         xset r rate 200 50
         xrdb -merge ${./xresources}
       '';
