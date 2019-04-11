@@ -4,6 +4,7 @@
   my.env.pkgs.gui = 1;
   my.gui.enable = true;
   my.gui.gnome.enable = true;
+  # my.gui.xfce.enable = true;
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;

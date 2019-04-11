@@ -11,6 +11,7 @@ in {
   imports = [
     ./xmonad
     ./gnome
+    ./xfce
   ];
 
   options = {

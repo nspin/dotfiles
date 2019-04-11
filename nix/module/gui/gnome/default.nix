@@ -19,7 +19,8 @@ in {
     services.xserver = {
       desktopManager.gnome3.enable = true;
       displayManager.gdm.enable = true;
-      displayManager.gdm.wayland = false;
+      displayManager.gdm.wayland = false; # so can use xmodmap instead of xkb
+      displayManager.gdm.autoLogin.user = "x";
       displayManager.sessionCommands = ''
         xrdb -merge ${./xresources}
       '';
