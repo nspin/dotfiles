@@ -21,9 +21,7 @@ in {
       displayManager.gdm.enable = true;
       displayManager.gdm.wayland = false;
       displayManager.sessionCommands = ''
-        xset r rate 200 50
         xrdb -merge ${./xresources}
-        xmodmap ${./Xmodmap}
       '';
       # displayManager.setupCommands = ''
       #   xset r rate 200 50
