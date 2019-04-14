@@ -4,9 +4,9 @@ with lib;
 
 let
 
-  cfg = config.my.env.paths;
+  cfg = config.my.env;
 
-  dotfiles = pkgs.mkDotfilesIn "${cfg.dotfiles}/config" {
+  dotfiles = pkgs.mkDotfilesIn "${cfg.paths.dotfiles}/config" {
     ".bash_profile"          = "bash/bash_profile.nixos";
     ".bashrc"                = "bash/bashrc";
     ".tmux.conf"             = "multiplexers/tmux.conf";
@@ -50,17 +50,22 @@ in {
       default = "/cfg/private";
     };
 
+    my.env.excludedVimPlugins = mkOption {
+      type = types.listOf types.str;
+      default = [];
+    };
+
   };
 
   config = {
 
     nix.nixPath = [
-      "nixpkgs=${cfg.nixpkgs}"
-      "dotfiles=${cfg.dotfiles}"
-      "local=${cfg.local}"
-      "private=${cfg.private}"
-      "nixos-config=${cfg.dotfiles}/nix/module"
-      "pkgs=${cfg.dotfiles}/nix/nixos-pkgs.nix"
+      "nixpkgs=${cfg.paths.nixpkgs}"
+      "dotfiles=${cfg.paths.dotfiles}"
+      "local=${cfg.paths.local}"
+      "private=${cfg.paths.private}"
+      "nixos-config=${cfg.paths.dotfiles}/nix/module"
+      "pkgs=${cfg.paths.dotfiles}/nix/nixos-pkgs.nix"
     ];
 
     environment.pathsToLink = [
@@ -74,16 +79,16 @@ in {
     environment.systemPackages = [
       dotfiles
       pkgs.update-dotfile-links
-    ] ++ pkgs.vim-plugins-all;
+    ] ++ pkgs.vim-plugins-excluding cfg.excludedVimPlugins;
 
     environment.variables = rec {
       MY_OS = "nixos";
       MY_KERNEL = "linux";
 
-      MY_NIXPKGS = cfg.nixpkgs;
-      MY_DOTFILES = cfg.dotfiles;
-      MY_LOCAL = cfg.local;
-      MY_PRIVATE = cfg.private;
+      MY_NIXPKGS = cfg.paths.nixpkgs;
+      MY_DOTFILES = cfg.paths.dotfiles;
+      MY_LOCAL = cfg.paths.local;
+      MY_PRIVATE = cfg.paths.private;
 
       PAGER = "less -R";
       EDITOR = "vim";
@@ -94,10 +99,10 @@ in {
 
     environment.extraInit = ''
       export PATH="${lib.concatStrings [
-        "${cfg.private}/bin:"
-        "${cfg.local}/bin:"
-        "$(find ${cfg.dotfiles}/bin/linux -type d -printf '%p:')"
-        "${cfg.dotfiles}/bin:"
+        "${cfg.paths.private}/bin:"
+        "${cfg.paths.local}/bin:"
+        "$(find ${cfg.paths.dotfiles}/bin/linux -type d -printf '%p:')"
+        "${cfg.paths.dotfiles}/bin:"
         "$PATH"
       ]}"
     '';

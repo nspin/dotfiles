@@ -31,7 +31,7 @@ set showtabline=2
 
 if exists('$DISPLAY') || system("uname -s") == "Darwin\n"
     colorscheme solarized
-elseif $SSH_CONNECTION
+elseif $SSH_CONNECTION || exists('$MY_IN_CROSTINI')
     set t_Co=16
     colorscheme solarized
 endif
