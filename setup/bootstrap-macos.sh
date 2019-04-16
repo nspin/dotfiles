@@ -1,8 +1,6 @@
 set -e
 
-here=$(dirname $_)
-
-. $here/vars-nixos.sh
+. vars-nixos.sh
 
 nix-env -f '<top>' -iA pkgs.env
 

@@ -16,6 +16,6 @@ rec {
   );
 
   # TODO
-  composeOverlays = overlays: foldl' (lib.flip lib.extends) something
+  composeOverlays = overlays: foldl' (lib.flip lib.extends) something;
 
 }

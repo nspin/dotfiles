@@ -58,10 +58,10 @@ let
     "private"
   ];
 
-  externalOverlays = lib.concatMap (lib.optionalPath "/overlay.nix") [
+  externalOverlays = map import (lib.concatMap (lib.optionalPath "/overlay.nix") [
     "local"
     "private"
-  ];
+  ]);
 
 in rec {
 
