@@ -1,1 +1,1 @@
-(import <top>).pkgs
+(import <core>).pkgs

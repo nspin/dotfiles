@@ -1,1 +1,1 @@
-(import <top>).nixos
+(import <core>).nixos
