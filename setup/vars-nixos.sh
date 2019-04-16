@@ -1,3 +1,3 @@
-export MY_CFG=$HOME
+export MY_CFG=/cfg
 
-. vars-common.sh
+. ./vars-common.sh
