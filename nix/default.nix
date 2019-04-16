@@ -18,7 +18,7 @@ let
   module = { ... }: {
     imports = [
       (import ./modules)
-    ];
+    ] ++ externalModules;
     config = {
       nixpkgs = args;
     };
@@ -34,6 +34,11 @@ let
       overlays = args.overlays ++ overlays;
       config = args.config // config;
     };
+
+  externalModules = lib.concatMap (lib.optionalPath "/config.nix") [
+    "local"
+    "private"
+  ];
 
 in {
 

@@ -1,10 +1,8 @@
-with import <nixpkgs/lib>;
-
 let
 
-  tryOverlay = path: self: super:
-    # with self.lib;
-    optionalAttrs (pathExists path) (import path self super);
+  core = import <core>;
+
+  inherit (core) lib;
 
   envOverlay = self: super: with self; with lib; {
     env = self.buildEnv {
@@ -15,25 +13,20 @@ let
       ];
       paths = concatMap (path: import path self) ([
         ./env.nix
-      ] ++ filter pathExists [
-        (<local> + /env.nix)
-        (<private> + /env.nix)
+      ] ++ lib.concatMap (lib.optionalPath "/env.nix") [
+        "local"
+        "private"
       ]);
     };
   };
 
-in import <nixpkgs> {
+in core.pkgs.override {
 
-  overlays = [
-    (import ../overlay)
-    (tryOverlay (<local> + /overlay.nix))
-    (tryOverlay (<private> + /overlay.nix))
+  overlays = lib.concatMap (lib.optionalPath "/overlay.nix") [
+    "local"
+    "private"
+  ] ++ [
     envOverlay
   ];
-
-  config = {
-    allowUnfree = true;
-    allowBroken = true;
-  };
 
 }

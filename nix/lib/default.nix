@@ -10,4 +10,9 @@ rec {
     override = x': makeOverridableWith f g (f x' x);
   };
 
+  optionalPath = suffix: base: optionals (hasAttr base nixPathAttrs) (
+    let path = builtins.toPath (nixPathAttrs.${base} + suffix);
+    in optional (pathExists path) path
+  );
+
 }
