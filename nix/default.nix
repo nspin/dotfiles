@@ -63,7 +63,7 @@ let
     "private"
   ];
 
-in {
+in rec {
 
   inherit lib;
 
@@ -75,5 +75,7 @@ in {
     (module: modules: modules ++ [ module ])
     (modules: import <nixpkgs/nixos> { configuration.imports = modules; })
     [ module ];
+
+  inherit (nixos.config.system) build;
 
 }

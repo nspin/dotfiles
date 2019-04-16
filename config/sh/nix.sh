@@ -6,8 +6,19 @@ alias nev='nix-env -f "<pkgs>" -iA'
 alias nevd='nix-env -f "<pkgs>" -iA env'
 alias cabaldef='cabal2nix . > default.nix'
 alias cabalsh='cp ~/dotfiles/store/shell.nix .'
-# alias snrs='sudo nixos-rebuild switch --fast --no-build-nix'
-alias snrs='sudo nixos-rebuild switch'
+
+snrs() {
+    cfg=$(nixosbuild --no-out-link)
+    if [ $? != 0 ]; then
+        return $?
+    fi
+    echo "switching to: $cfg"
+    sudo $cfg/bin/switch-to-configuration switch
+}
+
+nixosbuild() {
+    nix-build '<top>' -A build.toplevel "$@"
+}
 
 nixtest() {
     f="$1"

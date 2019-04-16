@@ -1,11 +1,12 @@
-export MY_NIXPKGS=/cfg/nixpkgs
-export MY_DOTFILES=/cfg/dotfiles
-export MY_LOCAL=/cfg/local
-export MY_PRIVATE=/cfg/private
+set -e
 
-export NIX_PATH="nixpkgs=$MY_NIXPKGS:dotfiles=$MY_DOTFILES:local=$MY_LOCAL:private=$MY_PRIVATE:nixos-config=$MY_DOTFILES/nix/module"
+here=$(dirname $_)
 
-export NIX_PROFILE=$HOME/.nix-profile
-export NIX_PROFILES=$NIX_PROFILE
+. $here/vars-nixos.sh
 
-nixos-rebuild switch && update-dotfile-links
+cfg=$(nixosbuild --no-out-link)
+sudo $cfg/bin/switch-to-configuration switch
+
+export NIX_PROFILES="$HOME/.nix-profile /nix/var/nix/profiles/default /run/current-system/sw"
+
+update-dotfile-links

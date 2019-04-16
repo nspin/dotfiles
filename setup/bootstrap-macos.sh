@@ -1,11 +1,11 @@
-export MY_NIXPKGS=$HOME/nixpkgs
-export MY_DOTFILES=$HOME/dotfiles
-export MY_LOCAL=$HOME/local
-export MY_PRIVATE=$HOME/private
+set -e
 
-export NIX_PATH="nixpkgs=$MY_NIXPKGS:dotfiles=$MY_DOTFILES:local=$MY_LOCAL:private=$MY_PRIVATE:core=$MY_DOTFILES/nix:pkgs=$MY_DOTFILES/nix/paths/pkgs.nix"
+here=$(dirname $_)
 
-export NIX_PROFILE=$HOME/.nix-profile
-export NIX_PROFILES=$NIX_PROFILE
+. $here/vars-nixos.sh
 
-nix-env -f '<pkgs>' -iA env && update-dotfile-links
+nix-env -f '<top>' -iA pkgs.env
+
+export NIX_PROFILES=$HOME/.nix-profile
+
+update-dotfile-links

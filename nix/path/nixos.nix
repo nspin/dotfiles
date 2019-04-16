@@ -1,1 +1,1 @@
-(import <core>).nixos
+(import ../.).nixos

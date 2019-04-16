@@ -1,1 +1,1 @@
-(import <nixos>).pkgs
+(import ../.).nixos.pkgs

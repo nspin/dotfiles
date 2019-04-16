@@ -15,4 +15,7 @@ rec {
     in optional (pathExists path) path
   );
 
+  # TODO
+  composeOverlays = overlays: foldl' (lib.flip lib.extends) something
+
 }

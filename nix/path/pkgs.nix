@@ -1,1 +1,1 @@
-(import <core>).pkgs
+(import ../.).pkgs
