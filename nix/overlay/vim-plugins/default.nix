@@ -1,14 +1,15 @@
-{ lib, callPackage, stdenv }:
+{ lib, callPackage, stdenv, fetchgit }:
 
 let
 
   extra = callPackage ./extra.nix {};
 
-  mk = name: src: stdenv.mkDerivation ({
+  mk = name: value: stdenv.mkDerivation ({
+
+    inherit name;
+    src = fetchgit (removeAttrs value [ "date" ]);
 
     phases = [ "unpackPhase" "patchPhase" "installPhase" ];
-
-    inherit name src;
 
     installPhase = ''
       runHook preInstall
@@ -25,9 +26,10 @@ let
 
 in rec {
 
-  vim-plugins = lib.mapAttrs mk (removeAttrs (callPackage ./srcs.nix {}) [ "override" "overrideDerivation" ]); # dancing with devil
+  vim-plugins = lib.mapAttrs mk (builtins.fromJSON (builtins.readFile ./srcs.json));
 
   vim-plugins-all = lib.attrValues vim-plugins;
 
   vim-plugins-excluding = names: lib.attrValues (lib.filterAttrs (k: v: !(lib.elem k names)) vim-plugins);
+
 }

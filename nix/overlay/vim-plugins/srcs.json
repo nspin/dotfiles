@@ -1,0 +1,170 @@
+{
+  "vim-repeat": {
+    "url": "https://github.com/tpope/vim-repeat",
+    "rev": "43d2678fa59d068c815d8298331c195e850ff5a7",
+    "date": "2018-07-02T15:03:55-04:00",
+    "sha256": "0nb20503ka95qbx0mwhhni15drc86gfcd6kg92nf65llrvyfivk0",
+    "fetchSubmodules": true
+  },
+  "vim-commentary": {
+    "url": "https://github.com/tpope/vim-commentary",
+    "rev": "141d9d32a9fb58fe474fcc89cd7221eb2dd57b3a",
+    "date": "2018-07-27T03:01:11-04:00",
+    "sha256": "0nncs32ayfhr557aiynq7b0sc7rxqwv7xanram53x1wvmfy14zf0",
+    "fetchSubmodules": true
+  },
+  "vim-surround": {
+    "url": "https://github.com/tpope/vim-surround",
+    "rev": "ca58a2d886cc18734c90c9665da4775d444b0c04",
+    "date": "2019-03-26T17:22:34-04:00",
+    "sha256": "0d4jxp1ahwrwsk277yvkbk76jrhmv3bml83fivlxpj01224kdr2n",
+    "fetchSubmodules": true
+  },
+  "vim-slime": {
+    "url": "https://github.com/jpalardy/vim-slime",
+    "rev": "9035bef4c91fd730d76b5fdc994f1dcdcef49405",
+    "date": "2019-04-01T20:27:46-07:00",
+    "sha256": "1f65nq1hgvblm074hbqy647vixzhkimr1yhqjlrqg7mjiffrkr43",
+    "fetchSubmodules": true
+  },
+  "vim-dirvish": {
+    "url": "https://github.com/justinmk/vim-dirvish",
+    "rev": "ae60a79106dd32d75d3c5cf4dfe44fd658d634ec",
+    "date": "2019-04-01T08:28:18+02:00",
+    "sha256": "1dpyavqhsn7japg5li2fflhn4rq5y5c5m24772550awzd5nx0bif",
+    "fetchSubmodules": true
+  },
+  "vim-bufferline": {
+    "url": "https://github.com/bling/vim-bufferline",
+    "rev": "651fd010aa9613a4b8636a4af8a2db0d22800262",
+    "date": "2016-02-08T20:05:50-05:00",
+    "sha256": "0zls47a3v8dv3h63drbak1mxf3j2x3scvclk7bjwzlk2yp447das",
+    "fetchSubmodules": true
+  },
+  "vim-rsi": {
+    "url": "https://github.com/tpope/vim-rsi",
+    "rev": "8b7abe2d470b7fffac6562818468e14594735564",
+    "date": "2019-03-15T19:53:10-04:00",
+    "sha256": "1fvswbqd51gs4qhcabnz3zdmmlhcijs3pnbp3f2zgfi7lqvjc6s5",
+    "fetchSubmodules": true
+  },
+  "vim-eunuch": {
+    "url": "https://github.com/tpope/vim-eunuch",
+    "rev": "e066a0999e442d9d96f24ad9d203b1bd030ef72e",
+    "date": "2019-04-13T18:43:44-04:00",
+    "sha256": "12n7fzgppiwqhqnxlbxmky1m1flb82kr4zlyggysgzz1lqb122zf",
+    "fetchSubmodules": true
+  },
+  "vim-sexp": {
+    "url": "https://github.com/guns/vim-sexp",
+    "rev": "12292941903d9ac8151513189d2007e1ccfc95f0",
+    "date": "2017-05-15T12:03:21-05:00",
+    "sha256": "1mfqbmrbqgnsc34pmcsrc0c5zvgxhhnw4hx4g5wbssfk1ddyx6y0",
+    "fetchSubmodules": true
+  },
+  "vim-sexp-mappings-for-regular-people": {
+    "url": "https://github.com/tpope/vim-sexp-mappings-for-regular-people",
+    "rev": "f5b66e73c81a3b4c0c8f5a8141fb09a5a213f711",
+    "date": "2014-11-04T18:21:20-05:00",
+    "sha256": "1kf3bkv9wppxgifybd972avdd2563ra2387n7qc6q72b2r9mx5aa",
+    "fetchSubmodules": true
+  },
+  "youcompleteme": {
+    "url": "https://github.com/valloric/youcompleteme",
+    "rev": "9dee2b4e3f5de5f8b9fdc4790eac35eb2c40257a",
+    "date": "2019-04-10T14:36:19-07:00",
+    "sha256": "12i3wzcy19c5gc8xc5i0qhjl4wn7jwy2abgbx9x2cbgamjl4yzh0",
+    "fetchSubmodules": true
+  },
+  "cscope_macros.vim": {
+    "url": "https://github.com/vim-scripts/cscope_macros.vim",
+    "rev": "d1e0c369e8c25ecfd57d20382f1ed6fe0a1ac694",
+    "date": "2010-10-17T18:35:59-07:00",
+    "sha256": "19m901kwcpvz847nviy3jnrvnv1v9sf54pr6n3b99cim1cpa7z6j",
+    "fetchSubmodules": true
+  },
+  "vim-snippets": {
+    "url": "https://github.com/honza/vim-snippets",
+    "rev": "1ba4a66c11d8fd4309656bc2994d683580d54de3",
+    "date": "2019-04-12T13:07:19+01:00",
+    "sha256": "0cdphdscz6hbaj53gras13f1rfhzcrhlwff2rfbx4hxnsqgndph5",
+    "fetchSubmodules": true
+  },
+  "ultisnips": {
+    "url": "https://github.com/SirVer/ultisnips",
+    "rev": "6fdc3647f72e0a1f321ea6bd092ecd01f7c187ba",
+    "date": "2018-04-30T22:01:36+02:00",
+    "sha256": "1zp3xcmxk6cn38zmxxy5s2wnw9djskwkmspq2s9vqliyhprf9sy3",
+    "fetchSubmodules": true
+  },
+  "tabular": {
+    "url": "https://github.com/godlygeek/tabular",
+    "rev": "339091ac4dd1f17e225fe7d57b48aff55f99b23a",
+    "date": "2019-02-19T12:42:08-05:00",
+    "sha256": "0jq91770wsp2waw7pywxjqx59v0vg54gfzirgcd85pg61w22bfla",
+    "fetchSubmodules": true
+  },
+  "nerdtree": {
+    "url": "https://github.com/scrooloose/nerdtree",
+    "rev": "7513f256aa1d59b6a749cefe5ac505375b1b8a6a",
+    "date": "2019-03-26T11:57:21-04:00",
+    "sha256": "0163bvsmnnw598x2nyi9lzdk6akzj62cbsldp8prhl6d7x3gdmaf",
+    "fetchSubmodules": true
+  },
+  "vim-nix": {
+    "url": "https://github.com/LnL7/vim-nix",
+    "rev": "be0c6bb409732b79cc86c177ca378b0b334e1efe",
+    "date": "2018-08-27T21:37:10+02:00",
+    "sha256": "1ivkwlm6lz43xk1m7aii0bgn2p3225dixck0qyhxw4zxhp2xiz06",
+    "fetchSubmodules": true
+  },
+  "idris-vim": {
+    "url": "https://github.com/idris-hackers/idris-vim",
+    "rev": "091ed6b267749927777423160eeab520109dd9c1",
+    "date": "2017-12-04T19:36:45+01:00",
+    "sha256": "1zibar2vxcmai0k37ricwnimfdv1adxfbbvz871rc4l6h3q85if1",
+    "fetchSubmodules": true
+  },
+  "smali-vim": {
+    "url": "https://github.com/alderz/smali-vim",
+    "rev": "ae77727b0714f7896241b4f8ee4dcc93222bc532",
+    "date": "2011-07-27T17:01:03+02:00",
+    "sha256": "11jqk2kckih6q32r82s6hwzff7ybzbwyakmq75p0ic9mijycw7gg",
+    "fetchSubmodules": true
+  },
+  "vim-markdown": {
+    "url": "https://github.com/tpope/vim-markdown",
+    "rev": "57c58269a2ac89680e7b216c2bcfbb7df1ec5e69",
+    "date": "2019-03-12T23:54:34-04:00",
+    "sha256": "0xpgx79sg4qd80z3m1qv7yzz2hg2g3biyl3q16fzhib1rjaiz5h5",
+    "fetchSubmodules": true
+  },
+  "cryptol.vim": {
+    "url": "https://github.com/victoredwardocallaghan/cryptol.vim",
+    "rev": "15040e77c8256c9d7a8824fd95804836121ed46a",
+    "date": "2016-05-12T13:59:48+10:00",
+    "sha256": "0iv8s2z7xap4mj2ad3dq67h629j2bn8zvch32azn3l0q4cppmnw8",
+    "fetchSubmodules": true
+  },
+  "chuck.vim": {
+    "url": "https://github.com/wilsaj/chuck.vim",
+    "rev": "7778b665829ee8ccae10b81afac951a0aaec3821",
+    "date": "2017-02-25T15:31:28-06:00",
+    "sha256": "0b1bv2a5p94q5by8pkw67kdgibckll4ayn62cn4yw9w5hv4j96d2",
+    "fetchSubmodules": true
+  },
+  "Vim-Jinja2-Syntax": {
+    "url": "https://github.com/Glench/Vim-Jinja2-Syntax",
+    "rev": "ff113baf049525efb94ff32c3d845f817351de11",
+    "date": "2018-11-26T13:33:00-05:00",
+    "sha256": "1c0m6rxqp96fq508xnwg01zna3h3wqg7lb009niy3i9hq7857swq",
+    "fetchSubmodules": true
+  },
+  "vim-colors-solarized": {
+    "url": "https://github.com/nspin/vim-colors-solarized",
+    "rev": "3993f5caa7f2b4cb7b190adcb4e6d26c0a1ffc6c",
+    "date": "2015-09-11T04:37:39+00:00",
+    "sha256": "1y80awip0q5ihj6b9kxhh48s3d1vc66406sav6ixghv39d8dqvdg",
+    "fetchSubmodules": true
+  }
+}

@@ -1,28 +1,20 @@
+import re
 import json
 import subprocess
+from collections import OrderedDict
 
-print('{ fetchgit }:')
-print('')
-print('{')
-print('')
+ignore_re = re.compile(r'#.*|\s*', re.DOTALL)
+src_re = re.compile(r'(?P<url>.+/(?P<name>.+?)(.git)?)\s+(?P<rev>.+?)\s*')
+
+srcs = OrderedDict()
 
 with open('srcs.txt') as f:
-    for line_ in f:
-        line = line_.strip()
-        if not line or line.startswith('#'):
-            continue
-        url, rev = line.split()
-        name = url.split('/')[-1]
-        suffix = '.git'
-        if name.endswith(suffix):
-            name = name[-(len(suffix)):]
-        out = subprocess.check_output(['nix-prefetch-git', '--fetch-submodules', url, rev])
-        obj = json.loads(out)
-        print(f'''  "{name}" = fetchgit {{
-    url = "{url}";
-    rev = "{obj['rev']}";
-    sha256 = "{obj['sha256']}";
-  }};
-''')
+    for line in f:
+        if ignore_re.fullmatch(line) is None:
+            m = src_re.fullmatch(line).groupdict()
+            out = subprocess.check_output(['nix-prefetch-git', '--fetch-submodules', m['url'], m['rev']])
+            src = json.loads(out)
+            srcs[m['name']] = src
 
-print('}')
+with open('srcs.json', 'w') as f:
+    json.dump(srcs, f, indent=2)
