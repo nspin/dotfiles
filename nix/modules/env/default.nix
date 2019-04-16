@@ -64,7 +64,7 @@ in {
       "dotfiles=${cfg.paths.dotfiles}"
       "local=${cfg.paths.local}"
       "private=${cfg.paths.private}"
-      "nixos-config=${cfg.paths.dotfiles}/nix/module"
+      "nixos-config=${cfg.paths.dotfiles}/nix/modules"
       "pkgs=${cfg.paths.dotfiles}/nix/nixos-pkgs.nix"
     ];
 

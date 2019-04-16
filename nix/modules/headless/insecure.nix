@@ -20,7 +20,7 @@ in {
 
     services.openssh.hostKeys = [
       # TODO this won't work when id_ecda is in the nix store
-      { type = "ecdsa"; bits = "256"; path = "${config.my.env.paths.dotfiles}/nix/module/headless/id_ecdsa"; }
+      { type = "ecdsa"; bits = "256"; path = "${config.my.env.paths.dotfiles}/nix/modules/headless/id_ecdsa"; }
     ];
 
     users.extraUsers.x = {
