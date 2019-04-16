@@ -25,14 +25,14 @@ stdenv.mkDerivation rec {
   version = "4.8.0";
   name = "autopsy-${version}";
 
-  # src = fetchFromGitHub {
-  #   owner = "sleuthkit";
-  #   repo = "autopsy";
-  #   rev = name;
-  #   sha256 = "1q19i5lnckivcwkkihhjk1m013j0803hsqm43nzh5j9rppfz5f16";
-  # };
+  src = fetchFromGitHub {
+    owner = "sleuthkit";
+    repo = "autopsy";
+    rev = name;
+    sha256 = "1q19i5lnckivcwkkihhjk1m013j0803hsqm43nzh5j9rppfz5f16";
+  };
 
-  src = ./autopsy;
+  # src = ./autopsy;
 
   # postPatch = ''
   #   sed -i 's|/usr/share/java|${deps}/share/java|' bindings/java/build.xml

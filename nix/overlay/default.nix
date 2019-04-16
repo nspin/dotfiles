@@ -22,4 +22,12 @@ self: super: with self; {
   chicago95-theme = callPackage ./pkgs/chicago95-theme {};
   sddm-theme-abstractdark = callPackage ./pkgs/sddm-themes/abstractdark.nix {};
 
+  # WIP
+
+  autopsy = callPackage ./pkgs/autopsy {
+    sleuthkit = sleuthkit.override {
+      javaBindings = true;
+    };
+  };
+
 }
