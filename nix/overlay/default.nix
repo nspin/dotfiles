@@ -1,7 +1,5 @@
 self: super: with self; {
 
-  lib = super.lib // import ./lib { inherit (super) lib; };
-
   inherit (callPackage ./vim-plugins {}) vim-plugins vim-plugins-all vim-plugins-excluding;
   inherit (callPackage ./dotfiles {}) mkDotfiles mkDotfilesIn update-dotfile-links;
 

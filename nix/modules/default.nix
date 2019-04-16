@@ -4,10 +4,19 @@ with lib;
 
 let
 
-  externalModules = concatMap (path: optional (pathExists path) path) [
-    (<local> + /config.nix)
-    (<private> + /config.nix)
-  ];
+  # TODO fix lib
+  nixPathAttrs = listToAttrs (map ({ prefix, path }: { name = prefix; value = path; }) builtins.nixPath);
+
+  externalModules =
+    let
+      f = base: optionals (hasAttr base nixPathAttrs) (
+        let path = nixPathAttrs.${base} + "/config.nix";
+        in optional (pathExists path) (builtins.toPath path)
+      );
+    in concatMap f [
+      "local"
+      "private"
+    ];
 
 in {
 
@@ -31,4 +40,3 @@ in {
   };
 
 }
-
