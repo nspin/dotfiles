@@ -12,7 +12,7 @@ let
       })
       (import ./overlay)
     ];
-    config = import ./config.nix;
+    config = import ./nixpkgs-config.nix;
   };
 
   module = { ... }: {
