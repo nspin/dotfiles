@@ -59,13 +59,17 @@ in {
 
   config = {
 
-    nix.nixPath = [
-      "nixpkgs=${cfg.paths.nixpkgs}"
-      "dotfiles=${cfg.paths.dotfiles}"
-      "local=${cfg.paths.local}"
-      "private=${cfg.paths.private}"
-      "nixos-config=${cfg.paths.dotfiles}/nix/modules"
-      "pkgs=${cfg.paths.dotfiles}/nix/nixos-pkgs.nix"
+    nix.nixPath = with cfg.paths; [
+      "nixpkgs=${nixpkgs}"
+
+      "core=${dotfiles}/nix"
+      "pkgs=${dotfiles}/nix/paths/paths.nix"
+      "nixos=${dotfiles}/nix/paths/nixos.nix"
+      "nixos-pkgs=${dotfiles}/nix/paths/nixos-pkgs.nix"
+
+      "dotfiles=${dotfiles}"
+      "local=${local}"
+      "private=${private}"
     ];
 
     environment.pathsToLink = [
