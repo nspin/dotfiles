@@ -1,6 +1,6 @@
 set -e
 
-. vars-nixos.sh
+. ./vars-macos.sh
 
 nix-env -f '<top>' -iA pkgs.env
 
