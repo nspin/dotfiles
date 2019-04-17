@@ -1,8 +1,8 @@
-{ lib }:
+self: super: with self;
 
-with lib;
+{
 
-rec {
+  compose = f: g: x: f (g x);
 
   nixPathAttrs = listToAttrs (map ({ prefix, path }: { name = prefix; value = path; }) builtins.nixPath);
 
@@ -14,6 +14,10 @@ rec {
     let path = builtins.toPath (nixPathAttrs.${base} + suffix);
     in optional (pathExists path) path
   );
+
+  extantPaths = compose concatMap optionalPath;
+
+  tryImports = suffix: bases: map import (concatMap (optionalPath suffix) bases);
 
   # TODO
   composeOverlays = overlays: foldl' (lib.flip lib.extends) something;
