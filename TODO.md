@@ -77,3 +77,7 @@ xterm:
 *   setup.sh backup
 *   slim down xmonad conf
 *   autojump, z, fasd?
+
+---
+
+ssh\_config in nix
