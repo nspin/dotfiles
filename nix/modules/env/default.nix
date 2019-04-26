@@ -63,7 +63,7 @@ in {
       "nixpkgs=${cfg.paths.nixpkgs}"
 
       "top=${cfg.paths.dotfiles}/nix"
-      "pkgs=${cfg.paths.dotfiles}/nix/path/paths.nix"
+      "pkgs=${cfg.paths.dotfiles}/nix/path/pkgs.nix"
       "nixos=${cfg.paths.dotfiles}/nix/path/nixos.nix"
       "nixos-pkgs=${cfg.paths.dotfiles}/nix/path/nixos-pkgs.nix"
 
