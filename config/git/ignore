@@ -12,6 +12,7 @@ nspinpriv
 *.pyc
 *.class
 *.dll
+*.so
 
 *.swp
 *.swo

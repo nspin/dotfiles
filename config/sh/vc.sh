@@ -8,7 +8,7 @@ alias gs='git status'
 alias gc='git commit'
 alias gca='git commit --amend'
 alias gl='git pull'
-alias gm='git submodule update --init'
+alias gm='git submodule update --init --recursive'
 alias gu='git submodule foreach git pull origin master'
 
 alias gd='git daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/'
