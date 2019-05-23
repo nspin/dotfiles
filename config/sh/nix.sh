@@ -21,7 +21,7 @@ snrs() {
 }
 
 nixosbuild() {
-    nix-build '<top>' -A build.toplevel "$@"
+    nix-build '<top>' -A build.my.toplevel "$@"
 }
 
 nixtest() {

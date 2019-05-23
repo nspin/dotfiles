@@ -4,7 +4,7 @@ export NIX_PROFILES="$HOME/.nix-profile /nix/var/nix/profiles/default /run/curre
 . ./vars-common.sh
 
 nixosbuild() {
-    nix-build '<top>' -A build.toplevel "$@"
+    nix-build '<top>' -A build.my.toplevel "$@"
 }
 
 profile=/nix/var/nix/profiles/system
@@ -18,5 +18,5 @@ snrs() {
     echo "linking profile"
     sudo nix-env -p $profile --set $cfg
     echo "switching to configuration"
-    sudo $cfg/bin/switch-to-configuration switch
+    sudo $cfg/bin/switch-to-configuration boot
 }

@@ -70,7 +70,7 @@ in {
 
       xclip
       rxvt_unicode
-      sublime3
+      # sublime3
       dejavu_fonts
 
       uttyl reptyr

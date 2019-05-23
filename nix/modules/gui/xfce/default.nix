@@ -34,9 +34,9 @@ in {
       # '';
       desktopManager.xterm.enable = false;
       desktopManager.xfce.enable = true;
-      desktopManager.xfce.thunarPlugins = [
-        pkgs.xfce.thunar-archive-plugin
-      ];
+      # desktopManager.xfce.thunarPlugins = [
+      #   pkgs.xfce.thunar-archive-plugin
+      # ];
       # autoRepeatDelay = 200;
       # autoRepeatInterval = 20;
     };
@@ -50,14 +50,14 @@ in {
 
       # chicago95-theme
       sddm-theme-abstractdark
-      xfce.tumbler
-      ffmpegthumbnailer
+      # xfce.tumbler
+      # ffmpegthumbnailer
       gstreamer
 
-      moka-icon-theme
-      arc-theme
-      theme-vertex
-      sierra-gtk-theme
+      # moka-icon-theme
+      # arc-theme
+      # theme-vertex
+      # sierra-gtk-theme
 
       pmtools
       pmutils
@@ -65,24 +65,24 @@ in {
       usbutils
       sysstat
 
-      xfce4-battery-plugin
-      xfce4-clipman-plugin
-      xfce4-cpufreq-plugin
-      xfce4-cpugraph-plugin
-      xfce4-datetime-plugin
-      xfce4-embed-plugin
-      xfce4-eyes-plugin
-      xfce4-fsguard-plugin
-      xfce4-genmon-plugin
-      xfce4-hardware-monitor-plugin
-      xfce4-netload-plugin
-      xfce4-mpc-plugin
-      xfce4-sensors-plugin
-      xfce4-systemload-plugin
-      xfce4-verve-plugin
-      xfce4-whiskermenu-plugin
-      xfce4-windowck-plugin
-      xfce4-pulseaudio-plugin
+      # xfce4-battery-plugin
+      # xfce4-clipman-plugin
+      # xfce4-cpufreq-plugin
+      # xfce4-cpugraph-plugin
+      # xfce4-datetime-plugin
+      # xfce4-embed-plugin
+      # xfce4-eyes-plugin
+      # xfce4-fsguard-plugin
+      # xfce4-genmon-plugin
+      # xfce4-hardware-monitor-plugin
+      # xfce4-netload-plugin
+      # xfce4-mpc-plugin
+      # xfce4-sensors-plugin
+      # xfce4-systemload-plugin
+      # xfce4-verve-plugin
+      # xfce4-whiskermenu-plugin
+      # xfce4-windowck-plugin
+      # xfce4-pulseaudio-plugin
 
       wirelesstools
       iw
