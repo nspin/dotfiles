@@ -7,7 +7,7 @@ alias nevd='nix-env -f "<pkgs>" -iA env'
 alias cabaldef='cabal2nix . > default.nix'
 alias cabalsh='cp ~/dotfiles/store/shell.nix .'
 
-snrs() {
+snr() {
     profile=/nix/var/nix/profiles/system
     cfg=$(nixosbuild --no-out-link)
     if [ $? != 0 ]; then
@@ -17,8 +17,11 @@ snrs() {
     echo "linking profile"
     sudo nix-env -p $profile --set $cfg
     echo "switching to configuration"
-    sudo $cfg/bin/switch-to-configuration switch
+    sudo $cfg/bin/switch-to-configuration $1
 }
+
+alias snrs='snr switch'
+alias snrb='snr boot'
 
 nixosbuild() {
     nix-build '<top>' -A build.my.toplevel "$@"
