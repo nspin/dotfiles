@@ -27,7 +27,8 @@ URxvt*scrollBar: false
 ! URxvt*scrollBar_right: true
 ! URxvt*scrollBar_floating: true
 
-URxvt*font: xft:DejaVu Sans Mono:pixelsize=18
+!URxvt*font: xft:DejaVu Sans Mono:pixelsize=18
+URxvt*font: xft:DejaVu Sans Mono:size=12
 
 URxvt*background:  S_base03
 URxvt*foreground:  S_base0
@@ -50,3 +51,5 @@ URxvt*color12: S_base0
 URxvt*color13: S_violet
 URxvt*color14: S_base1
 URxvt*color15: S_base3
+
+Xft.dpi: 192
