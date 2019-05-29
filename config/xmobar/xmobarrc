@@ -5,7 +5,7 @@ Config
     , hideOnStart = False
     , lowerOnStart = True
 
-    , font = "xft:DejaVu Sans Mono:antialias=True:pixelsize=18"
+    , font = "xft:DejaVu Sans Mono:antialias=True:pixelsize=32"
 
     , alpha = 255
     , bgColor = "#073642"
