@@ -19,7 +19,6 @@ pkgs: with pkgs; [
   mercurial subversion
   zip unzip p7zip
   rsync
-  jre jdk
 
   openssl telnet
   gnupg
