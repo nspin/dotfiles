@@ -14,10 +14,11 @@ export NIX_PROFILES="$NIX_LINK /nix/var/nix/profiles/default"
 export MY_OS=macos
 export MY_KERNEL=darwin
 
-export MY_NIXPKGS="$HOME/nixpkgs"
-export MY_DOTFILES="$HOME/dotfiles"
-export MY_LOCAL="$HOME/local"
-export MY_PRIVATE="$HOME/private"
+export MY_CFG="$HOME/cfg"
+export MY_NIXPKGS="$MY_CFG/nixpkgs"
+export MY_DOTFILES="$MY_CFG/dotfiles"
+export MY_LOCAL="$MY_CFG/local"
+export MY_PRIVATE="$MY_CFG/private"
 
 export PATH="$MY_PRIVATE/bin:$PATH"
 export PATH="$MY_LOCAL/bin:$PATH"

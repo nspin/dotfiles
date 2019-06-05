@@ -5,10 +5,11 @@ export NIX_PROFILES="/nix/var/nix/profiles/per-user/$USER/profile /nix/var/nix/p
 export MY_OS=macos
 export MY_KERNEL=darwin
 
-export MY_NIXPKGS="$HOME/nixpkgs"
-export MY_DOTFILES="$HOME/dotfiles"
-export MY_LOCAL="$HOME/local"
-export MY_PRIVATE="$HOME/private"
+export MY_CFG="$HOME/cfg"
+export MY_NIXPKGS="$MY_CFG/nixpkgs"
+export MY_DOTFILES="$MY_CFG/dotfiles"
+export MY_LOCAL="$MY_CFG/local"
+export MY_PRIVATE="$MY_CFG/private"
 
 export NIX_PATH="nixpkgs=$MY_NIXPKGS:dotfiles=$MY_DOTFILES:local=$MY_LOCAL:private=$MY_PRIVATE:top=$MY_DOTFILES/nix:pkgs=$MY_DOTFILES/nix/path/pkgs.nix"
 
