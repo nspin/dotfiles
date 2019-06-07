@@ -24,7 +24,7 @@ alias snrs='snr switch'
 alias snrb='snr boot'
 
 nixosbuild() {
-    nix-build '<top>' -A build.my.toplevel "$@"
+    nix-build '<top>' -A build.toplevel "$@"
 }
 
 nixtest() {

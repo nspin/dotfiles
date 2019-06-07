@@ -4,7 +4,7 @@ export NIX_PROFILES="$HOME/.nix-profile /nix/var/nix/profiles/default /run/curre
 . ./vars-common.sh
 
 nixosbuild() {
-    nix-build '<top>' -A build.my.toplevel "$@"
+    nix-build '<top>' -A build.toplevel "$@"
 }
 
 profile=/nix/var/nix/profiles/system
