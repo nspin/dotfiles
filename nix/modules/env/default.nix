@@ -18,8 +18,6 @@ let
     ".editrc"                = "line-editors/editrc";
     ".haskeline"             = "line-editors/haskeline";
     ".inputrc"               = "line-editors/inputrc";
-    ".xmonad/xmonad.hs"      = "xmonad/xmonad.hs";
-    ".xmobarrc"              = "xmobar/xmobarrc";
   };
 
 in {

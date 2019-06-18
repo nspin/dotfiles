@@ -85,8 +85,8 @@ fixFloatBorderColor color = do
 myStartupHook = setWMName "LG3D"
 
 
-myLayoutHook :: Choose Tall (Choose (Mirror Tall) Full) a
-myLayoutHook = tiled ||| Mirror tiled ||| Full
+myLayoutHook :: Choose Full (Choose Tall (Mirror Tall)) a
+myLayoutHook = Full ||| tiled ||| Mirror tiled
   where
      tiled   = Tall nmaster delta ratio
      nmaster = 1
