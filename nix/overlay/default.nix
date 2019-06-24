@@ -20,6 +20,8 @@ self: super: with self; {
   chicago95-theme = callPackage ./pkgs/chicago95-theme {};
   sddm-theme-abstractdark = callPackage ./pkgs/sddm-themes/abstractdark.nix {};
 
+  extra-sourceview-color-schemes = callPackage ./pkgs/extra-sourceview-color-schemes {};
+
   # WIP
 
   autopsy = callPackage ./pkgs/autopsy {
