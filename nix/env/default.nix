@@ -28,15 +28,13 @@ pkgs: with pkgs; [
   readme-preview
   ripgrep jq
 
-  reattach-to-user-namespace
-
   nix-prefetch-scripts
   patchelf
   rlwrap
 
   update-dotfile-links
   (mkDotfilesIn "${lib.nixPathAttrs.dotfiles}/config" {
-    ".bash_profile"          = "bash/bash_profile.macos";
+    ".bash_profile"          = "bash/bash_profile.${if hostPlatform.isDarwin then "darwin" else "linox"}";
     ".bashrc"                = "bash/bashrc";
     ".tmux.conf"             = "multiplexers/tmux.conf";
     ".vimrc"                 = "vim/vimrc";
@@ -47,5 +45,11 @@ pkgs: with pkgs; [
     ".haskeline"             = "line-editors/haskeline";
     ".inputrc"               = "line-editors/inputrc";
   })
+
+] ++ lib.optionals hostPlatform.isDarwin [
+
+  reattach-to-user-namespace
+
+] ++ lib.optionals hostPlatform.isLinux [
 
 ] ++ vim-plugins-all

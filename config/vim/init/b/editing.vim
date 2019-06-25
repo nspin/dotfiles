@@ -60,3 +60,5 @@ function! s:AlignTable()
 endfunction
 
 inoremap <bar> <bar><esc>:call <sid>AlignTable()<cr>a
+
+set encoding=utf-8
