@@ -34,7 +34,7 @@ pkgs: with pkgs; [
 
   update-dotfile-links
   (mkDotfilesIn "${lib.nixPathAttrs.dotfiles}/config" {
-    ".bash_profile"          = "bash/bash_profile.${if hostPlatform.isDarwin then "darwin" else "linox"}";
+    ".bash_profile"          = "bash/bash_profile.${if hostPlatform.isDarwin then "macos" else "linox"}";
     ".bashrc"                = "bash/bashrc";
     ".tmux.conf"             = "multiplexers/tmux.conf";
     ".vimrc"                 = "vim/vimrc";
