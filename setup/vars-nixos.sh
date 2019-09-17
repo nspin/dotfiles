@@ -9,7 +9,7 @@ nixosbuild() {
 
 profile=/nix/var/nix/profiles/system
 
-snrs() {
+snr() {
     cfg=$(nixosbuild --no-out-link)
     if [ $? != 0 ]; then
         return $?
@@ -18,5 +18,13 @@ snrs() {
     echo "linking profile"
     sudo nix-env -p $profile --set $cfg
     echo "switching to configuration"
-    sudo $cfg/bin/switch-to-configuration boot
+    sudo $cfg/bin/switch-to-configuration $1
+}
+
+snrb() {
+    snr boot
+}
+
+snrs() {
+    snr switch
 }
