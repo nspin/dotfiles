@@ -1,5 +1,9 @@
 # Posix shell init
 
+if [ -z "$MY_KERNEL" ]; then
+    . $HOME/.bash_profile
+fi
+
 for import in $(find $MY_DOTFILES/config/sh -name '*.sh'); do
     . $import
 done
