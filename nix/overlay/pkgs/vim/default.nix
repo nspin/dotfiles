@@ -15,12 +15,12 @@
 
 stdenv.mkDerivation rec {
   name = "vim-${version}";
-  version = "8.1.0348";
+  version = "8.1.1967";
   src = fetchFromGitHub {
     owner = "vim";
     repo = "vim";
     rev = "v${version}";
-    sha256 = "0f18kpywnph708mvj1fpi06qb53nbhc26ngjh2kvfxwawn63k8ab";
+    sha256 = "0cdfi67jwv8j982i1jxdfqv4aqglig8f0hzadgygk69i0wwkymwk";
   };
 
   enableParallelBuilding = true;
@@ -36,7 +36,7 @@ stdenv.mkDerivation rec {
     ./cflags-prune.patch
   ];
 
-  nativeBuildInputs = [ gettext pkgconfig perl];
+  nativeBuildInputs = [ gettext pkgconfig perl ];
   buildInputs = [
     ncurses python3 ruby lua
   ] ++ lib.optionals stdenv.isDarwin [
@@ -56,7 +56,11 @@ stdenv.mkDerivation rec {
 
 	"--enable-mzschemeinterp"
 	"--enable-python3interp"
-	"--enable-perlinterp"
+
+    # TODO broken
+	# "--enable-perlinterp"
+	"--disable-perlinterp"
+
 	"--enable-rubyinterp"
 	"--enable-luainterp"
 
@@ -75,10 +79,4 @@ stdenv.mkDerivation rec {
 
   __impureHostDeps = [ "/dev/ptmx" ];
 
-  # To fix the trouble in vim73, that it cannot cross-build with this patch
-  # to bypass a configure script check that cannot be done cross-building.
-  # http://groups.google.com/group/vim_dev/browse_thread/thread/66c02efd1523554b?pli=1
-  # patchPhase = ''
-  #   sed -i -e 's/as_fn_error.*int32.*/:/' src/auto/configure
-  # '';
 }
