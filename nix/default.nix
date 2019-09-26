@@ -1,10 +1,7 @@
 let
 
-  fix = f: let x = f x; in x;
+  lib = let lib0 = import <nixpkgs/lib>; in lib0.fix (lib0.extends (import ./lib) (lib0.const lib0));
 
-  lib = fix (self: let super = import <nixpkgs/lib>; in super // libExtension self super);
-
-  libExtension = import ./lib;
   nixpkgsConfig = import ./nixpkgs-config.nix;
 
   internalModule = import ./modules;
@@ -12,10 +9,10 @@ let
   internalEnvPaths = import ./env;
   internalEnvPathsToLink = import ./env/paths-to-link.nix;
 
-  externalModules = lib.tryImports "/config.nix" externalBases;
-  externalOverlays =  lib.tryImports "/overlay.nix" externalBases;
-  externalEnvPaths = lib.tryImports "/env.nix" externalBases;
-  externalEnvPathsToLink = lib.tryImports "/env-paths-to-link.nix" externalBases;
+  externalModules = tryImports "/config.nix" externalBases;
+  externalOverlays =  tryImports "/overlay.nix" externalBases;
+  externalEnvPaths = tryImports "/env.nix" externalBases;
+  externalEnvPathsToLink = tryImports "/env-paths-to-link.nix" externalBases;
 
   externalBases = [
     "local"
@@ -23,7 +20,7 @@ let
   ];
 
   libOverlay = self: super: {
-    lib = fix (lself: let lsuper = super.lib; in lsuper // libExtension lself lsuper);
+    inherit lib;
   };
 
   envOverlay = self: super: {
@@ -57,9 +54,18 @@ let
       config = args.config // config;
     };
 
+  # helpers
+
+  tryImports = suffix: bases: map import (lib.concatMap (optionalPath suffix) bases);
+
+  optionalPath = suffix: base: lib.optionals (lib.hasAttr base lib.nixPathAttrs) (
+    let path = builtins.toPath (lib.nixPathAttrs.${base} + suffix);
+    in lib.optional (lib.pathExists path) path
+  );
+
 in rec {
 
-  inherit lib libOverlay;
+  inherit lib;
 
   pkgs = lib.makeOverridableWith combineNixpkgsArgs (args: import <nixpkgs> args) {
     crossSystem = null;

@@ -100,11 +100,11 @@ in {
     };
 
     environment.extraInit = ''
-      export PATH="${lib.concatStrings [
-        "${cfg.paths.private}/bin:"
-        "${cfg.paths.local}/bin:"
-        "$(find ${cfg.paths.dotfiles}/bin/linux -type d -printf '%p:')"
-        "${cfg.paths.dotfiles}/bin:"
+      export PATH="${lib.concatStringsSep ":" [
+        "${cfg.paths.private}/bin"
+        "${cfg.paths.local}/bin"
+        "${cfg.paths.dotfiles}/bin/linux"
+        "${cfg.paths.dotfiles}/bin/common"
         "$PATH"
       ]}"
     '';
