@@ -2,6 +2,7 @@
 alias sc='screen -dRR'
 
 # tmux
+alias t='tmux'
 alias tm='tmux'
 alias ta='tmux attach'
 alias tt='tmux attach -t'
