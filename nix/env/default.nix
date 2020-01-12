@@ -23,8 +23,6 @@ pkgs: with pkgs; [
   openssl telnet
   gnupg
 
-  cacert
-
   readme-preview
   ripgrep jq
 

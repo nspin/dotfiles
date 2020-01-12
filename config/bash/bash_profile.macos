@@ -25,6 +25,8 @@ export VISUAL=vim
 
 export FZF_DEFAULT_OPTS='--reverse'
 
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 if echo $- | grep -q i; then
     . $HOME/.bashrc
 fi
