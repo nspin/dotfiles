@@ -43,6 +43,10 @@ let g:tex_indent_parentheses = 0
 let g:ycm_server_python_interpreter = trim(system('which python3'))
 " let g:ycm_global_ycm_extra_conf = $MY_DOTFILES.'/config/vim/ycm_extra_conf.py'
 " HACK only way I've found to silence warnings
-let g:ycm_log_level = 'foo'
+" let g:ycm_log_level = 'foo'
+let g:ycm_filetype_specific_completion_to_disable = {
+  \ 'c': 1,
+  \ 'cpp': 1,
+  \ }
 
 let g:linuxsty_patterns = [ '/home/x/icecap/xlocal/linux/' ]
