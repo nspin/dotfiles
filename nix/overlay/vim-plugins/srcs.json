@@ -1,184 +1,236 @@
 {
   "vim-repeat": {
     "url": "https://github.com/tpope/vim-repeat",
-    "rev": "43d2678fa59d068c815d8298331c195e850ff5a7",
-    "date": "2018-07-02T15:03:55-04:00",
-    "sha256": "0nb20503ka95qbx0mwhhni15drc86gfcd6kg92nf65llrvyfivk0",
-    "fetchSubmodules": true
+    "rev": "c947ad2b6a16983724a0153bdf7f66d7a80a32ca",
+    "date": "2019-11-12T19:31:06-05:00",
+    "sha256": "00hhbqcx21j0738ad5xh92lsykpa0qxhdy1s7wnwc8d3jndmyjwb",
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "vim-commentary": {
     "url": "https://github.com/tpope/vim-commentary",
-    "rev": "141d9d32a9fb58fe474fcc89cd7221eb2dd57b3a",
-    "date": "2018-07-27T03:01:11-04:00",
-    "sha256": "0nncs32ayfhr557aiynq7b0sc7rxqwv7xanram53x1wvmfy14zf0",
-    "fetchSubmodules": true
+    "rev": "f8238d70f873969fb41bf6a6b07ca63a4c0b82b1",
+    "date": "2019-11-17T21:45:53-05:00",
+    "sha256": "09d81q9na7pvvrmxxqy09ffdzsx5v5dikinb704c9wm4ys2bidr9",
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "vim-surround": {
     "url": "https://github.com/tpope/vim-surround",
-    "rev": "ca58a2d886cc18734c90c9665da4775d444b0c04",
-    "date": "2019-03-26T17:22:34-04:00",
-    "sha256": "0d4jxp1ahwrwsk277yvkbk76jrhmv3bml83fivlxpj01224kdr2n",
-    "fetchSubmodules": true
+    "rev": "f51a26d3710629d031806305b6c8727189cd1935",
+    "date": "2019-11-28T01:29:20-05:00",
+    "sha256": "0aqrqn35xdiy80y7skxfsh3m33n6cdxw6lzz6aspfgzwllx2f0kr",
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "vim-slime": {
     "url": "https://github.com/jpalardy/vim-slime",
-    "rev": "9035bef4c91fd730d76b5fdc994f1dcdcef49405",
-    "date": "2019-04-01T20:27:46-07:00",
-    "sha256": "1f65nq1hgvblm074hbqy647vixzhkimr1yhqjlrqg7mjiffrkr43",
-    "fetchSubmodules": true
+    "rev": "73449cc1bf3375ce6f92a1018821cdd0ae91959d",
+    "date": "2020-02-25T19:01:01-08:00",
+    "sha256": "1wsrgchjxhircgdvwphvswnl7jq5b63l360wnjjlmcff6nvwhm77",
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "vim-dirvish": {
     "url": "https://github.com/justinmk/vim-dirvish",
-    "rev": "ae60a79106dd32d75d3c5cf4dfe44fd658d634ec",
-    "date": "2019-04-01T08:28:18+02:00",
-    "sha256": "1dpyavqhsn7japg5li2fflhn4rq5y5c5m24772550awzd5nx0bif",
-    "fetchSubmodules": true
+    "rev": "0a53fadc22ab6df6aed9cc580c9e498715870522",
+    "date": "2020-02-23T22:37:51-08:00",
+    "sha256": "09q5xpc4xbskzxppp66ypzd5mnic5bcwxahmhb259ch9xs8qmrc6",
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "vim-bufferline": {
     "url": "https://github.com/bling/vim-bufferline",
     "rev": "651fd010aa9613a4b8636a4af8a2db0d22800262",
     "date": "2016-02-08T20:05:50-05:00",
     "sha256": "0zls47a3v8dv3h63drbak1mxf3j2x3scvclk7bjwzlk2yp447das",
-    "fetchSubmodules": true
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "vim-rsi": {
     "url": "https://github.com/tpope/vim-rsi",
-    "rev": "8b7abe2d470b7fffac6562818468e14594735564",
-    "date": "2019-03-15T19:53:10-04:00",
-    "sha256": "1fvswbqd51gs4qhcabnz3zdmmlhcijs3pnbp3f2zgfi7lqvjc6s5",
-    "fetchSubmodules": true
+    "rev": "ad8ba6beae8e82339479104b914214a868c9f1fe",
+    "date": "2019-11-14T22:16:58-05:00",
+    "sha256": "1ycjwnbs6rks78yxh0k0ywpvic0663mv7kydy3kjpa4f5bnkgbvc",
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "vim-eunuch": {
     "url": "https://github.com/tpope/vim-eunuch",
-    "rev": "e066a0999e442d9d96f24ad9d203b1bd030ef72e",
-    "date": "2019-04-13T18:43:44-04:00",
-    "sha256": "12n7fzgppiwqhqnxlbxmky1m1flb82kr4zlyggysgzz1lqb122zf",
-    "fetchSubmodules": true
+    "rev": "33e875b31c8b811a0a47908884a5e2339106bbe8",
+    "date": "2020-01-16T01:12:22-05:00",
+    "sha256": "1xadb22kd40swmww0qxmmkcpcq6viy8l167pjck5q32hfngll5d3",
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "vim-sexp": {
     "url": "https://github.com/guns/vim-sexp",
     "rev": "12292941903d9ac8151513189d2007e1ccfc95f0",
     "date": "2017-05-15T12:03:21-05:00",
     "sha256": "1mfqbmrbqgnsc34pmcsrc0c5zvgxhhnw4hx4g5wbssfk1ddyx6y0",
-    "fetchSubmodules": true
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "vim-sexp-mappings-for-regular-people": {
     "url": "https://github.com/tpope/vim-sexp-mappings-for-regular-people",
-    "rev": "f5b66e73c81a3b4c0c8f5a8141fb09a5a213f711",
-    "date": "2014-11-04T18:21:20-05:00",
-    "sha256": "1kf3bkv9wppxgifybd972avdd2563ra2387n7qc6q72b2r9mx5aa",
-    "fetchSubmodules": true
+    "rev": "7c3de2f13422fb4b62b4c34a660532c7b3d240c7",
+    "date": "2020-01-16T01:07:07-05:00",
+    "sha256": "0malswal9hnbq2wf1rx2lp1r69wpwsvyhgi46xbg079x2n857bmj",
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "youcompleteme": {
     "url": "https://github.com/valloric/youcompleteme",
-    "rev": "9dee2b4e3f5de5f8b9fdc4790eac35eb2c40257a",
-    "date": "2019-04-10T14:36:19-07:00",
-    "sha256": "12i3wzcy19c5gc8xc5i0qhjl4wn7jwy2abgbx9x2cbgamjl4yzh0",
-    "fetchSubmodules": true
+    "rev": "cf4a76acaeed27eb3ca1dca5adf1115b6abbcfa3",
+    "date": "2020-03-18T07:14:10+00:00",
+    "sha256": "0si9by2ag2f7xgxidp5215d6wkg1mdhq9j5c4icdpsly9gv3w5s8",
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "cscope_macros.vim": {
     "url": "https://github.com/vim-scripts/cscope_macros.vim",
     "rev": "d1e0c369e8c25ecfd57d20382f1ed6fe0a1ac694",
     "date": "2010-10-17T18:35:59-07:00",
     "sha256": "19m901kwcpvz847nviy3jnrvnv1v9sf54pr6n3b99cim1cpa7z6j",
-    "fetchSubmodules": true
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "vim-snippets": {
     "url": "https://github.com/honza/vim-snippets",
-    "rev": "1ba4a66c11d8fd4309656bc2994d683580d54de3",
-    "date": "2019-04-12T13:07:19+01:00",
-    "sha256": "0cdphdscz6hbaj53gras13f1rfhzcrhlwff2rfbx4hxnsqgndph5",
-    "fetchSubmodules": true
+    "rev": "6e6b69fd5c12d4645225e7a3ba7d9f3414d83d25",
+    "date": "2020-03-19T11:37:31+00:00",
+    "sha256": "0hc914c74dy22nm9bx2qd37py8f2xf3ylnfr3v4lvbxpnlpahjjc",
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "ultisnips": {
     "url": "https://github.com/SirVer/ultisnips",
-    "rev": "6fdc3647f72e0a1f321ea6bd092ecd01f7c187ba",
-    "date": "2018-04-30T22:01:36+02:00",
-    "sha256": "1zp3xcmxk6cn38zmxxy5s2wnw9djskwkmspq2s9vqliyhprf9sy3",
-    "fetchSubmodules": true
+    "rev": "ee31ea1c7d08ced8577120b4c1d55c5a05351a75",
+    "date": "2020-03-19T07:35:50+01:00",
+    "sha256": "01nm3d95qjd2v3j9ln7w52i8bn2fgi5zms9078832w1x4iyb1mwn",
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "tabular": {
     "url": "https://github.com/godlygeek/tabular",
     "rev": "339091ac4dd1f17e225fe7d57b48aff55f99b23a",
     "date": "2019-02-19T12:42:08-05:00",
     "sha256": "0jq91770wsp2waw7pywxjqx59v0vg54gfzirgcd85pg61w22bfla",
-    "fetchSubmodules": true
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "nerdtree": {
     "url": "https://github.com/scrooloose/nerdtree",
-    "rev": "7513f256aa1d59b6a749cefe5ac505375b1b8a6a",
-    "date": "2019-03-26T11:57:21-04:00",
-    "sha256": "0163bvsmnnw598x2nyi9lzdk6akzj62cbsldp8prhl6d7x3gdmaf",
-    "fetchSubmodules": true
+    "rev": "e67324fdea7a192c7ce1b4c6b3c3b9f82f11eee7",
+    "date": "2020-02-20T09:10:19-05:00",
+    "sha256": "0y7hd69k0i21cqgs11n80ljv6cl0gfcjjwa0dvdywpd8mmn1ad4k",
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "vim-nix": {
     "url": "https://github.com/LnL7/vim-nix",
-    "rev": "be0c6bb409732b79cc86c177ca378b0b334e1efe",
-    "date": "2018-08-27T21:37:10+02:00",
-    "sha256": "1ivkwlm6lz43xk1m7aii0bgn2p3225dixck0qyhxw4zxhp2xiz06",
-    "fetchSubmodules": true
+    "rev": "a3eed01f4de995a51dfdd06287e44fcb231f6adf",
+    "date": "2019-06-03T20:02:28+02:00",
+    "sha256": "0pwdfwws1dj3705m00ghw3dvym5zbm00bfsj023gmbp6vr8wn6yi",
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "idris-vim": {
     "url": "https://github.com/idris-hackers/idris-vim",
     "rev": "091ed6b267749927777423160eeab520109dd9c1",
     "date": "2017-12-04T19:36:45+01:00",
     "sha256": "1zibar2vxcmai0k37ricwnimfdv1adxfbbvz871rc4l6h3q85if1",
-    "fetchSubmodules": true
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "smali-vim": {
     "url": "https://github.com/alderz/smali-vim",
     "rev": "ae77727b0714f7896241b4f8ee4dcc93222bc532",
     "date": "2011-07-27T17:01:03+02:00",
     "sha256": "11jqk2kckih6q32r82s6hwzff7ybzbwyakmq75p0ic9mijycw7gg",
-    "fetchSubmodules": true
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "vim-markdown": {
     "url": "https://github.com/tpope/vim-markdown",
-    "rev": "57c58269a2ac89680e7b216c2bcfbb7df1ec5e69",
-    "date": "2019-03-12T23:54:34-04:00",
-    "sha256": "0xpgx79sg4qd80z3m1qv7yzz2hg2g3biyl3q16fzhib1rjaiz5h5",
-    "fetchSubmodules": true
+    "rev": "296eeaa8877528fae45e89a9013c5a8d317deef1",
+    "date": "2020-02-21T00:25:51-05:00",
+    "sha256": "1bjqxvj0x0s81ak7c7cxghl2gx4qnxn8jfdaalq1kx1rhrfxy4am",
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "cryptol.vim": {
     "url": "https://github.com/victoredwardocallaghan/cryptol.vim",
     "rev": "15040e77c8256c9d7a8824fd95804836121ed46a",
     "date": "2016-05-12T13:59:48+10:00",
     "sha256": "0iv8s2z7xap4mj2ad3dq67h629j2bn8zvch32azn3l0q4cppmnw8",
-    "fetchSubmodules": true
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "chuck.vim": {
     "url": "https://github.com/wilsaj/chuck.vim",
     "rev": "7778b665829ee8ccae10b81afac951a0aaec3821",
     "date": "2017-02-25T15:31:28-06:00",
     "sha256": "0b1bv2a5p94q5by8pkw67kdgibckll4ayn62cn4yw9w5hv4j96d2",
-    "fetchSubmodules": true
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "Vim-Jinja2-Syntax": {
     "url": "https://github.com/Glench/Vim-Jinja2-Syntax",
-    "rev": "ff113baf049525efb94ff32c3d845f817351de11",
-    "date": "2018-11-26T13:33:00-05:00",
-    "sha256": "1c0m6rxqp96fq508xnwg01zna3h3wqg7lb009niy3i9hq7857swq",
-    "fetchSubmodules": true
+    "rev": "6eff8287c4b61e9fb8657773f36402b33750fc27",
+    "date": "2020-02-09T12:46:08-05:00",
+    "sha256": "0m5h6fl6c9vkpw5ix7k44dv6xxlcz1vfmxg2c5aljr1alasy9i0k",
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "vim-colors-solarized": {
     "url": "https://github.com/nspin/vim-colors-solarized",
     "rev": "3993f5caa7f2b4cb7b190adcb4e6d26c0a1ffc6c",
     "date": "2015-09-11T04:37:39+00:00",
     "sha256": "1y80awip0q5ihj6b9kxhh48s3d1vc66406sav6ixghv39d8dqvdg",
-    "fetchSubmodules": true
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "vim-linux-coding-style": {
     "url": "https://github.com/vivien/vim-linux-coding-style",
     "rev": "7da66c1b34dc2976a70c9393c7e0c9f47e129e89",
     "date": "2017-04-05T15:00:18-04:00",
     "sha256": "1f2q5z90hbjqi500072a5ss3iqn73b75jz85xbzcsn8fggs48sk0",
-    "fetchSubmodules": true
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   },
   "vim-toml": {
     "url": "https://github.com/cespare/vim-toml",
     "rev": "a4ec206052aa347d7df90dc4b6697b7f2b7929bc",
     "date": "2019-08-28T15:31:43+08:00",
     "sha256": "1dgykq4vl7vvj2f8lvg58rzqddm53i278g26ljwfimgqc8l6gmqd",
-    "fetchSubmodules": true
+    "fetchSubmodules": true,
+    "deepClone": false,
+    "leaveDotGit": false
   }
 }
