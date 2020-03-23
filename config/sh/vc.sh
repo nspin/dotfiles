@@ -20,6 +20,8 @@ alias gra='git rebase --abort'
 
 alias gd='git daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/'
 
+alias cgl='clone_gitlab'
+
 # Status of git repos in current directory
 statuses() {
     currdir=$(pwd)
@@ -68,4 +70,8 @@ cloneb() {
 module() {
     URL="https://github.com/$1/$2.git"
     git submodule add $URL $3
+}
+
+clone_gitlab() {
+    git clone git@gitlab.com:$1/$2.git
 }
