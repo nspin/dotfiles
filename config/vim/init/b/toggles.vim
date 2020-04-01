@@ -47,3 +47,6 @@ endfun
 
 command! Plain :call <sid>plain()
 command! UnPlain :call <sid>un_plain()
+
+noremap <space>] :set paste<cr>
+noremap <space>[ :set nopaste<cr>
