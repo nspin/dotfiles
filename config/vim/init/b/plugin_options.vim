@@ -49,4 +49,5 @@ let g:ycm_filetype_specific_completion_to_disable = {
   \ 'cpp': 1,
   \ }
 
-let g:linuxsty_patterns = [ '/home/x/icecap/xlocal/linux/' ]
+" let g:linuxsty_patterns = [ '/linux\(+[^/]\+\)?/' ]
+let g:linuxsty_patterns = [ '/linux/', '/linux+[^/]\+' ]
