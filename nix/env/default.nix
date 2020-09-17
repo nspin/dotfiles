@@ -1,6 +1,6 @@
 pkgs: with pkgs; [
 
-  my-vim tmux git fzf
+  my-vim tmux git fzf fd
   file rlwrap
   fznode
 
