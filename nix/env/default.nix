@@ -17,7 +17,7 @@ pkgs: with pkgs; [
   gdb screen
   gnumake
   mercurial subversion
-  zip unzip p7zip
+  zip unzip
   rsync
 
   openssl telnet
