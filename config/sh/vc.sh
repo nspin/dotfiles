@@ -17,6 +17,7 @@ alias gri='git rebase -i'
 alias griu='git rebase -i upstream'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
+alias unpushed='git log --branches --not --remotes --no-walk --decorate --oneline'
 
 alias gd='git daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/'
 
