@@ -22,6 +22,8 @@ self: super: with self; {
 
   extra-sourceview-color-schemes = callPackage ./pkgs/extra-sourceview-color-schemes {};
 
+  patch-vscode = callPackage ./hacks/patch-vscode.nix {};
+
   # WIP
 
   autopsy = callPackage ./pkgs/autopsy {

@@ -66,8 +66,8 @@ stdenv.mkDerivation rec {
 
 	"--with-lua-prefix=${lua}"
     "--with-python3-config-dir=${python3}/lib"
-  ] ++ stdenv.lib.optional stdenv.isDarwin (if darwinSupport then "--enable-darwin" else "--disable-darwin")
-    ++ stdenv.lib.optional netbeansSupport "--enable-netbeans"
+  ] ++ lib.optional stdenv.isDarwin (if darwinSupport then "--enable-darwin" else "--disable-darwin")
+    ++ lib.optional netbeansSupport "--enable-netbeans"
   ;
 
   NIX_LDFLAGS = lib.optional stdenv.isDarwin
