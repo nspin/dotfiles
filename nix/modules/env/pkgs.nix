@@ -26,9 +26,9 @@ in {
 
     environment.systemPackages = with pkgs; [
 
-      my-vim tmux git fzf wget 
-      file rlwrap
-      fznode
+      my-vim tmux git fzf fd
+      file wget 
+      rlwrap
 
     ] ++ optionals (cfg.tui >= 1) [
 

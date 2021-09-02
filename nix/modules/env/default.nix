@@ -97,6 +97,7 @@ in {
       VISUAL = "vim";
 
       FZF_DEFAULT_OPTS = "--reverse";
+      FZF_DEFAULT_COMMAND = "fd --type f";
     };
 
     environment.extraInit = ''
