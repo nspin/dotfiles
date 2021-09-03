@@ -12,7 +12,7 @@ linkFarm "patch-vscode" [
       #!${runtimeShell}
       set -eu
       for hash in "$@"; do
-        echo patchelf $hash/node \
+        patchelf $hash/node \
           --set-interpreter ${stdenv.glibc}/lib/ld-linux-x86-64.so.2 \
           --set-rpath ${lib.concatStringsSep ":" (map (path: "${lib.getLib path}/lib") [
             stdenv.cc.cc
