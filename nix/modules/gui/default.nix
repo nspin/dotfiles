@@ -29,7 +29,7 @@ in {
     };
     
     fonts = {
-      enableFontDir = true;
+      fontDir.enable = true;
       fontconfig.enable = true;
       fonts = [
         pkgs.dejavu_fonts

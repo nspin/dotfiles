@@ -17,10 +17,10 @@ in {
   config = mkIf cfg.enable {
 
     services.xserver = {
-      desktopManager.gnome3.enable = true;
+      desktopManager.gnome.enable = true;
       displayManager.gdm.enable = true;
       displayManager.gdm.wayland = false; # so can use xmodmap instead of xkb
-      displayManager.gdm.autoLogin.user = "x";
+      displayManager.autoLogin.user = "x";
       displayManager.sessionCommands = ''
         xrdb -merge ${./xresources}
       '';
@@ -37,7 +37,7 @@ in {
       (callPackage ./xstuff.nix {})
 
       glib.dev
-      gnome3.gsettings_desktop_schemas
+      gnome.gsettings_desktop_schemas
       ffmpegthumbnailer
 
       dash-to-dock
