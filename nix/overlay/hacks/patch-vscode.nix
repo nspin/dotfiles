@@ -13,7 +13,7 @@ linkFarm "patch-vscode" [
       set -eu
       for hash in "$@"; do
         patchelf $hash/node \
-          --set-interpreter ${stdenv.glibc}/lib/ld-linux-x86-64.so.2 \
+          --set-interpreter "$(cat ${stdenv.cc}/nix-support/dynamic-linker)" \
           --set-rpath ${lib.concatStringsSep ":" (map (path: "${lib.getLib path}/lib") [
             stdenv.cc.cc
             stdenv.glibc
