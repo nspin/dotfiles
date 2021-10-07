@@ -5,6 +5,7 @@ alias enolcto='cloneto nspin'
 
 alias g='git'
 alias gs='git status'
+alias gd='git diff'
 alias gb='git branch'
 alias ga='git add -A :/'
 alias gc='git commit'
@@ -23,7 +24,7 @@ alias gh='git checkout'
 alias ghb='git checkout -b'
 alias unpushed='git log --branches --not --remotes --no-walk --decorate --oneline'
 
-alias gd='git daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/'
+# alias gd='git daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/'
 
 alias cgl='clone_gitlab'
 
