@@ -1,6 +1,6 @@
-alias n='nix-build'
+alias ni='nix-build'
 alias na='nix-build -A'
-alias ne='nef ./.'
+alias nefh='nef ./.'
 alias nb='nix-build "<pkgs>" -A'
 alias ns='nix-shell'
 alias nev='nix-env -f "<pkgs>" -iA'
