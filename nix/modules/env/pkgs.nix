@@ -36,7 +36,7 @@ in {
       gnumake binutils
       mercurial subversion
       zip unzip p7zip
-      python2 python3
+      python3
       jre jdk
 
       nix-prefetch-scripts patchelf

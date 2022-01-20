@@ -1,6 +1,6 @@
-{ python27Packages }: 
+{ python3Packages }:
 
-with python27Packages; buildPythonPackage rec {
+with python3Packages; buildPythonPackage rec {
   pname = "grip";
   version = "4.5.2";
   src = fetchPypi {
